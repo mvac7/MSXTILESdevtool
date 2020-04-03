@@ -10,20 +10,6 @@ License:      GNU General Public License v3
 ```
 
 ---
-## Index
-                             
-- 1. Description
-- 2. License
-- 3. Requirements
-- 4. How to install
-- 5. Features
-- 6. History
-- 7. Acknowledgements
-- 8. Code Examples
-
-
-
----
 ## 1. Description
 
 Application to work with images in the graphcis mode 2 of VDP TMS9918A and get a dump in different code formats (ASM, C and Basic).
@@ -32,7 +18,7 @@ Born from the need to convert nMSXtiles projects to C code, plus some utilities 
    
 This application is designed for agile and intuitive handling, but always can be improved. We are working on it. We are waiting your suggestions. 
 
-This software was developed in Microsoft Visual Basic 2008 Express. To obtain the source code, look in the WEB project.
+This software was developed in Microsoft Visual Basic 2008 Express.
    
 
 
@@ -41,18 +27,20 @@ This software was developed in Microsoft Visual Basic 2008 Express. To obtain th
 
 Copyright (C) 2014 mvac7
    
-This program is free software: you can redistribute it and/or modify  
-it under the terms of the GNU General Public License as published by 
-the Free Software Foundation, either version 3 of the License, or 
-(at your option) any later version.
+```
+   This program is free software: you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
 
-This program is distributed in the hope that it will be useful, 
-but WITHOUT ANY WARRANTY; without even the implied warranty of 
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-See the GNU General Public License for more details.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+   See the GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
+   You should have received a copy of the GNU General Public License
+   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+```
 
 
     
