@@ -1,0 +1,3132 @@
+<msxdevtools app="MSX Tiles detool" version="0.9.0.0">
+  <project name="scr02_edit_v2_11" version="0" group="" author="" startDate="635394240000000000" lastUpdate="635394240000000000">
+    <description>
+    </description>
+  </project>
+  <palette name="Default Palette" group="" version="" author="">
+    <color id="0" red="0" green="0" blue="0" />
+    <color id="1" red="0" green="0" blue="0" />
+    <color id="2" red="2" green="5" blue="2" />
+    <color id="3" red="3" green="6" blue="3" />
+    <color id="4" red="2" green="2" blue="5" />
+    <color id="5" red="3" green="3" blue="7" />
+    <color id="6" red="5" green="2" blue="1" />
+    <color id="7" red="2" green="6" blue="7" />
+    <color id="8" red="6" green="2" blue="2" />
+    <color id="9" red="7" green="3" blue="3" />
+    <color id="10" red="6" green="6" blue="3" />
+    <color id="11" red="6" green="6" blue="4" />
+    <color id="12" red="1" green="4" blue="1" />
+    <color id="13" red="5" green="3" blue="5" />
+    <color id="14" red="6" green="6" blue="6" />
+    <color id="15" red="7" green="7" blue="7" />
+  </palette>
+  <gfx name="PSGed_tileset11">
+    <tileset id="0">
+      <item id="0">
+        <gfxData>255,193,156,156,156,193,255,0,0</gfxData>
+        <colorData>47,47,47,47,47,47,47,238,0</colorData>
+      </item>
+      <item id="1">
+        <gfxData>255,231,199,231,231,195,255,0,0</gfxData>
+        <colorData>47,47,47,47,47,47,47,238,0</colorData>
+      </item>
+      <item id="2">
+        <gfxData>255,129,252,193,159,128,255,255,0</gfxData>
+        <colorData>47,47,47,47,47,47,47,238,0</colorData>
+      </item>
+      <item id="3">
+        <gfxData>255,129,252,225,252,129,255,255,0</gfxData>
+        <colorData>47,47,47,47,47,47,47,238,0</colorData>
+      </item>
+      <item id="4">
+        <gfxData>255,156,156,128,252,252,255,255,0</gfxData>
+        <colorData>47,47,47,47,47,47,47,238,0</colorData>
+      </item>
+      <item id="5">
+        <gfxData>255,128,159,129,252,129,255,255,0</gfxData>
+        <colorData>47,47,47,47,47,47,47,238,0</colorData>
+      </item>
+      <item id="6">
+        <gfxData>255,193,159,129,156,193,255,255,0</gfxData>
+        <colorData>47,47,47,47,47,47,47,238,0</colorData>
+      </item>
+      <item id="7">
+        <gfxData>255,128,252,249,243,243,255,255,0</gfxData>
+        <colorData>47,47,47,47,47,47,47,238,0</colorData>
+      </item>
+      <item id="8">
+        <gfxData>255,193,156,193,156,193,255,255,0</gfxData>
+        <colorData>47,47,47,47,47,47,47,238,0</colorData>
+      </item>
+      <item id="9">
+        <gfxData>255,193,156,192,252,193,255,0,0</gfxData>
+        <colorData>47,47,47,47,47,47,47,238,0</colorData>
+      </item>
+      <item id="10">
+        <gfxData>255,255,255,255,255,255,255,0,0</gfxData>
+        <colorData>47,47,47,47,47,47,47,238,0</colorData>
+      </item>
+      <item id="11">
+        <gfxData>255,255,255,195,255,255,255,0,0</gfxData>
+        <colorData>47,47,47,47,47,47,47,238,0</colorData>
+      </item>
+      <item id="12">
+        <gfxData>255,255,255,17,87,87,17,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="13">
+        <gfxData>255,255,255,17,181,177,181,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="14">
+        <gfxData>255,255,255,81,83,87,177,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="15">
+        <gfxData>0,0,234,170,234,174,0,0,0</gfxData>
+        <colorData>78,78,78,78,78,78,78,78,0</colorData>
+      </item>
+      <item id="16">
+        <gfxData>0,0,238,74,74,78,0,0,0</gfxData>
+        <colorData>78,78,78,78,78,78,78,78,0</colorData>
+      </item>
+      <item id="17">
+        <gfxData>254,198,186,130,186,186,254,0,0</gfxData>
+        <colorData>78,78,78,78,78,78,78,78,0</colorData>
+      </item>
+      <item id="18">
+        <gfxData>254,134,186,134,186,134,254,0,0</gfxData>
+        <colorData>78,78,78,78,78,78,78,78,0</colorData>
+      </item>
+      <item id="19">
+        <gfxData>254,194,190,190,190,194,254,0,0</gfxData>
+        <colorData>78,78,78,78,78,78,78,78,0</colorData>
+      </item>
+      <item id="20">
+        <gfxData>255,129,156,156,129,159,255,0,0</gfxData>
+        <colorData>241,240,240,240,240,240,241,241,0</colorData>
+      </item>
+      <item id="21">
+        <gfxData>255,192,159,193,252,129,255,0,0</gfxData>
+        <colorData>241,240,240,240,240,240,241,241,0</colorData>
+      </item>
+      <item id="22">
+        <gfxData>255,192,159,152,156,192,255,0,0</gfxData>
+        <colorData>241,240,240,240,240,240,241,241,0</colorData>
+      </item>
+      <item id="23">
+        <gfxData>255,128,159,131,159,128,255,255,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,0,0</colorData>
+      </item>
+      <item id="24">
+        <gfxData>255,129,156,156,156,129,255,255,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,1,0</colorData>
+      </item>
+      <item id="25">
+        <gfxData>255,255,255,255,255,255,255,0,0</gfxData>
+        <colorData>241,241,241,241,241,241,241,241,0</colorData>
+      </item>
+      <item id="26">
+        <gfxData>255,129,252,193,159,128,255,255,0</gfxData>
+        <colorData>248,248,248,248,248,248,248,24,0</colorData>
+      </item>
+      <item id="27">
+        <gfxData>255,255,142,181,141,190,255,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,241,0</colorData>
+      </item>
+      <item id="28">
+        <gfxData>255,255,99,183,183,119,255,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,241,0</colorData>
+      </item>
+      <item id="29">
+        <gfxData>147,147,147,147,219,219,0,0,0</gfxData>
+        <colorData>241,241,241,241,241,241,241,254,0</colorData>
+      </item>
+      <item id="30">
+        <gfxData>255,255,255,255,255,255,255,0,0</gfxData>
+        <colorData>241,241,241,241,241,241,241,241,0</colorData>
+      </item>
+      <item id="31">
+        <gfxData>127,93,107,119,107,93,127,0,0</gfxData>
+        <colorData>129,128,128,128,128,128,129,129,0</colorData>
+      </item>
+      <item id="32">
+        <gfxData>255,255,255,255,255,255,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="33">
+        <gfxData>255,243,243,243,243,255,243,255,0</gfxData>
+        <colorData>225,224,224,224,225,224,224,225,0</colorData>
+      </item>
+      <item id="34">
+        <gfxData>255,235,235,255,255,255,255,255,0</gfxData>
+        <colorData>225,224,224,225,225,225,225,225,0</colorData>
+      </item>
+      <item id="35">
+        <gfxData>255,235,193,235,193,235,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,224,0</colorData>
+      </item>
+      <item id="36">
+        <gfxData>247,193,151,193,244,193,247,255,0</gfxData>
+        <colorData>224,224,224,224,224,224,224,225,0</colorData>
+      </item>
+      <item id="37">
+        <gfxData>255,204,201,243,228,204,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="38">
+        <gfxData>255,199,147,194,153,194,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="39">
+        <gfxData>255,231,207,255,255,255,255,255,0</gfxData>
+        <colorData>225,225,225,225,225,225,225,225,0</colorData>
+      </item>
+      <item id="40">
+        <gfxData>249,243,243,243,243,243,249,255,0</gfxData>
+        <colorData>224,224,224,224,224,224,224,225,0</colorData>
+      </item>
+      <item id="41">
+        <gfxData>207,231,231,231,231,231,207,255,0</gfxData>
+        <colorData>224,224,224,224,224,224,224,225,0</colorData>
+      </item>
+      <item id="42">
+        <gfxData>255,165,195,129,195,165,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="43">
+        <gfxData>255,231,231,129,231,231,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="44">
+        <gfxData>255,255,255,255,231,231,239,255,0</gfxData>
+        <colorData>225,225,225,225,224,224,224,225,0</colorData>
+      </item>
+      <item id="45">
+        <gfxData>255,255,255,129,255,255,255,255,0</gfxData>
+        <colorData>225,225,225,224,225,225,225,225,0</colorData>
+      </item>
+      <item id="46">
+        <gfxData>255,255,255,255,231,231,255,255,0</gfxData>
+        <colorData>225,225,225,225,224,224,225,225,0</colorData>
+      </item>
+      <item id="47">
+        <gfxData>255,249,243,231,207,159,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="48">
+        <gfxData>255,193,156,156,156,193,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="49">
+        <gfxData>255,231,199,231,231,195,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="50">
+        <gfxData>255,129,252,193,159,128,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="51">
+        <gfxData>255,129,252,225,252,129,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="52">
+        <gfxData>255,156,156,128,252,252,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="53">
+        <gfxData>255,128,159,129,252,129,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="54">
+        <gfxData>255,193,159,129,156,193,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="55">
+        <gfxData>255,128,252,249,243,243,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="56">
+        <gfxData>255,193,156,193,156,193,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="57">
+        <gfxData>255,193,156,192,252,193,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="58">
+        <gfxData>255,231,231,255,231,231,255,255,0</gfxData>
+        <colorData>225,224,224,225,224,224,225,225,0</colorData>
+      </item>
+      <item id="59">
+        <gfxData>255,231,231,255,231,231,239,255,0</gfxData>
+        <colorData>225,224,224,225,224,224,224,225,0</colorData>
+      </item>
+      <item id="60">
+        <gfxData>255,243,231,207,231,243,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="61">
+        <gfxData>255,255,195,255,195,255,255,255,0</gfxData>
+        <colorData>225,225,224,225,224,225,225,225,0</colorData>
+      </item>
+      <item id="62">
+        <gfxData>255,207,231,243,231,207,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="63">
+        <gfxData>255,225,204,249,243,255,243,255,0</gfxData>
+        <colorData>225,224,224,224,224,225,224,225,0</colorData>
+      </item>
+      <item id="64">
+        <gfxData>193,190,162,170,160,191,193,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="65">
+        <gfxData>255,193,156,128,156,156,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="66">
+        <gfxData>255,129,156,129,156,129,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="67">
+        <gfxData>255,192,159,159,159,192,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="68">
+        <gfxData>255,129,156,156,156,129,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="69">
+        <gfxData>255,128,159,131,159,128,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="70">
+        <gfxData>255,128,159,131,159,159,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="71">
+        <gfxData>255,192,159,152,156,192,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="72">
+        <gfxData>255,156,156,128,156,156,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="73">
+        <gfxData>255,225,243,243,243,225,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="74">
+        <gfxData>255,225,243,243,147,199,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="75">
+        <gfxData>255,156,153,131,153,156,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="76">
+        <gfxData>255,159,159,159,159,128,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="77">
+        <gfxData>255,156,136,128,148,156,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="78">
+        <gfxData>255,156,140,132,144,152,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="79">
+        <gfxData>255,193,156,156,156,193,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="80">
+        <gfxData>255,129,156,156,129,159,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="81">
+        <gfxData>255,193,156,148,153,194,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="82">
+        <gfxData>255,129,156,156,129,156,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="83">
+        <gfxData>255,192,159,193,252,129,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="84">
+        <gfxData>255,129,231,231,231,231,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="85">
+        <gfxData>255,156,156,156,156,193,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="86">
+        <gfxData>255,156,156,156,201,227,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="87">
+        <gfxData>255,156,148,128,136,156,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="88">
+        <gfxData>255,156,201,227,201,156,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="89">
+        <gfxData>255,153,153,195,231,231,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="90">
+        <gfxData>255,129,243,231,207,129,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="91">
+        <gfxData>241,243,243,243,243,243,241,255,0</gfxData>
+        <colorData>224,224,224,224,224,224,224,225,0</colorData>
+      </item>
+      <item id="92">
+        <gfxData>255,159,207,231,243,249,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="93">
+        <gfxData>199,231,231,231,231,231,199,255,0</gfxData>
+        <colorData>224,224,224,224,224,224,224,225,0</colorData>
+      </item>
+      <item id="94">
+        <gfxData>255,255,255,255,255,255,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="95">
+        <gfxData>255,255,255,255,255,255,129,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="96">
+        <gfxData>255,255,255,255,255,255,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="97">
+        <gfxData>255,193,156,128,156,156,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="98">
+        <gfxData>255,129,156,129,156,129,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="99">
+        <gfxData>255,192,159,159,159,192,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="100">
+        <gfxData>255,129,156,156,156,129,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="101">
+        <gfxData>255,128,159,131,159,128,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="102">
+        <gfxData>255,128,159,131,159,159,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="103">
+        <gfxData>255,192,159,152,156,192,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="104">
+        <gfxData>255,156,156,128,156,156,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="105">
+        <gfxData>255,225,243,243,243,225,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="106">
+        <gfxData>255,225,243,243,147,199,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="107">
+        <gfxData>255,156,153,131,153,156,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="108">
+        <gfxData>255,159,159,159,159,128,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="109">
+        <gfxData>255,156,136,128,148,156,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="110">
+        <gfxData>255,156,140,132,144,152,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="111">
+        <gfxData>255,193,156,156,156,193,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="112">
+        <gfxData>255,129,156,156,129,159,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="113">
+        <gfxData>255,193,156,148,153,194,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="114">
+        <gfxData>255,129,156,156,129,156,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="115">
+        <gfxData>255,192,159,193,252,129,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="116">
+        <gfxData>255,129,231,231,231,231,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="117">
+        <gfxData>255,156,156,156,156,193,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="118">
+        <gfxData>255,156,156,156,201,227,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="119">
+        <gfxData>255,156,148,128,136,156,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="120">
+        <gfxData>255,156,201,227,201,156,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="121">
+        <gfxData>255,153,153,195,231,231,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="122">
+        <gfxData>255,129,243,231,207,129,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="123">
+        <gfxData>255,239,173,137,128,211,251,255,0</gfxData>
+        <colorData>226,226,226,226,226,226,226,226,0</colorData>
+      </item>
+      <item id="124">
+        <gfxData>252,248,248,241,241,225,225,193,0</gfxData>
+        <colorData>235,235,235,235,235,235,235,235,0</colorData>
+      </item>
+      <item id="125">
+        <gfxData>63,31,31,143,143,135,135,131,0</gfxData>
+        <colorData>235,235,235,235,235,235,235,235,0</colorData>
+      </item>
+      <item id="126">
+        <gfxData>193,129,128,0,1,1,0,128,0</gfxData>
+        <colorData>235,235,235,235,235,235,235,235,0</colorData>
+      </item>
+      <item id="127">
+        <gfxData>131,129,1,0,128,128,0,1,0</gfxData>
+        <colorData>235,235,235,235,235,235,235,235,0</colorData>
+      </item>
+      <item id="128">
+        <gfxData>0,0,0,0,0,0,0,255,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,228,0</colorData>
+      </item>
+      <item id="129">
+        <gfxData>0,62,99,127,99,99,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="130">
+        <gfxData>0,126,99,126,99,126,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="131">
+        <gfxData>0,63,96,96,96,63,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="132">
+        <gfxData>0,126,99,99,99,126,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="133">
+        <gfxData>0,127,96,124,96,127,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="134">
+        <gfxData>0,127,96,124,96,96,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="135">
+        <gfxData>0,63,96,103,99,63,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="136">
+        <gfxData>0,99,99,127,99,99,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="137">
+        <gfxData>0,30,12,12,12,30,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="138">
+        <gfxData>0,30,12,12,108,56,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="139">
+        <gfxData>0,99,102,124,102,99,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="140">
+        <gfxData>0,96,96,96,96,127,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="141">
+        <gfxData>0,99,119,127,107,99,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="142">
+        <gfxData>0,99,115,123,111,103,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="143">
+        <gfxData>0,62,99,99,99,62,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="144">
+        <gfxData>0,126,99,99,126,96,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="145">
+        <gfxData>0,62,99,107,102,61,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="146">
+        <gfxData>0,126,99,99,126,99,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="147">
+        <gfxData>0,63,96,62,3,126,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="148">
+        <gfxData>0,126,24,24,24,24,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="149">
+        <gfxData>0,99,99,99,99,62,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="150">
+        <gfxData>0,99,99,99,54,28,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="151">
+        <gfxData>0,99,107,127,119,99,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="152">
+        <gfxData>0,99,54,28,54,99,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="153">
+        <gfxData>0,102,102,60,24,24,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="154">
+        <gfxData>0,126,12,24,48,126,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="155">
+        <gfxData>0,28,17,24,16,29,0,128,0</gfxData>
+        <colorData>116,116,116,116,116,116,228,238,0</colorData>
+      </item>
+      <item id="156">
+        <gfxData>0,230,8,200,40,198,0,0,0</gfxData>
+        <colorData>116,116,116,116,116,116,116,126,0</colorData>
+      </item>
+      <item id="157">
+        <gfxData>0,4,4,36,124,32,0,0,0</gfxData>
+        <colorData>116,116,116,116,116,116,116,126,0</colorData>
+      </item>
+      <item id="158">
+        <gfxData>134,140,152,176,224,192,0,0,0</gfxData>
+        <colorData>30,30,30,30,30,30,14,30,0</colorData>
+      </item>
+      <item id="159">
+        <gfxData>255,255,255,255,255,127,126,124,0</gfxData>
+        <colorData>225,225,225,225,225,225,225,225,0</colorData>
+      </item>
+      <item id="160">
+        <gfxData>0,0,0,0,0,3,7,7,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="161">
+        <gfxData>0,0,0,0,0,255,255,255,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="162">
+        <gfxData>0,0,0,0,0,192,224,224,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="163">
+        <gfxData>7,7,3,0,0,3,7,7,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="164">
+        <gfxData>255,255,255,0,0,255,255,255,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="165">
+        <gfxData>255,255,255,0,0,195,231,231,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="166">
+        <gfxData>224,224,192,0,0,192,224,224,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="167">
+        <gfxData>7,7,7,7,7,7,7,7,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="168">
+        <gfxData>224,224,224,224,224,224,224,224,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="169">
+        <gfxData>231,231,231,231,231,231,231,231,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="170">
+        <gfxData>231,231,195,0,0,255,255,255,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="171">
+        <gfxData>231,231,199,7,7,199,231,231,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="172">
+        <gfxData>7,7,3,0,0,0,0,0,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="173">
+        <gfxData>255,255,255,0,0,0,0,0,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="174">
+        <gfxData>224,224,192,0,0,0,0,0,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="175">
+        <gfxData>231,231,199,7,7,7,7,7,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="176">
+        <gfxData>231,231,227,224,224,227,231,231,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="177">
+        <gfxData>0,0,0,0,0,195,231,231,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="178">
+        <gfxData>224,224,192,0,0,255,255,255,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="179">
+        <gfxData>231,231,195,0,0,195,231,231,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="180">
+        <gfxData>1,1,1,1,1,1,3,255,0</gfxData>
+        <colorData>239,239,239,239,239,239,239,239,0</colorData>
+      </item>
+      <item id="181">
+        <gfxData>1,1,1,1,1,1,3,255,0</gfxData>
+        <colorData>236,236,236,236,236,236,236,236,0</colorData>
+      </item>
+      <item id="182">
+        <gfxData>1,1,1,1,1,1,3,255,0</gfxData>
+        <colorData>235,235,235,235,235,235,235,235,0</colorData>
+      </item>
+      <item id="183">
+        <gfxData>1,1,1,1,1,1,3,255,0</gfxData>
+        <colorData>231,231,231,231,231,231,231,231,0</colorData>
+      </item>
+      <item id="184">
+        <gfxData>254,254,254,254,254,254,254,124,0</gfxData>
+        <colorData>254,254,254,254,254,254,254,254,0</colorData>
+      </item>
+      <item id="185">
+        <gfxData>1,1,1,1,1,1,3,255,0</gfxData>
+        <colorData>225,225,225,225,225,225,225,225,0</colorData>
+      </item>
+      <item id="186">
+        <gfxData>255,207,199,195,199,207,255,255,0</gfxData>
+        <colorData>232,232,232,232,232,232,232,232,0</colorData>
+      </item>
+      <item id="187">
+        <gfxData>255,243,235,155,155,235,243,255,0</gfxData>
+        <colorData>239,239,239,239,239,239,239,239,0</colorData>
+      </item>
+      <item id="188">
+        <gfxData>255,243,235,155,155,235,243,255,0</gfxData>
+        <colorData>226,226,226,226,226,226,226,226,0</colorData>
+      </item>
+      <item id="189">
+        <gfxData>0,0,24,36,36,24,0,0,0</gfxData>
+        <colorData>14,30,30,30,30,30,30,30,0</colorData>
+      </item>
+      <item id="190">
+        <gfxData>255,255,231,195,195,231,255,255,0</gfxData>
+        <colorData>236,236,236,236,236,236,236,236,0</colorData>
+      </item>
+      <item id="191">
+        <gfxData>255,255,231,195,195,231,255,255,0</gfxData>
+        <colorData>233,233,233,233,233,233,233,233,0</colorData>
+      </item>
+      <item id="192">
+        <gfxData>255,191,223,239,247,248,255,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,238,0</colorData>
+      </item>
+      <item id="193">
+        <gfxData>255,255,255,255,255,1,255,255,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,228,0</colorData>
+      </item>
+      <item id="194">
+        <gfxData>255,249,245,237,221,188,255,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,238,0</colorData>
+      </item>
+      <item id="195">
+        <gfxData>255,189,220,237,245,249,255,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,241,14,0</colorData>
+      </item>
+      <item id="196">
+        <gfxData>0,16,24,148,82,49,0,0,0</gfxData>
+        <colorData>79,79,79,79,79,79,79,238,0</colorData>
+      </item>
+      <item id="197">
+        <gfxData>0,64,32,17,10,4,0,0,0</gfxData>
+        <colorData>79,79,79,79,79,79,79,14,0</colorData>
+      </item>
+      <item id="198">
+        <gfxData>255,191,95,239,247,251,255,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="199">
+        <gfxData>0,4,10,17,32,64,0,0,0</gfxData>
+        <colorData>79,79,79,79,79,79,79,14,0</colorData>
+      </item>
+      <item id="200">
+        <gfxData>255,251,247,239,95,191,255,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="201">
+        <gfxData>0,7,8,16,32,64,0,0,0</gfxData>
+        <colorData>79,79,79,79,79,79,79,78,0</colorData>
+      </item>
+      <item id="202">
+        <gfxData>0,254,0,0,0,0,0,0,0</gfxData>
+        <colorData>79,79,79,79,79,79,79,78,0</colorData>
+      </item>
+      <item id="203">
+        <gfxData>255,251,243,235,218,185,255,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="204">
+        <gfxData>255,222,156,90,214,206,255,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,241,14,0</colorData>
+      </item>
+      <item id="205">
+        <gfxData>0,67,34,18,10,6,0,0,0</gfxData>
+        <colorData>79,79,79,79,79,79,79,14,0</colorData>
+      </item>
+      <item id="206">
+        <gfxData>255,15,111,111,109,237,225,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="207">
+        <gfxData>255,223,91,19,1,167,247,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="208">
+        <gfxData>0,0,0,255,1,1,1,255,0</gfxData>
+        <colorData>237,237,237,237,229,229,229,229,0</colorData>
+      </item>
+      <item id="209">
+        <gfxData>1,1,1,255,1,1,1,255,0</gfxData>
+        <colorData>237,237,237,237,229,229,229,229,0</colorData>
+      </item>
+      <item id="210">
+        <gfxData>0,0,0,255,1,1,1,255,0</gfxData>
+        <colorData>237,237,237,237,232,232,232,232,0</colorData>
+      </item>
+      <item id="211">
+        <gfxData>1,1,1,255,1,1,1,255,0</gfxData>
+        <colorData>237,237,237,237,232,232,232,232,0</colorData>
+      </item>
+      <item id="212">
+        <gfxData>1,57,17,17,17,57,1,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="213">
+        <gfxData>0,60,34,34,34,60,0,255,0</gfxData>
+        <colorData>132,132,132,132,132,132,132,228,0</colorData>
+      </item>
+      <item id="214">
+        <gfxData>192,128,128,128,128,128,192,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="215">
+        <gfxData>1,0,0,0,0,0,1,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="216">
+        <gfxData>0,24,0,56,24,60,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="217">
+        <gfxData>128,136,136,190,136,136,128,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="218">
+        <gfxData>128,128,128,190,128,128,128,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="219">
+        <gfxData>128,128,190,156,136,128,128,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="220">
+        <gfxData>128,190,136,128,136,156,128,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="221">
+        <gfxData>127,128,128,128,128,128,127,255,0</gfxData>
+        <colorData>5,12,12,12,12,12,5,229,0</colorData>
+      </item>
+      <item id="222">
+        <gfxData>254,129,129,129,129,129,254,255,0</gfxData>
+        <colorData>21,8,8,8,8,8,5,229,0</colorData>
+      </item>
+      <item id="223">
+        <gfxData>255,171,171,171,171,255,255,255,0</gfxData>
+        <colorData>21,21,21,21,21,21,21,229,0</colorData>
+      </item>
+      <item id="224">
+        <gfxData>255,192,191,191,191,191,191,191,0</gfxData>
+        <colorData>225,225,225,225,225,225,225,225,0</colorData>
+      </item>
+      <item id="225">
+        <gfxData>255,0,255,255,255,255,255,255,0</gfxData>
+        <colorData>225,225,225,225,225,225,225,225,0</colorData>
+      </item>
+      <item id="226">
+        <gfxData>255,7,251,249,249,249,249,249,0</gfxData>
+        <colorData>225,225,225,225,225,225,225,225,0</colorData>
+      </item>
+      <item id="227">
+        <gfxData>191,191,191,191,191,191,191,191,0</gfxData>
+        <colorData>225,225,225,225,225,225,225,225,0</colorData>
+      </item>
+      <item id="228">
+        <gfxData>191,191,191,191,191,192,224,255,0</gfxData>
+        <colorData>225,225,225,225,225,225,225,225,0</colorData>
+      </item>
+      <item id="229">
+        <gfxData>255,255,255,255,255,0,0,255,0</gfxData>
+        <colorData>225,225,225,225,225,225,225,225,0</colorData>
+      </item>
+      <item id="230">
+        <gfxData>249,249,249,249,241,1,3,255,0</gfxData>
+        <colorData>225,225,225,225,225,225,225,225,0</colorData>
+      </item>
+      <item id="231">
+        <gfxData>249,249,249,249,249,249,249,249,0</gfxData>
+        <colorData>225,225,225,225,225,225,225,225,0</colorData>
+      </item>
+      <item id="232">
+        <gfxData>0,0,0,0,0,195,231,231,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="233">
+        <gfxData>231,231,195,0,0,0,0,0,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="234">
+        <gfxData>0,0,0,0,0,0,0,0,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="235">
+        <gfxData>224,224,192,0,0,195,231,231,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="236">
+        <gfxData>255,255,255,255,255,255,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="237">
+        <gfxData>248,248,224,224,224,224,224,255,0</gfxData>
+        <colorData>46,46,47,47,47,239,239,239,0</colorData>
+      </item>
+      <item id="238">
+        <gfxData>248,136,159,145,241,17,31,0,0</gfxData>
+        <colorData>46,46,46,46,46,46,46,46,0</colorData>
+      </item>
+      <item id="239">
+        <gfxData>0,204,120,48,120,204,0,0,0</gfxData>
+        <colorData>142,142,142,142,142,142,142,142,0</colorData>
+      </item>
+      <item id="240">
+        <gfxData>255,192,162,148,136,148,162,128,0</gfxData>
+        <colorData>230,230,230,230,230,230,230,230,0</colorData>
+      </item>
+      <item id="241">
+        <gfxData>85,170,255,255,255,255,255,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="242">
+        <gfxData>95,175,255,255,255,255,255,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="243">
+        <gfxData>223,175,223,175,223,175,223,175,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="244">
+        <gfxData>63,15,3,0,3,15,63,255,0</gfxData>
+        <colorData>232,232,232,232,232,232,232,232,0</colorData>
+      </item>
+      <item id="245">
+        <gfxData>63,15,3,0,3,15,63,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="246">
+        <gfxData>1,1,1,1,1,1,1,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="247">
+        <gfxData>17,17,17,17,17,17,17,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="248">
+        <gfxData>126,126,126,126,126,126,126,126,0</gfxData>
+        <colorData>87,87,87,87,87,87,87,87,0</colorData>
+      </item>
+      <item id="249">
+        <gfxData>0,0,0,0,0,0,0,0,0</gfxData>
+        <colorData>87,87,87,87,87,87,87,87,0</colorData>
+      </item>
+      <item id="250">
+        <gfxData>255,199,195,195,195,195,255,255,0</gfxData>
+        <colorData>239,239,239,239,239,239,239,239,0</colorData>
+      </item>
+      <item id="251">
+        <gfxData>255,127,128,255,255,0,255,255,0</gfxData>
+        <colorData>238,238,78,78,254,238,238,238,0</colorData>
+      </item>
+      <item id="252">
+        <gfxData>255,127,128,128,128,0,255,255,0</gfxData>
+        <colorData>238,238,78,78,254,238,238,238,0</colorData>
+      </item>
+      <item id="253">
+        <gfxData>129,0,60,52,32,225,247,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="254">
+        <gfxData>129,0,60,52,32,225,247,255,0</gfxData>
+        <colorData>226,226,226,226,226,226,226,226,0</colorData>
+      </item>
+      <item id="255">
+        <gfxData>255,255,255,255,255,255,255,255,0</gfxData>
+        <colorData>241,241,241,241,241,241,241,225,0</colorData>
+      </item>
+    </tileset>
+    <tileset id="1">
+      <item id="0">
+        <gfxData>255,193,156,156,156,193,255,0,0</gfxData>
+        <colorData>47,47,47,47,47,47,47,238,0</colorData>
+      </item>
+      <item id="1">
+        <gfxData>255,231,199,231,231,195,255,0,0</gfxData>
+        <colorData>47,47,47,47,47,47,47,238,0</colorData>
+      </item>
+      <item id="2">
+        <gfxData>255,129,252,193,159,128,255,255,0</gfxData>
+        <colorData>47,47,47,47,47,47,47,238,0</colorData>
+      </item>
+      <item id="3">
+        <gfxData>255,129,252,225,252,129,255,255,0</gfxData>
+        <colorData>47,47,47,47,47,47,47,238,0</colorData>
+      </item>
+      <item id="4">
+        <gfxData>255,156,156,128,252,252,255,255,0</gfxData>
+        <colorData>47,47,47,47,47,47,47,238,0</colorData>
+      </item>
+      <item id="5">
+        <gfxData>255,128,159,129,252,129,255,255,0</gfxData>
+        <colorData>47,47,47,47,47,47,47,238,0</colorData>
+      </item>
+      <item id="6">
+        <gfxData>255,193,159,129,156,193,255,255,0</gfxData>
+        <colorData>47,47,47,47,47,47,47,238,0</colorData>
+      </item>
+      <item id="7">
+        <gfxData>255,128,252,249,243,243,255,255,0</gfxData>
+        <colorData>47,47,47,47,47,47,47,238,0</colorData>
+      </item>
+      <item id="8">
+        <gfxData>255,193,156,193,156,193,255,255,0</gfxData>
+        <colorData>47,47,47,47,47,47,47,238,0</colorData>
+      </item>
+      <item id="9">
+        <gfxData>255,193,156,192,252,193,255,0,0</gfxData>
+        <colorData>47,47,47,47,47,47,47,238,0</colorData>
+      </item>
+      <item id="10">
+        <gfxData>255,255,255,255,255,255,255,0,0</gfxData>
+        <colorData>47,47,47,47,47,47,47,238,0</colorData>
+      </item>
+      <item id="11">
+        <gfxData>255,255,255,195,255,255,255,0,0</gfxData>
+        <colorData>47,47,47,47,47,47,47,238,0</colorData>
+      </item>
+      <item id="12">
+        <gfxData>255,255,255,17,87,87,17,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="13">
+        <gfxData>255,255,255,17,181,177,181,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="14">
+        <gfxData>255,255,255,81,83,87,177,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="15">
+        <gfxData>0,0,234,170,234,174,0,0,0</gfxData>
+        <colorData>78,78,78,78,78,78,78,78,0</colorData>
+      </item>
+      <item id="16">
+        <gfxData>0,0,238,74,74,78,0,0,0</gfxData>
+        <colorData>78,78,78,78,78,78,78,78,0</colorData>
+      </item>
+      <item id="17">
+        <gfxData>254,198,186,130,186,186,254,0,0</gfxData>
+        <colorData>78,78,78,78,78,78,78,78,0</colorData>
+      </item>
+      <item id="18">
+        <gfxData>254,134,186,134,186,134,254,0,0</gfxData>
+        <colorData>78,78,78,78,78,78,78,78,0</colorData>
+      </item>
+      <item id="19">
+        <gfxData>254,194,190,190,190,194,254,0,0</gfxData>
+        <colorData>78,78,78,78,78,78,78,78,0</colorData>
+      </item>
+      <item id="20">
+        <gfxData>255,129,156,156,129,159,255,0,0</gfxData>
+        <colorData>241,240,240,240,240,240,241,241,0</colorData>
+      </item>
+      <item id="21">
+        <gfxData>255,192,159,193,252,129,255,0,0</gfxData>
+        <colorData>241,240,240,240,240,240,241,241,0</colorData>
+      </item>
+      <item id="22">
+        <gfxData>255,192,159,152,156,192,255,0,0</gfxData>
+        <colorData>241,240,240,240,240,240,241,241,0</colorData>
+      </item>
+      <item id="23">
+        <gfxData>255,128,159,131,159,128,255,255,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,0,0</colorData>
+      </item>
+      <item id="24">
+        <gfxData>255,129,156,156,156,129,255,255,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,1,0</colorData>
+      </item>
+      <item id="25">
+        <gfxData>255,255,255,255,255,255,255,0,0</gfxData>
+        <colorData>241,241,241,241,241,241,241,241,0</colorData>
+      </item>
+      <item id="26">
+        <gfxData>255,129,252,193,159,128,255,255,0</gfxData>
+        <colorData>248,248,248,248,248,248,248,24,0</colorData>
+      </item>
+      <item id="27">
+        <gfxData>255,255,142,181,141,190,255,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,241,0</colorData>
+      </item>
+      <item id="28">
+        <gfxData>255,255,99,183,183,119,255,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,241,0</colorData>
+      </item>
+      <item id="29">
+        <gfxData>147,147,147,147,219,219,0,0,0</gfxData>
+        <colorData>241,241,241,241,241,241,241,254,0</colorData>
+      </item>
+      <item id="30">
+        <gfxData>255,255,255,255,255,255,255,0,0</gfxData>
+        <colorData>241,241,241,241,241,241,241,241,0</colorData>
+      </item>
+      <item id="31">
+        <gfxData>127,93,107,119,107,93,127,0,0</gfxData>
+        <colorData>129,128,128,128,128,128,129,129,0</colorData>
+      </item>
+      <item id="32">
+        <gfxData>255,255,255,255,255,255,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="33">
+        <gfxData>255,243,243,243,243,255,243,255,0</gfxData>
+        <colorData>225,224,224,224,225,224,224,225,0</colorData>
+      </item>
+      <item id="34">
+        <gfxData>255,235,235,255,255,255,255,255,0</gfxData>
+        <colorData>225,224,224,225,225,225,225,225,0</colorData>
+      </item>
+      <item id="35">
+        <gfxData>255,235,193,235,193,235,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,224,0</colorData>
+      </item>
+      <item id="36">
+        <gfxData>247,193,151,193,244,193,247,255,0</gfxData>
+        <colorData>224,224,224,224,224,224,224,225,0</colorData>
+      </item>
+      <item id="37">
+        <gfxData>255,204,201,243,228,204,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="38">
+        <gfxData>255,199,147,194,153,194,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="39">
+        <gfxData>255,231,207,255,255,255,255,255,0</gfxData>
+        <colorData>225,225,225,225,225,225,225,225,0</colorData>
+      </item>
+      <item id="40">
+        <gfxData>249,243,243,243,243,243,249,255,0</gfxData>
+        <colorData>224,224,224,224,224,224,224,225,0</colorData>
+      </item>
+      <item id="41">
+        <gfxData>207,231,231,231,231,231,207,255,0</gfxData>
+        <colorData>224,224,224,224,224,224,224,225,0</colorData>
+      </item>
+      <item id="42">
+        <gfxData>255,165,195,129,195,165,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="43">
+        <gfxData>255,231,231,129,231,231,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="44">
+        <gfxData>255,255,255,255,231,231,239,255,0</gfxData>
+        <colorData>225,225,225,225,224,224,224,225,0</colorData>
+      </item>
+      <item id="45">
+        <gfxData>255,255,255,129,255,255,255,255,0</gfxData>
+        <colorData>225,225,225,224,225,225,225,225,0</colorData>
+      </item>
+      <item id="46">
+        <gfxData>255,255,255,255,231,231,255,255,0</gfxData>
+        <colorData>225,225,225,225,224,224,225,225,0</colorData>
+      </item>
+      <item id="47">
+        <gfxData>255,249,243,231,207,159,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="48">
+        <gfxData>255,193,156,156,156,193,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="49">
+        <gfxData>255,231,199,231,231,195,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="50">
+        <gfxData>255,129,252,193,159,128,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="51">
+        <gfxData>255,129,252,225,252,129,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="52">
+        <gfxData>255,156,156,128,252,252,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="53">
+        <gfxData>255,128,159,129,252,129,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="54">
+        <gfxData>255,193,159,129,156,193,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="55">
+        <gfxData>255,128,252,249,243,243,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="56">
+        <gfxData>255,193,156,193,156,193,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="57">
+        <gfxData>255,193,156,192,252,193,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="58">
+        <gfxData>255,231,231,255,231,231,255,255,0</gfxData>
+        <colorData>225,224,224,225,224,224,225,225,0</colorData>
+      </item>
+      <item id="59">
+        <gfxData>255,231,231,255,231,231,239,255,0</gfxData>
+        <colorData>225,224,224,225,224,224,224,225,0</colorData>
+      </item>
+      <item id="60">
+        <gfxData>255,243,231,207,231,243,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="61">
+        <gfxData>255,255,195,255,195,255,255,255,0</gfxData>
+        <colorData>225,225,224,225,224,225,225,225,0</colorData>
+      </item>
+      <item id="62">
+        <gfxData>255,207,231,243,231,207,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="63">
+        <gfxData>255,225,204,249,243,255,243,255,0</gfxData>
+        <colorData>225,224,224,224,224,225,224,225,0</colorData>
+      </item>
+      <item id="64">
+        <gfxData>193,190,162,170,160,191,193,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="65">
+        <gfxData>255,193,156,128,156,156,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="66">
+        <gfxData>255,129,156,129,156,129,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="67">
+        <gfxData>255,192,159,159,159,192,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="68">
+        <gfxData>255,129,156,156,156,129,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="69">
+        <gfxData>255,128,159,131,159,128,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="70">
+        <gfxData>255,128,159,131,159,159,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="71">
+        <gfxData>255,192,159,152,156,192,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="72">
+        <gfxData>255,156,156,128,156,156,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="73">
+        <gfxData>255,225,243,243,243,225,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="74">
+        <gfxData>255,225,243,243,147,199,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="75">
+        <gfxData>255,156,153,131,153,156,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="76">
+        <gfxData>255,159,159,159,159,128,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="77">
+        <gfxData>255,156,136,128,148,156,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="78">
+        <gfxData>255,156,140,132,144,152,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="79">
+        <gfxData>255,193,156,156,156,193,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="80">
+        <gfxData>255,129,156,156,129,159,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="81">
+        <gfxData>255,193,156,148,153,194,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="82">
+        <gfxData>255,129,156,156,129,156,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="83">
+        <gfxData>255,192,159,193,252,129,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="84">
+        <gfxData>255,129,231,231,231,231,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="85">
+        <gfxData>255,156,156,156,156,193,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="86">
+        <gfxData>255,156,156,156,201,227,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="87">
+        <gfxData>255,156,148,128,136,156,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="88">
+        <gfxData>255,156,201,227,201,156,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="89">
+        <gfxData>255,153,153,195,231,231,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="90">
+        <gfxData>255,129,243,231,207,129,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="91">
+        <gfxData>241,243,243,243,243,243,241,255,0</gfxData>
+        <colorData>224,224,224,224,224,224,224,225,0</colorData>
+      </item>
+      <item id="92">
+        <gfxData>255,159,207,231,243,249,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="93">
+        <gfxData>199,231,231,231,231,231,199,255,0</gfxData>
+        <colorData>224,224,224,224,224,224,224,225,0</colorData>
+      </item>
+      <item id="94">
+        <gfxData>255,255,255,255,255,255,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="95">
+        <gfxData>255,255,255,255,255,255,129,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="96">
+        <gfxData>255,255,255,255,255,255,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="97">
+        <gfxData>255,193,156,128,156,156,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="98">
+        <gfxData>255,129,156,129,156,129,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="99">
+        <gfxData>255,192,159,159,159,192,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="100">
+        <gfxData>255,129,156,156,156,129,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="101">
+        <gfxData>255,128,159,131,159,128,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="102">
+        <gfxData>255,128,159,131,159,159,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="103">
+        <gfxData>255,192,159,152,156,192,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="104">
+        <gfxData>255,156,156,128,156,156,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="105">
+        <gfxData>255,225,243,243,243,225,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="106">
+        <gfxData>255,225,243,243,147,199,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="107">
+        <gfxData>255,156,153,131,153,156,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="108">
+        <gfxData>255,159,159,159,159,128,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="109">
+        <gfxData>255,156,136,128,148,156,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="110">
+        <gfxData>255,156,140,132,144,152,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="111">
+        <gfxData>255,193,156,156,156,193,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="112">
+        <gfxData>255,129,156,156,129,159,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="113">
+        <gfxData>255,193,156,148,153,194,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="114">
+        <gfxData>255,129,156,156,129,156,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="115">
+        <gfxData>255,192,159,193,252,129,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="116">
+        <gfxData>255,129,231,231,231,231,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="117">
+        <gfxData>255,156,156,156,156,193,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="118">
+        <gfxData>255,156,156,156,201,227,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="119">
+        <gfxData>255,156,148,128,136,156,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="120">
+        <gfxData>255,156,201,227,201,156,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="121">
+        <gfxData>255,153,153,195,231,231,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="122">
+        <gfxData>255,129,243,231,207,129,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="123">
+        <gfxData>255,239,173,137,128,211,251,255,0</gfxData>
+        <colorData>226,226,226,226,226,226,226,226,0</colorData>
+      </item>
+      <item id="124">
+        <gfxData>252,248,248,241,241,225,225,193,0</gfxData>
+        <colorData>235,235,235,235,235,235,235,235,0</colorData>
+      </item>
+      <item id="125">
+        <gfxData>63,31,31,143,143,135,135,131,0</gfxData>
+        <colorData>235,235,235,235,235,235,235,235,0</colorData>
+      </item>
+      <item id="126">
+        <gfxData>193,129,128,0,1,1,0,128,0</gfxData>
+        <colorData>235,235,235,235,235,235,235,235,0</colorData>
+      </item>
+      <item id="127">
+        <gfxData>131,129,1,0,128,128,0,1,0</gfxData>
+        <colorData>235,235,235,235,235,235,235,235,0</colorData>
+      </item>
+      <item id="128">
+        <gfxData>0,0,0,0,0,0,0,255,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,228,0</colorData>
+      </item>
+      <item id="129">
+        <gfxData>0,62,99,127,99,99,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="130">
+        <gfxData>0,126,99,126,99,126,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="131">
+        <gfxData>0,63,96,96,96,63,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="132">
+        <gfxData>0,126,99,99,99,126,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="133">
+        <gfxData>0,127,96,124,96,127,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="134">
+        <gfxData>0,127,96,124,96,96,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="135">
+        <gfxData>0,63,96,103,99,63,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="136">
+        <gfxData>0,99,99,127,99,99,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="137">
+        <gfxData>0,30,12,12,12,30,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="138">
+        <gfxData>0,30,12,12,108,56,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="139">
+        <gfxData>0,99,102,124,102,99,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="140">
+        <gfxData>0,96,96,96,96,127,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="141">
+        <gfxData>0,99,119,127,107,99,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="142">
+        <gfxData>0,99,115,123,111,103,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="143">
+        <gfxData>0,62,99,99,99,62,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="144">
+        <gfxData>0,126,99,99,126,96,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="145">
+        <gfxData>0,62,99,107,102,61,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="146">
+        <gfxData>0,126,99,99,126,99,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="147">
+        <gfxData>0,63,96,62,3,126,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="148">
+        <gfxData>0,126,24,24,24,24,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="149">
+        <gfxData>0,99,99,99,99,62,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="150">
+        <gfxData>0,99,99,99,54,28,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="151">
+        <gfxData>0,99,107,127,119,99,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="152">
+        <gfxData>0,99,54,28,54,99,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="153">
+        <gfxData>0,102,102,60,24,24,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="154">
+        <gfxData>0,126,12,24,48,126,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="155">
+        <gfxData>0,28,17,24,16,29,0,128,0</gfxData>
+        <colorData>116,116,116,116,116,116,228,238,0</colorData>
+      </item>
+      <item id="156">
+        <gfxData>0,230,8,200,40,198,0,0,0</gfxData>
+        <colorData>116,116,116,116,116,116,116,126,0</colorData>
+      </item>
+      <item id="157">
+        <gfxData>0,4,4,36,124,32,0,0,0</gfxData>
+        <colorData>116,116,116,116,116,116,116,126,0</colorData>
+      </item>
+      <item id="158">
+        <gfxData>134,140,152,176,224,192,0,0,0</gfxData>
+        <colorData>30,30,30,30,30,30,14,30,0</colorData>
+      </item>
+      <item id="159">
+        <gfxData>255,255,255,255,255,127,126,124,0</gfxData>
+        <colorData>225,225,225,225,225,225,225,225,0</colorData>
+      </item>
+      <item id="160">
+        <gfxData>0,0,0,0,0,3,7,7,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="161">
+        <gfxData>0,0,0,0,0,255,255,255,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="162">
+        <gfxData>0,0,0,0,0,192,224,224,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="163">
+        <gfxData>7,7,3,0,0,3,7,7,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="164">
+        <gfxData>255,255,255,0,0,255,255,255,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="165">
+        <gfxData>255,255,255,0,0,195,231,231,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="166">
+        <gfxData>224,224,192,0,0,192,224,224,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="167">
+        <gfxData>7,7,7,7,7,7,7,7,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="168">
+        <gfxData>224,224,224,224,224,224,224,224,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="169">
+        <gfxData>231,231,231,231,231,231,231,231,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="170">
+        <gfxData>231,231,195,0,0,255,255,255,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="171">
+        <gfxData>231,231,199,7,7,199,231,231,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="172">
+        <gfxData>7,7,3,0,0,0,0,0,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="173">
+        <gfxData>255,255,255,0,0,0,0,0,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="174">
+        <gfxData>224,224,192,0,0,0,0,0,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="175">
+        <gfxData>231,231,199,7,7,7,7,7,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="176">
+        <gfxData>231,231,227,224,224,227,231,231,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="177">
+        <gfxData>0,0,0,0,0,195,231,231,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="178">
+        <gfxData>224,224,192,0,0,255,255,255,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="179">
+        <gfxData>231,231,195,0,0,195,231,231,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="180">
+        <gfxData>1,1,1,1,1,1,3,255,0</gfxData>
+        <colorData>239,239,239,239,239,239,239,239,0</colorData>
+      </item>
+      <item id="181">
+        <gfxData>1,1,1,1,1,1,3,255,0</gfxData>
+        <colorData>236,236,236,236,236,236,236,236,0</colorData>
+      </item>
+      <item id="182">
+        <gfxData>1,1,1,1,1,1,3,255,0</gfxData>
+        <colorData>235,235,235,235,235,235,235,235,0</colorData>
+      </item>
+      <item id="183">
+        <gfxData>1,1,1,1,1,1,3,255,0</gfxData>
+        <colorData>231,231,231,231,231,231,231,231,0</colorData>
+      </item>
+      <item id="184">
+        <gfxData>254,254,254,254,254,254,254,124,0</gfxData>
+        <colorData>254,254,254,254,254,254,254,254,0</colorData>
+      </item>
+      <item id="185">
+        <gfxData>1,1,1,1,1,1,3,255,0</gfxData>
+        <colorData>225,225,225,225,225,225,225,225,0</colorData>
+      </item>
+      <item id="186">
+        <gfxData>255,207,199,195,199,207,255,255,0</gfxData>
+        <colorData>232,232,232,232,232,232,232,232,0</colorData>
+      </item>
+      <item id="187">
+        <gfxData>255,243,235,155,155,235,243,255,0</gfxData>
+        <colorData>239,239,239,239,239,239,239,239,0</colorData>
+      </item>
+      <item id="188">
+        <gfxData>255,243,235,155,155,235,243,255,0</gfxData>
+        <colorData>226,226,226,226,226,226,226,226,0</colorData>
+      </item>
+      <item id="189">
+        <gfxData>0,0,24,36,36,24,0,0,0</gfxData>
+        <colorData>14,30,30,30,30,30,30,30,0</colorData>
+      </item>
+      <item id="190">
+        <gfxData>255,255,231,195,195,231,255,255,0</gfxData>
+        <colorData>236,236,236,236,236,236,236,236,0</colorData>
+      </item>
+      <item id="191">
+        <gfxData>255,255,231,195,195,231,255,255,0</gfxData>
+        <colorData>233,233,233,233,233,233,233,233,0</colorData>
+      </item>
+      <item id="192">
+        <gfxData>255,191,223,239,247,248,255,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,238,0</colorData>
+      </item>
+      <item id="193">
+        <gfxData>255,255,255,255,255,1,255,255,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,228,0</colorData>
+      </item>
+      <item id="194">
+        <gfxData>255,249,245,237,221,188,255,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,238,0</colorData>
+      </item>
+      <item id="195">
+        <gfxData>255,189,220,237,245,249,255,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,241,14,0</colorData>
+      </item>
+      <item id="196">
+        <gfxData>0,16,24,148,82,49,0,0,0</gfxData>
+        <colorData>79,79,79,79,79,79,79,238,0</colorData>
+      </item>
+      <item id="197">
+        <gfxData>0,64,32,17,10,4,0,0,0</gfxData>
+        <colorData>79,79,79,79,79,79,79,14,0</colorData>
+      </item>
+      <item id="198">
+        <gfxData>255,191,95,239,247,251,255,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="199">
+        <gfxData>0,4,10,17,32,64,0,0,0</gfxData>
+        <colorData>79,79,79,79,79,79,79,14,0</colorData>
+      </item>
+      <item id="200">
+        <gfxData>255,251,247,239,95,191,255,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="201">
+        <gfxData>0,7,8,16,32,64,0,0,0</gfxData>
+        <colorData>79,79,79,79,79,79,79,78,0</colorData>
+      </item>
+      <item id="202">
+        <gfxData>0,254,0,0,0,0,0,0,0</gfxData>
+        <colorData>79,79,79,79,79,79,79,78,0</colorData>
+      </item>
+      <item id="203">
+        <gfxData>255,251,243,235,218,185,255,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="204">
+        <gfxData>255,222,156,90,214,206,255,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,241,14,0</colorData>
+      </item>
+      <item id="205">
+        <gfxData>0,67,34,18,10,6,0,0,0</gfxData>
+        <colorData>79,79,79,79,79,79,79,14,0</colorData>
+      </item>
+      <item id="206">
+        <gfxData>255,15,111,111,109,237,225,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="207">
+        <gfxData>255,223,91,19,1,167,247,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="208">
+        <gfxData>0,0,0,255,1,1,1,255,0</gfxData>
+        <colorData>237,237,237,237,229,229,229,229,0</colorData>
+      </item>
+      <item id="209">
+        <gfxData>1,1,1,255,1,1,1,255,0</gfxData>
+        <colorData>237,237,237,237,229,229,229,229,0</colorData>
+      </item>
+      <item id="210">
+        <gfxData>0,0,0,255,1,1,1,255,0</gfxData>
+        <colorData>237,237,237,237,232,232,232,232,0</colorData>
+      </item>
+      <item id="211">
+        <gfxData>1,1,1,255,1,1,1,255,0</gfxData>
+        <colorData>237,237,237,237,232,232,232,232,0</colorData>
+      </item>
+      <item id="212">
+        <gfxData>1,57,17,17,17,57,1,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="213">
+        <gfxData>0,60,34,34,34,60,0,255,0</gfxData>
+        <colorData>132,132,132,132,132,132,132,228,0</colorData>
+      </item>
+      <item id="214">
+        <gfxData>192,128,128,128,128,128,192,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="215">
+        <gfxData>1,0,0,0,0,0,1,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="216">
+        <gfxData>0,24,0,56,24,60,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="217">
+        <gfxData>128,136,136,190,136,136,128,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="218">
+        <gfxData>128,128,128,190,128,128,128,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="219">
+        <gfxData>128,128,190,156,136,128,128,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="220">
+        <gfxData>128,190,136,128,136,156,128,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="221">
+        <gfxData>127,128,128,128,128,128,127,255,0</gfxData>
+        <colorData>5,12,12,12,12,12,5,229,0</colorData>
+      </item>
+      <item id="222">
+        <gfxData>254,129,129,129,129,129,254,255,0</gfxData>
+        <colorData>21,8,8,8,8,8,5,229,0</colorData>
+      </item>
+      <item id="223">
+        <gfxData>255,171,171,171,171,255,255,255,0</gfxData>
+        <colorData>21,21,21,21,21,21,21,229,0</colorData>
+      </item>
+      <item id="224">
+        <gfxData>255,192,191,191,191,191,191,191,0</gfxData>
+        <colorData>225,225,225,225,225,225,225,225,0</colorData>
+      </item>
+      <item id="225">
+        <gfxData>255,0,255,255,255,255,255,255,0</gfxData>
+        <colorData>225,225,225,225,225,225,225,225,0</colorData>
+      </item>
+      <item id="226">
+        <gfxData>255,7,251,249,249,249,249,249,0</gfxData>
+        <colorData>225,225,225,225,225,225,225,225,0</colorData>
+      </item>
+      <item id="227">
+        <gfxData>191,191,191,191,191,191,191,191,0</gfxData>
+        <colorData>225,225,225,225,225,225,225,225,0</colorData>
+      </item>
+      <item id="228">
+        <gfxData>191,191,191,191,191,192,224,255,0</gfxData>
+        <colorData>225,225,225,225,225,225,225,225,0</colorData>
+      </item>
+      <item id="229">
+        <gfxData>255,255,255,255,255,0,0,255,0</gfxData>
+        <colorData>225,225,225,225,225,225,225,225,0</colorData>
+      </item>
+      <item id="230">
+        <gfxData>249,249,249,249,241,1,3,255,0</gfxData>
+        <colorData>225,225,225,225,225,225,225,225,0</colorData>
+      </item>
+      <item id="231">
+        <gfxData>249,249,249,249,249,249,249,249,0</gfxData>
+        <colorData>225,225,225,225,225,225,225,225,0</colorData>
+      </item>
+      <item id="232">
+        <gfxData>0,0,0,0,0,195,231,231,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="233">
+        <gfxData>231,231,195,0,0,0,0,0,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="234">
+        <gfxData>0,0,0,0,0,0,0,0,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="235">
+        <gfxData>224,224,192,0,0,195,231,231,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="236">
+        <gfxData>255,255,255,255,255,255,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="237">
+        <gfxData>248,248,224,224,224,224,224,255,0</gfxData>
+        <colorData>46,46,47,47,47,239,239,239,0</colorData>
+      </item>
+      <item id="238">
+        <gfxData>248,136,159,145,241,17,31,0,0</gfxData>
+        <colorData>46,46,46,46,46,46,46,46,0</colorData>
+      </item>
+      <item id="239">
+        <gfxData>0,204,120,48,120,204,0,0,0</gfxData>
+        <colorData>142,142,142,142,142,142,142,142,0</colorData>
+      </item>
+      <item id="240">
+        <gfxData>255,192,162,148,136,148,162,128,0</gfxData>
+        <colorData>230,230,230,230,230,230,230,230,0</colorData>
+      </item>
+      <item id="241">
+        <gfxData>85,170,255,255,255,255,255,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="242">
+        <gfxData>95,175,255,255,255,255,255,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="243">
+        <gfxData>223,175,223,175,223,175,223,175,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="244">
+        <gfxData>63,15,3,0,3,15,63,255,0</gfxData>
+        <colorData>232,232,232,232,232,232,232,232,0</colorData>
+      </item>
+      <item id="245">
+        <gfxData>63,15,3,0,3,15,63,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="246">
+        <gfxData>1,1,1,1,1,1,1,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="247">
+        <gfxData>17,17,17,17,17,17,17,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="248">
+        <gfxData>126,126,126,126,126,126,126,126,0</gfxData>
+        <colorData>87,87,87,87,87,87,87,87,0</colorData>
+      </item>
+      <item id="249">
+        <gfxData>0,0,0,0,0,0,0,0,0</gfxData>
+        <colorData>87,87,87,87,87,87,87,87,0</colorData>
+      </item>
+      <item id="250">
+        <gfxData>255,199,195,195,195,195,255,255,0</gfxData>
+        <colorData>239,239,239,239,239,239,239,239,0</colorData>
+      </item>
+      <item id="251">
+        <gfxData>255,127,128,255,255,0,255,255,0</gfxData>
+        <colorData>238,238,78,78,254,238,238,238,0</colorData>
+      </item>
+      <item id="252">
+        <gfxData>255,127,128,128,128,0,255,255,0</gfxData>
+        <colorData>238,238,78,78,254,238,238,238,0</colorData>
+      </item>
+      <item id="253">
+        <gfxData>129,0,60,52,32,225,247,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="254">
+        <gfxData>129,0,60,52,32,225,247,255,0</gfxData>
+        <colorData>226,226,226,226,226,226,226,226,0</colorData>
+      </item>
+      <item id="255">
+        <gfxData>255,255,255,255,255,255,255,255,0</gfxData>
+        <colorData>241,241,241,241,241,241,241,225,0</colorData>
+      </item>
+    </tileset>
+    <tileset id="2">
+      <item id="0">
+        <gfxData>255,193,156,156,156,193,255,0,0</gfxData>
+        <colorData>47,47,47,47,47,47,47,238,0</colorData>
+      </item>
+      <item id="1">
+        <gfxData>255,231,199,231,231,195,255,0,0</gfxData>
+        <colorData>47,47,47,47,47,47,47,238,0</colorData>
+      </item>
+      <item id="2">
+        <gfxData>255,129,252,193,159,128,255,255,0</gfxData>
+        <colorData>47,47,47,47,47,47,47,238,0</colorData>
+      </item>
+      <item id="3">
+        <gfxData>255,129,252,225,252,129,255,255,0</gfxData>
+        <colorData>47,47,47,47,47,47,47,238,0</colorData>
+      </item>
+      <item id="4">
+        <gfxData>255,156,156,128,252,252,255,255,0</gfxData>
+        <colorData>47,47,47,47,47,47,47,238,0</colorData>
+      </item>
+      <item id="5">
+        <gfxData>255,128,159,129,252,129,255,255,0</gfxData>
+        <colorData>47,47,47,47,47,47,47,238,0</colorData>
+      </item>
+      <item id="6">
+        <gfxData>255,193,159,129,156,193,255,255,0</gfxData>
+        <colorData>47,47,47,47,47,47,47,238,0</colorData>
+      </item>
+      <item id="7">
+        <gfxData>255,128,252,249,243,243,255,255,0</gfxData>
+        <colorData>47,47,47,47,47,47,47,238,0</colorData>
+      </item>
+      <item id="8">
+        <gfxData>255,193,156,193,156,193,255,255,0</gfxData>
+        <colorData>47,47,47,47,47,47,47,238,0</colorData>
+      </item>
+      <item id="9">
+        <gfxData>255,193,156,192,252,193,255,0,0</gfxData>
+        <colorData>47,47,47,47,47,47,47,238,0</colorData>
+      </item>
+      <item id="10">
+        <gfxData>255,255,255,255,255,255,255,0,0</gfxData>
+        <colorData>47,47,47,47,47,47,47,238,0</colorData>
+      </item>
+      <item id="11">
+        <gfxData>255,255,255,195,255,255,255,0,0</gfxData>
+        <colorData>47,47,47,47,47,47,47,238,0</colorData>
+      </item>
+      <item id="12">
+        <gfxData>255,255,255,17,87,87,17,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="13">
+        <gfxData>255,255,255,17,181,177,181,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="14">
+        <gfxData>255,255,255,81,83,87,177,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="15">
+        <gfxData>0,0,234,170,234,174,0,0,0</gfxData>
+        <colorData>78,78,78,78,78,78,78,78,0</colorData>
+      </item>
+      <item id="16">
+        <gfxData>0,0,238,74,74,78,0,0,0</gfxData>
+        <colorData>78,78,78,78,78,78,78,78,0</colorData>
+      </item>
+      <item id="17">
+        <gfxData>254,198,186,130,186,186,254,0,0</gfxData>
+        <colorData>78,78,78,78,78,78,78,78,0</colorData>
+      </item>
+      <item id="18">
+        <gfxData>254,134,186,134,186,134,254,0,0</gfxData>
+        <colorData>78,78,78,78,78,78,78,78,0</colorData>
+      </item>
+      <item id="19">
+        <gfxData>254,194,190,190,190,194,254,0,0</gfxData>
+        <colorData>78,78,78,78,78,78,78,78,0</colorData>
+      </item>
+      <item id="20">
+        <gfxData>255,129,156,156,129,159,255,0,0</gfxData>
+        <colorData>241,240,240,240,240,240,241,241,0</colorData>
+      </item>
+      <item id="21">
+        <gfxData>255,192,159,193,252,129,255,0,0</gfxData>
+        <colorData>241,240,240,240,240,240,241,241,0</colorData>
+      </item>
+      <item id="22">
+        <gfxData>255,192,159,152,156,192,255,0,0</gfxData>
+        <colorData>241,240,240,240,240,240,241,241,0</colorData>
+      </item>
+      <item id="23">
+        <gfxData>255,128,159,131,159,128,255,255,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,0,0</colorData>
+      </item>
+      <item id="24">
+        <gfxData>255,129,156,156,156,129,255,255,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,1,0</colorData>
+      </item>
+      <item id="25">
+        <gfxData>255,255,255,255,255,255,255,0,0</gfxData>
+        <colorData>241,241,241,241,241,241,241,241,0</colorData>
+      </item>
+      <item id="26">
+        <gfxData>255,129,252,193,159,128,255,255,0</gfxData>
+        <colorData>248,248,248,248,248,248,248,24,0</colorData>
+      </item>
+      <item id="27">
+        <gfxData>255,255,142,181,141,190,255,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,241,0</colorData>
+      </item>
+      <item id="28">
+        <gfxData>255,255,99,183,183,119,255,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,241,0</colorData>
+      </item>
+      <item id="29">
+        <gfxData>147,147,147,147,219,219,0,0,0</gfxData>
+        <colorData>241,241,241,241,241,241,241,254,0</colorData>
+      </item>
+      <item id="30">
+        <gfxData>255,255,255,255,255,255,255,0,0</gfxData>
+        <colorData>241,241,241,241,241,241,241,241,0</colorData>
+      </item>
+      <item id="31">
+        <gfxData>127,93,107,119,107,93,127,0,0</gfxData>
+        <colorData>129,128,128,128,128,128,129,129,0</colorData>
+      </item>
+      <item id="32">
+        <gfxData>255,255,255,255,255,255,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="33">
+        <gfxData>255,243,243,243,243,255,243,255,0</gfxData>
+        <colorData>225,224,224,224,225,224,224,225,0</colorData>
+      </item>
+      <item id="34">
+        <gfxData>255,235,235,255,255,255,255,255,0</gfxData>
+        <colorData>225,224,224,225,225,225,225,225,0</colorData>
+      </item>
+      <item id="35">
+        <gfxData>255,235,193,235,193,235,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,224,0</colorData>
+      </item>
+      <item id="36">
+        <gfxData>247,193,151,193,244,193,247,255,0</gfxData>
+        <colorData>224,224,224,224,224,224,224,225,0</colorData>
+      </item>
+      <item id="37">
+        <gfxData>255,204,201,243,228,204,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="38">
+        <gfxData>255,199,147,194,153,194,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="39">
+        <gfxData>255,231,207,255,255,255,255,255,0</gfxData>
+        <colorData>225,225,225,225,225,225,225,225,0</colorData>
+      </item>
+      <item id="40">
+        <gfxData>249,243,243,243,243,243,249,255,0</gfxData>
+        <colorData>224,224,224,224,224,224,224,225,0</colorData>
+      </item>
+      <item id="41">
+        <gfxData>207,231,231,231,231,231,207,255,0</gfxData>
+        <colorData>224,224,224,224,224,224,224,225,0</colorData>
+      </item>
+      <item id="42">
+        <gfxData>255,165,195,129,195,165,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="43">
+        <gfxData>255,231,231,129,231,231,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="44">
+        <gfxData>255,255,255,255,231,231,239,255,0</gfxData>
+        <colorData>225,225,225,225,224,224,224,225,0</colorData>
+      </item>
+      <item id="45">
+        <gfxData>255,255,255,129,255,255,255,255,0</gfxData>
+        <colorData>225,225,225,224,225,225,225,225,0</colorData>
+      </item>
+      <item id="46">
+        <gfxData>255,255,255,255,231,231,255,255,0</gfxData>
+        <colorData>225,225,225,225,224,224,225,225,0</colorData>
+      </item>
+      <item id="47">
+        <gfxData>255,249,243,231,207,159,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="48">
+        <gfxData>255,193,156,156,156,193,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="49">
+        <gfxData>255,231,199,231,231,195,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="50">
+        <gfxData>255,129,252,193,159,128,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="51">
+        <gfxData>255,129,252,225,252,129,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="52">
+        <gfxData>255,156,156,128,252,252,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="53">
+        <gfxData>255,128,159,129,252,129,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="54">
+        <gfxData>255,193,159,129,156,193,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="55">
+        <gfxData>255,128,252,249,243,243,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="56">
+        <gfxData>255,193,156,193,156,193,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="57">
+        <gfxData>255,193,156,192,252,193,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="58">
+        <gfxData>255,231,231,255,231,231,255,255,0</gfxData>
+        <colorData>225,224,224,225,224,224,225,225,0</colorData>
+      </item>
+      <item id="59">
+        <gfxData>255,231,231,255,231,231,239,255,0</gfxData>
+        <colorData>225,224,224,225,224,224,224,225,0</colorData>
+      </item>
+      <item id="60">
+        <gfxData>255,243,231,207,231,243,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="61">
+        <gfxData>255,255,195,255,195,255,255,255,0</gfxData>
+        <colorData>225,225,224,225,224,225,225,225,0</colorData>
+      </item>
+      <item id="62">
+        <gfxData>255,207,231,243,231,207,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="63">
+        <gfxData>255,225,204,249,243,255,243,255,0</gfxData>
+        <colorData>225,224,224,224,224,225,224,225,0</colorData>
+      </item>
+      <item id="64">
+        <gfxData>193,190,162,170,160,191,193,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="65">
+        <gfxData>255,193,156,128,156,156,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="66">
+        <gfxData>255,129,156,129,156,129,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="67">
+        <gfxData>255,192,159,159,159,192,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="68">
+        <gfxData>255,129,156,156,156,129,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="69">
+        <gfxData>255,128,159,131,159,128,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="70">
+        <gfxData>255,128,159,131,159,159,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="71">
+        <gfxData>255,192,159,152,156,192,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="72">
+        <gfxData>255,156,156,128,156,156,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="73">
+        <gfxData>255,225,243,243,243,225,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="74">
+        <gfxData>255,225,243,243,147,199,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="75">
+        <gfxData>255,156,153,131,153,156,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="76">
+        <gfxData>255,159,159,159,159,128,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="77">
+        <gfxData>255,156,136,128,148,156,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="78">
+        <gfxData>255,156,140,132,144,152,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="79">
+        <gfxData>255,193,156,156,156,193,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="80">
+        <gfxData>255,129,156,156,129,159,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="81">
+        <gfxData>255,193,156,148,153,194,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="82">
+        <gfxData>255,129,156,156,129,156,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="83">
+        <gfxData>255,192,159,193,252,129,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="84">
+        <gfxData>255,129,231,231,231,231,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="85">
+        <gfxData>255,156,156,156,156,193,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="86">
+        <gfxData>255,156,156,156,201,227,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="87">
+        <gfxData>255,156,148,128,136,156,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="88">
+        <gfxData>255,156,201,227,201,156,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="89">
+        <gfxData>255,153,153,195,231,231,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="90">
+        <gfxData>255,129,243,231,207,129,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="91">
+        <gfxData>241,243,243,243,243,243,241,255,0</gfxData>
+        <colorData>224,224,224,224,224,224,224,225,0</colorData>
+      </item>
+      <item id="92">
+        <gfxData>255,159,207,231,243,249,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="93">
+        <gfxData>199,231,231,231,231,231,199,255,0</gfxData>
+        <colorData>224,224,224,224,224,224,224,225,0</colorData>
+      </item>
+      <item id="94">
+        <gfxData>255,255,255,255,255,255,255,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="95">
+        <gfxData>255,255,255,255,255,255,129,255,0</gfxData>
+        <colorData>225,224,224,224,224,224,225,225,0</colorData>
+      </item>
+      <item id="96">
+        <gfxData>255,255,255,255,255,255,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="97">
+        <gfxData>255,193,156,128,156,156,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="98">
+        <gfxData>255,129,156,129,156,129,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="99">
+        <gfxData>255,192,159,159,159,192,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="100">
+        <gfxData>255,129,156,156,156,129,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="101">
+        <gfxData>255,128,159,131,159,128,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="102">
+        <gfxData>255,128,159,131,159,159,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="103">
+        <gfxData>255,192,159,152,156,192,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="104">
+        <gfxData>255,156,156,128,156,156,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="105">
+        <gfxData>255,225,243,243,243,225,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="106">
+        <gfxData>255,225,243,243,147,199,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="107">
+        <gfxData>255,156,153,131,153,156,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="108">
+        <gfxData>255,159,159,159,159,128,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="109">
+        <gfxData>255,156,136,128,148,156,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="110">
+        <gfxData>255,156,140,132,144,152,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="111">
+        <gfxData>255,193,156,156,156,193,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="112">
+        <gfxData>255,129,156,156,129,159,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="113">
+        <gfxData>255,193,156,148,153,194,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="114">
+        <gfxData>255,129,156,156,129,156,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="115">
+        <gfxData>255,192,159,193,252,129,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="116">
+        <gfxData>255,129,231,231,231,231,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="117">
+        <gfxData>255,156,156,156,156,193,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="118">
+        <gfxData>255,156,156,156,201,227,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="119">
+        <gfxData>255,156,148,128,136,156,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="120">
+        <gfxData>255,156,201,227,201,156,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="121">
+        <gfxData>255,153,153,195,231,231,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="122">
+        <gfxData>255,129,243,231,207,129,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="123">
+        <gfxData>255,239,173,137,128,211,251,255,0</gfxData>
+        <colorData>226,226,226,226,226,226,226,226,0</colorData>
+      </item>
+      <item id="124">
+        <gfxData>252,248,248,241,241,225,225,193,0</gfxData>
+        <colorData>235,235,235,235,235,235,235,235,0</colorData>
+      </item>
+      <item id="125">
+        <gfxData>63,31,31,143,143,135,135,131,0</gfxData>
+        <colorData>235,235,235,235,235,235,235,235,0</colorData>
+      </item>
+      <item id="126">
+        <gfxData>193,129,128,0,1,1,0,128,0</gfxData>
+        <colorData>235,235,235,235,235,235,235,235,0</colorData>
+      </item>
+      <item id="127">
+        <gfxData>131,129,1,0,128,128,0,1,0</gfxData>
+        <colorData>235,235,235,235,235,235,235,235,0</colorData>
+      </item>
+      <item id="128">
+        <gfxData>0,0,0,0,0,0,0,255,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,228,0</colorData>
+      </item>
+      <item id="129">
+        <gfxData>0,62,99,127,99,99,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="130">
+        <gfxData>0,126,99,126,99,126,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="131">
+        <gfxData>0,63,96,96,96,63,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="132">
+        <gfxData>0,126,99,99,99,126,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="133">
+        <gfxData>0,127,96,124,96,127,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="134">
+        <gfxData>0,127,96,124,96,96,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="135">
+        <gfxData>0,63,96,103,99,63,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="136">
+        <gfxData>0,99,99,127,99,99,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="137">
+        <gfxData>0,30,12,12,12,30,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="138">
+        <gfxData>0,30,12,12,108,56,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="139">
+        <gfxData>0,99,102,124,102,99,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="140">
+        <gfxData>0,96,96,96,96,127,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="141">
+        <gfxData>0,99,119,127,107,99,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="142">
+        <gfxData>0,99,115,123,111,103,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="143">
+        <gfxData>0,62,99,99,99,62,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="144">
+        <gfxData>0,126,99,99,126,96,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="145">
+        <gfxData>0,62,99,107,102,61,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="146">
+        <gfxData>0,126,99,99,126,99,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="147">
+        <gfxData>0,63,96,62,3,126,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="148">
+        <gfxData>0,126,24,24,24,24,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="149">
+        <gfxData>0,99,99,99,99,62,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="150">
+        <gfxData>0,99,99,99,54,28,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="151">
+        <gfxData>0,99,107,127,119,99,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="152">
+        <gfxData>0,99,54,28,54,99,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="153">
+        <gfxData>0,102,102,60,24,24,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="154">
+        <gfxData>0,126,12,24,48,126,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="155">
+        <gfxData>0,28,17,24,16,29,0,128,0</gfxData>
+        <colorData>116,116,116,116,116,116,228,238,0</colorData>
+      </item>
+      <item id="156">
+        <gfxData>0,230,8,200,40,198,0,0,0</gfxData>
+        <colorData>116,116,116,116,116,116,116,126,0</colorData>
+      </item>
+      <item id="157">
+        <gfxData>0,4,4,36,124,32,0,0,0</gfxData>
+        <colorData>116,116,116,116,116,116,116,126,0</colorData>
+      </item>
+      <item id="158">
+        <gfxData>134,140,152,176,224,192,0,0,0</gfxData>
+        <colorData>30,30,30,30,30,30,14,30,0</colorData>
+      </item>
+      <item id="159">
+        <gfxData>255,255,255,255,255,127,126,124,0</gfxData>
+        <colorData>225,225,225,225,225,225,225,225,0</colorData>
+      </item>
+      <item id="160">
+        <gfxData>0,0,0,0,0,3,7,7,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="161">
+        <gfxData>0,0,0,0,0,255,255,255,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="162">
+        <gfxData>0,0,0,0,0,192,224,224,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="163">
+        <gfxData>7,7,3,0,0,3,7,7,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="164">
+        <gfxData>255,255,255,0,0,255,255,255,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="165">
+        <gfxData>255,255,255,0,0,195,231,231,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="166">
+        <gfxData>224,224,192,0,0,192,224,224,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="167">
+        <gfxData>7,7,7,7,7,7,7,7,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="168">
+        <gfxData>224,224,224,224,224,224,224,224,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="169">
+        <gfxData>231,231,231,231,231,231,231,231,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="170">
+        <gfxData>231,231,195,0,0,255,255,255,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="171">
+        <gfxData>231,231,199,7,7,199,231,231,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="172">
+        <gfxData>7,7,3,0,0,0,0,0,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="173">
+        <gfxData>255,255,255,0,0,0,0,0,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="174">
+        <gfxData>224,224,192,0,0,0,0,0,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="175">
+        <gfxData>231,231,199,7,7,7,7,7,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="176">
+        <gfxData>231,231,227,224,224,227,231,231,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="177">
+        <gfxData>0,0,0,0,0,195,231,231,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="178">
+        <gfxData>224,224,192,0,0,255,255,255,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="179">
+        <gfxData>231,231,195,0,0,195,231,231,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="180">
+        <gfxData>1,1,1,1,1,1,3,255,0</gfxData>
+        <colorData>239,239,239,239,239,239,239,239,0</colorData>
+      </item>
+      <item id="181">
+        <gfxData>1,1,1,1,1,1,3,255,0</gfxData>
+        <colorData>236,236,236,236,236,236,236,236,0</colorData>
+      </item>
+      <item id="182">
+        <gfxData>1,1,1,1,1,1,3,255,0</gfxData>
+        <colorData>235,235,235,235,235,235,235,235,0</colorData>
+      </item>
+      <item id="183">
+        <gfxData>1,1,1,1,1,1,3,255,0</gfxData>
+        <colorData>231,231,231,231,231,231,231,231,0</colorData>
+      </item>
+      <item id="184">
+        <gfxData>254,254,254,254,254,254,254,124,0</gfxData>
+        <colorData>254,254,254,254,254,254,254,254,0</colorData>
+      </item>
+      <item id="185">
+        <gfxData>1,1,1,1,1,1,3,255,0</gfxData>
+        <colorData>225,225,225,225,225,225,225,225,0</colorData>
+      </item>
+      <item id="186">
+        <gfxData>255,207,199,195,199,207,255,255,0</gfxData>
+        <colorData>232,232,232,232,232,232,232,232,0</colorData>
+      </item>
+      <item id="187">
+        <gfxData>255,243,235,155,155,235,243,255,0</gfxData>
+        <colorData>239,239,239,239,239,239,239,239,0</colorData>
+      </item>
+      <item id="188">
+        <gfxData>255,243,235,155,155,235,243,255,0</gfxData>
+        <colorData>226,226,226,226,226,226,226,226,0</colorData>
+      </item>
+      <item id="189">
+        <gfxData>0,0,24,36,36,24,0,0,0</gfxData>
+        <colorData>14,30,30,30,30,30,30,30,0</colorData>
+      </item>
+      <item id="190">
+        <gfxData>255,255,231,195,195,231,255,255,0</gfxData>
+        <colorData>236,236,236,236,236,236,236,236,0</colorData>
+      </item>
+      <item id="191">
+        <gfxData>255,255,231,195,195,231,255,255,0</gfxData>
+        <colorData>233,233,233,233,233,233,233,233,0</colorData>
+      </item>
+      <item id="192">
+        <gfxData>255,191,223,239,247,248,255,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,238,0</colorData>
+      </item>
+      <item id="193">
+        <gfxData>255,255,255,255,255,1,255,255,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,228,0</colorData>
+      </item>
+      <item id="194">
+        <gfxData>255,249,245,237,221,188,255,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,238,0</colorData>
+      </item>
+      <item id="195">
+        <gfxData>255,189,220,237,245,249,255,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,241,14,0</colorData>
+      </item>
+      <item id="196">
+        <gfxData>0,16,24,148,82,49,0,0,0</gfxData>
+        <colorData>79,79,79,79,79,79,79,238,0</colorData>
+      </item>
+      <item id="197">
+        <gfxData>0,64,32,17,10,4,0,0,0</gfxData>
+        <colorData>79,79,79,79,79,79,79,14,0</colorData>
+      </item>
+      <item id="198">
+        <gfxData>255,191,95,239,247,251,255,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="199">
+        <gfxData>0,4,10,17,32,64,0,0,0</gfxData>
+        <colorData>79,79,79,79,79,79,79,14,0</colorData>
+      </item>
+      <item id="200">
+        <gfxData>255,251,247,239,95,191,255,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="201">
+        <gfxData>0,7,8,16,32,64,0,0,0</gfxData>
+        <colorData>79,79,79,79,79,79,79,78,0</colorData>
+      </item>
+      <item id="202">
+        <gfxData>0,254,0,0,0,0,0,0,0</gfxData>
+        <colorData>79,79,79,79,79,79,79,78,0</colorData>
+      </item>
+      <item id="203">
+        <gfxData>255,251,243,235,218,185,255,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="204">
+        <gfxData>255,222,156,90,214,206,255,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,241,14,0</colorData>
+      </item>
+      <item id="205">
+        <gfxData>0,67,34,18,10,6,0,0,0</gfxData>
+        <colorData>79,79,79,79,79,79,79,14,0</colorData>
+      </item>
+      <item id="206">
+        <gfxData>255,15,111,111,109,237,225,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="207">
+        <gfxData>255,223,91,19,1,167,247,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="208">
+        <gfxData>0,0,0,255,1,1,1,255,0</gfxData>
+        <colorData>237,237,237,237,229,229,229,229,0</colorData>
+      </item>
+      <item id="209">
+        <gfxData>1,1,1,255,1,1,1,255,0</gfxData>
+        <colorData>237,237,237,237,229,229,229,229,0</colorData>
+      </item>
+      <item id="210">
+        <gfxData>0,0,0,255,1,1,1,255,0</gfxData>
+        <colorData>237,237,237,237,232,232,232,232,0</colorData>
+      </item>
+      <item id="211">
+        <gfxData>1,1,1,255,1,1,1,255,0</gfxData>
+        <colorData>237,237,237,237,232,232,232,232,0</colorData>
+      </item>
+      <item id="212">
+        <gfxData>1,57,17,17,17,57,1,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="213">
+        <gfxData>0,60,34,34,34,60,0,255,0</gfxData>
+        <colorData>132,132,132,132,132,132,132,228,0</colorData>
+      </item>
+      <item id="214">
+        <gfxData>192,128,128,128,128,128,192,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="215">
+        <gfxData>1,0,0,0,0,0,1,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="216">
+        <gfxData>0,24,0,56,24,60,0,0,0</gfxData>
+        <colorData>244,244,244,244,244,244,244,254,0</colorData>
+      </item>
+      <item id="217">
+        <gfxData>128,136,136,190,136,136,128,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="218">
+        <gfxData>128,128,128,190,128,128,128,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="219">
+        <gfxData>128,128,190,156,136,128,128,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="220">
+        <gfxData>128,190,136,128,136,156,128,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="221">
+        <gfxData>127,128,128,128,128,128,127,255,0</gfxData>
+        <colorData>5,12,12,12,12,12,5,229,0</colorData>
+      </item>
+      <item id="222">
+        <gfxData>254,129,129,129,129,129,254,255,0</gfxData>
+        <colorData>21,8,8,8,8,8,5,229,0</colorData>
+      </item>
+      <item id="223">
+        <gfxData>255,171,171,171,171,255,255,255,0</gfxData>
+        <colorData>21,21,21,21,21,21,21,229,0</colorData>
+      </item>
+      <item id="224">
+        <gfxData>255,192,191,191,191,191,191,191,0</gfxData>
+        <colorData>225,225,225,225,225,225,225,225,0</colorData>
+      </item>
+      <item id="225">
+        <gfxData>255,0,255,255,255,255,255,255,0</gfxData>
+        <colorData>225,225,225,225,225,225,225,225,0</colorData>
+      </item>
+      <item id="226">
+        <gfxData>255,7,251,249,249,249,249,249,0</gfxData>
+        <colorData>225,225,225,225,225,225,225,225,0</colorData>
+      </item>
+      <item id="227">
+        <gfxData>191,191,191,191,191,191,191,191,0</gfxData>
+        <colorData>225,225,225,225,225,225,225,225,0</colorData>
+      </item>
+      <item id="228">
+        <gfxData>191,191,191,191,191,192,224,255,0</gfxData>
+        <colorData>225,225,225,225,225,225,225,225,0</colorData>
+      </item>
+      <item id="229">
+        <gfxData>255,255,255,255,255,0,0,255,0</gfxData>
+        <colorData>225,225,225,225,225,225,225,225,0</colorData>
+      </item>
+      <item id="230">
+        <gfxData>249,249,249,249,241,1,3,255,0</gfxData>
+        <colorData>225,225,225,225,225,225,225,225,0</colorData>
+      </item>
+      <item id="231">
+        <gfxData>249,249,249,249,249,249,249,249,0</gfxData>
+        <colorData>225,225,225,225,225,225,225,225,0</colorData>
+      </item>
+      <item id="232">
+        <gfxData>0,0,0,0,0,195,231,231,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="233">
+        <gfxData>231,231,195,0,0,0,0,0,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="234">
+        <gfxData>0,0,0,0,0,0,0,0,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="235">
+        <gfxData>224,224,192,0,0,195,231,231,0</gfxData>
+        <colorData>229,229,229,229,229,229,229,229,0</colorData>
+      </item>
+      <item id="236">
+        <gfxData>255,255,255,255,255,255,255,255,0</gfxData>
+        <colorData>237,237,237,237,237,237,237,237,0</colorData>
+      </item>
+      <item id="237">
+        <gfxData>248,248,224,224,224,224,224,255,0</gfxData>
+        <colorData>46,46,47,47,47,239,239,239,0</colorData>
+      </item>
+      <item id="238">
+        <gfxData>248,136,159,145,241,17,31,0,0</gfxData>
+        <colorData>46,46,46,46,46,46,46,46,0</colorData>
+      </item>
+      <item id="239">
+        <gfxData>0,204,120,48,120,204,0,0,0</gfxData>
+        <colorData>142,142,142,142,142,142,142,142,0</colorData>
+      </item>
+      <item id="240">
+        <gfxData>255,192,162,148,136,148,162,128,0</gfxData>
+        <colorData>230,230,230,230,230,230,230,230,0</colorData>
+      </item>
+      <item id="241">
+        <gfxData>85,170,255,255,255,255,255,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="242">
+        <gfxData>95,175,255,255,255,255,255,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="243">
+        <gfxData>223,175,223,175,223,175,223,175,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="244">
+        <gfxData>63,15,3,0,3,15,63,255,0</gfxData>
+        <colorData>232,232,232,232,232,232,232,232,0</colorData>
+      </item>
+      <item id="245">
+        <gfxData>63,15,3,0,3,15,63,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="246">
+        <gfxData>1,1,1,1,1,1,1,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="247">
+        <gfxData>17,17,17,17,17,17,17,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="248">
+        <gfxData>126,126,126,126,126,126,126,126,0</gfxData>
+        <colorData>87,87,87,87,87,87,87,87,0</colorData>
+      </item>
+      <item id="249">
+        <gfxData>0,0,0,0,0,0,0,0,0</gfxData>
+        <colorData>87,87,87,87,87,87,87,87,0</colorData>
+      </item>
+      <item id="250">
+        <gfxData>255,199,195,195,195,195,255,255,0</gfxData>
+        <colorData>239,239,239,239,239,239,239,239,0</colorData>
+      </item>
+      <item id="251">
+        <gfxData>255,127,128,255,255,0,255,255,0</gfxData>
+        <colorData>238,238,78,78,254,238,238,238,0</colorData>
+      </item>
+      <item id="252">
+        <gfxData>255,127,128,128,128,0,255,255,0</gfxData>
+        <colorData>238,238,78,78,254,238,238,238,0</colorData>
+      </item>
+      <item id="253">
+        <gfxData>129,0,60,52,32,225,247,255,0</gfxData>
+        <colorData>228,228,228,228,228,228,228,228,0</colorData>
+      </item>
+      <item id="254">
+        <gfxData>129,0,60,52,32,225,247,255,0</gfxData>
+        <colorData>226,226,226,226,226,226,226,226,0</colorData>
+      </item>
+      <item id="255">
+        <gfxData>255,255,255,255,255,255,255,255,0</gfxData>
+        <colorData>241,241,241,241,241,241,241,225,0</colorData>
+      </item>
+    </tileset>
+  </gfx>
+  <maps>
+    <map id="0" name="scr02_edit_v2_11">
+      <line id="0">20,21,22,23,24,26,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,25,25,30,30,30,30,0</line>
+      <line id="1">160,161,161,161,161,161,177,161,161,161,161,161,177,161,161,161,161,161,177,161,161,161,161,161,177,161,161,161,161,161,161,162,0</line>
+      <line id="2">167,101,100,105,116,32,169,80,76,65,89,32,169,76,79,65,68,32,169,83,65,86,69,32,169,65,66,79,85,84,32,168,0</line>
+      <line id="3">163,164,164,164,164,164,170,164,164,164,164,165,170,164,164,164,164,164,170,164,164,165,164,164,170,164,164,164,164,164,164,166,0</line>
+      <line id="4">167,99,104,97,110,110,101,108,32,97,32,169,99,104,97,110,110,101,108,32,98,169,99,104,97,110,110,101,108,32,99,168,0</line>
+      <line id="5">167,79,46,32,10,0,0,0,217,218,32,169,79,46,10,0,0,0,217,218,32,169,79,46,10,0,0,0,217,218,32,168,0</line>
+      <line id="6">167,84,79,78,69,32,32,32,223,222,189,169,84,79,78,69,32,32,223,222,32,169,84,79,78,69,32,32,223,222,32,168,0</line>
+      <line id="7">167,78,79,73,83,69,32,32,223,222,32,169,78,79,73,83,69,32,223,222,32,169,78,79,73,83,69,32,223,222,32,168,0</line>
+      <line id="8">167,69,78,86,46,32,32,32,223,222,189,169,69,78,86,46,32,32,223,222,189,169,69,78,86,46,32,32,223,222,189,168,0</line>
+      <line id="9">167,65,77,80,58,32,0,0,217,218,32,169,65,77,80,58,0,0,217,218,32,169,65,77,80,58,0,0,217,218,32,168,0</line>
+      <line id="10">163,164,164,164,164,164,164,164,164,164,164,179,164,164,164,164,164,164,164,164,164,170,164,164,164,164,164,164,164,164,164,166,0</line>
+      <line id="11">167,110,111,105,115,101,32,32,32,32,32,169,101,110,118,32,32,32,32,83,72,65,80,69,32,0,0,192,193,219,32,168,0</line>
+      <line id="12">167,70,82,69,81,46,0,0,217,218,189,169,32,32,70,82,69,81,46,17,18,19,0,0,0,0,0,217,218,220,189,168,0</line>
+      <line id="13">163,164,164,164,164,164,164,164,164,164,164,179,164,164,164,164,164,164,164,164,164,164,164,164,164,164,164,164,164,164,164,166,0</line>
+      <line id="14">167,115,101,113,32,32,245,32,253,32,246,169,112,97,116,116,101,114,110,32,32,32,32,32,32,32,32,32,185,32,245,168,0</line>
+      <line id="15">167,214,216,215,214,142,133,151,215,32,32,169,214,131,140,146,215,214,131,144,153,215,32,32,32,32,32,0,0,217,218,168,0</line>
+      <line id="16">167,32,32,32,32,32,32,32,32,32,32,169,32,96,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,168,0</line>
+      <line id="17">167,80,79,83,46,212,213,0,0,217,218,169,32,32,32,208,208,208,209,208,208,208,209,208,208,208,209,208,208,208,209,168,0</line>
+      <line id="18">167,80,65,84,46,32,32,0,0,217,218,169,32,65,187,180,180,180,180,180,180,180,180,180,180,180,180,180,180,180,180,168,0</line>
+      <line id="19">167,82,69,84,46,32,32,0,0,217,218,169,32,66,187,180,180,180,180,180,180,180,180,180,180,180,180,180,180,180,180,168,0</line>
+      <line id="20">167,76,69,78,46,32,32,0,0,217,218,169,32,67,187,180,180,180,180,180,180,180,180,180,180,180,180,180,180,180,180,168,0</line>
+      <line id="21">167,66,80,77,58,32,0,0,0,217,218,169,32,32,32,15,16,189,32,32,32,32,32,32,32,32,32,32,12,13,14,168,0</line>
+      <line id="22">172,173,173,173,173,173,173,173,173,173,173,175,32,32,32,183,184,183,184,183,183,184,183,184,183,184,183,32,0,217,218,168,0</line>
+      <line id="23">234,234,234,234,234,234,234,234,234,234,234,172,173,173,173,173,173,173,173,173,173,173,173,173,173,173,173,173,173,173,173,174,0</line>
+    </map>
+  </maps>
+</msxdevtools>

@@ -1,0 +1,13 @@
+C:\Users\AlberTor\Documents\Visual Studio 2008\Projects\GUIcontrols\GUIcontrols\obj\Release\ResolveAssemblyReference.cache
+C:\Users\AlberTor\Documents\Visual Studio 2008\Projects\GUIcontrols\GUIcontrols\obj\Release\GUIcontrols.vbproj.GenerateResource.Cache
+C:\Users\AlberTor\Documents\Visual Studio 2008\Projects\GUIcontrols\GUIcontrols\bin\Release\GUIcontrols.dll
+C:\Users\AlberTor\Documents\Visual Studio 2008\Projects\GUIcontrols\GUIcontrols\bin\Release\GUIcontrols.pdb
+C:\Users\AlberTor\Documents\Visual Studio 2008\Projects\GUIcontrols\GUIcontrols\bin\Release\GUIcontrols.xml
+C:\Users\AlberTor\Documents\Visual Studio 2008\Projects\GUIcontrols\GUIcontrols\obj\Release\GUIcontrols.dll
+C:\Users\AlberTor\Documents\Visual Studio 2008\Projects\GUIcontrols\GUIcontrols\obj\Release\GUIcontrols.xml
+C:\Users\AlberTor\Documents\Visual Studio 2008\Projects\GUIcontrols\GUIcontrols\obj\Release\GUIcontrols.pdb
+C:\Users\AlberTor\Documents\Visual Studio 2008\Projects\GUIcontrols\GUIcontrols\bin\Release\GUIcontrols.dll.config
+C:\Users\AlberTor\Documents\Visual Studio 2008\Projects\GUIcontrols\GUIcontrols\obj\Release\MSXdevTools.GUIcontrols.InitLauncher.resources
+C:\Users\AlberTor\Documents\Visual Studio 2008\Projects\GUIcontrols\GUIcontrols\obj\Release\MSXdevTools.GUIcontrols.Resources.resources
+C:\Users\AlberTor\Documents\Visual Studio 2008\Projects\GUIcontrols\GUIcontrols\obj\Release\mSXdevtools.GUIcontrols._RecentListWin_DEPRECATED.resources
+C:\Users\AlberTor\Documents\Visual Studio 2008\Projects\GUIcontrols\GUIcontrols\obj\Release\mSXdevtools.GUIcontrols.ProjectPropertiesWin.resources
