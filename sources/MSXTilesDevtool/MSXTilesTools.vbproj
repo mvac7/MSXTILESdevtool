@@ -12,7 +12,7 @@
     <AssemblyName>MSXTILESdevtool</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <OptionExplicit>On</OptionExplicit>
     <OptionCompare>Binary</OptionCompare>
     <OptionStrict>Off</OptionStrict>
@@ -43,6 +43,7 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -70,8 +71,12 @@
   </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
-    <Import Include="mSXdevtools.GUIcontrols" />
-    <Import Include="mSXdevtools.MSXLibrary" />
+    <Import Include="mSXdevtools.DataCompressEncoders" />
+    <Import Include="mSXdevtools.DataStructures" />
+    <Import Include="mSXdevtools.FileDataTypes" />
+    <Import Include="mSXdevtools.GUI.Controls" />
+    <Import Include="mSXdevtools.GUI.TMS9918A" />
+    <Import Include="mSXdevtools.V9938PaletteEditor" />
     <Import Include="System" />
     <Import Include="System.Collections" />
     <Import Include="System.Collections.Generic" />
@@ -80,12 +85,6 @@
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AboutWin.Designer.vb">
-      <DependentUpon>AboutWin.vb</DependentUpon>
-    </Compile>
-    <Compile Include="AboutWin.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="ChangeColorForm.Designer.vb">
       <DependentUpon>ChangeColorForm.vb</DependentUpon>
     </Compile>
@@ -98,12 +97,6 @@
     <Compile Include="ChangeTilesForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BasicConfigDialog.Designer.vb">
-      <DependentUpon>BasicConfigDialog.vb</DependentUpon>
-    </Compile>
-    <Compile Include="BasicConfigDialog.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="FillMapForm.Designer.vb">
       <DependentUpon>FillMapForm.vb</DependentUpon>
     </Compile>
@@ -111,6 +104,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DataItem.vb" />
+    <Compile Include="HoriTAB.Designer.vb">
+      <DependentUpon>HoriTAB.vb</DependentUpon>
+    </Compile>
+    <Compile Include="HoriTAB.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="InvertDialog.Designer.vb">
       <DependentUpon>InvertDialog.vb</DependentUpon>
     </Compile>
@@ -140,22 +139,25 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="VerttiTAB.Designer.vb">
+      <DependentUpon>VerttiTAB.vb</DependentUpon>
+    </Compile>
+    <Compile Include="VerttiTAB.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AboutWin.resx">
-      <DependentUpon>AboutWin.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ChangeColorForm.resx">
       <DependentUpon>ChangeColorForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ChangeTilesForm.resx">
       <DependentUpon>ChangeTilesForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BasicConfigDialog.resx">
-      <DependentUpon>BasicConfigDialog.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FillMapForm.resx">
       <DependentUpon>FillMapForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HoriTAB.resx">
+      <DependentUpon>HoriTAB.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InvertDialog.resx">
       <DependentUpon>InvertDialog.vb</DependentUpon>
@@ -168,6 +170,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerttiTAB.resx">
+      <DependentUpon>VerttiTAB.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -217,10 +222,24 @@
     <None Include="Resources\load.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\save.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="MSXTILESdevtool.ico" />
+    <None Include="Resources\saveNM_x24.png" />
+    <None Include="Resources\exchange2_x24.png" />
+    <None Include="Resources\copy_color_x24.png" />
+    <None Include="Resources\exchange_color_x24.png" />
+    <None Include="Resources\select_24.png" />
+    <None Include="Resources\trashcan01_24p.png" />
+    <None Include="Resources\undo_clear.png" />
+    <None Include="Resources\Aboud_win_msxTiles.png" />
+    <None Include="Resources\V_ruler_16p.png" />
+    <None Include="Resources\H_ruler_16p.png" />
+    <None Include="Resources\saveSC_x24.png" />
+    <None Include="Resources\save_bitmap3_x24.png" />
+    <None Include="Resources\save_as3_x24.png" />
+    <None Include="Resources\save3_x24.png" />
+    <None Include="Resources\project_properties_24p.png" />
+    <None Include="Resources\Load_file2_x24.png" />
+    <None Include="Resources\new_24.png" />
     <None Include="Resources\palette3_x24.png" />
     <None Include="Resources\project_properties_24.png" />
     <None Include="Resources\dragdrop_48_06Y.png" />
@@ -232,30 +251,37 @@
     <None Include="Resources\invert_x24_02.png" />
     <None Include="Resources\reload_24x24_02.png" />
     <None Include="Resources\about_24.png" />
-    <None Include="Resources\aboutwin_BGH.png" />
-    <None Include="Resources\MSXTILESdevtool_logo copia1.png" />
     <None Include="Resources\gplv3-88x31.png" />
-    <None Include="Resources\MSXTILESdevtool_logo copia.png" />
-    <None Include="Resources\aboutleftcolumn_128.png" />
-    <None Include="Resources\aboutleftcolumn_.png" />
-    <None Include="Resources\aboutwin_BG.png" />
     <None Include="app.config" />
     <None Include="Resources\auto_16x16.png" />
     <None Include="Resources\help_24.png" />
-    <None Include="Resources\palette_24x24.png" />
     <None Include="Resources\tile.png" />
     <None Include="Resources\copy.png" />
-    <None Include="Resources\nmsxtiles2bin_pic1.png" />
-    <None Include="Resources\folder.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataCompressEncoders\DataCompressEncoders.vbproj">
+      <Project>{928052bd-0028-41b3-a271-1f93452cb2e3}</Project>
+      <Name>DataCompressEncoders</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataStructures\DataStructures.vbproj">
+      <Project>{7aeb116c-db10-4498-aa55-5c5d08c4a3c2}</Project>
+      <Name>DataStructures</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FileDataTypes\FileDataTypes.vbproj">
+      <Project>{11e865f5-0de8-49dc-ae99-43bd00d04f2a}</Project>
+      <Name>FileDataTypes</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GUIcontrols\GUIcontrols.vbproj">
       <Project>{474aa9b2-6128-4d72-9d16-19c3075f353d}</Project>
       <Name>GUIcontrols</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MSXLibrary\MSXLibrary.vbproj">
-      <Project>{7aeb116c-db10-4498-aa55-5c5d08c4a3c2}</Project>
-      <Name>MSXLibrary</Name>
+    <ProjectReference Include="..\TMS9918A\TMS9918A.vbproj">
+      <Project>{867ee51b-ccf3-47f7-b157-f81838673a50}</Project>
+      <Name>TMS9918A</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\V9938PaletteEditor\V9938PaletteEditor.vbproj">
+      <Project>{ab3b9955-824e-4e0c-a2c8-d8612e7e1950}</Project>
+      <Name>V9938PaletteEditor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

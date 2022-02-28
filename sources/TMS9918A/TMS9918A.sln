@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29609.76
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TMS9918A", "TMS9918A.vbproj", "{867EE51B-CCF3-47F7-B157-F81838673A50}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "DataStructures", "..\DataStructures\DataStructures.vbproj", "{7AEB116C-DB10-4498-AA55-5C5D08C4A3C2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{867EE51B-CCF3-47F7-B157-F81838673A50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{867EE51B-CCF3-47F7-B157-F81838673A50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{867EE51B-CCF3-47F7-B157-F81838673A50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{867EE51B-CCF3-47F7-B157-F81838673A50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AEB116C-DB10-4498-AA55-5C5D08C4A3C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AEB116C-DB10-4498-AA55-5C5D08C4A3C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AEB116C-DB10-4498-AA55-5C5D08C4A3C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AEB116C-DB10-4498-AA55-5C5D08C4A3C2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BF8978AF-CB49-4AB8-8972-3390CC831A8F}
+	EndGlobalSection
+EndGlobal

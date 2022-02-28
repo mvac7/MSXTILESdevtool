@@ -6,40 +6,277 @@ GUIcontrols
 </name>
 </assembly>
 <members>
-<member name="T:mSXdevtools.GUIcontrols.My.Resources.Resources">
+<member name="T:mSXdevtools.GUI.Controls.My.Resources.Resources">
 <summary>
   Clase de recurso fuertemente tipado, para buscar cadenas traducidas, etc.
 </summary>
 </member>
-<member name="P:mSXdevtools.GUIcontrols.My.Resources.Resources.ResourceManager">
+<member name="P:mSXdevtools.GUI.Controls.My.Resources.Resources.ResourceManager">
 <summary>
   Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.
 </summary>
 </member>
-<member name="P:mSXdevtools.GUIcontrols.My.Resources.Resources.Culture">
+<member name="P:mSXdevtools.GUI.Controls.My.Resources.Resources.Culture">
 <summary>
   Reemplaza la propiedad CurrentUICulture del subproceso actual para todas las
   búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
 </summary>
 </member>
-<member name="P:mSXdevtools.GUIcontrols.My.Resources.Resources.load_project">
+<member name="P:mSXdevtools.GUI.Controls.My.Resources.Resources.about_24">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
 </member>
-<member name="P:mSXdevtools.GUIcontrols.My.Resources.Resources.NEW_project128">
+<member name="P:mSXdevtools.GUI.Controls.My.Resources.Resources.cancel">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
 </member>
-<member name="T:mSXdevtools.GUIcontrols.InitLauncher">
+<member name="P:mSXdevtools.GUI.Controls.My.Resources.Resources.config_x24">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:mSXdevtools.GUI.Controls.My.Resources.Resources.folder2_x16">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:mSXdevtools.GUI.Controls.My.Resources.Resources.gplv3_127x51">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:mSXdevtools.GUI.Controls.My.Resources.Resources.help_x24">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:mSXdevtools.GUI.Controls.My.Resources.Resources.ico_dataOutput_24x24">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:mSXdevtools.GUI.Controls.My.Resources.Resources.Load_64">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:mSXdevtools.GUI.Controls.My.Resources.Resources.Load_file_x24">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:mSXdevtools.GUI.Controls.My.Resources.Resources.merge_64">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:mSXdevtools.GUI.Controls.My.Resources.Resources.more_9x24">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:mSXdevtools.GUI.Controls.My.Resources.Resources.new_24">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:mSXdevtools.GUI.Controls.My.Resources.Resources.New_64">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:mSXdevtools.GUI.Controls.My.Resources.Resources.palette3_x24">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:mSXdevtools.GUI.Controls.My.Resources.Resources.progress_64">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:mSXdevtools.GUI.Controls.My.Resources.Resources.progresswin_BG">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:mSXdevtools.GUI.Controls.My.Resources.Resources.project_properties_24">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:mSXdevtools.GUI.Controls.My.Resources.Resources.save_as_x24">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:mSXdevtools.GUI.Controls.My.Resources.Resources.save2_x24">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:mSXdevtools.GUI.Controls.My.Resources.Resources.wizard_arrow">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="T:mSXdevtools.GUI.Controls.ColorSelector">
+ <summary>
+ Context color selector
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:mSXdevtools.GUI.Controls.ColorSelector.ShowWinDialog(mSXdevtools.DataStructures.iPaletteMSX,System.Drawing.Point)">
+ <summary>
+ Displays the selector.
+ </summary>
+ <param name="aPaletteData"></param>
+ <param name="winPosition"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:mSXdevtools.GUI.Controls.ColorSelector.GeneratePalette">
+ <summary>
+ display palette in 8x2 table form
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:mSXdevtools.GUI.Controls.ColorSelector.RefreshPalette">
+ <summary>
+ updates the colors of the graphic control.
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:mSXdevtools.GUI.Controls.ColorSelector.getColorBox(System.Byte,System.Int32,System.Int32,System.Drawing.Color)">
+ <summary>
+ creates a box to display a color
+ </summary>
+ <param name="index"></param>
+ <param name="x"></param>
+ <param name="y"></param>
+ <param name="aColor"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:mSXdevtools.GUI.Controls.ColorSelector.colorPalette_Click(System.Object,System.EventArgs)">
+ <summary>
+ color selection event
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+ <remarks></remarks>
+</member>
+<member name="M:mSXdevtools.GUI.Controls.ColorSelector.CancelButton_Click(System.Object,System.EventArgs)">
+ <summary>
+ cancel button event
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+ <remarks></remarks>
+</member>
+<member name="M:mSXdevtools.GUI.Controls.ColorSelector.ColorSelector_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
+ <summary>
+ Esc key cancel selection
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+ <remarks></remarks>
+</member>
+<member name="P:mSXdevtools.GUI.Controls.DataTypeInputControl.SizeLine">
+ <summary>
+ number of items to output data line: 8,16,24,32
+ </summary>
+ <value></value>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="P:mSXdevtools.GUI.Controls.DataTypeInputControl.AsmEnableIndex">
+ <summary>
+ Activa el checkbuttom en el menu de assembler para la generación de un indice de los datos
+ </summary>
+ <value></value>
+ <remarks></remarks>
+</member>
+<member name="P:mSXdevtools.GUI.Controls.DataTypeInputControl.ASMaddIndex">
+ <summary>
+ proporciona el estado del checkbuttom para indicar si se quiere que se genere un indice de la lista de datos en assembler
+ </summary>
+ <value></value>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:mSXdevtools.GUI.Controls.DataTypeInputControl.InitControl">
+ <summary>
+ Se ha de ejecutar despues de proporcionar el Config, para que se inicialice el control con los datos adecuados.
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:mSXdevtools.GUI.Controls.DataTypeInputControl.GetValidateLineNum(System.String)">
+ <summary>
+ validates the value of the initial line number
+ valida el valor del numero de linea inicial
+ </summary>
+ <param name="value"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:mSXdevtools.GUI.Controls.EditorWin.NewProject">
+ <summary>
+ Create a New Project
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:mSXdevtools.GUI.Controls.EditorWin.getRecentListContextMenu">
+ <summary>
+ genera y muestra el menu contextual con la lista de proyectos recientes
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:mSXdevtools.GUI.Controls.EditorWin.ToolStripSelectItem(System.Object,System.EventArgs)">
+ <summary>
+ evento de pulsación de una opción del menu contextual de la lista de proyectos recientes
+ carga un fichero
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+ <remarks></remarks>
+</member>
+<member name="M:mSXdevtools.GUI.Controls.EditorWin.ShowProjectData">
+ <summary>
+ Show Project data
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:mSXdevtools.GUI.Controls.EditorWin.ShowAbout">
+ <summary>
+ Show About Screen
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="P:mSXdevtools.GUI.Controls.SpritePlaneControl.SpriteMode">
+ <summary>
+ color mode for sprites (G3 V9938 mode)
+ </summary>
+ <value></value>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:mSXdevtools.GUI.Controls.SpritePlaneControl.RefreshPalette">
+ <summary>
+ Actualiza las imagenes de los sprites, con los colores de una nueva paleta.
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="T:mSXdevtools.GUI.Controls.InitLauncher">
  <summary>
  Control de pantalla, para el estado incial de una aplicación.
  Permite empezar un proyecto o cargarlo mediante un dialogo o desde la lista de proyectos recientes (10).
  </summary>
  <remarks></remarks>
 </member>
-<member name="M:mSXdevtools.GUIcontrols.InitLauncher.AddObject(System.String,System.String)">
+<member name="M:mSXdevtools.GUI.Controls.InitLauncher.AddObject(System.String,System.String)">
  <summary>
  Añade un item a la lista de proyectos recientes
  </summary>
@@ -47,7 +284,7 @@ GUIcontrols
  <param name="path">Ruta absoluta del fichero del proyecto.</param>
  <remarks></remarks>
 </member>
-<member name="M:mSXdevtools.GUIcontrols.InitLauncher.RecentProjectsList_DoubleClick(System.Object,System.EventArgs)">
+<member name="M:mSXdevtools.GUI.Controls.InitLauncher.RecentProjectsList_DoubleClick(System.Object,System.EventArgs)">
  <summary>
  Evento de doble-clic sobre un proyecto reciente
  </summary>
@@ -55,7 +292,7 @@ GUIcontrols
  <param name="e"></param>
  <remarks></remarks>
 </member>
-<member name="M:mSXdevtools.GUIcontrols.InitLauncher.NewButton_Click(System.Object,System.EventArgs)">
+<member name="M:mSXdevtools.GUI.Controls.InitLauncher.NewButton_Click(System.Object,System.EventArgs)">
  <summary>
  Evento de pulsación sobre el botón de Nuevo Proyecto
  </summary>
@@ -63,7 +300,7 @@ GUIcontrols
  <param name="e"></param>
  <remarks></remarks>
 </member>
-<member name="M:mSXdevtools.GUIcontrols.InitLauncher.LoadButton_Click(System.Object,System.EventArgs)">
+<member name="M:mSXdevtools.GUI.Controls.InitLauncher.LoadButton_Click(System.Object,System.EventArgs)">
  <summary>
  Evento de pulsación sobre el botón para la carga de un proyecto
  </summary>
@@ -71,63 +308,55 @@ GUIcontrols
  <param name="e"></param>
  <remarks></remarks>
 </member>
-<member name="T:mSXdevtools.GUIcontrols.ProjectFileItem">
+<member name="M:mSXdevtools.GUI.Controls.SpritesetControl.UpdateSprite(mSXdevtools.DataStructures.SpriteMSX)">
  <summary>
- Clase con la información basica de un fichero de proyecto.
- Para el control de la lista de proyectos recientes.
+ Actualiza un sprite ya existente
+ </summary>
+ <param name="aSprite"></param>
+ <remarks></remarks>
+</member>
+<member name="M:mSXdevtools.GUI.Controls.SpritesetControl.RefreshPalette">
+ <summary>
+ Actualiza las imagenes de los sprites, con los colores de una nueva paleta.
  </summary>
  <remarks></remarks>
 </member>
-<member name="P:mSXdevtools.GUIcontrols.ProjectFileItem.Name">
+<member name="M:mSXdevtools.GUI.Controls.TilesetControl.SelectSecondTile(System.Int32)">
  <summary>
- Nombre del proyecto.
+ Selección de un segundo tile desde el boton alterno del ratón
+ para uso como tile de borrado (BG)
  </summary>
- <value></value>
- <returns></returns>
+ <param name="id"></param>
  <remarks></remarks>
 </member>
-<member name="P:mSXdevtools.GUIcontrols.ProjectFileItem.Path">
+<member name="M:mSXdevtools.GUI.Controls.WizardStep.#ctor(System.Int32,mSXdevtools.GUI.Controls.WizardStep.STEP_TYPE,System.String,System.String)">
  <summary>
- Ruta absoluta del fichero del proyecto.
+ for Text, Path, folder
  </summary>
- <value></value>
- <returns></returns>
+ <param name="_Type"></param>
+ <param name="_Title"></param>
+ <param name="_textValue"></param>
  <remarks></remarks>
 </member>
-<member name="M:mSXdevtools.GUIcontrols.ProjectFileItem.clone">
+<member name="M:mSXdevtools.GUI.Controls.WizardStep.#ctor(System.Int32,mSXdevtools.GUI.Controls.WizardStep.STEP_TYPE,System.String,System.Collections.SortedList,System.Int32)">
  <summary>
- Proporciona una nueva instancia del objeto.
+ for Lists
  </summary>
- <returns></returns>
+ <param name="_Type"></param>
+ <param name="_Title"></param>
+ <param name="_itemsList"></param>
+ <param name="_selected"></param>
  <remarks></remarks>
 </member>
-<member name="T:mSXdevtools.GUIcontrols.RecentProjectsList">
+<member name="M:mSXdevtools.GUI.Controls.WizardStep.#ctor(System.Int32,mSXdevtools.GUI.Controls.WizardStep.STEP_TYPE,System.String,System.Collections.SortedList,System.Boolean)">
  <summary>
- Clase para controlar la lista de proyectos recientes
+ for checkbox list
  </summary>
- <remarks></remarks>
-</member>
-<member name="M:mSXdevtools.GUIcontrols.RecentProjectsList.AddOrdered(System.String)">
- <summary>
- Añade un item al final de la lista.
- </summary>
- <param name="path"></param>
- <remarks></remarks>
-</member>
-<member name="M:mSXdevtools.GUIcontrols.RecentProjectsList.Add(System.String)">
- <summary>
- Añade un item al principio de la lista a partir de la ruta absoluta. 
- Utiliza el nombre de fichero con su extensión, como nombre del item.
- </summary>
- <param name="path"></param>
- <remarks></remarks>
-</member>
-<member name="M:mSXdevtools.GUIcontrols.RecentProjectsList.Add(System.String,System.String)">
- <summary>
- Añade un item al principio de la lista.
- </summary>
- <param name="name"></param>
- <param name="path"></param>
+ <param name="_position"></param>
+ <param name="_Type"></param>
+ <param name="_Title"></param>
+ <param name="_itemsList"></param>
+ <param name="_defChecked"></param>
  <remarks></remarks>
 </member>
 </members>

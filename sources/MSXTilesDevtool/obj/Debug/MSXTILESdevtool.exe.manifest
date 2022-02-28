@@ -4,7 +4,7 @@
   <description asmv2:iconFile="MSXTILESdevtool.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="MSXTILESdevtool" version="0.9.1.0" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="MSXTILESdevtool" version="1.0.1.0" language="neutral" processorArchitecture="msil" />
     <commandLine file="MSXTILESdevtool.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -33,58 +33,106 @@
   <dependency>
     <dependentOS>
       <osVersionInfo>
-        <os majorVersion="4" minorVersion="10" buildNumber="0" servicePackMajor="0" />
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
       </osVersionInfo>
     </dependentOS>
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
-      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="2.0.50727.0" />
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GUIcontrols.dll" size="56832">
-      <assemblyIdentity name="GUIcontrols" version="1.1.1.0" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DataCompressEncoders.dll" size="14848">
+      <assemblyIdentity name="DataCompressEncoders" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>4psjLNfYCSumE/MYDExyc5stN6g=</dsig:DigestValue>
+        <dsig:DigestValue>WsIPznDJXrj73sx+wOLs2ysR/fM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MSXLibrary.dll" size="75776">
-      <assemblyIdentity name="MSXLibrary" version="1.2.4.0" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DataStructures.dll" size="97792">
+      <assemblyIdentity name="DataStructures" version="0.9.13.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>w2SFEd6+hUasIcRG6pVRb/qDvl8=</dsig:DigestValue>
+        <dsig:DigestValue>Pe3KcOnG4RMohG//WxxMYo4JU8s=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MSXTILESdevtool.exe" size="221184">
-      <assemblyIdentity name="MSXTILESdevtool" version="0.9.1.0" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FileDataTypes.dll" size="45056">
+      <assemblyIdentity name="FileDataTypes" version="0.9.4.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>VkkeCx3kT10Dj+GMGj4C2fwgkXA=</dsig:DigestValue>
+        <dsig:DigestValue>1Ro6aU+vM5taB0kyou79hFBeNYc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="MSXTILESdevtool.exe.config" size="1185">
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GUIcontrols.dll" size="617472">
+      <assemblyIdentity name="GUIcontrols" version="1.4.3.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>29ujBF44fQGC/AFJpxqSXIw31vM=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MSXTILESdevtool.exe" size="431104">
+      <assemblyIdentity name="MSXTILESdevtool" version="1.0.1.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>dQxRxzWv6Y7gEGUjubhnJm2bN1A=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TMS9918A.dll" size="83968">
+      <assemblyIdentity name="TMS9918A" version="1.0.7.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>u9W6RnQ+ExLP7l1A+xtYr8pKSmM=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="V9938PaletteEditor.dll" size="117760">
+      <assemblyIdentity name="V9938PaletteEditor" version="0.9.4.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>wSFwTkExlDczy/qEllO1pPvJzhU=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="MSXTILESdevtool.exe.config" size="1261">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>hvd5KBPdlqkKRQGRqWqn6yCYZQY=</dsig:DigestValue>
+      <dsig:DigestValue>8uBIUxmBkLQ/IngzEBI4IcR9cQ8=</dsig:DigestValue>
     </hash>
   </file>
   <file name="MSXTILESdevtool.ico" size="6736">

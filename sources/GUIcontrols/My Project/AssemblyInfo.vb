@@ -8,17 +8,17 @@ Imports System.Runtime.InteropServices
 
 ' Revisar los valores de los atributos del ensamblado
 
-<Assembly: AssemblyTitle("GUIcontrols")> 
-<Assembly: AssemblyDescription("")> 
-<Assembly: AssemblyCompany("303bcn")> 
-<Assembly: AssemblyProduct("GUIcontrols")> 
-<Assembly: AssemblyCopyright("Copyleft 303bcn 2014")> 
-<Assembly: AssemblyTrademark("")> 
+<Assembly: AssemblyTitle("GUIcontrols")>
+<Assembly: AssemblyDescription("Specific GUI controls for mSXdevtools applications")>
+<Assembly: AssemblyCompany("MSX Community")>
+<Assembly: AssemblyProduct("mSXdevtools GUI Controls")>
+<Assembly: AssemblyCopyright("MSX Library")>
+<Assembly: AssemblyTrademark("Copyright 2021 MSX Community")>
 
 <Assembly: ComVisible(False)>
 
 'El siguiente GUID sirve como identificador de typelib si este proyecto se expone a COM
-<Assembly: Guid("302e4ddf-64ed-4c8b-b526-d0e43e7f8f4a")> 
+<Assembly: Guid("302e4ddf-64ed-4c8b-b526-d0e43e7f8f4a")>
 
 ' La información de versión de un ensamblado consta de los cuatro valores siguientes:
 '
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' mediante el asterisco ('*'), como se muestra a continuación:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.1.1.0")> 
-<Assembly: AssemblyFileVersion("1.1.1.0")> 
+<Assembly: AssemblyVersion("1.4.3.0")>
+<Assembly: AssemblyFileVersion("1.4.3.0")>

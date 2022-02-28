@@ -22,32 +22,33 @@ Partial Class InitLauncher
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(InitLauncher))
-        Me.RecentProjectsList = New System.Windows.Forms.ListView
-        Me.ColumnHeader1 = New System.Windows.Forms.ColumnHeader
+        Me.RecentProjectsList = New System.Windows.Forms.ListView()
+        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.PrjImageList = New System.Windows.Forms.ImageList(Me.components)
-        Me.Label1 = New System.Windows.Forms.Label
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.ToolTippi = New System.Windows.Forms.ToolTip(Me.components)
-        Me.LoadButton = New System.Windows.Forms.Button
-        Me.NewButton = New System.Windows.Forms.Button
-        Me.Panel1 = New System.Windows.Forms.Panel
+        Me.NewButton = New System.Windows.Forms.Button()
+        Me.LoadButton = New System.Windows.Forms.Button()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'RecentProjectsList
         '
         Me.RecentProjectsList.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.RecentProjectsList.BackColor = System.Drawing.Color.WhiteSmoke
         Me.RecentProjectsList.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1})
         Me.RecentProjectsList.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.RecentProjectsList.ForeColor = System.Drawing.Color.Black
         Me.RecentProjectsList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None
-        Me.RecentProjectsList.Location = New System.Drawing.Point(15, 222)
+        Me.RecentProjectsList.HideSelection = False
+        Me.RecentProjectsList.Location = New System.Drawing.Point(15, 169)
         Me.RecentProjectsList.MultiSelect = False
         Me.RecentProjectsList.Name = "RecentProjectsList"
-        Me.RecentProjectsList.Size = New System.Drawing.Size(340, 123)
+        Me.RecentProjectsList.Size = New System.Drawing.Size(340, 134)
         Me.RecentProjectsList.SmallImageList = Me.PrjImageList
         Me.RecentProjectsList.TabIndex = 2
         Me.RecentProjectsList.UseCompatibleStateImageBehavior = False
@@ -67,7 +68,7 @@ Partial Class InitLauncher
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Verdana", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(12, 201)
+        Me.Label1.Location = New System.Drawing.Point(12, 148)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(155, 18)
         Me.Label1.TabIndex = 3
@@ -77,27 +78,32 @@ Partial Class InitLauncher
         '
         Me.ToolTippi.IsBalloon = True
         '
-        'LoadButton
-        '
-        Me.LoadButton.BackColor = System.Drawing.Color.Gainsboro
-        Me.LoadButton.Image = MSXdevTools.GUIcontrols.My.Resources.Resources.load_project
-        Me.LoadButton.Location = New System.Drawing.Point(195, 14)
-        Me.LoadButton.Name = "LoadButton"
-        Me.LoadButton.Size = New System.Drawing.Size(160, 160)
-        Me.LoadButton.TabIndex = 1
-        Me.ToolTippi.SetToolTip(Me.LoadButton, "Load Project")
-        Me.LoadButton.UseVisualStyleBackColor = False
-        '
         'NewButton
         '
-        Me.NewButton.BackColor = System.Drawing.Color.Gainsboro
-        Me.NewButton.Image = MSXdevTools.GUIcontrols.My.Resources.Resources.NEW_project128
-        Me.NewButton.Location = New System.Drawing.Point(15, 14)
+        Me.NewButton.BackColor = System.Drawing.Color.LightGray
+        Me.NewButton.ForeColor = System.Drawing.Color.Black
+        Me.NewButton.Image = Global.mSXdevtools.GUI.Controls.My.Resources.Resources.New_64
+        Me.NewButton.Location = New System.Drawing.Point(15, 4)
         Me.NewButton.Name = "NewButton"
-        Me.NewButton.Size = New System.Drawing.Size(160, 160)
+        Me.NewButton.Size = New System.Drawing.Size(128, 128)
         Me.NewButton.TabIndex = 0
+        Me.NewButton.Text = "New"
+        Me.NewButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.ToolTippi.SetToolTip(Me.NewButton, "New Project")
         Me.NewButton.UseVisualStyleBackColor = False
+        '
+        'LoadButton
+        '
+        Me.LoadButton.BackColor = System.Drawing.Color.LightGray
+        Me.LoadButton.Image = Global.mSXdevtools.GUI.Controls.My.Resources.Resources.Load_64
+        Me.LoadButton.Location = New System.Drawing.Point(227, 4)
+        Me.LoadButton.Name = "LoadButton"
+        Me.LoadButton.Size = New System.Drawing.Size(128, 128)
+        Me.LoadButton.TabIndex = 1
+        Me.LoadButton.Text = "Load"
+        Me.LoadButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.ToolTippi.SetToolTip(Me.LoadButton, "Load Project")
+        Me.LoadButton.UseVisualStyleBackColor = False
         '
         'Panel1
         '
@@ -107,19 +113,19 @@ Partial Class InitLauncher
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Controls.Add(Me.LoadButton)
         Me.Panel1.Controls.Add(Me.RecentProjectsList)
-        Me.Panel1.Location = New System.Drawing.Point(56, 3)
+        Me.Panel1.Location = New System.Drawing.Point(56, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(372, 358)
+        Me.Panel1.Size = New System.Drawing.Size(372, 316)
         Me.Panel1.TabIndex = 4
         '
         'InitLauncher
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.LightGray
+        Me.BackColor = System.Drawing.Color.Gainsboro
         Me.Controls.Add(Me.Panel1)
         Me.Name = "InitLauncher"
-        Me.Size = New System.Drawing.Size(482, 364)
+        Me.Size = New System.Drawing.Size(482, 316)
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.ResumeLayout(False)

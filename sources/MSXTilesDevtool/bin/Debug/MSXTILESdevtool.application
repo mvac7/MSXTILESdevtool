@@ -3,15 +3,18 @@
   <assemblyIdentity name="MSXTILESdevtool.application" version="0.9.3.0" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <description asmv2:publisher="MSXTILESdevtool" asmv2:product="MSXTILESdevtool" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <deployment install="true" mapFileExtensions="true" />
+  <compatibleFrameworks xmlns="urn:schemas-microsoft-com:clickonce.v2">
+    <framework targetVersion="4.0" profile="Full" supportedRuntime="4.0.30319" />
+  </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="MSXTILESdevtool.exe.manifest" size="5252">
+    <dependentAssembly dependencyType="install" codebase="MSXTILESdevtool.exe.manifest" size="7783">
       <assemblyIdentity name="MSXTILESdevtool.exe" version="0.9.3.0" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>SYkHTdYr+BC28ElnuOlDbPdtnJc=</dsig:DigestValue>
+        <dsig:DigestValue>gpuqwTym86Vyj0uxY6bHBwVCVMs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

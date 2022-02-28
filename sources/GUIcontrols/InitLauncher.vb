@@ -11,13 +11,27 @@ Public Class InitLauncher
 
 
 
-    Public Sub New(ByVal aList As RecentProjectsList)
-        Dim aProjectItem As ProjectFileItem
+    Public Sub New()
 
         ' Llamada necesaria para el Diseñador de Windows Forms.
         InitializeComponent()
 
-        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
+        '' Agregue cualquier inicialización después de la llamada a InitializeComponent().
+        ''If Not aList Is Nothing Then
+        '' añade los items a la lista de proyectos recientes
+        'For i As Integer = 0 To aList.Count - 1
+        '    aProjectItem = aList.GetFileItem(i)
+        '    AddObject(aProjectItem.Name, aProjectItem.Path)
+        'Next
+        ''End If
+
+    End Sub
+
+
+
+    Public Sub SetData(ByVal aList As LastProjectsList)
+        Dim aProjectItem As ProjectFileItem
+
         'If Not aList Is Nothing Then
         ' añade los items a la lista de proyectos recientes
         For i As Integer = 0 To aList.Count - 1
@@ -27,6 +41,7 @@ Public Class InitLauncher
         'End If
 
     End Sub
+
 
 
     ''' <summary>
@@ -46,6 +61,7 @@ Public Class InitLauncher
     End Sub
 
 
+
     ''' <summary>
     ''' Evento de doble-clic sobre un proyecto reciente
     ''' </summary>
@@ -63,6 +79,8 @@ Public Class InitLauncher
 
     End Sub
 
+
+
     ''' <summary>
     ''' Evento de pulsación sobre el botón de Nuevo Proyecto
     ''' </summary>
@@ -74,6 +92,7 @@ Public Class InitLauncher
     End Sub
 
 
+
     ''' <summary>
     ''' Evento de pulsación sobre el botón para la carga de un proyecto
     ''' </summary>
@@ -83,5 +102,7 @@ Public Class InitLauncher
     Private Sub LoadButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LoadButton.Click
         RaiseEvent SetLoad()
     End Sub
+
+
 
 End Class

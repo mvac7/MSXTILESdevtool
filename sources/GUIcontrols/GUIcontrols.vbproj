@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="Current" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -7,20 +7,19 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{474AA9B2-6128-4D72-9D16-19C3075F353D}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>mSXdevtools.GUIcontrols</RootNamespace>
+    <RootNamespace>mSXdevtools.GUI.Controls</RootNamespace>
     <AssemblyName>GUIcontrols</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
-    <TargetFrameworkVersion>v3.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <OptionExplicit>On</OptionExplicit>
     <OptionCompare>Binary</OptionCompare>
     <OptionStrict>Off</OptionStrict>
     <OptionInfer>On</OptionInfer>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
     <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,14 +39,27 @@
     <DocumentationFile>GUIcontrols.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'New Release|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\New Release\</OutputPath>
+    <DocumentationFile>GUIcontrols.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
+    <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
+    <Import Include="mSXdevtools.DataStructures" />
+    <Import Include="mSXdevtools.FileDataTypes" />
+    <Import Include="mSXdevtools.GUI.Controls" />
     <Import Include="System" />
     <Import Include="System.Collections" />
     <Import Include="System.Collections.Generic" />
@@ -56,17 +68,98 @@
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutWin.Designer.vb">
+      <DependentUpon>AboutWin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AboutWin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangeColorForm.Designer.vb">
+      <DependentUpon>ChangeColorForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeColorForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ColorButton.Designer.vb">
+      <DependentUpon>ColorButton.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ColorButton.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ColorSelector.Designer.vb">
+      <DependentUpon>ColorSelector.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ColorSelector.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataTypeInputControl.Designer.vb">
+      <DependentUpon>DataTypeInputControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DataTypeInputControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MessageDialog.Designer.vb">
+      <DependentUpon>MessageDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MessageDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IEditorContainer.vb" />
+    <Compile Include="ConfigWin.Designer.vb">
+      <DependentUpon>ConfigWin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigWin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DoYouWantaNewOneDialog.Designer.vb">
+      <DependentUpon>DoYouWantaNewOneDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DoYouWantaNewOneDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditorWin.Designer.vb">
+      <DependentUpon>EditorWin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="EditorWin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RoundedPanel.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SpritePlaneControl.Designer.vb">
+      <DependentUpon>SpritePlaneControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SpritePlaneControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HelpWin.Designer.vb">
+      <DependentUpon>HelpWin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="HelpWin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListSelectorDialog.Designer.vb">
+      <DependentUpon>ListSelectorDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ListSelectorDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="InitLauncher.Designer.vb">
       <DependentUpon>InitLauncher.vb</DependentUpon>
     </Compile>
     <Compile Include="InitLauncher.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="EntryTextDialog.Designer.vb">
+      <DependentUpon>EntryTextDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="EntryTextDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
-      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -78,18 +171,93 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="ProjectFileItem.vb" />
-    <Compile Include="ProjectPropertiesWin.Designer.vb">
-      <DependentUpon>ProjectPropertiesWin.vb</DependentUpon>
+    <Compile Include="PathEntryControl.Designer.vb">
+      <DependentUpon>PathEntryControl.vb</DependentUpon>
     </Compile>
-    <Compile Include="ProjectPropertiesWin.vb">
+    <Compile Include="PathEntryControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ProgressController.vb" />
+    <Compile Include="ProgressForm.Designer.vb">
+      <DependentUpon>ProgressForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ProgressForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RecentProjectsList.vb" />
+    <Compile Include="ProjectPropertiesDialog.Designer.vb">
+      <DependentUpon>ProjectPropertiesDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectPropertiesDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SpritesetControl.Designer.vb">
+      <DependentUpon>SpritesetControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SpritesetControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TilesetControl.Designer.vb">
+      <DependentUpon>TilesetControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TilesetControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ProjectInfoUserControl.Designer.vb">
+      <DependentUpon>ProjectInfoUserControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectInfoUserControl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WizardDialog.Designer.vb">
+      <DependentUpon>WizardDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WizardDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WizardStep.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AboutWin.resx">
+      <DependentUpon>AboutWin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeColorForm.resx">
+      <DependentUpon>ChangeColorForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ColorButton.resx">
+      <DependentUpon>ColorButton.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ColorSelector.resx">
+      <DependentUpon>ColorSelector.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigWin.resx">
+      <DependentUpon>ConfigWin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataTypeInputControl.resx">
+      <DependentUpon>DataTypeInputControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DoYouWantaNewOneDialog.resx">
+      <DependentUpon>DoYouWantaNewOneDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditorWin.resx">
+      <DependentUpon>EditorWin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MessageDialog.resx">
+      <DependentUpon>MessageDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SpritePlaneControl.resx">
+      <DependentUpon>SpritePlaneControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HelpWin.resx">
+      <DependentUpon>HelpWin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListSelectorDialog.resx">
+      <DependentUpon>ListSelectorDialog.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InitLauncher.resx">
       <DependentUpon>InitLauncher.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EntryTextDialog.resx">
+      <DependentUpon>EntryTextDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -97,8 +265,26 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProjectPropertiesWin.resx">
-      <DependentUpon>ProjectPropertiesWin.vb</DependentUpon>
+    <EmbeddedResource Include="PathEntryControl.resx">
+      <DependentUpon>PathEntryControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgressForm.resx">
+      <DependentUpon>ProgressForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectPropertiesDialog.resx">
+      <DependentUpon>ProjectPropertiesDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SpritesetControl.resx">
+      <DependentUpon>SpritesetControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TilesetControl.resx">
+      <DependentUpon>TilesetControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectInfoUserControl.resx">
+      <DependentUpon>ProjectInfoUserControl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WizardDialog.resx">
+      <DependentUpon>WizardDialog.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -113,14 +299,60 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\NEW_project128.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="app.config" />
-    <None Include="Resources\load_project.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{94E38DFF-614B-4CBD-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\progress_64.GIF" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\progresswin_BG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wizard_arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder2_x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gplv3-127x51.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Load_64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\merge_64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\New_64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\about_24.png" />
+    <Content Include="Resources\config_x24.png" />
+    <Content Include="Resources\help_x24.png" />
+    <Content Include="Resources\ico_dataOutput_24x24.png" />
+    <Content Include="Resources\Load_file_x24.png" />
+    <Content Include="Resources\more_9x24.png" />
+    <Content Include="Resources\new_24.png" />
+    <Content Include="Resources\palette3_x24.png" />
+    <Content Include="Resources\project_properties_24.png" />
+    <Content Include="Resources\save2_x24.png" />
+    <Content Include="Resources\save_as_x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataStructures\DataStructures.vbproj">
+      <Project>{7aeb116c-db10-4498-aa55-5c5d08c4a3c2}</Project>
+      <Name>DataStructures</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FileDataTypes\FileDataTypes.vbproj">
+      <Project>{11e865f5-0de8-49dc-ae99-43bd00d04f2a}</Project>
+      <Name>FileDataTypes</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

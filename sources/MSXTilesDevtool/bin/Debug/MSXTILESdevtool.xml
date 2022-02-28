@@ -22,17 +22,12 @@ MSXTILESdevtool
   búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
 </summary>
 </member>
+<member name="P:MSXTILESdevtool.My.Resources.Resources.Aboud_win_msxTiles">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:MSXTILESdevtool.My.Resources.Resources.about_24">
-<summary>
-  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-</summary>
-</member>
-<member name="P:MSXTILESdevtool.My.Resources.Resources.aboutleftcolumn_128">
-<summary>
-  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-</summary>
-</member>
-<member name="P:MSXTILESdevtool.My.Resources.Resources.aboutwin_BGH">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
@@ -57,7 +52,22 @@ MSXTILESdevtool
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:MSXTILESdevtool.My.Resources.Resources.copy_color_x24">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:MSXTILESdevtool.My.Resources.Resources.dragdrop_48_06Y">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:MSXTILESdevtool.My.Resources.Resources.exchange_color_x24">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:MSXTILESdevtool.My.Resources.Resources.exchange2_x24">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
@@ -72,17 +82,17 @@ MSXTILESdevtool
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
 </member>
-<member name="P:MSXTILESdevtool.My.Resources.Resources.folder">
-<summary>
-  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-</summary>
-</member>
 <member name="P:MSXTILESdevtool.My.Resources.Resources.gplv3_88x31">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
 </member>
 <member name="P:MSXTILESdevtool.My.Resources.Resources.gradient_up_24">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:MSXTILESdevtool.My.Resources.Resources.H_ruler_16p">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
@@ -102,12 +112,12 @@ MSXTILESdevtool
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
 </member>
-<member name="P:MSXTILESdevtool.My.Resources.Resources.MSXTILESdevtool_logo">
+<member name="P:MSXTILESdevtool.My.Resources.Resources.Load_file2_x24">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
 </member>
-<member name="P:MSXTILESdevtool.My.Resources.Resources.palette_24x24">
+<member name="P:MSXTILESdevtool.My.Resources.Resources.new_24">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
@@ -122,12 +132,42 @@ MSXTILESdevtool
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:MSXTILESdevtool.My.Resources.Resources.project_properties_24p">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:MSXTILESdevtool.My.Resources.Resources.reload_24x24_02">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
 </member>
-<member name="P:MSXTILESdevtool.My.Resources.Resources.save">
+<member name="P:MSXTILESdevtool.My.Resources.Resources.save_as3_x24">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:MSXTILESdevtool.My.Resources.Resources.save_bitmap3_x24">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:MSXTILESdevtool.My.Resources.Resources.save3_x24">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:MSXTILESdevtool.My.Resources.Resources.saveNM_x24">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:MSXTILESdevtool.My.Resources.Resources.saveSC_x24">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:MSXTILESdevtool.My.Resources.Resources.select_24">
 <summary>
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
@@ -137,11 +177,20 @@ MSXTILESdevtool
   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
 </summary>
 </member>
-<member name="M:MSXTILESdevtool.MainScreen.SaveConfig">
- <summary>
- 
- </summary>
- <remarks></remarks>
+<member name="P:MSXTILESdevtool.My.Resources.Resources.trashcan01_24p">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:MSXTILESdevtool.My.Resources.Resources.undo_clear">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:MSXTILESdevtool.My.Resources.Resources.V_ruler_16p">
+<summary>
+  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+</summary>
 </member>
 <member name="M:MSXTILESdevtool.MainScreen.LoadData(System.String)">
  <summary>
@@ -234,22 +283,6 @@ MSXTILESdevtool
  </summary>
  <remarks></remarks>
 </member>
-<member name="M:MSXTILESdevtool.MainScreen.SaveBinBut_Click(System.Object,System.EventArgs)">
- <summary>
- Save the screen (tiles) in a binary file with the header to be loaded from MSX-Basic.
- </summary>
- <param name="sender"></param>
- <param name="e"></param>
- <remarks></remarks>
-</member>
-<member name="M:MSXTILESdevtool.MainScreen.LoadNMSXTILESprojectBut_Click(System.Object,System.EventArgs)">
- <summary>
- Carga un proyecto de nMSXtiles
- </summary>
- <param name="sender"></param>
- <param name="e"></param>
- <remarks></remarks>
-</member>
 <member name="M:MSXTILESdevtool.MainScreen.LoadNMSXtilesProject(System.String)">
  <summary>
  Load a nMSXtiles Project
@@ -279,14 +312,6 @@ MSXTILESdevtool
  </summary>
  <param name="avalue"></param>
  <returns></returns>
- <remarks></remarks>
-</member>
-<member name="M:MSXTILESdevtool.MainScreen.ChangeTiles(System.Byte,System.Byte)">
- <summary>
- Cambia todas las tiles con un cierto valor por otro
- </summary>
- <param name="OldNumTile"></param>
- <param name="NewNumTile"></param>
  <remarks></remarks>
 </member>
 <member name="M:MSXTILESdevtool.MainScreen.IniTileTextBox_Validating(System.Object,System.ComponentModel.CancelEventArgs)">
@@ -357,26 +382,18 @@ MSXTILESdevtool
  <param name="sender"></param>
  <remarks></remarks>
 </member>
-<member name="M:MSXTILESdevtool.MainScreen.SetScreenViewer(System.Int32)">
- <summary>
- Displays the selected view: screen or tileset.
- Muestra la vista seleccionada: pantalla o tileset.
- </summary>
- <param name="state"></param>
- <remarks></remarks>
-</member>
-<member name="M:MSXTILESdevtool.MainScreen.Button1_Click(System.Object,System.EventArgs)">
- <summary>
- Show about window.
- </summary>
- <param name="sender"></param>
- <param name="e"></param>
- <remarks></remarks>
-</member>
-<member name="M:MSXTILESdevtool.MainScreen.setProjectInfo">
+<member name="M:MSXTILESdevtool.MainScreen.SetProjectInfo">
  <summary>
  Opens the project information editing window.
  </summary>
+ <remarks></remarks>
+</member>
+<member name="M:MSXTILESdevtool.MainScreen.LoadMSXBasicGraphics(System.String)">
+ <summary>
+ Load a MSX Basic binary file and convert to a tMSgfX project
+ </summary>
+ <param name="filePath"></param>
+ <returns></returns>
  <remarks></remarks>
 </member>
 </members>

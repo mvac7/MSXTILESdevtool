@@ -1,6 +1,6 @@
 ﻿Public Class ChangeColorForm
 
-    Private _msxPalette As MSXpalette
+    Private _msxPalette As iPaletteMSX
 
     Private _OldColor As Byte = 0
     Public ReadOnly Property OldColor() As Byte
@@ -18,7 +18,7 @@
     End Property
 
 
-    Public Sub New(ByVal paletteData As MSXpalette)
+    Public Sub New(ByVal paletteData As iPaletteMSX)
 
         ' Llamada necesaria para el Diseñador de Windows Forms.
         InitializeComponent()
@@ -42,9 +42,9 @@
     Private Sub SetOldColor(ByVal _color As Byte)
 
         _OldColor = _color
-        Me.oldcolorButton.BackColor = _msxPalette.getRGB(_color)
+        Me.oldcolorButton.BackColor = _msxPalette.GetRGBColor(_color)
         Me.oldcolorButton.Text = _color
-        If _msxPalette.getRGB(_color).GetBrightness > 0.5 Then
+        If _msxPalette.GetRGBColor(_color).GetBrightness > 0.5 Then
             Me.oldcolorButton.ForeColor = Color.Black
         Else
             Me.oldcolorButton.ForeColor = Color.White
@@ -55,9 +55,9 @@
 
     Private Sub SetNewColor(ByVal _color As Byte)
         _NewColor = _color
-        Me.newcolorButton.BackColor = _msxPalette.getRGB(_color)
+        Me.newcolorButton.BackColor = _msxPalette.GetRGBColor(_color)
         Me.newcolorButton.Text = _color
-        If _msxPalette.getRGB(_color).GetBrightness > 0.5 Then
+        If _msxPalette.GetRGBColor(_color).GetBrightness > 0.5 Then
             Me.newcolorButton.ForeColor = Color.Black
         Else
             Me.newcolorButton.ForeColor = Color.White
@@ -80,7 +80,7 @@
         result = aColorSelector.ShowWinDialog(Me._msxPalette, System.Windows.Forms.Control.MousePosition) 'Me.MousePosition)
 
         If result = DialogResult.OK Then
-            SetOldColor(aColorSelector.ColorSelected.id)
+            SetOldColor(aColorSelector.ColorSelected)
         End If
     End Sub
 
@@ -90,7 +90,7 @@
         result = aColorSelector.ShowWinDialog(Me._msxPalette, System.Windows.Forms.Control.MousePosition) 'Me.MousePosition)
 
         If result = DialogResult.OK Then
-            SetNewColor(aColorSelector.ColorSelected.id)
+            SetNewColor(aColorSelector.ColorSelected)
         End If
     End Sub
 End Class

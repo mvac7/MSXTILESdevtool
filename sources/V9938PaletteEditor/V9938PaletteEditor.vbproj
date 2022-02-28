@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AB3B9955-824E-4E0C-A2C8-D8612E7E1950}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>mSXdevtools.V9938PaletteEditor</RootNamespace>
+    <AssemblyName>V9938PaletteEditor</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>Off</OptionStrict>
+    <OptionInfer>On</OptionInfer>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>V9938PaletteEditor.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>V9938PaletteEditor.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="mSXdevtools.DataStructures" />
+    <Import Include="mSXdevtools.FileDataTypes" />
+    <Import Include="mSXdevtools.GUI.Controls" />
+    <Import Include="mSXdevtools.V9938PaletteEditor" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ColorWinSelector.Designer.vb">
+      <DependentUpon>ColorWinSelector.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ColorWinSelector.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfigPaletteDialog.Designer.vb">
+      <DependentUpon>ConfigPaletteDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigPaletteDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="OutputDataWin.Designer.vb">
+      <DependentUpon>OutputDataWin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="OutputDataWin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Palette512Dialog.Designer.vb">
+      <DependentUpon>Palette512Dialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Palette512Dialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="paletteEditor.Designer.vb">
+      <DependentUpon>paletteEditor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="paletteEditor.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ColorWinSelector.resx">
+      <DependentUpon>ColorWinSelector.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigPaletteDialog.resx">
+      <DependentUpon>ConfigPaletteDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OutputDataWin.resx">
+      <DependentUpon>OutputDataWin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Palette512Dialog.resx">
+      <DependentUpon>Palette512Dialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="paletteEditor.resx">
+      <DependentUpon>paletteEditor.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\copy_24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exchange_24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flecha8x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\load_24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\source_arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\target_arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\undo_24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Resources\tick_24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dataOutput_24green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\about_24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Aboud_win_paletteSX.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\more_9x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\help_x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\project_properties_24p.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trashcan01R_24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CopyPaste2_24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\config_x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\merge_x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_as3_x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataStructures\DataStructures.vbproj">
+      <Project>{7aeb116c-db10-4498-aa55-5c5d08c4a3c2}</Project>
+      <Name>DataStructures</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FileDataTypes\FileDataTypes.vbproj">
+      <Project>{11e865f5-0de8-49dc-ae99-43bd00d04f2a}</Project>
+      <Name>FileDataTypes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GUIcontrols\GUIcontrols.vbproj">
+      <Project>{474aa9b2-6128-4d72-9d16-19c3075f353d}</Project>
+      <Name>GUIcontrols</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{94E38DFF-614B-4CBD-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

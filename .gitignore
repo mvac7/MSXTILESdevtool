@@ -1,0 +1,7 @@
+**/.vs/*
+**/bin/*
+**/obj/*
+**/old/*
+**/_tmp/*
+**/_test/*
+**_Releases/*
