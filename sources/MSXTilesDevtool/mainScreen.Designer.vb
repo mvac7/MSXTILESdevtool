@@ -86,16 +86,17 @@ Partial Class MainScreen
         Me.OutputText = New System.Windows.Forms.TextBox()
         Me.DataTypeInput = New mSXdevtools.GUI.Controls.DataTypeInputControl()
         Me.SaveButsPanel = New System.Windows.Forms.Panel()
-        Me.HoriTAB1 = New MSXTILESdevtool.HoriTAB()
         Me.GivemeTheCodeButton = New System.Windows.Forms.Button()
         Me.DataDefinitionPanel = New System.Windows.Forms.Panel()
         Me.DataLabel = New System.Windows.Forms.Label()
         Me.RangeLabel = New System.Windows.Forms.Label()
         Me.RangeToLabel = New System.Windows.Forms.Label()
-        Me.SetLabel = New System.Windows.Forms.Label()
+        Me.TilesetLabel = New System.Windows.Forms.Label()
         Me.TilesetComboBox = New System.Windows.Forms.ComboBox()
         Me.SelectAreaGroupBox = New System.Windows.Forms.GroupBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.HoriTAB1 = New MSXTILESdevtool.HoriTAB()
+        Me.RangeGroupBox = New System.Windows.Forms.GroupBox()
         Me.ToolStrip1.SuspendLayout()
         Me.ScreenContainer_Panel.SuspendLayout()
         Me.PaintToolStrip.SuspendLayout()
@@ -106,6 +107,7 @@ Partial Class MainScreen
         Me.DataDefinitionPanel.SuspendLayout()
         Me.SelectAreaGroupBox.SuspendLayout()
         Me.Panel2.SuspendLayout()
+        Me.RangeGroupBox.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label5
@@ -196,7 +198,7 @@ Partial Class MainScreen
         Me.DataComboBox.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DataComboBox.FormattingEnabled = True
         Me.DataComboBox.Items.AddRange(New Object() {"Pattern", "Color"})
-        Me.DataComboBox.Location = New System.Drawing.Point(100, 60)
+        Me.DataComboBox.Location = New System.Drawing.Point(100, 31)
         Me.DataComboBox.Name = "DataComboBox"
         Me.DataComboBox.Size = New System.Drawing.Size(153, 22)
         Me.DataComboBox.TabIndex = 259
@@ -206,7 +208,7 @@ Partial Class MainScreen
         '
         Me.RangeResetButton.BackColor = System.Drawing.Color.Gainsboro
         Me.RangeResetButton.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RangeResetButton.Location = New System.Drawing.Point(218, 30)
+        Me.RangeResetButton.Location = New System.Drawing.Point(192, 21)
         Me.RangeResetButton.Name = "RangeResetButton"
         Me.RangeResetButton.Size = New System.Drawing.Size(36, 24)
         Me.RangeResetButton.TabIndex = 254
@@ -217,7 +219,7 @@ Partial Class MainScreen
         'RangeEndTextBox
         '
         Me.RangeEndTextBox.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RangeEndTextBox.Location = New System.Drawing.Point(183, 31)
+        Me.RangeEndTextBox.Location = New System.Drawing.Point(157, 22)
         Me.RangeEndTextBox.MaxLength = 3
         Me.RangeEndTextBox.Name = "RangeEndTextBox"
         Me.RangeEndTextBox.Size = New System.Drawing.Size(33, 22)
@@ -229,7 +231,7 @@ Partial Class MainScreen
         'RangeStartTextBox
         '
         Me.RangeStartTextBox.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RangeStartTextBox.Location = New System.Drawing.Point(99, 31)
+        Me.RangeStartTextBox.Location = New System.Drawing.Point(79, 22)
         Me.RangeStartTextBox.MaxLength = 3
         Me.RangeStartTextBox.Name = "RangeStartTextBox"
         Me.RangeStartTextBox.Size = New System.Drawing.Size(33, 22)
@@ -791,16 +793,6 @@ Partial Class MainScreen
         Me.SaveButsPanel.Size = New System.Drawing.Size(495, 31)
         Me.SaveButsPanel.TabIndex = 273
         '
-        'HoriTAB1
-        '
-        Me.HoriTAB1.BackColor = System.Drawing.Color.RoyalBlue
-        Me.HoriTAB1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.HoriTAB1.Location = New System.Drawing.Point(0, 32)
-        Me.HoriTAB1.Margin = New System.Windows.Forms.Padding(0)
-        Me.HoriTAB1.Name = "HoriTAB1"
-        Me.HoriTAB1.Size = New System.Drawing.Size(854, 34)
-        Me.HoriTAB1.TabIndex = 272
-        '
         'GivemeTheCodeButton
         '
         Me.GivemeTheCodeButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -817,22 +809,17 @@ Partial Class MainScreen
         '
         Me.DataDefinitionPanel.Controls.Add(Me.DataComboBox)
         Me.DataDefinitionPanel.Controls.Add(Me.DataLabel)
-        Me.DataDefinitionPanel.Controls.Add(Me.RangeResetButton)
-        Me.DataDefinitionPanel.Controls.Add(Me.RangeLabel)
-        Me.DataDefinitionPanel.Controls.Add(Me.RangeEndTextBox)
-        Me.DataDefinitionPanel.Controls.Add(Me.RangeToLabel)
-        Me.DataDefinitionPanel.Controls.Add(Me.SetLabel)
-        Me.DataDefinitionPanel.Controls.Add(Me.RangeStartTextBox)
+        Me.DataDefinitionPanel.Controls.Add(Me.TilesetLabel)
         Me.DataDefinitionPanel.Controls.Add(Me.TilesetComboBox)
-        Me.DataDefinitionPanel.Location = New System.Drawing.Point(584, 94)
+        Me.DataDefinitionPanel.Location = New System.Drawing.Point(573, 94)
         Me.DataDefinitionPanel.Name = "DataDefinitionPanel"
-        Me.DataDefinitionPanel.Size = New System.Drawing.Size(263, 93)
+        Me.DataDefinitionPanel.Size = New System.Drawing.Size(263, 67)
         Me.DataDefinitionPanel.TabIndex = 283
         '
         'DataLabel
         '
         Me.DataLabel.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DataLabel.Location = New System.Drawing.Point(6, 60)
+        Me.DataLabel.Location = New System.Drawing.Point(6, 31)
         Me.DataLabel.Name = "DataLabel"
         Me.DataLabel.Size = New System.Drawing.Size(90, 21)
         Me.DataLabel.TabIndex = 258
@@ -842,32 +829,32 @@ Partial Class MainScreen
         'RangeLabel
         '
         Me.RangeLabel.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RangeLabel.Location = New System.Drawing.Point(5, 30)
+        Me.RangeLabel.Location = New System.Drawing.Point(8, 22)
         Me.RangeLabel.Name = "RangeLabel"
-        Me.RangeLabel.Size = New System.Drawing.Size(90, 21)
+        Me.RangeLabel.Size = New System.Drawing.Size(67, 20)
         Me.RangeLabel.TabIndex = 257
-        Me.RangeLabel.Text = "Tiles range:"
+        Me.RangeLabel.Text = "First:"
         Me.RangeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'RangeToLabel
         '
         Me.RangeToLabel.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RangeToLabel.Location = New System.Drawing.Point(135, 34)
+        Me.RangeToLabel.Location = New System.Drawing.Point(118, 22)
         Me.RangeToLabel.Name = "RangeToLabel"
-        Me.RangeToLabel.Size = New System.Drawing.Size(44, 13)
+        Me.RangeToLabel.Size = New System.Drawing.Size(33, 20)
         Me.RangeToLabel.TabIndex = 253
         Me.RangeToLabel.Text = "to"
         Me.RangeToLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'SetLabel
+        'TilesetLabel
         '
-        Me.SetLabel.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.SetLabel.Location = New System.Drawing.Point(5, 3)
-        Me.SetLabel.Name = "SetLabel"
-        Me.SetLabel.Size = New System.Drawing.Size(90, 21)
-        Me.SetLabel.TabIndex = 256
-        Me.SetLabel.Text = "Tileset:"
-        Me.SetLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.TilesetLabel.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TilesetLabel.Location = New System.Drawing.Point(5, 3)
+        Me.TilesetLabel.Name = "TilesetLabel"
+        Me.TilesetLabel.Size = New System.Drawing.Size(90, 21)
+        Me.TilesetLabel.TabIndex = 256
+        Me.TilesetLabel.Text = "Tileset:"
+        Me.TilesetLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'TilesetComboBox
         '
@@ -875,7 +862,7 @@ Partial Class MainScreen
         Me.TilesetComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.TilesetComboBox.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TilesetComboBox.FormattingEnabled = True
-        Me.TilesetComboBox.Items.AddRange(New Object() {"All Banks", "Bank A", "Bank B", "Bank C"})
+        Me.TilesetComboBox.Items.AddRange(New Object() {"All Banks", "Bank A", "Bank B", "Bank C", "Selected Area"})
         Me.TilesetComboBox.Location = New System.Drawing.Point(99, 3)
         Me.TilesetComboBox.Name = "TilesetComboBox"
         Me.TilesetComboBox.Size = New System.Drawing.Size(154, 22)
@@ -890,9 +877,9 @@ Partial Class MainScreen
         Me.SelectAreaGroupBox.Controls.Add(Me.AreaEndY_TextBox)
         Me.SelectAreaGroupBox.Controls.Add(Me.AreaStartY_TextBox)
         Me.SelectAreaGroupBox.Controls.Add(Me.AreaEndX_TextBox)
-        Me.SelectAreaGroupBox.Location = New System.Drawing.Point(603, 204)
+        Me.SelectAreaGroupBox.Location = New System.Drawing.Point(584, 252)
         Me.SelectAreaGroupBox.Name = "SelectAreaGroupBox"
-        Me.SelectAreaGroupBox.Size = New System.Drawing.Size(191, 81)
+        Me.SelectAreaGroupBox.Size = New System.Drawing.Size(242, 81)
         Me.SelectAreaGroupBox.TabIndex = 285
         Me.SelectAreaGroupBox.TabStop = False
         Me.SelectAreaGroupBox.Text = "Select area"
@@ -908,6 +895,30 @@ Partial Class MainScreen
         Me.Panel2.Size = New System.Drawing.Size(330, 31)
         Me.Panel2.TabIndex = 286
         '
+        'HoriTAB1
+        '
+        Me.HoriTAB1.BackColor = System.Drawing.Color.RoyalBlue
+        Me.HoriTAB1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.HoriTAB1.Location = New System.Drawing.Point(0, 32)
+        Me.HoriTAB1.Margin = New System.Windows.Forms.Padding(0)
+        Me.HoriTAB1.Name = "HoriTAB1"
+        Me.HoriTAB1.Size = New System.Drawing.Size(854, 34)
+        Me.HoriTAB1.TabIndex = 272
+        '
+        'RangeGroupBox
+        '
+        Me.RangeGroupBox.Controls.Add(Me.RangeResetButton)
+        Me.RangeGroupBox.Controls.Add(Me.RangeStartTextBox)
+        Me.RangeGroupBox.Controls.Add(Me.RangeToLabel)
+        Me.RangeGroupBox.Controls.Add(Me.RangeLabel)
+        Me.RangeGroupBox.Controls.Add(Me.RangeEndTextBox)
+        Me.RangeGroupBox.Location = New System.Drawing.Point(584, 176)
+        Me.RangeGroupBox.Name = "RangeGroupBox"
+        Me.RangeGroupBox.Size = New System.Drawing.Size(241, 60)
+        Me.RangeGroupBox.TabIndex = 287
+        Me.RangeGroupBox.TabStop = False
+        Me.RangeGroupBox.Text = "Range"
+        '
         'MainScreen
         '
         Me.AllowDrop = True
@@ -915,6 +926,7 @@ Partial Class MainScreen
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Silver
         Me.ClientSize = New System.Drawing.Size(854, 721)
+        Me.Controls.Add(Me.RangeGroupBox)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.SelectAreaGroupBox)
         Me.Controls.Add(Me.DataDefinitionPanel)
@@ -944,10 +956,11 @@ Partial Class MainScreen
         CType(Me.H_Rules_PictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SaveButsPanel.ResumeLayout(False)
         Me.DataDefinitionPanel.ResumeLayout(False)
-        Me.DataDefinitionPanel.PerformLayout()
         Me.SelectAreaGroupBox.ResumeLayout(False)
         Me.SelectAreaGroupBox.PerformLayout()
         Me.Panel2.ResumeLayout(False)
+        Me.RangeGroupBox.ResumeLayout(False)
+        Me.RangeGroupBox.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1020,9 +1033,10 @@ Partial Class MainScreen
     Friend WithEvents RangeLabel As Label
     Friend WithEvents RangeEndTextBox As TextBox
     Friend WithEvents RangeToLabel As Label
-    Friend WithEvents SetLabel As Label
+    Friend WithEvents TilesetLabel As Label
     Friend WithEvents RangeStartTextBox As TextBox
     Friend WithEvents TilesetComboBox As ComboBox
     Friend WithEvents SelectAreaGroupBox As GroupBox
     Friend WithEvents Panel2 As Panel
+    Friend WithEvents RangeGroupBox As GroupBox
 End Class

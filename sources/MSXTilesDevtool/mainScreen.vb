@@ -182,7 +182,7 @@ Public Class MainScreen
 
         SetTitle(Me.Info.Name)
 
-        SetGUImode(0)
+        ShowGUImode(0)
 
     End Sub
 
@@ -3204,12 +3204,13 @@ Public Class MainScreen
 
     Private Sub HoriTAB1_TabChanged(index As HoriTAB.TAB_NAME) Handles HoriTAB1.TabChanged
 
-        SetGUImode(index)
+        ShowGUImode(index)
 
     End Sub
 
 
-    Private Sub SetGUImode(index As HoriTAB.TAB_NAME)
+
+    Private Sub ShowGUImode(index As HoriTAB.TAB_NAME)
 
         Dim OptimizeButton_enabled As Boolean = False
         Dim TilesOrderButton_enabled As Boolean = False
@@ -3223,6 +3224,8 @@ Public Class MainScreen
         Dim AreaPanel_Visible As Boolean = False
         Dim DataDefinitionPanel_Visible As Boolean = False
 
+        Dim range_visible As Boolean = False
+
         Dim spriteModes As Boolean = False
 
         AreaStartX_TextBox.Text = "0"
@@ -3233,6 +3236,9 @@ Public Class MainScreen
         Bloq_Label.Text = "Tile"
         Bloq_Label.Visible = True
         BloqValue_Label.Visible = True
+
+
+        TMS9918Aviewer.ControlType = TMS9918A.CONTROL_TYPE.VIEWER
 
         Select Case index
             Case HoriTAB.TAB_NAME.SCREEN
@@ -3258,12 +3264,14 @@ Public Class MainScreen
                 'AreaEndX_TextBox.Text = "255"
                 'AreaEndY_TextBox.Text = "191"
                 OptimizeButton_enabled = True
-                AreaPanel_Visible = True
+                AreaPanel_Visible = False
                 DataDefinitionPanel_Visible = True
                 'TileRangeStart_TextBox.Text = "0"
                 'TileRangeEnd_TextBox.Text = "255"
                 SwitchButton.ToolTipText = "Switch Colors"
                 SwapButton.ToolTipText = "Swap Colors"
+
+                range_visible = True
 
                 DataInput_enabled = True
 
@@ -3276,6 +3284,8 @@ Public Class MainScreen
                 DataDefinitionPanel_Visible = True
 
                 spriteModes = True
+
+                range_visible = True
 
                 'DataInput_enabled = True
                 Bloq_Label.Text = "Sprite"
@@ -3293,9 +3303,16 @@ Public Class MainScreen
 
         End Select
 
+        RangeGroupBox.Visible = range_visible
+
+
         SelectAreaGroupBox.Visible = AreaPanel_Visible
         'TileRangePanel.Visible = TileRangePanel_Visible
         DataDefinitionPanel.Visible = DataDefinitionPanel_Visible
+
+        TilesetComboBox.SelectedIndex = 0
+        TilesetComboBox.Visible = (index = HoriTAB.TAB_NAME.TILESET)
+        TilesetLabel.Visible = TilesetComboBox.Visible
 
         DataLabel.Visible = DataInput_enabled
         DataComboBox.Visible = DataInput_enabled
@@ -3503,9 +3520,12 @@ Public Class MainScreen
     End Sub
 
     Private Sub SelectAreaButton_Click(sender As Object, e As EventArgs) Handles SelectAreaButton.Click
-        If TMS9918Aviewer.ViewMode = TMS9918A.VIEW_MODE.MAP Or TMS9918Aviewer.ViewMode = TMS9918A.VIEW_MODE.TILESET Then
+        If TMS9918Aviewer.ViewMode = TMS9918A.VIEW_MODE.MAP Then
             TMS9918Aviewer.ControlType = TMS9918A.CONTROL_TYPE.SELECTER
+        ElseIf TMS9918Aviewer.ViewMode = TMS9918A.VIEW_MODE.TILESET Then
+            TilesetComboBox.SelectedIndex = 4
         End If
+
     End Sub
 
     Private Sub EditPaleteButton_Click(sender As Object, e As EventArgs) Handles EditPaleteButton.Click
@@ -3626,9 +3646,9 @@ Public Class MainScreen
         Dim area_endX As Integer = CInt(AreaEndX_TextBox.Text)
         Dim area_endY As Integer = CInt(AreaEndY_TextBox.Text)
 
-        Dim fullScreen As Integer = ((area_endY + 1) - area_startY) * ((area_endX + 1) - area_startX)
+        'Dim fullScreen As Integer = ((area_endY + 1) - area_startY) * ((area_endX + 1) - area_startX)
 
-        If fullScreen < (32 * 24) Then
+        If TilesetComboBox.SelectedIndex = 4 Then
             ' area
 
             If DataComboBox.SelectedIndex = 0 Then
@@ -4249,6 +4269,24 @@ Public Class MainScreen
             AreaEndX_TextBox.Text = CStr(end_X)
             AreaEndY_TextBox.Text = CStr(end_Y)
 
+        End If
+
+    End Sub
+
+
+
+    Private Sub TilesetComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TilesetComboBox.SelectedIndexChanged
+
+        If HoriTAB1.SelectTab = HoriTAB.TAB_NAME.TILESET Then
+            If TilesetComboBox.SelectedIndex = 4 Then
+                TMS9918Aviewer.ControlType = TMS9918A.CONTROL_TYPE.SELECTER
+                SelectAreaGroupBox.Visible = True
+                RangeGroupBox.Visible = False
+            Else
+                TMS9918Aviewer.ControlType = TMS9918A.CONTROL_TYPE.VIEWER
+                SelectAreaGroupBox.Visible = False
+                RangeGroupBox.Visible = True
+            End If
         End If
 
     End Sub
