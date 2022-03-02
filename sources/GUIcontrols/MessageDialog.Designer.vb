@@ -36,9 +36,10 @@ Partial Class MessageDialog
         '
         Me.OK_Button.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.OK_Button.BackColor = System.Drawing.Color.PaleGreen
-        Me.OK_Button.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.OK_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.OK_Button.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.OK_Button.ForeColor = System.Drawing.Color.Black
-        Me.OK_Button.Location = New System.Drawing.Point(194, 140)
+        Me.OK_Button.Location = New System.Drawing.Point(221, 140)
         Me.OK_Button.Margin = New System.Windows.Forms.Padding(4)
         Me.OK_Button.Name = "OK_Button"
         Me.OK_Button.Size = New System.Drawing.Size(110, 36)
@@ -51,12 +52,13 @@ Partial Class MessageDialog
         Me.Cancel_Button.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Cancel_Button.BackColor = System.Drawing.Color.LightCoral
         Me.Cancel_Button.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.Cancel_Button.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Cancel_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Cancel_Button.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Cancel_Button.ForeColor = System.Drawing.Color.Black
-        Me.Cancel_Button.Location = New System.Drawing.Point(308, 146)
+        Me.Cancel_Button.Location = New System.Drawing.Point(337, 146)
         Me.Cancel_Button.Margin = New System.Windows.Forms.Padding(4)
         Me.Cancel_Button.Name = "Cancel_Button"
-        Me.Cancel_Button.Size = New System.Drawing.Size(70, 30)
+        Me.Cancel_Button.Size = New System.Drawing.Size(80, 30)
         Me.Cancel_Button.TabIndex = 4
         Me.Cancel_Button.Text = "Cancel"
         Me.Cancel_Button.UseVisualStyleBackColor = False
@@ -73,10 +75,11 @@ Partial Class MessageDialog
         '
         'MessageLabel
         '
+        Me.MessageLabel.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MessageLabel.ForeColor = System.Drawing.Color.Black
-        Me.MessageLabel.Location = New System.Drawing.Point(90, 22)
+        Me.MessageLabel.Location = New System.Drawing.Point(92, 16)
         Me.MessageLabel.Name = "MessageLabel"
-        Me.MessageLabel.Size = New System.Drawing.Size(282, 64)
+        Me.MessageLabel.Size = New System.Drawing.Size(320, 110)
         Me.MessageLabel.TabIndex = 6
         Me.MessageLabel.Text = "Message"
         Me.MessageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -85,9 +88,9 @@ Partial Class MessageDialog
         '
         Me.ico64ImageList.ImageStream = CType(resources.GetObject("ico64ImageList.ImageStream"), System.Windows.Forms.ImageListStreamer)
         Me.ico64ImageList.TransparentColor = System.Drawing.Color.Transparent
-        Me.ico64ImageList.Images.SetKeyName(0, "ico64_Alert.png")
-        Me.ico64ImageList.Images.SetKeyName(1, "ico64_About.png")
-        Me.ico64ImageList.Images.SetKeyName(2, "ico64_Help.png")
+        Me.ico64ImageList.Images.SetKeyName(0, "ico64_Alert_pixel2.png")
+        Me.ico64ImageList.Images.SetKeyName(1, "ico64_About_pixel2.png")
+        Me.ico64ImageList.Images.SetKeyName(2, "ico64_Help_pixel2.png")
         '
         'MessageDialog
         '
@@ -95,7 +98,7 @@ Partial Class MessageDialog
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.Color.Gainsboro
         Me.CancelButton = Me.Cancel_Button
-        Me.ClientSize = New System.Drawing.Size(384, 181)
+        Me.ClientSize = New System.Drawing.Size(424, 181)
         Me.ControlBox = False
         Me.Controls.Add(Me.MessageLabel)
         Me.Controls.Add(Me.ico64PictureBox)

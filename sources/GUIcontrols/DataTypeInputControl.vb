@@ -52,7 +52,11 @@
     ''' <remarks></remarks>
     Public ReadOnly Property SizeLine As Integer
         Get
-            Return CInt(Me.SizeLineComboBox.SelectedItem)
+            If IsNumeric(Me.SizeLineComboBox.SelectedItem) Then
+                Return CInt(Me.SizeLineComboBox.SelectedItem)
+            Else
+                Return -1 'line length
+            End If
         End Get
     End Property
 

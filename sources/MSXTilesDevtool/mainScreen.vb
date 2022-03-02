@@ -51,6 +51,8 @@ Public Class MainScreen
     Private aMSXDataFormat As DataFormat
     'Private genData As New DataFormat
 
+    Private MessageWin As MessageDialog
+
     Private Progress As ProgressController
 
     Private PaletteDialog As Palette512Dialog
@@ -100,6 +102,8 @@ Public Class MainScreen
 
         Me.aMSXDataFormat = New DataFormat
 
+        Me.MessageWin = New MessageDialog()
+
     End Sub
 
 
@@ -112,8 +116,8 @@ Public Class MainScreen
 
         Beep()
 
-        result = MessageBox.Show(Me, "Are you sure you want to close " + My.Application.Info.Title + "?", "Closing Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-        'result = MsgBox("Are you sure you want to close spriteSX?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Alert")
+        'result = MessageBox.Show(Me, "Are you sure you want to close " + My.Application.Info.Title + "?", "Closing Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        result = MessageWin.ShowDialog(Me, "Closing Application!", "Are you sure you want to close " + My.Application.Info.Title + "?", MessageDialog.DIALOG_TYPE.YES_NO) '+ vbCrLf
 
         If result = Windows.Forms.DialogResult.No Then
             e.Cancel = True 'cancela la salida de la aplicacion
@@ -179,10 +183,11 @@ Public Class MainScreen
 
         Info.Clear()
         Info.Name = default_TITLE
+        Me.ProjectNameTextBox.Text = Me.Info.Name
 
         SetTitle(Me.Info.Name)
 
-        ShowGUImode(0)
+        ShowGUImode(HoriTAB.TAB_NAME.SCREEN)
 
     End Sub
 
@@ -513,7 +518,7 @@ Public Class MainScreen
 
                 '
                 aDataNode = aXmlDoc.SelectSingleNode("msxdevtools/maps/map[@id='0']") 'selecciona el que tiene id=0
-                If Not aDataNode Is Nothing Then
+        If Not aDataNode Is Nothing Then
                     aNode = aDataNode.SelectSingleNode("@name")
                     If aNode Is Nothing Then
                         Me.MapName = Me.Info.Name
@@ -2666,23 +2671,16 @@ Public Class MainScreen
     ''' <remarks></remarks>
     Private Sub SetProjectInfo()
 
-        'Dim ProjectProperties As New ProjectPropertiesWin
+        Dim ProjectProperties As New ProjectPropertiesDialog(Me.AppConfig, Me.Info) '_projectPath
 
-        'ProjectProperties.ProjectName = Me.ProjectName
-        'ProjectProperties.ProjectVersion = Me.ProjectVersion
-        'ProjectProperties.ProjectGroup = Me.ProjectGroup
-        'ProjectProperties.ProjectAuthor = Me.ProjectAuthor
-        'ProjectProperties.ProjectDescription = Me.ProjectDescription
-        'ProjectProperties.ProjectStartDate = Me.ProjectStartDate
-        'ProjectProperties.ProjectLastUpdate = Me.ProjectLastUpdate
+        If ProjectProperties.ShowDialog = DialogResult.OK Then
 
-        'If ProjectProperties.ShowDialog = Windows.Forms.DialogResult.OK Then
-        '    Me.ProjectName = ProjectProperties.ProjectName
-        '    Me.ProjectVersion = ProjectProperties.ProjectVersion
-        '    Me.ProjectGroup = ProjectProperties.ProjectGroup
-        '    Me.ProjectAuthor = ProjectProperties.ProjectAuthor
-        '    Me.ProjectDescription = ProjectProperties.ProjectDescription
-        'End If
+            Me.Info = ProjectProperties.GetProjectInfo()
+            Me.ProjectNameTextBox.Text = Me.Info.Name
+
+            'genData()
+
+        End If
 
     End Sub
 
@@ -3081,7 +3079,7 @@ Public Class MainScreen
         Dim DataInput_enabled As Boolean = False
 
         Dim AreaPanel_Visible As Boolean = False
-        Dim DataDefinitionPanel_Visible As Boolean = False
+        Dim OutputDataGroupBox_Visible As Boolean = False
 
         Dim range_visible As Boolean = False
 
@@ -3109,28 +3107,36 @@ Public Class MainScreen
 
             Case HoriTAB.TAB_NAME.MAP
                 Me.TMS9918Aviewer.SetView(TMS9918A.VIEW_MODE.MAP)
+
+                Me.TilesetComboBox.Items.Clear()
+                Me.TilesetComboBox.Items.AddRange(New Object() {"Map", "Selected Area"})
+
                 TilesOrderButton_enabled = True
                 FillMapButton_enabled = True
                 'AreaEndX_TextBox.Text = "31"
                 'AreaEndY_TextBox.Text = "23"
-                AreaPanel_Visible = True
+                'AreaPanel_Visible = True
+
+                OutputDataGroupBox_Visible = True
 
                 SwitchButton.ToolTipText = "Switch Tiles"
                 SwapButton.ToolTipText = "Swap Tiles"
 
             Case HoriTAB.TAB_NAME.TILESET
                 Me.TMS9918Aviewer.SetView(TMS9918A.VIEW_MODE.TILESET)
+
+                Me.TilesetComboBox.Items.Clear()
+                Me.TilesetComboBox.Items.AddRange(New Object() {"All Banks", "Bank A", "Bank B", "Bank C", "Selected Area"})
+
                 'AreaEndX_TextBox.Text = "255"
                 'AreaEndY_TextBox.Text = "191"
                 OptimizeButton_enabled = True
-                AreaPanel_Visible = False
-                DataDefinitionPanel_Visible = True
+
+                OutputDataGroupBox_Visible = True
                 'TileRangeStart_TextBox.Text = "0"
                 'TileRangeEnd_TextBox.Text = "255"
                 SwitchButton.ToolTipText = "Switch Colors"
                 SwapButton.ToolTipText = "Swap Colors"
-
-                range_visible = True
 
                 DataInput_enabled = True
 
@@ -3140,7 +3146,7 @@ Public Class MainScreen
                 SwapButton_enabled = False
                 SwitchButton_enabled = False
 
-                DataDefinitionPanel_Visible = True
+                'DataDefinitionPanel_Visible = False
 
                 spriteModes = True
 
@@ -3162,16 +3168,22 @@ Public Class MainScreen
 
         End Select
 
-        RangeGroupBox.Visible = range_visible
+
+        AreaPanel_Visible = False
+
 
 
         SelectAreaGroupBox.Visible = AreaPanel_Visible
         'TileRangePanel.Visible = TileRangePanel_Visible
-        DataDefinitionPanel.Visible = DataDefinitionPanel_Visible
+        OutputDataGroupBox.Visible = OutputDataGroupBox_Visible
 
         TilesetComboBox.SelectedIndex = 0
-        TilesetComboBox.Visible = (index = HoriTAB.TAB_NAME.TILESET)
-        TilesetLabel.Visible = TilesetComboBox.Visible
+        'TilesetComboBox.Visible = (index = HoriTAB.TAB_NAME.TILESET)
+        'TilesetLabel.Visible = TilesetComboBox.Visible
+        RangeGroupBox.Visible = range_visible
+
+        DataLabel.Visible = (index = HoriTAB.TAB_NAME.TILESET)
+        DataComboBox.Visible = DataLabel.Visible
 
         DataLabel.Visible = DataInput_enabled
         DataComboBox.Visible = DataInput_enabled
@@ -3380,7 +3392,7 @@ Public Class MainScreen
 
     Private Sub SelectAreaButton_Click(sender As Object, e As EventArgs) Handles SelectAreaButton.Click
         If TMS9918Aviewer.ViewMode = TMS9918A.VIEW_MODE.MAP Then
-            TMS9918Aviewer.ControlType = TMS9918A.CONTROL_TYPE.SELECTER
+            TilesetComboBox.SelectedIndex = 1
         ElseIf TMS9918Aviewer.ViewMode = TMS9918A.VIEW_MODE.TILESET Then
             TilesetComboBox.SelectedIndex = 4
         End If
@@ -3478,16 +3490,33 @@ Public Class MainScreen
         Dim data As Byte()
         Dim newData As Byte()
 
-        data = Me.TMS9918Aviewer.GetBlock(iVDP.TableBase.GRPNAM, iVDP.TableBaseSize.GRPNAM)
+        Dim area_startX As Integer = CInt(AreaStartX_TextBox.Text)
+        Dim area_startY As Integer = CInt(AreaStartY_TextBox.Text)
 
-        newData = GetCompressData(data)
-        _outputText = GetFormatData(Me.Info.Name_without_Spaces + "_MAP", newData, "Map data", data.Length)
+        Dim area_endX As Integer = CInt(AreaEndX_TextBox.Text)
+        Dim area_endY As Integer = CInt(AreaEndY_TextBox.Text)
+
+        Dim fullScreen As Integer = ((area_endY + 1) - area_startY) * ((area_endX + 1) - area_startX)
 
         Me.outputCompressData.Clear()
-        Me.outputCompressData.AddRange(newData)
-        Me.outputCompressData_Type = DATA_TYPE.MAP
-        Me.outputCompressData_CompressType = Me.DataTypeInput.Compress
-        Me.outputCompressData_suffix = DataType_Suffix(Me.outputCompressData_Type) + Compress_Suffix(Me.DataTypeInput.Compress)
+
+        If fullScreen = (32 * 24) Then
+
+            data = Me.TMS9918Aviewer.GetBlock(iVDP.TableBase.GRPNAM, iVDP.TableBaseSize.GRPNAM)
+
+            newData = GetCompressData(data)
+            _outputText = GetFormatData(Me.Info.Name_without_Spaces + "_MAP", newData, "Map data", data.Length)
+
+            Me.outputCompressData.AddRange(newData)
+            Me.outputCompressData_Type = DATA_TYPE.MAP
+            Me.outputCompressData_CompressType = Me.DataTypeInput.Compress
+            Me.outputCompressData_suffix = DataType_Suffix(Me.outputCompressData_Type) + Compress_Suffix(Me.DataTypeInput.Compress)
+
+        Else
+
+            _outputText = GetMapAreaData(area_startX, area_startY, area_endX, area_endY)
+
+        End If
 
         Return _outputText
 
@@ -3540,37 +3569,91 @@ Public Class MainScreen
         Dim comment1 As String
         Dim label_suffix As String
 
+        Dim lineNumber As String
+
         Dim data As Byte()
         Dim newData As Byte()
 
         Dim VRAMaddr As Integer
         Dim VRAMtable As Integer
 
-        Dim bloqsize As Integer = ((area_endX - area_startX) + 1) * 8
+        Dim line_length As Integer = (area_endX - area_startX) + 1
+
+        Dim bloqsize As Integer = line_length * 8
 
         If datatype = TILESET_TYPE.PATTERN Then
             VRAMtable = iVDP.TableBase.GRPCGP
-            comment1 += " Pattern data"
+            comment1 = " Pattern Area data"
             label_suffix = "_PAT"
         Else
             VRAMtable = iVDP.TableBase.GRPCOL
-            comment1 = " Color data"
+            comment1 = " Color Area data"
             label_suffix = "_COL"
         End If
 
+        comment1 += " - Length:" + CStr(line_length)
+
         For line As Integer = area_startY To area_endY
+
+            lineNumber = CStr(line).PadLeft(2, "0"c)
 
             VRAMaddr = line * 256 + (area_startX * 8)
 
             data = Me.TMS9918Aviewer.GetBlock(VRAMtable + VRAMaddr, bloqsize)
 
             newData = GetCompressData(data)
-            _outputText += GetFormatData(Me.Info.Name_without_Spaces + label_suffix + CStr(line).PadLeft(2, "0"c), newData, "Line " + CStr(line).PadLeft(2, "0"c) + comment1, data.Length)
+            _outputText += GetFormatData(Me.Info.Name_without_Spaces + label_suffix + lineNumber, newData, "Line " + lineNumber + comment1, data.Length)
         Next
+
+        Me.outputCompressData.Clear()
 
         Return _outputText
 
     End Function
+
+
+
+    Private Function GetMapAreaData(area_startX As Integer, area_startY As Integer, area_endX As Integer, area_endY As Integer) As String
+
+        Dim _outputText As String = ""
+
+        Dim comment1 As String
+        Dim label_suffix As String
+
+        Dim lineNumber As String
+
+        Dim data As Byte()
+        Dim newData As Byte()
+
+        Dim VRAMaddr As Integer
+
+        Dim line_length As Integer = (area_endX - area_startX) + 1
+
+        'Dim bloqsize As Integer = line_length
+
+        comment1 = " Map Area data"
+        label_suffix = "_MAP"
+
+        'comment1 += " - Length:" + CStr(line_length)
+
+        For line As Integer = area_startY To area_endY
+
+            lineNumber = CStr(line).PadLeft(2, "0"c)
+
+            VRAMaddr = (line * 32) + area_startX
+
+            data = Me.TMS9918Aviewer.GetBlock(iVDP.TableBase.GRPNAM + VRAMaddr, line_length)
+
+            newData = GetCompressData(data)
+            _outputText += GetFormatData(Me.Info.Name_without_Spaces + label_suffix + lineNumber, newData, "Line " + lineNumber + comment1, data.Length)
+        Next
+
+        'Me.outputCompressData.Clear()
+
+        Return _outputText
+
+    End Function
+
 
 
 
@@ -3916,7 +3999,11 @@ Public Class MainScreen
     End Sub
 
     Private Sub SaveBinaryButton_Click(sender As Object, e As EventArgs) Handles SaveBinaryButton.Click
-        SaveBinaryDialog()
+        If Me.outputCompressData.Count > 0 Then
+            SaveBinaryDialog()
+        Else
+            MessageWin.ShowDialog(Me, "Alert!", "I have no data to save.", MessageDialog.DIALOG_TYPE.ALERT) '+ vbCrLf
+        End If
     End Sub
 
     Private Sub SaveSCProjectButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SaveSCProjectButton.Click
@@ -4144,11 +4231,44 @@ Public Class MainScreen
             Else
                 TMS9918Aviewer.ControlType = TMS9918A.CONTROL_TYPE.VIEWER
                 SelectAreaGroupBox.Visible = False
-                RangeGroupBox.Visible = True
+
+                If TilesetComboBox.SelectedIndex = 0 Then
+                    RangeGroupBox.Visible = False
+                Else
+                    RangeGroupBox.Visible = True
+                End If
+
             End If
+
+        ElseIf HoriTAB1.SelectTab = HoriTAB.TAB_NAME.MAP Then
+
+            If TilesetComboBox.SelectedIndex = 1 Then
+                TMS9918Aviewer.ControlType = TMS9918A.CONTROL_TYPE.SELECTER
+                SelectAreaGroupBox.Visible = True
+            Else
+                TMS9918Aviewer.ControlType = TMS9918A.CONTROL_TYPE.VIEWER
+                SelectAreaGroupBox.Visible = False
+            End If
+
         End If
 
     End Sub
 
+
+    Private Sub NewProjectButton_Click(sender As Object, e As EventArgs) Handles NewProjectButton.Click
+
+        Dim result As DialogResult
+
+        Beep()
+        result = messageWin.ShowDialog(Me, "New Project", "This option will erase all data." + vbCrLf + "Do you want to continue?", MessageDialog.DIALOG_TYPE.YES_NO) '+ vbCrLf
+
+
+        If messageWin.ShowDialog(Me) = DialogResult.Yes Then
+            'DisableEventHandlers()
+            NewProject()
+            'EnableEventHandlers()
+            'ShowProjectData()
+        End If
+    End Sub
 
 End Class

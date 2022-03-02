@@ -33,11 +33,19 @@ Public Class MessageDialog
         Me.Text = tittle
         Me.MessageLabel.Text = aMessage
         Me._type = msgType
+
     End Sub
 
 
 
     Private Sub MessageDialog_Load(sender As Object, e As EventArgs) Handles Me.Load
+
+        'TMS9918A Color Palette
+        'http://bifi.msxnet.org/msxnet/tech/tms9918a.txt
+        Me.BackColor = System.Drawing.Color.FromArgb(204, 204, 204) '14 Gray
+        Me.OK_Button.BackColor = System.Drawing.Color.FromArgb(94, 220, 120) '3 Light green
+        Me.Cancel_Button.BackColor = System.Drawing.Color.FromArgb(255, 121, 120) '9 Light red
+
         Select Case Me._type
             Case DIALOG_TYPE.ABOUT
                 Me.ico64PictureBox.Image = Me.ico64ImageList.Images.Item(1)
@@ -57,7 +65,7 @@ Public Class MessageDialog
         End Select
 
         If Me._type < 3 Then
-            Me.OK_Button.Location = New Point(268, Me.OK_Button.Location.Y)
+            Me.OK_Button.Location = New Point(Me.Width - Me.OK_Button.Width - 16, Me.OK_Button.Location.Y)
         Else
             Me.Cancel_Button.Visible = True
         End If
@@ -72,6 +80,8 @@ Public Class MessageDialog
         Me.Text = tittle
         Me.MessageLabel.Text = aMessage
         Me._type = msgType
+
+        Me.Select()
 
         Return Me.ShowDialog(owner)
 
