@@ -151,6 +151,9 @@ Public Class MainScreen
         TilesetComboBox.SelectedIndex = 0
         DataComboBox.SelectedIndex = 0
 
+        AddHandler RangeStartTextBox.Validating, AddressOf RangeStartTextBox_Validating
+        AddHandler RangeEndTextBox.Validating, AddressOf RangeEndTextBox_Validating
+
     End Sub
 
 
@@ -209,193 +212,6 @@ Public Class MainScreen
         Return stream.ToArray()
     End Function
 
-
-
-    'Public Function LoadConfig() As Boolean
-    '    Try
-
-    '        Dim aXmlDoc As New XmlDocument
-
-    '        Dim aNode As XmlNode
-    '        'Dim aNodeList As XmlNodeList
-    '        'Dim aValue As String
-    '        'Dim tmpList As New SortedList
-    '        'Dim itemIndex As Integer
-
-    '        Dim ConfigFileAdress As String = System.AppDomain.CurrentDomain.BaseDirectory + Me.ConfigFileName
-
-
-    '        If System.IO.File.Exists(ConfigFileAdress) Then
-
-    '            aXmlDoc.Load(ConfigFileAdress)
-
-    '            '
-    '            aNode = aXmlDoc.SelectSingleNode("config/Path_Project")
-    '            If Not aNode Is Nothing Then
-    '                '    Me.Path_Project = System.AppDomain.CurrentDomain.BaseDirectory
-    '                'ElseIf aNode.InnerText = "" Then
-    '                '    Me.Path_Project = System.AppDomain.CurrentDomain.BaseDirectory
-    '                'Else
-    '                Me.Path_Project = aNode.InnerText
-    '            End If
-
-    '            aNode = aXmlDoc.SelectSingleNode("config/Path_SC2")
-    '            If Not aNode Is Nothing Then
-    '                Me.Path_SC2 = aNode.InnerText
-    '            End If
-
-    '            aNode = aXmlDoc.SelectSingleNode("config/Path_Bitmap")
-    '            If Not aNode Is Nothing Then
-    '                Me.Path_Bitmap = aNode.InnerText
-    '            End If
-
-    '            aNode = aXmlDoc.SelectSingleNode("config/Path_nMSXtilesProject")
-    '            If Not aNode Is Nothing Then
-    '                Me.Path_nMSXtilesProject = aNode.InnerText
-    '            End If
-
-    '            aNode = aXmlDoc.SelectSingleNode("config/Path_Palettes")
-    '            If Not aNode Is Nothing Then
-    '                'Me.Path_Palettes = aNode.InnerText
-    '                'PaletteDialog.PaletteDefaultPath = aNode.InnerText
-    '            End If
-
-    '            ''PaletteDefaultPath
-    '            'aNode = aXmlDoc.SelectSingleNode("config/PaletteDefaultPath")
-    '            ''aValue = aNode.InnerText
-    '            'If aNode Is Nothing Then
-    '            '    Me.paletteDialog.PaletteDefaultPath = System.AppDomain.CurrentDomain.BaseDirectory
-    '            'ElseIf aNode.InnerText = "" Then
-    '            '    Me.paletteDialog.PaletteDefaultPath = System.AppDomain.CurrentDomain.BaseDirectory
-    '            'Else
-    '            '    Me.paletteDialog.PaletteDefaultPath = aNode.InnerText
-    '            'End If
-
-
-    '            'aNodeList = aXmlDoc.SelectNodes("config/RecentProjects/item")
-    '            'If aNodeList Is Nothing Then
-    '            '    Me.RecentProjects = New RecentProjectsList
-
-    '            'Else
-
-    '            '    For Each aNodeItem As XmlNode In aNodeList
-
-    '            '        itemIndex = CInt(aNodeItem.Attributes.GetNamedItem("index").InnerText)
-    '            '        aValue = aNodeItem.Attributes.GetNamedItem("path").InnerText
-
-    '            '        tmpList.Add(itemIndex, aValue)
-
-    '            '    Next
-
-    '            '    Me.RecentProjects = New RecentProjectsList(tmpList)
-
-    '            'End If
-
-
-    '            Return True
-
-    '        Else
-    '            'Me.ProjectDefaultPath = System.AppDomain.CurrentDomain.BaseDirectory
-    '            'Me.paletteDialog.PaletteDefaultPath = System.AppDomain.CurrentDomain.BaseDirectory
-    '            'Me.RecentProjects = New RecentProjectsList
-    '            Return False
-    '        End If
-
-
-
-    '    Catch ex As Exception
-    '        ' error! No se ha podido cargar la configuración
-    '        Return False
-    '    End Try
-
-    'End Function
-
-
-
-    'Private Sub SaveConfig()
-    '    Try
-
-    '        Dim aXmlDoc As New XmlDocument
-    '        Dim ConfigFileAdress As String = System.AppDomain.CurrentDomain.BaseDirectory + Me.ConfigFileName
-    '        Dim rootElement As XmlElement
-    '        Dim txtElement As XmlText
-    '        Dim anElement As XmlElement
-    '        Dim anAttribute As XmlAttribute
-    '        'Dim anItemElement As XmlElement
-
-    '        ' crea el nodo root
-    '        rootElement = aXmlDoc.CreateElement("config")
-    '        aXmlDoc.AppendChild(rootElement)
-
-    '        anAttribute = aXmlDoc.CreateAttribute("app")
-    '        anAttribute.Value = My.Application.Info.ProductName
-    '        rootElement.SetAttributeNode(anAttribute)
-
-    '        anAttribute = aXmlDoc.CreateAttribute("version")
-    '        anAttribute.Value = My.Application.Info.Version.ToString
-    '        rootElement.SetAttributeNode(anAttribute)
-
-    '        'debug data
-    '        'anAttribute = aXmlDoc.CreateAttribute("dotnetvers")
-    '        'anAttribute.Value = Environment.Version.ToString()
-    '        'rootElement.SetAttributeNode(anAttribute)
-
-
-    '        anElement = aXmlDoc.CreateElement("Path_Project")
-    '        txtElement = aXmlDoc.CreateTextNode(Me.Path_Project)
-    '        anElement.AppendChild(txtElement)
-    '        rootElement.AppendChild(anElement)
-
-    '        anElement = aXmlDoc.CreateElement("Path_SC2")
-    '        txtElement = aXmlDoc.CreateTextNode(Me.Path_SC2)
-    '        anElement.AppendChild(txtElement)
-    '        rootElement.AppendChild(anElement)
-
-    '        anElement = aXmlDoc.CreateElement("Path_Bitmap")
-    '        txtElement = aXmlDoc.CreateTextNode(Me.Path_Bitmap)
-    '        anElement.AppendChild(txtElement)
-    '        rootElement.AppendChild(anElement)
-
-    '        anElement = aXmlDoc.CreateElement("Path_nMSXtilesProject")
-    '        txtElement = aXmlDoc.CreateTextNode(Me.Path_nMSXtilesProject)
-    '        anElement.AppendChild(txtElement)
-    '        rootElement.AppendChild(anElement)
-
-    '        'anElement = aXmlDoc.CreateElement("Path_Palettes")
-    '        'txtElement = aXmlDoc.CreateTextNode(Me.PaletteDialog.PaletteDefaultPath)
-    '        'anElement.AppendChild(txtElement)
-    '        'rootElement.AppendChild(anElement)
-
-    '        'anElement = aXmlDoc.CreateElement("PaletteDefaultPath")
-    '        'txtElement = aXmlDoc.CreateTextNode(Me.paletteDialog.PaletteDefaultPath)
-    '        'anElement.AppendChild(txtElement)
-    '        'rootElement.AppendChild(anElement)
-
-    '        'anElement = aXmlDoc.CreateElement("RecentProjects")
-    '        'rootElement.AppendChild(anElement)
-    '        'For i As Integer = 0 To RecentProjects.Count - 1
-    '        '    anItemElement = aXmlDoc.CreateElement("item")
-    '        '    anElement.AppendChild(anItemElement)
-
-    '        '    anAttribute = aXmlDoc.CreateAttribute("index")
-    '        '    anAttribute.Value = CStr(i)
-    '        '    anItemElement.SetAttributeNode(anAttribute)
-
-    '        '    anAttribute = aXmlDoc.CreateAttribute("path")
-    '        '    anAttribute.Value = Me.RecentProjects.GetFileItem(i).Path
-    '        '    anItemElement.SetAttributeNode(anAttribute)
-    '        'Next
-
-    '        '
-    '        aXmlDoc.Save(ConfigFileAdress)
-
-
-    '        'Me.StatusBarLabel.Text = ApplicationInfo.GetLiteral("mssge.configsaved", "Settings saved")
-
-    '    Catch ex As Exception
-    '        ' error! No se ha podido guardar la configuración
-    '    End Try
-    'End Sub
 
 
 
@@ -1351,110 +1167,8 @@ Public Class MainScreen
 
 
     ''' <summary>
-    ''' Displays tileset data in C language.
-    ''' Muestra los datos del tileset, en lenguaje
+    ''' --------------------------------------------------------------------------- DEPRECATED 
     ''' </summary>
-    ''' <param name="dataList"></param>
-    ''' <remarks></remarks>
-    Private Sub TileSet_CCodeGen(ByVal dataList As ArrayList)
-
-        'Dim linesize As Integer = 0
-
-        'Me.Tileset_TxtOutput.AppendText("// tileset " + TilesetsName + vbNewLine)
-
-        'linesize = CInt(Me.Tileset_SizeLineComboB.SelectedItem)
-
-        'For Each aDataItem As DataItem In dataList
-        '    Me.Tileset_TxtOutput.AppendText(genData.C_codeGen(aDataItem.data, linesize, Tileset_NumSysComboBox.SelectedIndex, aDataItem.label, aDataItem.comment))
-        '    Me.Tileset_TxtOutput.AppendText(vbNewLine) ' salto de linea
-        'Next
-
-    End Sub
-
-
-    ''' <summary>
-    ''' Displays tileset data in Assembler language.
-    ''' </summary>
-    ''' <param name="dataList"></param>
-    ''' <remarks></remarks>
-    Private Sub TileSet_AsmCodeGen(ByVal dataList As ArrayList)
-
-        'Dim linesize As Integer = 0
-
-        'Me.Tileset_TxtOutput.Clear()
-
-        'Me.Tileset_TxtOutput.AppendText("; tileset " + TilesetsName + vbNewLine)
-
-        'linesize = CInt(Me.Tileset_SizeLineComboB.SelectedItem)
-
-        'For Each aDataItem As DataItem In dataList
-        '    Me.Tileset_TxtOutput.AppendText(genData.Asm_codeGen(aDataItem.data, linesize, Tileset_NumSysComboBox.SelectedIndex, aDataItem.label, aDataItem.comment, "db"))
-
-        '    Me.Tileset_TxtOutput.AppendText(vbNewLine) ' salto de linea
-        'Next
-
-    End Sub
-
-
-    ''' <summary>
-    ''' Displays tileset data in Assembler for SDCC.
-    ''' </summary>
-    ''' <param name="dataList"></param>
-    ''' <remarks></remarks>
-    Private Sub TileSet_AsmSDCCCodeGen(ByVal dataList As ArrayList)
-
-        'Dim linesize As Integer = 0
-
-        'Me.Tileset_TxtOutput.Clear()
-
-        'Me.Tileset_TxtOutput.AppendText("; tileset " + TilesetsName + vbNewLine)
-
-        'linesize = CInt(Me.Tileset_SizeLineComboB.SelectedItem)
-
-        'For Each aDataItem As DataItem In dataList
-        '    Me.Tileset_TxtOutput.AppendText(genData.Asm_codeGen(aDataItem.data, linesize, Tileset_NumSysComboBox.SelectedIndex, aDataItem.label, aDataItem.comment, ".db"))
-
-        '    Me.Tileset_TxtOutput.AppendText(vbNewLine) ' salto de linea
-        'Next
-
-    End Sub
-
-
-    ''' <summary>
-    ''' Displays tileset data in MSX BASIC language
-    ''' </summary>
-    ''' <param name="dataList"></param>
-    ''' <remarks></remarks>
-    ''' , ByVal IniTile As Byte, ByVal EndTile As Byte
-    Private Sub TileSet_BasicCodeGen(ByVal dataList As ArrayList)
-
-        'Dim linesize As Integer = 0
-        'Dim linenum As Integer = BasicConfig.StartingLine
-        'Dim lineinterval As Integer = BasicConfig.Interval
-
-        'Me.Tileset_TxtOutput.AppendText(CStr(linenum) + " REM tileset " + TilesetsName + vbNewLine)
-
-        'linenum += lineinterval * 2
-
-        'linesize = CInt(Me.Tileset_SizeLineComboB.SelectedItem)
-
-        'For Each aDataItem As DataItem In dataList
-        '    Me.Tileset_TxtOutput.AppendText(genData.BasicMSX_codeGen(aDataItem.data, linesize, Tileset_NumSysComboBox.SelectedIndex, BasicConfig.RemoveZeros, linenum, lineinterval, aDataItem.comment))
-        '    Me.Tileset_TxtOutput.AppendText(vbNewLine) ' salto de linea
-        '    linenum = genData.lastLineNumber
-        'Next
-
-    End Sub
-
-
-
-
-    Private Sub GetScrButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        GenerateScreenData()
-    End Sub
-
-
-
     Private Sub GenerateScreenData()
 
         Dim outputSource As String = ""
@@ -1596,35 +1310,6 @@ Public Class MainScreen
     End Sub
 
 
-
-
-
-    Private Function getData(ByVal vramAddress As Short, ByVal IniTile As Byte, ByVal EndTile As Short) As Byte()
-
-        Dim data As Byte()
-        Dim contaTile As Integer = IniTile
-        Dim i As Integer = 0
-        Dim o As Integer = 0
-        Dim datasize As Integer = (EndTile - IniTile + 1) * 8
-        Dim conta As Integer = 0
-        Dim addr As Short = 0
-
-        ReDim data(datasize - 1)
-
-        addr = vramAddress + (IniTile * 8)
-
-        For i = IniTile To EndTile
-            For o = 0 To 7
-                'data(conta) = screen2.VPEEK(addr)
-                addr += 1
-                conta += 1
-            Next
-            'contaTile += 1
-        Next
-
-        Return data
-
-    End Function
 
 
 
@@ -1960,80 +1645,6 @@ Public Class MainScreen
 
 
 
-    ''' <summary>
-    ''' Proporciona un valor en hexadecimal con la forma del lenguaje C
-    ''' </summary>
-    ''' <param name="avalue"></param>
-    ''' <returns></returns>
-    ''' <remarks></remarks>
-    Private Function getHexByte(ByVal avalue As Byte) As String
-        Dim hexvalue As String = "00" + Hex(avalue)
-        Return "0x" + hexvalue.Substring(hexvalue.Length - 2, 2)
-    End Function
-
-
-
-    ''' <summary>
-    ''' Proporciona un valor hexadecimal de 16bits
-    ''' </summary>
-    ''' <param name="avalue"></param>
-    ''' <returns></returns>
-    ''' <remarks></remarks>
-    Private Function getHexShort(ByVal avalue As Short) As String
-        Dim hexvalue As String = "0000" + Hex(avalue)
-        Return hexvalue.Substring(hexvalue.Length - 4, 4)
-    End Function
-
-
-    ''' <summary>
-    ''' Proporciona un valor en hexadecimal con la forma del lenguaje ASM
-    ''' </summary>
-    ''' <param name="avalue"></param>
-    ''' <returns></returns>
-    ''' <remarks></remarks>
-    Private Function getAsmHexByte(ByVal avalue As Byte) As String
-        Dim hexvalue As String = "000" + Hex(avalue)
-        Return hexvalue.Substring(hexvalue.Length - 3, 3) + "h"
-    End Function
-
-
-    'Private Sub LoadSC2But_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LoadSC2But.Click
-
-    '    Me.OpenFileDialog1.DefaultExt = "sc2"
-    '    Me.OpenFileDialog1.Filter = "Screen2 bin file|*.sc2|VRAM bin file|*.bin|All files|*.*"
-
-    '    Me.OpenFileDialog1.FileName = ProjectFileName
-
-    '    If Not Me.Path_SC2 = "" Then
-    '        Me.OpenFileDialog1.InitialDirectory = Me.Path_SC2
-    '    End If
-
-    '    If OpenFileDialog1.ShowDialog() = Windows.Forms.DialogResult.OK Then
-    '        LoadSC2(OpenFileDialog1.FileName)
-    '        Me.Path_SC2 = Path.GetDirectoryName(OpenFileDialog1.FileName)
-    '        Me.ProjectFileName = Path.GetFileNameWithoutExtension(OpenFileDialog1.FileName)
-    '    End If
-
-    'End Sub
-
-
-
-    'Private Sub LoadSC2(ByVal filePath As String)
-    '    Dim aName As String
-    '    If Me.screen2.LoadSC2(filePath) = True Then
-    '        aName = Path.GetFileNameWithoutExtension(filePath)
-    '        Me.MapName = aName
-    '        Me.TilesetsName = aName
-    '        'ShowProjectNameData()
-    '        NewProject(aName)
-    '    Else
-    '        MsgBox("The selected file type is not SC2", MsgBoxStyle.Critical, "Error")
-    '    End If
-    'End Sub
-
-
-
-
 
 
 
@@ -2281,105 +1892,6 @@ Public Class MainScreen
 
 
 
-    ''' <summary>
-    ''' validates the field, the first value range of the tileset 
-    ''' valida el campo del primer valor de rango del tileset
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    ''' <remarks></remarks>
-    Private Sub IniTileTextBox_Validating(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs)
-        Dim value As String = sender.text
-        If IsNumeric(value) Then
-            If value < 0 Or value > 255 Then
-                sender.text = 0
-            End If
-        Else
-            sender.text = 0
-        End If
-    End Sub
-
-
-
-    ''' <summary>
-    ''' validates the field, the last value range of the tileset 
-    ''' valida el campo del ultimo valor de rango del tileset
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    ''' <remarks></remarks>
-    Private Sub EndTileTextBox_Validating(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs)
-        Dim value As String = sender.text
-        If IsNumeric(value) Then
-            If value < 0 Or value > 255 Then
-                sender.text = 255
-            End If
-        Else
-            sender.text = 255
-        End If
-    End Sub
-
-
-
-    Private Sub Tileset_LinenumTextB_Validating(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs)
-        validateLineNum(sender)
-    End Sub
-
-
-
-    Private Sub Tiles_LinenumTextB_Validating(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs)
-        validateLineNum(sender)
-    End Sub
-
-
-
-    ''' <summary>
-    ''' validates the value of the initial line number
-    ''' valida el valor del numero de linea inicial
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <remarks></remarks>
-    Private Sub validateLineNum(ByVal sender As TextBox)
-        Dim value As String = sender.Text
-        If IsNumeric(value) Then
-            If value < 1 Or value > 60000 Then
-                sender.Text = 1
-            End If
-        Else
-            sender.Text = 1
-        End If
-    End Sub
-
-
-
-    Private Sub Tileset_IntervalTextB_Validating(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs)
-        validateInterval(sender)
-    End Sub
-
-
-
-    Private Sub Tiles_IntervalTextB_Validating(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs)
-        validateInterval(sender)
-    End Sub
-
-
-
-    ''' <summary>
-    ''' Valid value range between the lines (for MSX-BASIC).
-    ''' Valida el valor de intervalo entre lineas (para MSX-BASIC).
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <remarks></remarks>
-    Private Sub validateInterval(ByVal sender As TextBox)
-        Dim value As String = sender.Text
-        If IsNumeric(value) Then
-            If value < 1 Or value > 100 Then
-                sender.Text = 10
-            End If
-        Else
-            sender.Text = 10
-        End If
-    End Sub
 
 
     Private Sub startTileX_Validating(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles AreaStartX_TextBox.Validating
@@ -2477,7 +1989,6 @@ Public Class MainScreen
 
     ''' <summary>
     ''' Validates a value of number of tile.
-    ''' Valida un valor de numero de tile.
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <remarks></remarks>
@@ -2510,16 +2021,6 @@ Public Class MainScreen
         End If
         newAboutWin.ShowDialog()
     End Sub
-
-
-
-    Private Sub setRepeated(ByRef RLEtmpData As ArrayList, ByVal value As Byte, ByVal numrep As Byte)
-        RLEtmpData.Add(numrep)
-        RLEtmpData.Add(value)
-    End Sub
-
-
-
 
 
 
@@ -3326,11 +2827,9 @@ Public Class MainScreen
 
 
     Private Sub OptimizeButton_Click(sender As Object, e As EventArgs) Handles OptimizeButton.Click
-        'Me.screen2.Optimize()
-
-        'optimization has occurred successfully
-        MsgBox("Optimization has occurred successfully.", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Optimization")
+        Optimize()
     End Sub
+
 
     Private Sub TilesOrderButton_Click(sender As Object, e As EventArgs) Handles TilesOrderButton.Click
         Dim result As DialogResult
@@ -3413,11 +2912,27 @@ Public Class MainScreen
 
 
     Private Sub GivemeTheCodeButton_Click(sender As Object, e As EventArgs) Handles GivemeTheCodeButton.Click
-        genData()
+        GenerateData()
     End Sub
 
 
-    Private Sub genData()
+
+    Private Sub Optimize()
+        Dim modifiedValues As Integer
+
+        modifiedValues = Me.TMS9918Aviewer.Optimize()
+
+        If modifiedValues > 0 Then
+            MessageWin.ShowDialog(Me, "VRAM Optimization", "Optimization has occurred successfully." + vbCrLf + "Total modified values:" + CStr(modifiedValues), MessageDialog.DIALOG_TYPE.ABOUT) '+ vbCrLf
+        Else
+            MessageWin.ShowDialog(Me, "VRAM Optimization", "Could not optimize." + vbCrLf + "The data is already optimized.", MessageDialog.DIALOG_TYPE.ABOUT) '+ vbCrLf
+        End If
+
+    End Sub
+
+
+
+    Private Sub GenerateData()
 
         Dim _outputText As String = ""
 
@@ -3438,7 +2953,6 @@ Public Class MainScreen
                 _outputText += vbNewLine
 
             Case HoriTAB.TAB_NAME.TILESET
-                ' tileset
                 _outputText += GetTilesetData()
                 _outputText += vbNewLine
 
@@ -3451,7 +2965,6 @@ Public Class MainScreen
                 _outputText += vbNewLine
 
         End Select
-
 
         OutputText.Text = _outputText
 
@@ -3500,7 +3013,7 @@ Public Class MainScreen
 
         Me.outputCompressData.Clear()
 
-        If fullScreen = (32 * 24) Then
+        If TilesetComboBox.SelectedIndex = 0 Or fullScreen = (32 * 24) Then
 
             data = Me.TMS9918Aviewer.GetBlock(iVDP.TableBase.GRPNAM, iVDP.TableBaseSize.GRPNAM)
 
@@ -3521,6 +3034,53 @@ Public Class MainScreen
         Return _outputText
 
     End Function
+
+
+
+    Private Function GetMapAreaData(area_startX As Integer, area_startY As Integer, area_endX As Integer, area_endY As Integer) As String
+
+        Dim _outputText As String = ""
+
+        Dim comments As New ArrayList
+
+        Dim label_suffix As String
+
+        Dim line As Integer = 0
+        Dim lineNumber As String
+
+        Dim data As Byte()
+        Dim newData As Byte()
+
+        Dim VRAMaddr As Integer
+
+        Dim line_length As Integer = (area_endX - area_startX) + 1
+
+        label_suffix = "_MAP"
+
+        comments.Add(" Map Area data - Width:" + CStr(line_length) + " Height:" + CStr((area_endY - area_startY) + 1))
+
+        _outputText = Me.aMSXDataFormat.GetComments(comments, Me.DataTypeInput.CodeLanguage)  ' <<<----------------------  NO TIENE PARA BASIC!!!
+
+        For i As Integer = area_startY To area_endY
+
+            lineNumber = CStr(line).PadLeft(2, "0"c)
+
+            VRAMaddr = (i * 32) + area_startX
+
+            data = Me.TMS9918Aviewer.GetBlock(iVDP.TableBase.GRPNAM + VRAMaddr, line_length)
+
+            newData = GetCompressData(data)
+            _outputText += GetFormatData(Me.Info.Name_without_Spaces + label_suffix + lineNumber, newData, "Line " + lineNumber, data.Length)
+
+            line += 1
+        Next
+
+        'Me.outputCompressData.Clear()
+
+        Return _outputText
+
+    End Function
+
 
 
 
@@ -3566,9 +3126,12 @@ Public Class MainScreen
 
         Dim _outputText As String = ""
 
+        Dim comments As New ArrayList
+
         Dim comment1 As String
         Dim label_suffix As String
 
+        Dim line As Integer = 0
         Dim lineNumber As String
 
         Dim data As Byte()
@@ -3583,26 +3146,30 @@ Public Class MainScreen
 
         If datatype = TILESET_TYPE.PATTERN Then
             VRAMtable = iVDP.TableBase.GRPCGP
-            comment1 = " Pattern Area data"
+            comment1 = "Pattern Area data"
             label_suffix = "_PAT"
         Else
             VRAMtable = iVDP.TableBase.GRPCOL
-            comment1 = " Color Area data"
+            comment1 = "Color Area data"
             label_suffix = "_COL"
         End If
 
-        comment1 += " - Length:" + CStr(line_length)
+        comment1 += " - Width:" + CStr(line_length) + " Height:" + CStr((area_endY - area_startY) + 1)
+        comments.Add(comment1)
+        _outputText = Me.aMSXDataFormat.GetComments(comments, Me.DataTypeInput.CodeLanguage)  ' <<<----------------------  NO TIENE PARA BASIC!!!
 
-        For line As Integer = area_startY To area_endY
+        For i As Integer = area_startY To area_endY
 
             lineNumber = CStr(line).PadLeft(2, "0"c)
 
-            VRAMaddr = line * 256 + (area_startX * 8)
+            VRAMaddr = i * 256 + (area_startX * 8)
 
             data = Me.TMS9918Aviewer.GetBlock(VRAMtable + VRAMaddr, bloqsize)
 
             newData = GetCompressData(data)
-            _outputText += GetFormatData(Me.Info.Name_without_Spaces + label_suffix + lineNumber, newData, "Line " + lineNumber + comment1, data.Length)
+            _outputText += GetFormatData(Me.Info.Name_without_Spaces + label_suffix + lineNumber, newData, "Line " + lineNumber, data.Length)
+
+            line += 1
         Next
 
         Me.outputCompressData.Clear()
@@ -3611,48 +3178,6 @@ Public Class MainScreen
 
     End Function
 
-
-
-    Private Function GetMapAreaData(area_startX As Integer, area_startY As Integer, area_endX As Integer, area_endY As Integer) As String
-
-        Dim _outputText As String = ""
-
-        Dim comment1 As String
-        Dim label_suffix As String
-
-        Dim lineNumber As String
-
-        Dim data As Byte()
-        Dim newData As Byte()
-
-        Dim VRAMaddr As Integer
-
-        Dim line_length As Integer = (area_endX - area_startX) + 1
-
-        'Dim bloqsize As Integer = line_length
-
-        comment1 = " Map Area data"
-        label_suffix = "_MAP"
-
-        'comment1 += " - Length:" + CStr(line_length)
-
-        For line As Integer = area_startY To area_endY
-
-            lineNumber = CStr(line).PadLeft(2, "0"c)
-
-            VRAMaddr = (line * 32) + area_startX
-
-            data = Me.TMS9918Aviewer.GetBlock(iVDP.TableBase.GRPNAM + VRAMaddr, line_length)
-
-            newData = GetCompressData(data)
-            _outputText += GetFormatData(Me.Info.Name_without_Spaces + label_suffix + lineNumber, newData, "Line " + lineNumber + comment1, data.Length)
-        Next
-
-        'Me.outputCompressData.Clear()
-
-        Return _outputText
-
-    End Function
 
 
 
@@ -3671,6 +3196,10 @@ Public Class MainScreen
         Dim VRAMaddr As Integer
         Dim bloqsize As Integer
 
+        Dim start_Tile As Byte = CByte(RangeStartTextBox.Text)
+        Dim end_Tile As Byte = CByte(RangeEndTextBox.Text)
+
+
 
         If datatype = TILESET_TYPE.PATTERN Then
             VRAMaddr = iVDP.TableBase.GRPCGP
@@ -3688,8 +3217,12 @@ Public Class MainScreen
             bloqsize = &H1800
         Else
             ' One Bank
-            VRAMaddr += ((tilesetBANK - 1) * &H800)
-            bloqsize = &H800
+            VRAMaddr += ((tilesetBANK - 1) * &H800) + (start_Tile * 8)
+            bloqsize = (end_Tile - start_Tile + 1) * 8 '&H800
+
+            If (end_Tile - start_Tile) < 255 Then
+                comment1 += " - Range: " + CStr(start_Tile) + " to " + CStr(end_Tile)
+            End If
         End If
 
         data = Me.TMS9918Aviewer.GetBlock(VRAMaddr, bloqsize)
@@ -4270,5 +3803,78 @@ Public Class MainScreen
             'ShowProjectData()
         End If
     End Sub
+
+
+
+
+
+    Private Sub Validate_TileRange()
+        Dim start_value As Integer
+        Dim end_value As Integer
+        Dim tmp_value As Integer
+
+        If IsNumeric(RangeStartTextBox.Text) Then
+            start_value = CInt(RangeStartTextBox.Text)
+            If start_value < 0 Or start_value > 255 Then
+                start_value = 0
+            End If
+        Else
+            start_value = 0
+        End If
+
+        If IsNumeric(RangeEndTextBox.Text) Then
+            end_value = CInt(RangeEndTextBox.Text)
+            If end_value < 0 Or end_value > 255 Then
+                end_value = 255
+            End If
+        Else
+            end_value = 255
+        End If
+
+        If start_value > end_value Then
+            tmp_value = start_value
+            start_value = end_value
+            end_value = tmp_value
+        End If
+
+
+        RemoveHandler RangeStartTextBox.Validating, AddressOf RangeStartTextBox_Validating
+        RemoveHandler RangeEndTextBox.Validating, AddressOf RangeEndTextBox_Validating
+
+        RangeStartTextBox.Text = CStr(start_value)
+        RangeEndTextBox.Text = CStr(end_value)
+
+        AddHandler RangeStartTextBox.Validating, AddressOf RangeStartTextBox_Validating
+        AddHandler RangeEndTextBox.Validating, AddressOf RangeEndTextBox_Validating
+
+    End Sub
+
+    Private Sub RangeStartTextBox_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs)
+        Validate_TileRange()
+    End Sub
+
+    Private Sub RangeEndTextBox_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs)
+        Validate_TileRange()
+    End Sub
+
+    Private Sub HoriTAB1_TabChanged(index As VerttiTAB.TAB_NAME) Handles HoriTAB1.TabChanged
+
+    End Sub
+
+    Private Sub RangeResetButton_Click(sender As Object, e As EventArgs) Handles RangeResetButton.Click
+        Dim start_value As Integer = 0
+        Dim end_value As Integer = 255
+
+        If HoriTAB1.SelectTab = HoriTAB.TAB_NAME.TILESET Then
+            end_value = 255
+        ElseIf HoriTAB1.SelectTab = HoriTAB.TAB_NAME.SPRITESET Then
+            end_value = 63
+        End If
+
+
+        RangeStartTextBox.Text = CStr(start_value)
+        RangeEndTextBox.Text = CStr(end_value)
+    End Sub
+
 
 End Class

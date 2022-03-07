@@ -1641,7 +1641,9 @@ Public Class TMS9918A
     ''' Align the colors of the three banks of tilesets in G2 (screen2) mode to improve the compression ratio of RLE-type compressors. It affects the pattern and color tables.
     ''' </summary>
     ''' <remarks></remarks>
-    Public Sub Optimize()
+    Public Function Optimize() As Integer
+
+        Dim modifiedValues As Integer = 0
 
         Dim patternBase As Short = iVDP.TableBase.GRPCGP  '0    BASE(screen2.NumberOfBase.Pattern_Generator_Base_Address)
         Dim colorBase As Short = iVDP.TableBase.GRPCOL    '8192 BASE(screen2.NumberOfBase.Color_Table_Base_Address)
@@ -1672,23 +1674,32 @@ Public Class TMS9918A
                 'If Not colorInk = colorBG Then
                 colvalue = control_color
                 gfxvalue = Not gfxvalue 'invert the value of the pattern
+                modifiedValues += 1
             Else
 
                 If gfxvalue = 0 Then
                     ' (2) if the pattern is 0 and the background matches one of the control colors
                     If colorBG = control_colorBG Then
+                        If Not colvalue = control_color Then
+                            modifiedValues += 1
+                        End If
                         colvalue = control_color
                     ElseIf colorBG = control_colorInk Then
                         colvalue = control_color
                         gfxvalue = Not gfxvalue
+                        modifiedValues += 1
                     End If
                 ElseIf gfxvalue = 255 Then
                     ' (3) if the pattern is 255 and the ink color matches one of the control colors
                     If colorInk = control_colorInk Then
+                        If Not colvalue = control_color Then
+                            modifiedValues += 1
+                        End If
                         colvalue = control_color
                     ElseIf colorInk = control_colorBG Then
                         colvalue = control_color
                         gfxvalue = Not gfxvalue
+                        modifiedValues += 1
                     End If
                 End If
             End If
@@ -1701,7 +1712,9 @@ Public Class TMS9918A
             control_colorBG = control_color And &HF
         Next
 
-    End Sub
+        Return modifiedValues
+
+    End Function
 
 
 

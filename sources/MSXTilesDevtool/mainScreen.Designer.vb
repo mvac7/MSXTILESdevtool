@@ -95,8 +95,8 @@ Partial Class MainScreen
         Me.SelectAreaGroupBox = New System.Windows.Forms.GroupBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.RangeGroupBox = New System.Windows.Forms.GroupBox()
-        Me.HoriTAB1 = New MSXTILESdevtool.HoriTAB()
         Me.OutputDataGroupBox = New System.Windows.Forms.GroupBox()
+        Me.HoriTAB1 = New MSXTILESdevtool.HoriTAB()
         Me.ToolStrip1.SuspendLayout()
         Me.ScreenContainer_Panel.SuspendLayout()
         Me.PaintToolStrip.SuspendLayout()
@@ -213,7 +213,7 @@ Partial Class MainScreen
         Me.RangeResetButton.Size = New System.Drawing.Size(36, 24)
         Me.RangeResetButton.TabIndex = 254
         Me.RangeResetButton.Text = "All"
-        Me.ToolTip1.SetToolTip(Me.RangeResetButton, "Default values (0-255)")
+        Me.ToolTip1.SetToolTip(Me.RangeResetButton, "Default Range values")
         Me.RangeResetButton.UseVisualStyleBackColor = False
         '
         'RangeEndTextBox
@@ -898,16 +898,6 @@ Partial Class MainScreen
         Me.RangeGroupBox.TabStop = False
         Me.RangeGroupBox.Text = "Range"
         '
-        'HoriTAB1
-        '
-        Me.HoriTAB1.BackColor = System.Drawing.Color.RoyalBlue
-        Me.HoriTAB1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.HoriTAB1.Location = New System.Drawing.Point(0, 32)
-        Me.HoriTAB1.Margin = New System.Windows.Forms.Padding(0)
-        Me.HoriTAB1.Name = "HoriTAB1"
-        Me.HoriTAB1.Size = New System.Drawing.Size(854, 34)
-        Me.HoriTAB1.TabIndex = 272
-        '
         'OutputDataGroupBox
         '
         Me.OutputDataGroupBox.Controls.Add(Me.DataComboBox)
@@ -920,6 +910,16 @@ Partial Class MainScreen
         Me.OutputDataGroupBox.TabIndex = 288
         Me.OutputDataGroupBox.TabStop = False
         Me.OutputDataGroupBox.Text = "Output Data"
+        '
+        'HoriTAB1
+        '
+        Me.HoriTAB1.BackColor = System.Drawing.Color.RoyalBlue
+        Me.HoriTAB1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.HoriTAB1.Location = New System.Drawing.Point(0, 32)
+        Me.HoriTAB1.Margin = New System.Windows.Forms.Padding(0)
+        Me.HoriTAB1.Name = "HoriTAB1"
+        Me.HoriTAB1.Size = New System.Drawing.Size(854, 34)
+        Me.HoriTAB1.TabIndex = 272
         '
         'MainScreen
         '
