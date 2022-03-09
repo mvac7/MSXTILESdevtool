@@ -59,6 +59,13 @@ Public Class MainScreen
 
     Private myBitmapImage As Bitmap
 
+    Private aGraphics As Graphics
+
+    Private tileBitmap As Bitmap
+
+
+    Private _oldTile As Byte = 0
+
 
     Private Enum DATA_TYPE As Integer
         SCREEN
@@ -67,6 +74,7 @@ Public Class MainScreen
         SPRITESET
         OAM
     End Enum
+
 
 
     Private Enum TILESET_TYPE As Integer
@@ -87,7 +95,6 @@ Public Class MainScreen
 
 
 
-
     Public Sub New()
 
         ' Llamada necesaria para el Diseñador de Windows Forms.
@@ -103,6 +110,11 @@ Public Class MainScreen
         Me.aMSXDataFormat = New DataFormat
 
         Me.MessageWin = New MessageDialog()
+
+        tileBitmap = New Bitmap(TileViewerPictureBox.Size.Width, TileViewerPictureBox.Size.Height)
+
+        TileViewerPictureBox.BackgroundImage = tileBitmap
+        aGraphics = Graphics.FromImage(tileBitmap)
 
     End Sub
 
@@ -2591,9 +2603,8 @@ Public Class MainScreen
         AreaEndX_TextBox.Text = "31"
         AreaEndY_TextBox.Text = "23"
 
-        Bloq_Label.Text = "Tile"
-        Bloq_Label.Visible = True
-        BloqValue_Label.Visible = True
+        Bloq_Label.Visible = False
+        BloqValue_Label.Visible = False
 
 
         TMS9918Aviewer.ControlType = TMS9918A.CONTROL_TYPE.VIEWER
@@ -2653,8 +2664,9 @@ Public Class MainScreen
 
                 range_visible = True
 
-                'DataInput_enabled = True
-                Bloq_Label.Text = "Sprite"
+                BloqValue_Label.Visible = True
+                Bloq_Label.Visible = True
+                'Bloq_Label.Text = "Sprite"
 
             Case HoriTAB.TAB_NAME.OAM
                 Me.TMS9918Aviewer.SetView(TMS9918A.VIEW_MODE.SPRITE_LAYERS)
@@ -2664,15 +2676,12 @@ Public Class MainScreen
 
                 spriteModes = True
 
-                Bloq_Label.Visible = False
-                BloqValue_Label.Visible = False
-
         End Select
 
 
         AreaPanel_Visible = False
 
-
+        TilezoomGroupBox.Visible = Not spriteModes
 
         SelectAreaGroupBox.Visible = AreaPanel_Visible
         'TileRangePanel.Visible = TileRangePanel_Visible
@@ -2791,12 +2800,26 @@ Public Class MainScreen
                 Dim bankline As Integer = line - (Fix(line / 8) * 8)
                 nTile = (bankline * 32) + column
 
+                If Not _oldTile = nTile Then
+                    ShowTile((line * 256) + (column * 8))
+                End If
+
+                _oldTile = nTile
+
             Else
                 vaddr = iVDP.TableBase.GRPNAM + (line * 32) + column
                 nTile = TMS9918Aviewer.VPEEK(vaddr)
+
+                If Not _oldTile = nTile Then
+                    ShowTile((Fix(line / 8) * &H800) + (nTile * 8))
+                End If
+
+                _oldTile = nTile
             End If
 
-            BloqValue_Label.Text = CStr(nTile)
+            'BloqValue_Label.Text = CStr(nTile)
+            Tilenumber_TextBox.Text = CStr(nTile)
+            TilesetBank_TextBox.Text = CStr(Fix(line / 8))
 
             vaddr = (nTile * 8) + (Fix(y / 64) * &H800) + (y - (Fix(y / 8) * 8))
             color = TMS9918Aviewer.VPEEK(vaddr + iVDP.TableBase.GRPCOL)
@@ -3788,6 +3811,7 @@ Public Class MainScreen
     End Sub
 
 
+
     Private Sub NewProjectButton_Click(sender As Object, e As EventArgs) Handles NewProjectButton.Click
 
         Dim result As DialogResult
@@ -3803,8 +3827,6 @@ Public Class MainScreen
             'ShowProjectData()
         End If
     End Sub
-
-
 
 
 
@@ -3836,7 +3858,6 @@ Public Class MainScreen
             start_value = end_value
             end_value = tmp_value
         End If
-
 
         RemoveHandler RangeStartTextBox.Validating, AddressOf RangeStartTextBox_Validating
         RemoveHandler RangeEndTextBox.Validating, AddressOf RangeEndTextBox_Validating
@@ -3871,10 +3892,60 @@ Public Class MainScreen
             end_value = 63
         End If
 
-
         RangeStartTextBox.Text = CStr(start_value)
         RangeEndTextBox.Text = CStr(end_value)
+
     End Sub
+
+
+
+    Private Sub ShowTile(VRAMaddr As Short)
+
+        Dim posX As Integer
+        Dim posY As Integer
+
+        Dim linePattern As Byte
+        Dim lineColor As Byte
+
+        Dim aInkColor As Byte '= _color >> 4 
+        Dim aBGColor As Byte '= _color And 15
+
+        Dim aColor As System.Drawing.Color
+
+        aGraphics.Clear(Color.Black)
+
+        For line As Integer = 0 To 7
+
+            posY = (line * 17) + 1
+
+            linePattern = TMS9918Aviewer.VPEEK(VRAMaddr)
+            lineColor = TMS9918Aviewer.VPEEK(iVDP.TableBase.GRPCOL + VRAMaddr)
+
+            VRAMaddr += 1
+
+            aInkColor = lineColor >> 4
+            aBGColor = lineColor And 15
+
+            For column As Integer = 0 To 7
+
+                posX = ((7 - column) * 17) + 1
+
+                If ((linePattern >> column) And 1) = 1 Then 'TempValue = Me.bite_MASKs(x) Then
+                    aColor = TMS9918Aviewer.Palette.GetRGBColor(aInkColor)
+                Else
+                    aColor = TMS9918Aviewer.Palette.GetRGBColor(aBGColor)
+                End If
+
+                aGraphics.FillRectangle(New SolidBrush(aColor), posX, posY, 16, 16)
+
+            Next
+
+        Next
+
+        TileViewerPictureBox.Refresh()
+
+    End Sub
+
 
 
 End Class

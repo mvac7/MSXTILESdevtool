@@ -96,7 +96,13 @@ Partial Class MainScreen
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.RangeGroupBox = New System.Windows.Forms.GroupBox()
         Me.OutputDataGroupBox = New System.Windows.Forms.GroupBox()
+        Me.TileViewerPictureBox = New System.Windows.Forms.PictureBox()
+        Me.TilezoomGroupBox = New System.Windows.Forms.GroupBox()
         Me.HoriTAB1 = New MSXTILESdevtool.HoriTAB()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Tilenumber_TextBox = New System.Windows.Forms.TextBox()
+        Me.TilesetBankLabel = New System.Windows.Forms.Label()
+        Me.TilesetBank_TextBox = New System.Windows.Forms.TextBox()
         Me.ToolStrip1.SuspendLayout()
         Me.ScreenContainer_Panel.SuspendLayout()
         Me.PaintToolStrip.SuspendLayout()
@@ -108,6 +114,8 @@ Partial Class MainScreen
         Me.Panel2.SuspendLayout()
         Me.RangeGroupBox.SuspendLayout()
         Me.OutputDataGroupBox.SuspendLayout()
+        CType(Me.TileViewerPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TilezoomGroupBox.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label5
@@ -711,8 +719,9 @@ Partial Class MainScreen
         Me.Bloq_Label.ForeColor = System.Drawing.Color.Navy
         Me.Bloq_Label.Name = "Bloq_Label"
         Me.Bloq_Label.Size = New System.Drawing.Size(50, 17)
-        Me.Bloq_Label.Text = "Tile:"
+        Me.Bloq_Label.Text = "Sprite:"
         Me.Bloq_Label.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Bloq_Label.Visible = False
         '
         'BloqValue_Label
         '
@@ -725,6 +734,7 @@ Partial Class MainScreen
         Me.BloqValue_Label.Size = New System.Drawing.Size(33, 17)
         Me.BloqValue_Label.Text = "000"
         Me.BloqValue_Label.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.BloqValue_Label.Visible = False
         '
         'H_Rules_PictureBox
         '
@@ -866,7 +876,7 @@ Partial Class MainScreen
         Me.SelectAreaGroupBox.Controls.Add(Me.AreaEndY_TextBox)
         Me.SelectAreaGroupBox.Controls.Add(Me.AreaStartY_TextBox)
         Me.SelectAreaGroupBox.Controls.Add(Me.AreaEndX_TextBox)
-        Me.SelectAreaGroupBox.Location = New System.Drawing.Point(584, 233)
+        Me.SelectAreaGroupBox.Location = New System.Drawing.Point(584, 237)
         Me.SelectAreaGroupBox.Name = "SelectAreaGroupBox"
         Me.SelectAreaGroupBox.Size = New System.Drawing.Size(242, 81)
         Me.SelectAreaGroupBox.TabIndex = 285
@@ -891,7 +901,7 @@ Partial Class MainScreen
         Me.RangeGroupBox.Controls.Add(Me.RangeToLabel)
         Me.RangeGroupBox.Controls.Add(Me.RangeLabel)
         Me.RangeGroupBox.Controls.Add(Me.RangeEndTextBox)
-        Me.RangeGroupBox.Location = New System.Drawing.Point(584, 166)
+        Me.RangeGroupBox.Location = New System.Drawing.Point(584, 168)
         Me.RangeGroupBox.Name = "RangeGroupBox"
         Me.RangeGroupBox.Size = New System.Drawing.Size(241, 60)
         Me.RangeGroupBox.TabIndex = 287
@@ -911,6 +921,29 @@ Partial Class MainScreen
         Me.OutputDataGroupBox.TabStop = False
         Me.OutputDataGroupBox.Text = "Output Data"
         '
+        'TileViewerPictureBox
+        '
+        Me.TileViewerPictureBox.BackColor = System.Drawing.Color.Black
+        Me.TileViewerPictureBox.Location = New System.Drawing.Point(91, 21)
+        Me.TileViewerPictureBox.Name = "TileViewerPictureBox"
+        Me.TileViewerPictureBox.Size = New System.Drawing.Size(137, 137)
+        Me.TileViewerPictureBox.TabIndex = 289
+        Me.TileViewerPictureBox.TabStop = False
+        '
+        'TilezoomGroupBox
+        '
+        Me.TilezoomGroupBox.Controls.Add(Me.TilesetBankLabel)
+        Me.TilezoomGroupBox.Controls.Add(Me.TilesetBank_TextBox)
+        Me.TilezoomGroupBox.Controls.Add(Me.Label1)
+        Me.TilezoomGroupBox.Controls.Add(Me.Tilenumber_TextBox)
+        Me.TilezoomGroupBox.Controls.Add(Me.TileViewerPictureBox)
+        Me.TilezoomGroupBox.Location = New System.Drawing.Point(584, 329)
+        Me.TilezoomGroupBox.Name = "TilezoomGroupBox"
+        Me.TilezoomGroupBox.Size = New System.Drawing.Size(242, 172)
+        Me.TilezoomGroupBox.TabIndex = 290
+        Me.TilezoomGroupBox.TabStop = False
+        Me.TilezoomGroupBox.Text = "Tile zoom"
+        '
         'HoriTAB1
         '
         Me.HoriTAB1.BackColor = System.Drawing.Color.RoyalBlue
@@ -921,6 +954,52 @@ Partial Class MainScreen
         Me.HoriTAB1.Size = New System.Drawing.Size(854, 34)
         Me.HoriTAB1.TabIndex = 272
         '
+        'Label1
+        '
+        Me.Label1.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(20, 23)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(57, 20)
+        Me.Label1.TabIndex = 291
+        Me.Label1.Text = "Tile"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'Tilenumber_TextBox
+        '
+        Me.Tilenumber_TextBox.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Tilenumber_TextBox.Location = New System.Drawing.Point(44, 46)
+        Me.Tilenumber_TextBox.MaxLength = 3
+        Me.Tilenumber_TextBox.Name = "Tilenumber_TextBox"
+        Me.Tilenumber_TextBox.ReadOnly = True
+        Me.Tilenumber_TextBox.Size = New System.Drawing.Size(33, 22)
+        Me.Tilenumber_TextBox.TabIndex = 290
+        Me.Tilenumber_TextBox.Text = "0"
+        Me.Tilenumber_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.ToolTip1.SetToolTip(Me.Tilenumber_TextBox, "End tile number.")
+        '
+        'TilesetBankLabel
+        '
+        Me.TilesetBankLabel.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TilesetBankLabel.Location = New System.Drawing.Point(20, 89)
+        Me.TilesetBankLabel.Name = "TilesetBankLabel"
+        Me.TilesetBankLabel.Size = New System.Drawing.Size(57, 20)
+        Me.TilesetBankLabel.TabIndex = 293
+        Me.TilesetBankLabel.Text = "Bank"
+        Me.TilesetBankLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'TilesetBank_TextBox
+        '
+        Me.TilesetBank_TextBox.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TilesetBank_TextBox.Location = New System.Drawing.Point(44, 112)
+        Me.TilesetBank_TextBox.MaxLength = 3
+        Me.TilesetBank_TextBox.Name = "TilesetBank_TextBox"
+        Me.TilesetBank_TextBox.ReadOnly = True
+        Me.TilesetBank_TextBox.Size = New System.Drawing.Size(33, 22)
+        Me.TilesetBank_TextBox.TabIndex = 292
+        Me.TilesetBank_TextBox.Text = "0"
+        Me.TilesetBank_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.ToolTip1.SetToolTip(Me.TilesetBank_TextBox, "End tile number.")
+        '
         'MainScreen
         '
         Me.AllowDrop = True
@@ -928,6 +1007,7 @@ Partial Class MainScreen
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Silver
         Me.ClientSize = New System.Drawing.Size(854, 721)
+        Me.Controls.Add(Me.TilezoomGroupBox)
         Me.Controls.Add(Me.OutputDataGroupBox)
         Me.Controls.Add(Me.RangeGroupBox)
         Me.Controls.Add(Me.Panel2)
@@ -963,6 +1043,9 @@ Partial Class MainScreen
         Me.RangeGroupBox.ResumeLayout(False)
         Me.RangeGroupBox.PerformLayout()
         Me.OutputDataGroupBox.ResumeLayout(False)
+        CType(Me.TileViewerPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TilezoomGroupBox.ResumeLayout(False)
+        Me.TilezoomGroupBox.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1041,4 +1124,10 @@ Partial Class MainScreen
     Friend WithEvents Panel2 As Panel
     Friend WithEvents RangeGroupBox As GroupBox
     Friend WithEvents OutputDataGroupBox As GroupBox
+    Friend WithEvents TileViewerPictureBox As PictureBox
+    Friend WithEvents TilezoomGroupBox As GroupBox
+    Friend WithEvents TilesetBankLabel As Label
+    Friend WithEvents TilesetBank_TextBox As TextBox
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Tilenumber_TextBox As TextBox
 End Class
