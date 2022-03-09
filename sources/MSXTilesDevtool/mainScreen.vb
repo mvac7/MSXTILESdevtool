@@ -64,7 +64,10 @@ Public Class MainScreen
     Private tileBitmap As Bitmap
 
 
+    Private Range_maximumValue As Byte = 255
+
     Private _oldTile As Byte = 0
+
 
 
     Private Enum DATA_TYPE As Integer
@@ -160,8 +163,8 @@ Public Class MainScreen
         DataTypeInput.AppConfig = Me.AppConfig
         DataTypeInput.InitControl()
 
-        TilesetComboBox.SelectedIndex = 0
-        DataComboBox.SelectedIndex = 0
+        SelectDataComboBox.SelectedIndex = 0
+        TilesetDataComboBox.SelectedIndex = 0
 
         AddHandler RangeStartTextBox.Validating, AddressOf RangeStartTextBox_Validating
         AddHandler RangeEndTextBox.Validating, AddressOf RangeEndTextBox_Validating
@@ -346,7 +349,7 @@ Public Class MainScreen
 
                 '
                 aDataNode = aXmlDoc.SelectSingleNode("msxdevtools/maps/map[@id='0']") 'selecciona el que tiene id=0
-        If Not aDataNode Is Nothing Then
+                If Not aDataNode Is Nothing Then
                     aNode = aDataNode.SelectSingleNode("@name")
                     If aNode Is Nothing Then
                         Me.MapName = Me.Info.Name
@@ -1916,6 +1919,16 @@ Public Class MainScreen
     End Sub
 
 
+    Private Sub startTileY_Validating(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles AreaStartY_TextBox.Validating
+        validateTileY(sender, 0)
+    End Sub
+
+
+    Private Sub endTileY_Validating(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles AreaEndY_TextBox.Validating
+        validateTileY(sender, 23)
+    End Sub
+
+
 
     ''' <summary>
     ''' Validates the value of position x.
@@ -1936,15 +1949,6 @@ Public Class MainScreen
     End Sub
 
 
-    Private Sub startTileY_Validating(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles AreaStartY_TextBox.Validating
-        validateTileY(sender, 0)
-    End Sub
-
-
-    Private Sub endTileY_Validating(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles AreaEndY_TextBox.Validating
-        validateTileY(sender, 23)
-    End Sub
-
 
     ''' <summary>
     ''' Validates the value of position y.
@@ -1964,58 +1968,7 @@ Public Class MainScreen
         End If
     End Sub
 
-    Private Sub TileOldText_Validating(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs)
-        validateTileEntry(sender)
-    End Sub
 
-    Private Sub TileNewText_Validating(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs)
-        validateTileEntry(sender)
-    End Sub
-
-    Private Sub ColorOldText_Validating(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs)
-        validateColorEntry(sender)
-    End Sub
-
-    Private Sub ColorNewText_Validating(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs)
-        validateColorEntry(sender)
-    End Sub
-
-    ''' <summary>
-    ''' Validates a entry color number
-    ''' Valida una entrada de numero de color.
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <remarks></remarks>
-    Private Sub validateColorEntry(ByVal sender As TextBox)
-        Dim value As String = sender.Text
-        If IsNumeric(value) Then
-            If value < 0 Then
-                sender.Text = 0
-            ElseIf value > 15 Then
-                sender.Text = 15
-            End If
-        Else
-            sender.Text = 0
-        End If
-    End Sub
-
-    ''' <summary>
-    ''' Validates a value of number of tile.
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <remarks></remarks>
-    Private Sub validateTileEntry(ByVal sender As TextBox)
-        Dim value As String = sender.Text
-        If IsNumeric(value) Then
-            If value < 0 Then
-                sender.Text = 0
-            ElseIf value > 255 Then
-                sender.Text = 255
-            End If
-        Else
-            sender.Text = 0
-        End If
-    End Sub
 
     ' END validatings <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -2620,14 +2573,13 @@ Public Class MainScreen
             Case HoriTAB.TAB_NAME.MAP
                 Me.TMS9918Aviewer.SetView(TMS9918A.VIEW_MODE.MAP)
 
-                Me.TilesetComboBox.Items.Clear()
-                Me.TilesetComboBox.Items.AddRange(New Object() {"Map", "Selected Area"})
+                Me.SelectDataComboBox.Items.Clear()
+                Me.SelectDataComboBox.Items.AddRange(New Object() {"Map", "Selected Area"})
 
                 TilesOrderButton_enabled = True
                 FillMapButton_enabled = True
-                'AreaEndX_TextBox.Text = "31"
-                'AreaEndY_TextBox.Text = "23"
-                'AreaPanel_Visible = True
+
+                SelectDataLabel.Text = "Data:"
 
                 OutputDataGroupBox_Visible = True
 
@@ -2637,20 +2589,21 @@ Public Class MainScreen
             Case HoriTAB.TAB_NAME.TILESET
                 Me.TMS9918Aviewer.SetView(TMS9918A.VIEW_MODE.TILESET)
 
-                Me.TilesetComboBox.Items.Clear()
-                Me.TilesetComboBox.Items.AddRange(New Object() {"All Banks", "Bank A", "Bank B", "Bank C", "Selected Area"})
+                Me.SelectDataComboBox.Items.Clear()
+                Me.SelectDataComboBox.Items.AddRange(New Object() {"All Banks", "Bank A", "Bank B", "Bank C", "Selected Area"})
 
-                'AreaEndX_TextBox.Text = "255"
-                'AreaEndY_TextBox.Text = "191"
                 OptimizeButton_enabled = True
 
                 OutputDataGroupBox_Visible = True
-                'TileRangeStart_TextBox.Text = "0"
-                'TileRangeEnd_TextBox.Text = "255"
+
                 SwitchButton.ToolTipText = "Switch Colors"
                 SwapButton.ToolTipText = "Swap Colors"
 
+                SelectDataLabel.Text = "Tileset:"
+
                 DataInput_enabled = True
+
+                Range_maximumValue = 255 'tiles
 
             Case HoriTAB.TAB_NAME.SPRITESET
                 Me.TMS9918Aviewer.SetView(TMS9918A.VIEW_MODE.SPRITE_PATTERNS)
@@ -2658,15 +2611,14 @@ Public Class MainScreen
                 SwapButton_enabled = False
                 SwitchButton_enabled = False
 
-                'DataDefinitionPanel_Visible = False
-
                 spriteModes = True
 
                 range_visible = True
 
                 BloqValue_Label.Visible = True
                 Bloq_Label.Visible = True
-                'Bloq_Label.Text = "Sprite"
+
+                Range_maximumValue = 63 'sprite patterns
 
             Case HoriTAB.TAB_NAME.OAM
                 Me.TMS9918Aviewer.SetView(TMS9918A.VIEW_MODE.SPRITE_LAYERS)
@@ -2675,6 +2627,10 @@ Public Class MainScreen
                 SwitchButton_enabled = False
 
                 spriteModes = True
+
+                range_visible = True
+
+                Range_maximumValue = 31 'sprite planes
 
         End Select
 
@@ -2687,16 +2643,18 @@ Public Class MainScreen
         'TileRangePanel.Visible = TileRangePanel_Visible
         OutputDataGroupBox.Visible = OutputDataGroupBox_Visible
 
-        TilesetComboBox.SelectedIndex = 0
+        SelectDataComboBox.SelectedIndex = 0
         'TilesetComboBox.Visible = (index = HoriTAB.TAB_NAME.TILESET)
         'TilesetLabel.Visible = TilesetComboBox.Visible
+
+        RangeEndTextBox.Text = CStr(Range_maximumValue)
         RangeGroupBox.Visible = range_visible
 
-        DataLabel.Visible = (index = HoriTAB.TAB_NAME.TILESET)
-        DataComboBox.Visible = DataLabel.Visible
+        TilesetDataLabel.Visible = (index = HoriTAB.TAB_NAME.TILESET)
+        TilesetDataComboBox.Visible = TilesetDataLabel.Visible
 
-        DataLabel.Visible = DataInput_enabled
-        DataComboBox.Visible = DataInput_enabled
+        TilesetDataLabel.Visible = DataInput_enabled
+        TilesetDataComboBox.Visible = DataInput_enabled
 
         OptimizeButton.Enabled = OptimizeButton_enabled
         TilesOrderButton.Enabled = TilesOrderButton_enabled
@@ -2914,9 +2872,9 @@ Public Class MainScreen
 
     Private Sub SelectAreaButton_Click(sender As Object, e As EventArgs) Handles SelectAreaButton.Click
         If TMS9918Aviewer.ViewMode = TMS9918A.VIEW_MODE.MAP Then
-            TilesetComboBox.SelectedIndex = 1
+            SelectDataComboBox.SelectedIndex = 1
         ElseIf TMS9918Aviewer.ViewMode = TMS9918A.VIEW_MODE.TILESET Then
-            TilesetComboBox.SelectedIndex = 4
+            SelectDataComboBox.SelectedIndex = 4
         End If
 
     End Sub
@@ -3036,7 +2994,7 @@ Public Class MainScreen
 
         Me.outputCompressData.Clear()
 
-        If TilesetComboBox.SelectedIndex = 0 Or fullScreen = (32 * 24) Then
+        If SelectDataComboBox.SelectedIndex = 0 Or fullScreen = (32 * 24) Then
 
             data = Me.TMS9918Aviewer.GetBlock(iVDP.TableBase.GRPNAM, iVDP.TableBaseSize.GRPNAM)
 
@@ -3119,10 +3077,10 @@ Public Class MainScreen
 
         'Dim fullScreen As Integer = ((area_endY + 1) - area_startY) * ((area_endX + 1) - area_startX)
 
-        If TilesetComboBox.SelectedIndex = 4 Then
+        If SelectDataComboBox.SelectedIndex = 4 Then
             ' area
 
-            If DataComboBox.SelectedIndex = 0 Then
+            If TilesetDataComboBox.SelectedIndex = 0 Then
                 _outputText = GetGFXareaData(TILESET_TYPE.PATTERN, area_startX, area_startY, area_endX, area_endY)
             Else
                 _outputText = GetGFXareaData(TILESET_TYPE.COLOR, area_startX, area_startY, area_endX, area_endY)
@@ -3131,10 +3089,10 @@ Public Class MainScreen
         Else
             'full screen
 
-            If DataComboBox.SelectedIndex = 0 Then
-                _outputText = GetTilesetData(TILESET_TYPE.PATTERN, TilesetComboBox.SelectedIndex)
+            If TilesetDataComboBox.SelectedIndex = 0 Then
+                _outputText = GetTilesetData(TILESET_TYPE.PATTERN, SelectDataComboBox.SelectedIndex)
             Else
-                _outputText = GetTilesetData(TILESET_TYPE.COLOR, TilesetComboBox.SelectedIndex)
+                _outputText = GetTilesetData(TILESET_TYPE.COLOR, SelectDataComboBox.SelectedIndex)
             End If
 
         End If
@@ -3266,43 +3224,36 @@ Public Class MainScreen
 
 
 
-    'Private Function GetColorData() As String
-
-    '    Dim comment1 As String
-    '    Dim comment2 As String = ""
-
-    '    Dim _outputText As String = ""
-
-    '    Dim data As Byte()
-    '    Dim newData As Byte()
-
-    '    data = Me.TMS9918Aviewer.GetBlock(iVDP.TableBase.GRPCOL, &H1800)
-
-    '    comment1 = "Tileset Color data"
-
-    '    newData = GetCompressData(data)
-    '    _outputText = GetFormatData(Me.Info.Name_without_Spaces + "_COL", newData, comment1, comment2, data.Length)
-
-    '    Me.outputColorData.Clear()
-    '    Me.outputColorData.AddRange(newData)
-
-    '    Return _outputText
-
-    'End Function
-
-
-
     Private Function GetSpritesetData() As String
 
         Dim _outputText As String = ""
 
+        Dim comment1 As String = "Sprite Patterns data"
+
         Dim data As Byte()
         Dim newData As Byte()
 
-        data = Me.TMS9918Aviewer.GetBlock(iVDP.TableBase.GRPPAT, iVDP.TableBaseSize.GRPPAT)
+        Dim VRAMaddr As Integer = iVDP.TableBase.GRPPAT
+        Dim bloqsize As Integer
+
+        Dim start_Sprite As Byte = CByte(RangeStartTextBox.Text)
+        Dim end_Sprite As Byte = CByte(RangeEndTextBox.Text)
+
+        ' ----------------------------------------------------------------------------------- sprites 8x8 ????
+
+        If (end_Sprite - start_Sprite) < Range_maximumValue Then
+            comment1 += " - Range: " + CStr(start_Sprite) + " to " + CStr(end_Sprite)
+            VRAMaddr += start_Sprite * 32
+            bloqsize = (end_Sprite - start_Sprite + 1) * 32
+        Else
+            ' All sprites
+            bloqsize = iVDP.TableBaseSize.GRPPAT
+        End If
+
+        data = Me.TMS9918Aviewer.GetBlock(VRAMaddr, bloqsize)
 
         newData = GetCompressData(data)
-        _outputText = GetFormatData(Me.Info.Name_without_Spaces + "_SPR", newData, "Spriteset Patterns data", data.Length)
+        _outputText = GetFormatData(Me.Info.Name_without_Spaces + "_SPR", newData, comment1, data.Length)
 
         Me.outputCompressData.Clear()
         Me.outputCompressData.AddRange(newData)
@@ -3356,16 +3307,16 @@ Public Class MainScreen
         Select Case Me.DataTypeInput.Compress
 
             Case iCompressEncoder.COMPRESS_TYPE.RLE
-                comments.Add("RLE compressed - Original size= " + CStr(originalLength) + " - Compress size= " + CStr(data.Length))
+                comments.Add("RLE compressed - Original size=" + CStr(originalLength) + " - Compress size=" + CStr(data.Length))
 
             Case iCompressEncoder.COMPRESS_TYPE.RLEWB
-                comments.Add("RLE WB compressed - Original size= " + CStr(originalLength) + " - Compress size= " + CStr(data.Length))
+                comments.Add("RLE WB compressed - Original size=" + CStr(originalLength) + " - Compress size=" + CStr(data.Length))
 
             Case iCompressEncoder.COMPRESS_TYPE.PLETTER
-                comments.Add("Pletter compressed - Original size:" + CStr(originalLength) + " - Compress size:" + CStr(data.Length))
+                comments.Add("Pletter compressed - Original size=" + CStr(originalLength) + " - Compress size=" + CStr(data.Length))
 
             Case Else
-                comments.Add("Size= " + CStr(data.Length))
+                comments.Add("Size=" + CStr(data.Length))
 
         End Select
 
@@ -3485,7 +3436,7 @@ Public Class MainScreen
             Case HoriTAB.TAB_NAME.TILESET
                 ' tileset
 
-                Dim tilesetBANK As Integer = TilesetComboBox.SelectedIndex
+                Dim tilesetBANK As Integer = SelectDataComboBox.SelectedIndex
 
                 new_screenmode = iVDP.SCREEN_MODE.G2
 
@@ -3497,7 +3448,7 @@ Public Class MainScreen
                     bloqsize = &H800
                 End If
 
-                If DataComboBox.SelectedIndex = 0 Then
+                If TilesetDataComboBox.SelectedIndex = 0 Then
                     'patterns
                     VRAMaddr = iVDP.TableBase.GRPCGP + ((tilesetBANK - 1) * &H800)
                     new_suffix = "_PAT" + tileset_pattern_BANK_Suffix(tilesetBANK)
@@ -3777,10 +3728,10 @@ Public Class MainScreen
 
 
 
-    Private Sub TilesetComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TilesetComboBox.SelectedIndexChanged
+    Private Sub TilesetComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles SelectDataComboBox.SelectedIndexChanged
 
         If HoriTAB1.SelectTab = HoriTAB.TAB_NAME.TILESET Then
-            If TilesetComboBox.SelectedIndex = 4 Then
+            If SelectDataComboBox.SelectedIndex = 4 Then
                 TMS9918Aviewer.ControlType = TMS9918A.CONTROL_TYPE.SELECTER
                 SelectAreaGroupBox.Visible = True
                 RangeGroupBox.Visible = False
@@ -3788,7 +3739,7 @@ Public Class MainScreen
                 TMS9918Aviewer.ControlType = TMS9918A.CONTROL_TYPE.VIEWER
                 SelectAreaGroupBox.Visible = False
 
-                If TilesetComboBox.SelectedIndex = 0 Then
+                If SelectDataComboBox.SelectedIndex = 0 Then
                     RangeGroupBox.Visible = False
                 Else
                     RangeGroupBox.Visible = True
@@ -3798,7 +3749,7 @@ Public Class MainScreen
 
         ElseIf HoriTAB1.SelectTab = HoriTAB.TAB_NAME.MAP Then
 
-            If TilesetComboBox.SelectedIndex = 1 Then
+            If SelectDataComboBox.SelectedIndex = 1 Then
                 TMS9918Aviewer.ControlType = TMS9918A.CONTROL_TYPE.SELECTER
                 SelectAreaGroupBox.Visible = True
             Else
@@ -3817,10 +3768,10 @@ Public Class MainScreen
         Dim result As DialogResult
 
         Beep()
-        result = messageWin.ShowDialog(Me, "New Project", "This option will erase all data." + vbCrLf + "Do you want to continue?", MessageDialog.DIALOG_TYPE.YES_NO) '+ vbCrLf
+        result = MessageWin.ShowDialog(Me, "New Project", "This option will erase all data." + vbCrLf + "Do you want to continue?", MessageDialog.DIALOG_TYPE.YES_NO) '+ vbCrLf
 
 
-        If messageWin.ShowDialog(Me) = DialogResult.Yes Then
+        If MessageWin.ShowDialog(Me) = DialogResult.Yes Then
             'DisableEventHandlers()
             NewProject()
             'EnableEventHandlers()
@@ -3830,14 +3781,14 @@ Public Class MainScreen
 
 
 
-    Private Sub Validate_TileRange()
+    Private Sub Validate_Range()
         Dim start_value As Integer
         Dim end_value As Integer
         Dim tmp_value As Integer
 
         If IsNumeric(RangeStartTextBox.Text) Then
             start_value = CInt(RangeStartTextBox.Text)
-            If start_value < 0 Or start_value > 255 Then
+            If start_value < 0 Or start_value > Range_maximumValue Then
                 start_value = 0
             End If
         Else
@@ -3846,11 +3797,11 @@ Public Class MainScreen
 
         If IsNumeric(RangeEndTextBox.Text) Then
             end_value = CInt(RangeEndTextBox.Text)
-            If end_value < 0 Or end_value > 255 Then
-                end_value = 255
+            If end_value < 0 Or end_value > Range_maximumValue Then
+                end_value = Range_maximumValue
             End If
         Else
-            end_value = 255
+            end_value = Range_maximumValue
         End If
 
         If start_value > end_value Then
@@ -3870,30 +3821,21 @@ Public Class MainScreen
 
     End Sub
 
+
     Private Sub RangeStartTextBox_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs)
-        Validate_TileRange()
+        Validate_Range()
     End Sub
+
 
     Private Sub RangeEndTextBox_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs)
-        Validate_TileRange()
+        Validate_Range()
     End Sub
 
-    Private Sub HoriTAB1_TabChanged(index As VerttiTAB.TAB_NAME) Handles HoriTAB1.TabChanged
-
-    End Sub
 
     Private Sub RangeResetButton_Click(sender As Object, e As EventArgs) Handles RangeResetButton.Click
-        Dim start_value As Integer = 0
-        Dim end_value As Integer = 255
 
-        If HoriTAB1.SelectTab = HoriTAB.TAB_NAME.TILESET Then
-            end_value = 255
-        ElseIf HoriTAB1.SelectTab = HoriTAB.TAB_NAME.SPRITESET Then
-            end_value = 63
-        End If
-
-        RangeStartTextBox.Text = CStr(start_value)
-        RangeEndTextBox.Text = CStr(end_value)
+        RangeStartTextBox.Text = CStr(0)
+        RangeEndTextBox.Text = CStr(Range_maximumValue)
 
     End Sub
 
@@ -3946,6 +3888,7 @@ Public Class MainScreen
 
     End Sub
 
+    Private Sub HoriTAB1_TabChanged(index As VerttiTAB.TAB_NAME) Handles HoriTAB1.TabChanged
 
-
+    End Sub
 End Class

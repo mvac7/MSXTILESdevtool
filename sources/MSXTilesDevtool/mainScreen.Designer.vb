@@ -34,7 +34,7 @@ Partial Class MainScreen
         Me.AreaStartX_TextBox = New System.Windows.Forms.TextBox()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.CopyAllButton = New System.Windows.Forms.Button()
-        Me.DataComboBox = New System.Windows.Forms.ComboBox()
+        Me.TilesetDataComboBox = New System.Windows.Forms.ComboBox()
         Me.RangeResetButton = New System.Windows.Forms.Button()
         Me.RangeEndTextBox = New System.Windows.Forms.TextBox()
         Me.RangeStartTextBox = New System.Windows.Forms.TextBox()
@@ -45,6 +45,8 @@ Partial Class MainScreen
         Me.SaveSCProjectButton = New System.Windows.Forms.Button()
         Me.SaveBinaryButton = New System.Windows.Forms.Button()
         Me.SaveSourceButton = New System.Windows.Forms.Button()
+        Me.Tilenumber_TextBox = New System.Windows.Forms.TextBox()
+        Me.TilesetBank_TextBox = New System.Windows.Forms.TextBox()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.NewProjectButton = New System.Windows.Forms.ToolStripButton()
         Me.LoadProjectButton = New System.Windows.Forms.ToolStripButton()
@@ -87,9 +89,9 @@ Partial Class MainScreen
         Me.DataTypeInput = New mSXdevtools.GUI.Controls.DataTypeInputControl()
         Me.SaveButsPanel = New System.Windows.Forms.Panel()
         Me.GivemeTheCodeButton = New System.Windows.Forms.Button()
-        Me.DataLabel = New System.Windows.Forms.Label()
-        Me.TilesetLabel = New System.Windows.Forms.Label()
-        Me.TilesetComboBox = New System.Windows.Forms.ComboBox()
+        Me.TilesetDataLabel = New System.Windows.Forms.Label()
+        Me.SelectDataLabel = New System.Windows.Forms.Label()
+        Me.SelectDataComboBox = New System.Windows.Forms.ComboBox()
         Me.RangeLabel = New System.Windows.Forms.Label()
         Me.RangeToLabel = New System.Windows.Forms.Label()
         Me.SelectAreaGroupBox = New System.Windows.Forms.GroupBox()
@@ -98,11 +100,9 @@ Partial Class MainScreen
         Me.OutputDataGroupBox = New System.Windows.Forms.GroupBox()
         Me.TileViewerPictureBox = New System.Windows.Forms.PictureBox()
         Me.TilezoomGroupBox = New System.Windows.Forms.GroupBox()
-        Me.HoriTAB1 = New MSXTILESdevtool.HoriTAB()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Tilenumber_TextBox = New System.Windows.Forms.TextBox()
         Me.TilesetBankLabel = New System.Windows.Forms.Label()
-        Me.TilesetBank_TextBox = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.HoriTAB1 = New MSXTILESdevtool.HoriTAB()
         Me.ToolStrip1.SuspendLayout()
         Me.ScreenContainer_Panel.SuspendLayout()
         Me.PaintToolStrip.SuspendLayout()
@@ -199,18 +199,18 @@ Partial Class MainScreen
         Me.ToolTip1.SetToolTip(Me.CopyAllButton, "Copy output to clipboard")
         Me.CopyAllButton.UseVisualStyleBackColor = False
         '
-        'DataComboBox
+        'TilesetDataComboBox
         '
-        Me.DataComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.DataComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.DataComboBox.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DataComboBox.FormattingEnabled = True
-        Me.DataComboBox.Items.AddRange(New Object() {"Pattern", "Color"})
-        Me.DataComboBox.Location = New System.Drawing.Point(81, 49)
-        Me.DataComboBox.Name = "DataComboBox"
-        Me.DataComboBox.Size = New System.Drawing.Size(153, 22)
-        Me.DataComboBox.TabIndex = 259
-        Me.ToolTip1.SetToolTip(Me.DataComboBox, "Type of data to generate.")
+        Me.TilesetDataComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.TilesetDataComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.TilesetDataComboBox.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TilesetDataComboBox.FormattingEnabled = True
+        Me.TilesetDataComboBox.Items.AddRange(New Object() {"Pattern", "Color"})
+        Me.TilesetDataComboBox.Location = New System.Drawing.Point(81, 49)
+        Me.TilesetDataComboBox.Name = "TilesetDataComboBox"
+        Me.TilesetDataComboBox.Size = New System.Drawing.Size(153, 22)
+        Me.TilesetDataComboBox.TabIndex = 259
+        Me.ToolTip1.SetToolTip(Me.TilesetDataComboBox, "Type of data to generate.")
         '
         'RangeResetButton
         '
@@ -359,6 +359,32 @@ Partial Class MainScreen
         Me.SaveSourceButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.ToolTip1.SetToolTip(Me.SaveSourceButton, "Save output to TXT file")
         Me.SaveSourceButton.UseVisualStyleBackColor = False
+        '
+        'Tilenumber_TextBox
+        '
+        Me.Tilenumber_TextBox.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Tilenumber_TextBox.Location = New System.Drawing.Point(44, 46)
+        Me.Tilenumber_TextBox.MaxLength = 3
+        Me.Tilenumber_TextBox.Name = "Tilenumber_TextBox"
+        Me.Tilenumber_TextBox.ReadOnly = True
+        Me.Tilenumber_TextBox.Size = New System.Drawing.Size(33, 22)
+        Me.Tilenumber_TextBox.TabIndex = 290
+        Me.Tilenumber_TextBox.Text = "0"
+        Me.Tilenumber_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.ToolTip1.SetToolTip(Me.Tilenumber_TextBox, "End tile number.")
+        '
+        'TilesetBank_TextBox
+        '
+        Me.TilesetBank_TextBox.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TilesetBank_TextBox.Location = New System.Drawing.Point(44, 112)
+        Me.TilesetBank_TextBox.MaxLength = 3
+        Me.TilesetBank_TextBox.Name = "TilesetBank_TextBox"
+        Me.TilesetBank_TextBox.ReadOnly = True
+        Me.TilesetBank_TextBox.Size = New System.Drawing.Size(33, 22)
+        Me.TilesetBank_TextBox.TabIndex = 292
+        Me.TilesetBank_TextBox.Text = "0"
+        Me.TilesetBank_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.ToolTip1.SetToolTip(Me.TilesetBank_TextBox, "End tile number.")
         '
         'ToolStrip1
         '
@@ -815,37 +841,37 @@ Partial Class MainScreen
         Me.GivemeTheCodeButton.Text = "Give me the code!"
         Me.GivemeTheCodeButton.UseVisualStyleBackColor = False
         '
-        'DataLabel
+        'TilesetDataLabel
         '
-        Me.DataLabel.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DataLabel.Location = New System.Drawing.Point(4, 49)
-        Me.DataLabel.Name = "DataLabel"
-        Me.DataLabel.Size = New System.Drawing.Size(70, 21)
-        Me.DataLabel.TabIndex = 258
-        Me.DataLabel.Text = "Data:"
-        Me.DataLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.TilesetDataLabel.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TilesetDataLabel.Location = New System.Drawing.Point(4, 49)
+        Me.TilesetDataLabel.Name = "TilesetDataLabel"
+        Me.TilesetDataLabel.Size = New System.Drawing.Size(70, 21)
+        Me.TilesetDataLabel.TabIndex = 258
+        Me.TilesetDataLabel.Text = "Data:"
+        Me.TilesetDataLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'TilesetLabel
+        'SelectDataLabel
         '
-        Me.TilesetLabel.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TilesetLabel.Location = New System.Drawing.Point(4, 21)
-        Me.TilesetLabel.Name = "TilesetLabel"
-        Me.TilesetLabel.Size = New System.Drawing.Size(70, 21)
-        Me.TilesetLabel.TabIndex = 256
-        Me.TilesetLabel.Text = "Tileset:"
-        Me.TilesetLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.SelectDataLabel.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SelectDataLabel.Location = New System.Drawing.Point(4, 21)
+        Me.SelectDataLabel.Name = "SelectDataLabel"
+        Me.SelectDataLabel.Size = New System.Drawing.Size(70, 21)
+        Me.SelectDataLabel.TabIndex = 256
+        Me.SelectDataLabel.Text = "Tileset:"
+        Me.SelectDataLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'TilesetComboBox
+        'SelectDataComboBox
         '
-        Me.TilesetComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.TilesetComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.TilesetComboBox.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TilesetComboBox.FormattingEnabled = True
-        Me.TilesetComboBox.Items.AddRange(New Object() {"All Banks", "Bank A", "Bank B", "Bank C", "Selected Area"})
-        Me.TilesetComboBox.Location = New System.Drawing.Point(80, 21)
-        Me.TilesetComboBox.Name = "TilesetComboBox"
-        Me.TilesetComboBox.Size = New System.Drawing.Size(154, 22)
-        Me.TilesetComboBox.TabIndex = 255
+        Me.SelectDataComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.SelectDataComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.SelectDataComboBox.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SelectDataComboBox.FormattingEnabled = True
+        Me.SelectDataComboBox.Items.AddRange(New Object() {"All Banks", "Bank A", "Bank B", "Bank C", "Selected Area"})
+        Me.SelectDataComboBox.Location = New System.Drawing.Point(80, 21)
+        Me.SelectDataComboBox.Name = "SelectDataComboBox"
+        Me.SelectDataComboBox.Size = New System.Drawing.Size(154, 22)
+        Me.SelectDataComboBox.TabIndex = 255
         '
         'RangeLabel
         '
@@ -910,10 +936,10 @@ Partial Class MainScreen
         '
         'OutputDataGroupBox
         '
-        Me.OutputDataGroupBox.Controls.Add(Me.DataComboBox)
-        Me.OutputDataGroupBox.Controls.Add(Me.TilesetComboBox)
-        Me.OutputDataGroupBox.Controls.Add(Me.DataLabel)
-        Me.OutputDataGroupBox.Controls.Add(Me.TilesetLabel)
+        Me.OutputDataGroupBox.Controls.Add(Me.TilesetDataComboBox)
+        Me.OutputDataGroupBox.Controls.Add(Me.SelectDataComboBox)
+        Me.OutputDataGroupBox.Controls.Add(Me.TilesetDataLabel)
+        Me.OutputDataGroupBox.Controls.Add(Me.SelectDataLabel)
         Me.OutputDataGroupBox.Location = New System.Drawing.Point(584, 78)
         Me.OutputDataGroupBox.Name = "OutputDataGroupBox"
         Me.OutputDataGroupBox.Size = New System.Drawing.Size(240, 80)
@@ -944,15 +970,15 @@ Partial Class MainScreen
         Me.TilezoomGroupBox.TabStop = False
         Me.TilezoomGroupBox.Text = "Tile zoom"
         '
-        'HoriTAB1
+        'TilesetBankLabel
         '
-        Me.HoriTAB1.BackColor = System.Drawing.Color.RoyalBlue
-        Me.HoriTAB1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.HoriTAB1.Location = New System.Drawing.Point(0, 32)
-        Me.HoriTAB1.Margin = New System.Windows.Forms.Padding(0)
-        Me.HoriTAB1.Name = "HoriTAB1"
-        Me.HoriTAB1.Size = New System.Drawing.Size(854, 34)
-        Me.HoriTAB1.TabIndex = 272
+        Me.TilesetBankLabel.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TilesetBankLabel.Location = New System.Drawing.Point(20, 89)
+        Me.TilesetBankLabel.Name = "TilesetBankLabel"
+        Me.TilesetBankLabel.Size = New System.Drawing.Size(57, 20)
+        Me.TilesetBankLabel.TabIndex = 293
+        Me.TilesetBankLabel.Text = "Bank"
+        Me.TilesetBankLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Label1
         '
@@ -964,41 +990,15 @@ Partial Class MainScreen
         Me.Label1.Text = "Tile"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'Tilenumber_TextBox
+        'HoriTAB1
         '
-        Me.Tilenumber_TextBox.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Tilenumber_TextBox.Location = New System.Drawing.Point(44, 46)
-        Me.Tilenumber_TextBox.MaxLength = 3
-        Me.Tilenumber_TextBox.Name = "Tilenumber_TextBox"
-        Me.Tilenumber_TextBox.ReadOnly = True
-        Me.Tilenumber_TextBox.Size = New System.Drawing.Size(33, 22)
-        Me.Tilenumber_TextBox.TabIndex = 290
-        Me.Tilenumber_TextBox.Text = "0"
-        Me.Tilenumber_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.ToolTip1.SetToolTip(Me.Tilenumber_TextBox, "End tile number.")
-        '
-        'TilesetBankLabel
-        '
-        Me.TilesetBankLabel.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TilesetBankLabel.Location = New System.Drawing.Point(20, 89)
-        Me.TilesetBankLabel.Name = "TilesetBankLabel"
-        Me.TilesetBankLabel.Size = New System.Drawing.Size(57, 20)
-        Me.TilesetBankLabel.TabIndex = 293
-        Me.TilesetBankLabel.Text = "Bank"
-        Me.TilesetBankLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'TilesetBank_TextBox
-        '
-        Me.TilesetBank_TextBox.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TilesetBank_TextBox.Location = New System.Drawing.Point(44, 112)
-        Me.TilesetBank_TextBox.MaxLength = 3
-        Me.TilesetBank_TextBox.Name = "TilesetBank_TextBox"
-        Me.TilesetBank_TextBox.ReadOnly = True
-        Me.TilesetBank_TextBox.Size = New System.Drawing.Size(33, 22)
-        Me.TilesetBank_TextBox.TabIndex = 292
-        Me.TilesetBank_TextBox.Text = "0"
-        Me.TilesetBank_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.ToolTip1.SetToolTip(Me.TilesetBank_TextBox, "End tile number.")
+        Me.HoriTAB1.BackColor = System.Drawing.Color.RoyalBlue
+        Me.HoriTAB1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.HoriTAB1.Location = New System.Drawing.Point(0, 32)
+        Me.HoriTAB1.Margin = New System.Windows.Forms.Padding(0)
+        Me.HoriTAB1.Name = "HoriTAB1"
+        Me.HoriTAB1.Size = New System.Drawing.Size(854, 34)
+        Me.HoriTAB1.TabIndex = 272
         '
         'MainScreen
         '
@@ -1111,15 +1111,15 @@ Partial Class MainScreen
     Friend WithEvents UndoButton As ToolStripButton
     Friend WithEvents SwapButton As ToolStripButton
     Friend WithEvents GivemeTheCodeButton As Button
-    Friend WithEvents DataComboBox As ComboBox
-    Friend WithEvents DataLabel As Label
+    Friend WithEvents TilesetDataComboBox As ComboBox
+    Friend WithEvents TilesetDataLabel As Label
     Friend WithEvents RangeResetButton As Button
     Friend WithEvents RangeLabel As Label
     Friend WithEvents RangeEndTextBox As TextBox
     Friend WithEvents RangeToLabel As Label
-    Friend WithEvents TilesetLabel As Label
+    Friend WithEvents SelectDataLabel As Label
     Friend WithEvents RangeStartTextBox As TextBox
-    Friend WithEvents TilesetComboBox As ComboBox
+    Friend WithEvents SelectDataComboBox As ComboBox
     Friend WithEvents SelectAreaGroupBox As GroupBox
     Friend WithEvents Panel2 As Panel
     Friend WithEvents RangeGroupBox As GroupBox
