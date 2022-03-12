@@ -1,15 +1,6 @@
 ﻿Public Class DataTypeInputControl
 
-
     Public AppConfig As Config
-
-
-    'Public WriteOnly Property Config As Config
-    '    Set(value As Config)
-    '        Me.AppConfig = value
-    '        InitControl()
-    '    End Set
-    'End Property
 
     Private _dataSizeLine As Boolean = False
     Private _sizesForColors As Boolean = False
@@ -19,7 +10,6 @@
     Public Event DataChanged()
 
 
-    'DataTypeInputControl.Language_CODE
     Public Shadows Enum Language_CODE As Integer
         ASSEMBLER
         BASIC
@@ -66,9 +56,6 @@
         Get
             Return Me.SizeLineComboBox.SelectedIndex
         End Get
-        'Set(value As Integer)
-        '    Me.SizeLineComboBox.SelectedIndex = value
-        'End Set
     End Property
 
 
@@ -149,7 +136,7 @@
 
     Public ReadOnly Property AsmByteCommand As String
         Get
-            Return Me.AsmCommandTextBox.Text
+            Return Me.AsmByteDataTextBox.Text
         End Get
     End Property
 
@@ -187,19 +174,6 @@
 
 
 
-
-    'Public Sub New(ByVal app_config As Config)
-
-    '    ' Llamada necesaria para el diseñador.
-    '    InitializeComponent()
-
-    '    ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
-    '    Me.AppConfig = app_config
-
-    'End Sub
-
-
-
     Private Sub DataTypeInputControl_Load(sender As Object, e As System.EventArgs) Handles Me.Load
 
         ' posiciona la caja con campos especificos para la salida en assembler
@@ -234,7 +208,7 @@
         Me.LanguageComboBox.SelectedIndex = Me.AppConfig.lastCodeOutput
         Me.CompressComboBox.SelectedIndex = Me.AppConfig.lastCodeCompressType
 
-        Me.AsmCommandTextBox.Text = Me.AppConfig.lastAsmByteCommand
+        Me.AsmByteDataTextBox.Text = Me.AppConfig.lastAsmByteCommand
         Me.AsmWordDataTextBox.Text = Me.AppConfig.lastAsmWordDataCommand
 
         Me.CdataTypeTextBox.Text = Me.AppConfig.lastCByteCommand
@@ -272,11 +246,18 @@
         AddHandler Me.CompressComboBox.SelectedIndexChanged, AddressOf CompressComboBox_SelectedIndexChanged
 
         AddHandler Me.CdataTypeTextBox.TextChanged, AddressOf CdataTypeTextBox_TextChanged
-        AddHandler Me.AsmCommandTextBox.TextChanged, AddressOf AsmCommandTextBox_TextChanged
+        AddHandler Me.AsmByteDataTextBox.TextChanged, AddressOf AsmCommandTextBox_TextChanged
         AddHandler Me.AsmWordDataTextBox.TextChanged, AddressOf AsmWordDataTextBox_TextChanged
 
         AddHandler Me.RemoveZerosCheck.CheckedChanged, AddressOf RemoveZerosCheck_CheckedChanged
         AddHandler Me.AddIndexCheck.CheckedChanged, AddressOf AddIndexCheck_CheckedChanged
+
+        AddHandler Me.LineNumberText.TextChanged, AddressOf Text_TextChanged
+        AddHandler Me.IntervalText.TextChanged, AddressOf Text_TextChanged
+        AddHandler Me.AsmByteDataTextBox.TextChanged, AddressOf Text_TextChanged
+        AddHandler Me.AsmWordDataTextBox.TextChanged, AddressOf Text_TextChanged
+
+        AddHandler Me.CdataTypeTextBox.TextChanged, AddressOf Text_TextChanged
 
     End Sub
 
@@ -360,7 +341,7 @@
 
 
     Private Sub AsmCommandTextBox_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        Me.AppConfig.lastAsmByteCommand = Me.AsmCommandTextBox.Text
+        Me.AppConfig.lastAsmByteCommand = Me.AsmByteDataTextBox.Text
         RaiseEvent DataChanged()
     End Sub
 
@@ -374,6 +355,12 @@
 
 
     Private Sub RemoveZerosCheck_CheckedChanged(sender As System.Object, e As System.EventArgs) ' Handles RemoveZerosCheck.CheckedChanged
+        RaiseEvent DataChanged()
+    End Sub
+
+
+
+    Private Sub Text_TextChanged(sender As Object, e As EventArgs)
         RaiseEvent DataChanged()
     End Sub
 
@@ -406,7 +393,6 @@
 
     ''' <summary>
     ''' validates the value of the initial line number
-    ''' valida el valor del numero de linea inicial
     ''' </summary>
     ''' <param name="value"></param>
     ''' <returns></returns>
@@ -426,15 +412,6 @@
     End Function
 
 
-
-
-
-
-
-
-
-    ' Valid value range between the lines (for MSX-BASIC).
-    ' Valida el valor de intervalo entre lineas (para MSX-BASIC).
 
     Private Function GetValidateInterval(ByVal value As String) As Integer
         Dim aNumber As Integer

@@ -139,12 +139,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="VerttiTAB.Designer.vb">
-      <DependentUpon>VerttiTAB.vb</DependentUpon>
-    </Compile>
-    <Compile Include="VerttiTAB.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ChangeColorForm.resx">
@@ -170,9 +164,6 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VerttiTAB.resx">
-      <DependentUpon>VerttiTAB.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

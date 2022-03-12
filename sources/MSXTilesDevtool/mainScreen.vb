@@ -3770,13 +3770,13 @@ Public Class MainScreen
         Beep()
         result = MessageWin.ShowDialog(Me, "New Project", "This option will erase all data." + vbCrLf + "Do you want to continue?", MessageDialog.DIALOG_TYPE.YES_NO) '+ vbCrLf
 
-
-        If MessageWin.ShowDialog(Me) = DialogResult.Yes Then
+        If result = DialogResult.Yes Then
             'DisableEventHandlers()
             NewProject()
             'EnableEventHandlers()
             'ShowProjectData()
         End If
+
     End Sub
 
 
@@ -3888,7 +3888,5 @@ Public Class MainScreen
 
     End Sub
 
-    Private Sub HoriTAB1_TabChanged(index As VerttiTAB.TAB_NAME) Handles HoriTAB1.TabChanged
 
-    End Sub
 End Class

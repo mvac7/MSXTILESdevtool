@@ -27,7 +27,7 @@ Partial Class DataTypeInputControl
         Me.AsmWordDataTextBox = New System.Windows.Forms.TextBox()
         Me.AddIndexCheck = New System.Windows.Forms.CheckBox()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.AsmCommandTextBox = New System.Windows.Forms.TextBox()
+        Me.AsmByteDataTextBox = New System.Windows.Forms.TextBox()
         Me.SizeLineComboBox = New System.Windows.Forms.ComboBox()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -57,7 +57,7 @@ Partial Class DataTypeInputControl
         Me.AsmGroupBox.Controls.Add(Me.AsmWordDataTextBox)
         Me.AsmGroupBox.Controls.Add(Me.AddIndexCheck)
         Me.AsmGroupBox.Controls.Add(Me.Label7)
-        Me.AsmGroupBox.Controls.Add(Me.AsmCommandTextBox)
+        Me.AsmGroupBox.Controls.Add(Me.AsmByteDataTextBox)
         Me.AsmGroupBox.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.AsmGroupBox.ForeColor = System.Drawing.Color.Black
         Me.AsmGroupBox.Location = New System.Drawing.Point(233, 108)
@@ -110,14 +110,14 @@ Partial Class DataTypeInputControl
         Me.Label7.Text = "Byte data:"
         Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'AsmCommandTextBox
+        'AsmByteDataTextBox
         '
-        Me.AsmCommandTextBox.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.AsmCommandTextBox.Location = New System.Drawing.Point(90, 22)
-        Me.AsmCommandTextBox.MaxLength = 128
-        Me.AsmCommandTextBox.Name = "AsmCommandTextBox"
-        Me.AsmCommandTextBox.Size = New System.Drawing.Size(66, 21)
-        Me.AsmCommandTextBox.TabIndex = 14
+        Me.AsmByteDataTextBox.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.AsmByteDataTextBox.Location = New System.Drawing.Point(90, 22)
+        Me.AsmByteDataTextBox.MaxLength = 128
+        Me.AsmByteDataTextBox.Name = "AsmByteDataTextBox"
+        Me.AsmByteDataTextBox.Size = New System.Drawing.Size(66, 21)
+        Me.AsmByteDataTextBox.TabIndex = 14
         '
         'SizeLineComboBox
         '
@@ -349,7 +349,7 @@ Partial Class DataTypeInputControl
     Friend WithEvents AsmWordDataTextBox As System.Windows.Forms.TextBox
     Friend WithEvents AddIndexCheck As System.Windows.Forms.CheckBox
     Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents AsmCommandTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents AsmByteDataTextBox As System.Windows.Forms.TextBox
     Friend WithEvents SizeLineComboBox As System.Windows.Forms.ComboBox
     Friend WithEvents Label17 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
