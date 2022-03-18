@@ -226,7 +226,7 @@ Public Class MSXOpenDocumentIO
                 Else
                     SetPalettesFromNode(aNode)
                 End If
-                Me.Project.Palettes.SetZeroColor(Me.AppConfig.ZeroColor)
+                Me.Project.Palettes.SetZeroColor(Me.AppConfig.Color_Zero)
                 ' END Palette Project ##############################################
 
 
@@ -3026,7 +3026,7 @@ Public Class MSXOpenDocumentIO
                     Me.Project.Palettes.Add(tmpPalette)
                 End If
             End If
-            Me.Project.Palettes.SetZeroColor(Me.AppConfig.ZeroColor)
+            Me.Project.Palettes.SetZeroColor(Me.AppConfig.Color_Zero)
 
 
             '<sprites name="Frutas 16x" version="1" group="303bcn" author="mvac7" startDate="635400288000000000" lastUpdate="635400288000000000" mode="1" type="2">

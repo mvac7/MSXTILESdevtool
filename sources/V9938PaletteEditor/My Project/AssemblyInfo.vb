@@ -9,10 +9,10 @@ Imports System.Runtime.InteropServices
 ' Revisar los valores de los atributos del ensamblado
 
 <Assembly: AssemblyTitle("V9938PaletteEditor")>
-<Assembly: AssemblyDescription("V9938 Color Palette Editor.")>
-<Assembly: AssemblyCompany("")>
+<Assembly: AssemblyDescription("V9938 Color Palette Editor")>
+<Assembly: AssemblyCompany("MSX Community")>
 <Assembly: AssemblyProduct("V9938 Palette Editor")>
-<Assembly: AssemblyCopyright("Copyright 2020 mvac7")>
+<Assembly: AssemblyCopyright("Copyright 2022 mvac7")>
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(False)>
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' mediante el asterisco ('*'), como se muestra a continuación:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("0.9.4.0")>
-<Assembly: AssemblyFileVersion("0.9.4.0")>
+<Assembly: AssemblyVersion("0.9.5.0")>
+<Assembly: AssemblyFileVersion("0.9.5.0")>

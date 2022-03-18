@@ -50,19 +50,33 @@ Public Class Config
 
     Public defAuthor As String
     Public defCodeOutput As Integer = DataFormat.ProgrammingLanguage.ASSEMBLER
-    Public defCodeNumberFormat As Integer = 4
-    Public defCodeSizeLine As Integer = 1     ' 0-3 (8,16,24,32)
+    Public defCodeNumberSystem As Integer = 4
+    Public defCodeLineSize As Integer = 3      ' 0-6 (1,2,4,8,16,24,32)
     Public defCodeCompressType As Integer = 0 ' RAW
     Public defAsmByteCommand As String = "DB"
     Public defAsmWordDataCommand As String = "DW"
     Public defCByteCommand As String = "const char"
 
-    Public defBASICinstruction As String = "DATA"
-    Public defBASICinitLine As Integer = 1000
-    Public defBASICincLines As Integer = 10
-    Public defBASICremove0 As Boolean = False
+    Public defBASIC_CommentInstruction As String = "REM"
+    Public defBASIC_DataInstruction As String = "DATA"
+    Public defBASIC_initLine As Integer = 1000
+    Public defBASIC_incLines As Integer = 10
+    Public defBASIC_remove0 As Boolean = False
 
     Public defDataLabel As String = "DATA"
+
+
+    Public def_Color_Zero As Color = Color.FromArgb(255, 40, 40, 55)
+    Public def_Color_Grid As Color = Color.LightSkyBlue
+
+    Public def_Color_OUTPUT_INK As Color = Color.Black
+    Public def_Color_OUTPUT_BG As Color = Color.WhiteSmoke
+
+    Public Color_Zero As Color = def_Color_Zero
+    Public Color_Grid As Color = def_Color_Grid
+
+    Public Color_OUTPUT_BG As Color = def_Color_OUTPUT_BG
+    Public Color_OUTPUT_INK As Color = def_Color_OUTPUT_INK
 
 
     Public Shadows Enum FIRST_PROJECT As Integer
@@ -76,8 +90,7 @@ Public Class Config
 
     Public PathLastProject As String = ""
 
-    Public ZeroColor As Color = Color.FromArgb(255, 40, 40, 55) '.ToArgb  'default zero color
-    Public GridColor As Color = Color.LightSkyBlue  '.ToArgb
+
 
 
     Public lastCodeOutput As Integer
@@ -87,11 +100,12 @@ Public Class Config
     Public lastAsmByteCommand As String
     Public lastAsmWordDataCommand As String
     Public lastCByteCommand As String
-    Public lastBASICinstruction As String
 
-    Public lastBASICinitLine As Integer
-    Public lastBASICincLines As Integer
-    Public lastBASICremove0 As Boolean = False
+    Public lastBASIC_DataInstruction As String
+    Public lastBASIC_CommentInstruction As String
+    Public lastBASIC_initLine As Integer
+    Public lastBASIC_incLines As Integer
+    Public lastBASIC_remove0 As Boolean = False
 
     Private LastProjects As New Hashtable  'RecentProjectsList
 
@@ -111,7 +125,7 @@ Public Class Config
             Return _lastCodeSizeLine
         End Get
         Set(value As Integer)
-            If value < 4 Then
+            If value < 7 Then
                 _lastCodeSizeLine = value
             End If
         End Set
@@ -151,7 +165,6 @@ Public Class Config
 
 
     'Application.StartupPath + Path.DirectorySeparatorChar + ConfigFileName
-
 
 
     Public Sub New() ', ByVal _appID As String
@@ -282,6 +295,13 @@ Public Class Config
                     '#####################################
                     groupNode = rootNode.SelectSingleNode("defCode")
                     If Not groupNode Is Nothing Then
+                        aNode = groupNode.SelectSingleNode("defDataLabel")
+                        If aNode Is Nothing Then
+                            Me.defDataLabel = "DATA"
+                        Else
+                            Me.defDataLabel = aNode.InnerText
+                        End If
+
                         aNode = groupNode.SelectSingleNode("defCodeOutput")
                         If aNode Is Nothing Then
                             Me.defCodeOutput = 2 'MSXDataFormat.OutputFormat.ASM
@@ -289,18 +309,18 @@ Public Class Config
                             Me.defCodeOutput = CInt(aNode.InnerText)
                         End If
 
-                        aNode = groupNode.SelectSingleNode("defCodeNumberFormat")
+                        aNode = groupNode.SelectSingleNode("defCodeNumberSystem")
                         If aNode Is Nothing Then
-                            Me.defCodeNumberFormat = 4
+                            Me.defCodeNumberSystem = 4
                         Else
-                            Me.defCodeNumberFormat = CInt(aNode.InnerText)
+                            Me.defCodeNumberSystem = CInt(aNode.InnerText)
                         End If
 
-                        aNode = groupNode.SelectSingleNode("defCodeSizeLine")
+                        aNode = groupNode.SelectSingleNode("defCodeLineSize")
                         If aNode Is Nothing Then
-                            Me.defCodeSizeLine = 1
+                            Me.defCodeLineSize = 3
                         Else
-                            Me.defCodeSizeLine = CInt(aNode.InnerText)
+                            Me.defCodeLineSize = CInt(aNode.InnerText)
                         End If
 
                         aNode = groupNode.SelectSingleNode("defCodeCompressType")
@@ -332,39 +352,41 @@ Public Class Config
                         End If
 
 
-                        aNode = groupNode.SelectSingleNode("defBASICinstruction")
+                        aNode = groupNode.SelectSingleNode("defBASICdataInstruction")
                         If aNode Is Nothing Then
-                            Me.defBASICinstruction = "DATA"
+                            Me.defBASIC_DataInstruction = "DATA"
                         Else
-                            Me.defBASICinstruction = aNode.InnerText
+                            Me.defBASIC_DataInstruction = aNode.InnerText
                         End If
 
-                        aNode = groupNode.SelectSingleNode("defDataLabel")
+                        aNode = groupNode.SelectSingleNode("defBASICcommentInstruction")
                         If aNode Is Nothing Then
-                            Me.defDataLabel = "DATA"
+                            Me.defBASIC_CommentInstruction = "REM"
                         Else
-                            Me.defDataLabel = aNode.InnerText
+                            Me.defBASIC_CommentInstruction = aNode.InnerText
                         End If
+
+
 
                         aNode = groupNode.SelectSingleNode("defBASICinitLine")
                         If aNode Is Nothing Then
-                            Me.defBASICinitLine = 1000
+                            Me.defBASIC_initLine = 1000
                         Else
-                            Me.defBASICinitLine = CInt(aNode.InnerText)
+                            Me.defBASIC_initLine = CInt(aNode.InnerText)
                         End If
 
                         aNode = groupNode.SelectSingleNode("defBASICincLines")
                         If aNode Is Nothing Then
-                            Me.defBASICincLines = 10
+                            Me.defBASIC_incLines = 10
                         Else
-                            Me.defBASICincLines = CInt(aNode.InnerText)
+                            Me.defBASIC_incLines = CInt(aNode.InnerText)
                         End If
 
                         aNode = groupNode.SelectSingleNode("defBASICremove0")
                         If aNode Is Nothing Then
-                            Me.defBASICremove0 = False
+                            Me.defBASIC_remove0 = False
                         Else
-                            Me.defBASICremove0 = CBool(aNode.InnerText.ToUpper = "TRUE")
+                            Me.defBASIC_remove0 = CBool(aNode.InnerText.ToUpper = "TRUE")
                         End If
                     End If
                     '#####################################
@@ -397,18 +419,33 @@ Public Class Config
                             Me.PathLastProject = aNode.InnerText
                         End If
 
-                        aNode = groupNode.SelectSingleNode("ZeroColor")
+                        aNode = groupNode.SelectSingleNode("Color_Zero")
                         If aNode Is Nothing Then
-                            Me.ZeroColor = Color.DarkGray '.ToArgb
+                            Me.Color_Zero = def_Color_Zero
                         Else
-                            Me.ZeroColor = Color.FromArgb(CInt(aNode.InnerText))
+                            Me.Color_Zero = Color.FromArgb(CInt(aNode.InnerText))
                         End If
 
-                        aNode = groupNode.SelectSingleNode("GridColor")
+                        aNode = groupNode.SelectSingleNode("Color_Grid")
                         If aNode Is Nothing Then
-                            Me.GridColor = Color.LightSkyBlue '.ToArgb
+                            Me.Color_Grid = def_Color_Grid
                         Else
-                            Me.GridColor = Color.FromArgb(CInt(aNode.InnerText))
+                            Me.Color_Grid = Color.FromArgb(CInt(aNode.InnerText))
+                        End If
+
+
+                        aNode = groupNode.SelectSingleNode("Color_OutBG")
+                        If aNode Is Nothing Then
+                            Me.Color_OUTPUT_BG = def_Color_OUTPUT_BG
+                        Else
+                            Me.Color_OUTPUT_BG = Color.FromArgb(CInt(aNode.InnerText))
+                        End If
+
+                        aNode = groupNode.SelectSingleNode("Color_OutINK")
+                        If aNode Is Nothing Then
+                            Me.Color_OUTPUT_INK = def_Color_OUTPUT_INK
+                        Else
+                            Me.Color_OUTPUT_INK = Color.FromArgb(CInt(aNode.InnerText))
                         End If
 
                     End If
@@ -630,18 +667,23 @@ Public Class Config
             groupElement = aXmlDoc.CreateElement("defCode")
             rootElement.AppendChild(groupElement)
 
+            anElement = aXmlDoc.CreateElement("defDataLabel")
+            txtElement = aXmlDoc.CreateTextNode(Me.defDataLabel)
+            anElement.AppendChild(txtElement)
+            groupElement.AppendChild(anElement)
+
             anElement = aXmlDoc.CreateElement("defCodeOutput")
             txtElement = aXmlDoc.CreateTextNode(CStr(Me.defCodeOutput))
             anElement.AppendChild(txtElement)
             groupElement.AppendChild(anElement)
 
-            anElement = aXmlDoc.CreateElement("defCodeNumberFormat")
-            txtElement = aXmlDoc.CreateTextNode(CStr(Me.defCodeNumberFormat))
+            anElement = aXmlDoc.CreateElement("defCodeNumberSystem")
+            txtElement = aXmlDoc.CreateTextNode(CStr(Me.defCodeNumberSystem))
             anElement.AppendChild(txtElement)
             groupElement.AppendChild(anElement)
 
-            anElement = aXmlDoc.CreateElement("defCodeSizeLine")
-            txtElement = aXmlDoc.CreateTextNode(CStr(Me.defCodeSizeLine))
+            anElement = aXmlDoc.CreateElement("defCodeLineSize")
+            txtElement = aXmlDoc.CreateTextNode(CStr(Me.defCodeLineSize))
             anElement.AppendChild(txtElement)
             groupElement.AppendChild(anElement)
 
@@ -665,28 +707,28 @@ Public Class Config
             anElement.AppendChild(txtElement)
             groupElement.AppendChild(anElement)
 
-            anElement = aXmlDoc.CreateElement("defBASICinstruction")
-            txtElement = aXmlDoc.CreateTextNode(Me.defBASICinstruction)
+            anElement = aXmlDoc.CreateElement("defBASICcommentInstruction")
+            txtElement = aXmlDoc.CreateTextNode(Me.defBASIC_CommentInstruction)
             anElement.AppendChild(txtElement)
             groupElement.AppendChild(anElement)
 
-            anElement = aXmlDoc.CreateElement("defDataLabel")
-            txtElement = aXmlDoc.CreateTextNode(Me.defDataLabel)
+            anElement = aXmlDoc.CreateElement("defBASICdataInstruction")
+            txtElement = aXmlDoc.CreateTextNode(Me.defBASIC_DataInstruction)
             anElement.AppendChild(txtElement)
             groupElement.AppendChild(anElement)
 
             anElement = aXmlDoc.CreateElement("defBASICinitLine")
-            txtElement = aXmlDoc.CreateTextNode(CStr(Me.defBASICinitLine))
+            txtElement = aXmlDoc.CreateTextNode(CStr(Me.defBASIC_initLine))
             anElement.AppendChild(txtElement)
             groupElement.AppendChild(anElement)
 
             anElement = aXmlDoc.CreateElement("defBASICincLines")
-            txtElement = aXmlDoc.CreateTextNode(CStr(Me.defBASICincLines))
+            txtElement = aXmlDoc.CreateTextNode(CStr(Me.defBASIC_incLines))
             anElement.AppendChild(txtElement)
             groupElement.AppendChild(anElement)
 
             anElement = aXmlDoc.CreateElement("defBASICremove0")
-            txtElement = aXmlDoc.CreateTextNode(CStr(Me.defBASICremove0))
+            txtElement = aXmlDoc.CreateTextNode(CStr(Me.defBASIC_remove0))
             anElement.AppendChild(txtElement)
             groupElement.AppendChild(anElement)
             ' ###################################################
@@ -712,13 +754,23 @@ Public Class Config
             anElement.AppendChild(txtElement)
             groupElement.AppendChild(anElement)
 
-            anElement = aXmlDoc.CreateElement("ZeroColor")
-            txtElement = aXmlDoc.CreateTextNode(CStr(Me.ZeroColor.ToArgb))
+            anElement = aXmlDoc.CreateElement("Color_Zero")
+            txtElement = aXmlDoc.CreateTextNode(CStr(Me.Color_Zero.ToArgb))
             anElement.AppendChild(txtElement)
             groupElement.AppendChild(anElement)
 
-            anElement = aXmlDoc.CreateElement("GridColor")
-            txtElement = aXmlDoc.CreateTextNode(CStr(Me.GridColor.ToArgb))
+            anElement = aXmlDoc.CreateElement("Color_Grid")
+            txtElement = aXmlDoc.CreateTextNode(CStr(Me.Color_Grid.ToArgb))
+            anElement.AppendChild(txtElement)
+            groupElement.AppendChild(anElement)
+
+            anElement = aXmlDoc.CreateElement("Color_OutBG")
+            txtElement = aXmlDoc.CreateTextNode(CStr(Me.Color_OUTPUT_BG.ToArgb))
+            anElement.AppendChild(txtElement)
+            groupElement.AppendChild(anElement)
+
+            anElement = aXmlDoc.CreateElement("Color_OutINK")
+            txtElement = aXmlDoc.CreateTextNode(CStr(Me.Color_OUTPUT_INK .ToArgb))
             anElement.AppendChild(txtElement)
             groupElement.AppendChild(anElement)
             ' ###################################################
@@ -804,19 +856,22 @@ Public Class Config
     Public Sub InitOutputInfo()
 
         Me.lastCodeOutput = Me.defCodeOutput
-        Me.lastCodeNumberFormat = Me.defCodeNumberFormat
-        Me.lastCodeSizeLine = Me.defCodeSizeLine
+        Me.lastCodeNumberFormat = Me.defCodeNumberSystem
+        Me.lastCodeSizeLine = Me.defCodeLineSize
         Me.lastCodeCompressType = Me.defCodeCompressType
         Me.lastAsmByteCommand = Me.defAsmByteCommand
         Me.lastAsmWordDataCommand = Me.defAsmWordDataCommand
         Me.lastCByteCommand = Me.defCByteCommand
-        Me.lastBASICinstruction = Me.defBASICinstruction
+        Me.lastBASIC_DataInstruction = Me.defBASIC_DataInstruction
+        Me.lastBASIC_CommentInstruction = Me.defBASIC_CommentInstruction
 
-        Me.lastBASICinitLine = Me.defBASICinitLine
-        Me.lastBASICincLines = Me.defBASICincLines
-        Me.lastBASICremove0 = Me.defBASICremove0
+        Me.lastBASIC_initLine = Me.defBASIC_initLine
+        Me.lastBASIC_incLines = Me.defBASIC_incLines
+        Me.lastBASIC_remove0 = Me.defBASIC_remove0
 
     End Sub
+
+
 
 
 

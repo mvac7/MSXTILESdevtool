@@ -208,7 +208,7 @@ Public Class paletteEditor
 
         Me._ProgressController = New ProgressController(Me.ParentForm)
 
-        Me.Project.Palettes.SetZeroColor(Me.AppConfig.ZeroColor)
+        Me.Project.Palettes.SetZeroColor(Me.AppConfig.Color_Zero)
 
         If Me._isanApp = False Then
             Me.GetDataButton.Visible = True
@@ -268,7 +268,7 @@ Public Class paletteEditor
 
 
     Public Sub UpdateConfig() Implements IEditorContainer.UpdateConfig
-        Me.Project.Palettes.SetZeroColor(Me.AppConfig.ZeroColor)
+        Me.Project.Palettes.SetZeroColor(Me.AppConfig.Color_Zero)
         RefreshEditor()
     End Sub
 

@@ -159,7 +159,6 @@ Partial Class OutputDataWin
         Me.DataTypeInput.Location = New System.Drawing.Point(0, 32)
         Me.DataTypeInput.Name = "DataTypeInput"
         Me.DataTypeInput.Size = New System.Drawing.Size(419, 110)
-        Me.DataTypeInput.SizesForColors = True
         Me.DataTypeInput.TabIndex = 254
         '
         'RGBformatLabel

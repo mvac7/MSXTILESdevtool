@@ -50,10 +50,11 @@ Public Class OutputDataWin
             Me.PaletteComboBox.SelectedIndex = Me.Project.GetIndexFromID(Me._selectedID)
         End If
 
+        OutputText.ForeColor = Me.AppConfig.Color_OUTPUT_INK
+        OutputText.BackColor = Me.AppConfig.Color_OUTPUT_BG
 
-        Me.DataTypeInput.AppConfig = Me.AppConfig
-        Me.DataTypeInput.EnableDataSizeLine = True
-        Me.DataTypeInput.InitControl()
+        'Me.DataTypeInput.EnableDataSizeLine = True
+        Me.DataTypeInput.InitControl(Me.AppConfig)
 
         Me.RGBformatComboBox.SelectedIndex = 0
 
@@ -99,9 +100,9 @@ Public Class OutputDataWin
 
     Private Sub PaletteComboBox_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) 'Handles PaletteComboBox.SelectedIndexChanged
         If PaletteComboBox.SelectedIndex = 0 Then
-            Me.DataTypeInput.AsmEnableIndex = True
+            Me.DataTypeInput.EnableAssemblerIndex = True
         Else
-            Me.DataTypeInput.AsmEnableIndex = False
+            Me.DataTypeInput.EnableAssemblerIndex = False
         End If
         genData()
     End Sub
@@ -178,11 +179,12 @@ Public Class OutputDataWin
         comments.Add("Project: " + Me.Info.Name)
         comments.Add(CommentDataFormat)
 
-        If Me.DataTypeInput.CodeLanguage = DataFormat.ProgrammingLanguage.BASIC Then
-            _outputText = Me.aMSXDataFormat.GetBASICComments(comments, Me.DataTypeInput.BASIClineNumber, Me.DataTypeInput.BASICInterval)
-        Else
-            _outputText = Me.aMSXDataFormat.GetComments(comments, Me.DataTypeInput.CodeLanguage)
-        End If
+        'If Me.DataTypeInput.CodeLanguage = DataFormat.ProgrammingLanguage.BASIC Then
+        '    _outputText = Me.aMSXDataFormat.GetBASICComments(comments, Me.DataTypeInput.BASIClineNumber, Me.DataTypeInput.BASICInterval)
+        'Else
+        '    _outputText = Me.aMSXDataFormat.GetComments(comments, Me.DataTypeInput.CodeLanguage)
+        'End If
+        _outputText = Me.aMSXDataFormat.GetComments(comments, Me.DataTypeInput.CodeLanguage)
 
 
         ' range of palettes
@@ -246,7 +248,7 @@ Public Class OutputDataWin
                 Case DataFormat.ProgrammingLanguage.ASSEMBLER
                     outputSource = Me.aMSXDataFormat.GetAssemblerCode(tmpData, sizeline, Me.DataTypeInput.NumeralSystem, _palette.Name, comments, Me.AppConfig.lastAsmByteCommand)
                 Case DataFormat.ProgrammingLanguage.BASIC
-                    outputSource = Me.aMSXDataFormat.GetBASICcode(tmpData, sizeline, Me.DataTypeInput.NumeralSystem, Me.DataTypeInput.BASICremoveZeros, Me.aMSXDataFormat.BASIClineNumber, Me.DataTypeInput.BASICInterval, comments)
+                    outputSource = Me.aMSXDataFormat.GetBASICcode(tmpData, sizeline, Me.DataTypeInput.NumeralSystem, Me.DataTypeInput.BASICremoveZeros, Me.aMSXDataFormat.BASIC_Line, Me.DataTypeInput.BASICInterval, comments)
             End Select
 
             Me.outputData.Add(tmpData) 'addrange

@@ -97,13 +97,6 @@ Public Class ConfigWin
 
         End Select
 
-        'Me.WorkpathComboBox.SelectedIndex = Me.AppConfig.PathProject_Type '_workPathType
-        'Me.UserpathTextBox.Text = Me.AppConfig.PathProject '_workPath
-        'Me.nmsxtilesTextBox.Text = Me.AppConfig.PathNMSXtiles
-        'Me.BinaryTextBox.Text = Me.AppConfig.PathBinary
-        'Me.BitmapTextBox.Text = Me.AppConfig.PathBitmap
-        'Me.PaletteTextBox.Text = Me.AppConfig.PathPalette
-        'Me.SpritesTextBox.Text = Me.AppConfig.PathSprite
 
         tMSgfXProjectPathControl.SetItem(Me.AppConfig.PathItemProject)
         SpritesPathControl.SetItem(Me.AppConfig.PathItemSprite)
@@ -121,15 +114,19 @@ Public Class ConfigWin
 
 
         Me.CodeOutputComboBox.SelectedIndex = Me.AppConfig.defCodeOutput '_codeOutput
-        Me.NumFormatComboBox.SelectedIndex = Me.AppConfig.defCodeNumberFormat '_codeNumberFormat
-        Me.SizeLineComboBox.SelectedIndex = Me.AppConfig.defCodeSizeLine '_codeSizeLine
+        Me.NumFormatComboBox.SelectedIndex = Me.AppConfig.defCodeNumberSystem '_codeNumberFormat
+        Me.SizeLineComboBox.SelectedIndex = Me.AppConfig.defCodeLineSize '_codeSizeLine
         Me.CompressTypeComboBox.SelectedIndex = Me.AppConfig.defCodeCompressType '_codeCompressType
         Me.AsmByteDataTextBox.Text = Me.AppConfig.defAsmByteCommand
         Me.AsmWordDataTextBox.Text = Me.AppConfig.defAsmWordDataCommand
         Me.CByteDataTextBox.Text = Me.AppConfig.defCByteCommand
-        Me.BASICinitLineTextBox.Text = CStr(Me.AppConfig.defBASICinitLine)
-        Me.BASICincLineslTextBox.Text = CStr(Me.AppConfig.defBASICincLines)
-        Me.RemoveZerosCheck.Checked = Me.AppConfig.defBASICremove0
+
+        Me.BASICdataTextBox.Text = Me.AppConfig.defBASIC_DataInstruction
+        Me.BASICcommentComboBox.SelectedIndex = GetBASIC_CommentInstruction_Index(Me.AppConfig.defBASIC_CommentInstruction)
+        Me.BASICinitLineTextBox.Text = CStr(Me.AppConfig.defBASIC_initLine)
+        Me.BASICincLineslTextBox.Text = CStr(Me.AppConfig.defBASIC_incLines)
+        Me.RemoveZerosCheck.Checked = Me.AppConfig.defBASIC_remove0
+
         Me.DataLabelTextBox.Text = Me.AppConfig.defDataLabel
 
         Me.InfoNameTextBox.Text = Me.AppConfig.defAuthor
@@ -139,10 +136,11 @@ Public Class ConfigWin
             Me.ToolTip1.SetToolTip(Me.PathLastPRJTextBox, Me.AppConfig.PathLastProject)
         End If
 
+        SetColor(Me.Color0Button, Me.AppConfig.Color_Zero)
+        SetColor(Me.GridColorButton, Me.AppConfig.Color_Grid)
 
-        SetZeroColor(Me.AppConfig.ZeroColor)
-        SetGridColor(Me.AppConfig.GridColor)
-
+        SetColor(Me.OutputINKcolorButton, Me.AppConfig.Color_OUTPUT_INK)
+        SetColor(Me.OutputBGcolorButton, Me.AppConfig.Color_OUTPUT_BG)
 
         Select Case Me.AppConfig.firstProjectType
             Case Config.FIRST_PROJECT.NEWPROJECT
@@ -155,24 +153,7 @@ Public Class ConfigWin
                 Me.RadioButton1.Checked = True
         End Select
 
-
-
     End Sub
-
-
-
-    'Private Sub WorkpathComboBox_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
-    '    Select Case Me.WorkpathComboBox.SelectedIndex
-    '        Case 2
-    '            'UserpathLabel.Enabled = True
-    '            UserpathTextBox.Enabled = True
-    '            UserpathButton.Enabled = True
-    '        Case Else
-    '            'UserpathLabel.Enabled = False
-    '            UserpathTextBox.Enabled = False
-    '            UserpathButton.Enabled = False
-    '    End Select
-    'End Sub
 
 
 
@@ -196,15 +177,23 @@ Public Class ConfigWin
         Me.AppConfig.PathItemBinary = BinaryPathControl.GetItem()
 
         Me.AppConfig.defCodeOutput = Me.CodeOutputComboBox.SelectedIndex
-        Me.AppConfig.defCodeNumberFormat = Me.NumFormatComboBox.SelectedIndex
-        Me.AppConfig.defCodeSizeLine = Me.SizeLineComboBox.SelectedIndex
+        Me.AppConfig.defCodeNumberSystem = Me.NumFormatComboBox.SelectedIndex
+        Me.AppConfig.defCodeLineSize = Me.SizeLineComboBox.SelectedIndex
         Me.AppConfig.defCodeCompressType = Me.CompressTypeComboBox.SelectedIndex
         Me.AppConfig.defAsmByteCommand = Me.AsmByteDataTextBox.Text
         Me.AppConfig.defAsmWordDataCommand = Me.AsmWordDataTextBox.Text
         Me.AppConfig.defCByteCommand = Me.CByteDataTextBox.Text
-        Me.AppConfig.defBASICinitLine = CInt(Me.BASICinitLineTextBox.Text)
-        Me.AppConfig.defBASICincLines = CInt(Me.BASICincLineslTextBox.Text)
-        Me.AppConfig.defBASICremove0 = Me.RemoveZerosCheck.Checked
+        Me.AppConfig.defBASIC_initLine = CInt(Me.BASICinitLineTextBox.Text)
+        Me.AppConfig.defBASIC_incLines = CInt(Me.BASICincLineslTextBox.Text)
+        Me.AppConfig.defBASIC_remove0 = Me.RemoveZerosCheck.Checked
+        Me.AppConfig.defBASIC_DataInstruction = Me.BASICdataTextBox.Text
+
+        If Me.BASICcommentComboBox.SelectedIndex = 1 Then
+            Me.AppConfig.defBASIC_CommentInstruction = "'"
+        Else
+            Me.AppConfig.defBASIC_CommentInstruction = "REM"
+        End If
+
         Me.AppConfig.defDataLabel = Me.DataLabelTextBox.Text
 
         Me.AppConfig.defAuthor = Me.InfoNameTextBox.Text
@@ -218,8 +207,10 @@ Public Class ConfigWin
         End If
 
 
-        Me.AppConfig.ZeroColor = Me.Color0Button.BackColor
-        Me.AppConfig.GridColor = Me.GridColorButton.BackColor
+        Me.AppConfig.Color_Zero = Me.Color0Button.BackColor
+        Me.AppConfig.Color_Grid = Me.GridColorButton.BackColor
+        Me.AppConfig.Color_OUTPUT_INK = Me.OutputINKcolorButton.BackColor
+        Me.AppConfig.Color_OUTPUT_BG = Me.OutputBGcolorButton.BackColor
 
 
         Me.AppConfig.InitOutputInfo()
@@ -231,87 +222,13 @@ Public Class ConfigWin
 
 
 
-    'Private Sub Cancel_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Cancel_Button.Click
-    '    Me.DialogResult = System.Windows.Forms.DialogResult.Cancel
-    '    Me.Close()
-    'End Sub
-
-
-
-    'Private Sub UserpathButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-    '    FolderBrowserDialog1.SelectedPath = Me.UserpathTextBox.Text
-
-    '    If FolderBrowserDialog1.ShowDialog() = Windows.Forms.DialogResult.OK Then
-    '        Me.UserpathTextBox.Text = FolderBrowserDialog1.SelectedPath
-    '    End If
-    'End Sub
-
-
-
-    'Private Sub nmsxtilesButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-    '    If Me.nmsxtilesTextBox.Text = "" Then
-    '        FolderBrowserDialog1.SelectedPath = Me.AppConfig.PathProject
-    '    Else
-    '        FolderBrowserDialog1.SelectedPath = Me.nmsxtilesTextBox.Text
-    '    End If
-
-    '    If FolderBrowserDialog1.ShowDialog() = Windows.Forms.DialogResult.OK Then
-    '        Me.nmsxtilesTextBox.Text = FolderBrowserDialog1.SelectedPath
-    '    End If
-    'End Sub
-
-
-
-    'Private Sub BinaryButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-    '    If Me.BinaryTextBox.Text = "" Then
-    '        FolderBrowserDialog1.SelectedPath = Me.AppConfig.PathProject
-    '    Else
-    '        FolderBrowserDialog1.SelectedPath = Me.BinaryTextBox.Text
-    '    End If
-
-    '    If FolderBrowserDialog1.ShowDialog() = Windows.Forms.DialogResult.OK Then
-    '        Me.BinaryTextBox.Text = FolderBrowserDialog1.SelectedPath
-    '    End If
-    'End Sub
-
-
-
-    'Private Sub BitmapButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-    '    If Me.BitmapTextBox.Text = "" Then
-    '        FolderBrowserDialog1.SelectedPath = Me.AppConfig.PathProject
-    '    Else
-    '        FolderBrowserDialog1.SelectedPath = Me.BitmapTextBox.Text
-    '    End If
-
-    '    If FolderBrowserDialog1.ShowDialog() = Windows.Forms.DialogResult.OK Then
-    '        Me.BitmapTextBox.Text = FolderBrowserDialog1.SelectedPath
-    '    End If
-    'End Sub
-
-
-    'Private Sub PaletteButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PaletteButton.Click
-    '    If Me.PaletteTextBox.Text = "" Then
-    '        FolderBrowserDialog1.SelectedPath = Me.AppConfig.PathProject
-    '    Else
-    '        FolderBrowserDialog1.SelectedPath = Me.PaletteTextBox.Text
-    '    End If
-
-    '    If FolderBrowserDialog1.ShowDialog() = Windows.Forms.DialogResult.OK Then
-    '        Me.PaletteTextBox.Text = FolderBrowserDialog1.SelectedPath
-    '    End If
-    'End Sub
-
-    'Private Sub SpritesButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-    '    If Me.SpritesTextBox.Text = "" Then
-    '        FolderBrowserDialog1.SelectedPath = Me.AppConfig.PathProject
-    '    Else
-    '        FolderBrowserDialog1.SelectedPath = Me.SpritesTextBox.Text
-    '    End If
-
-    '    If FolderBrowserDialog1.ShowDialog() = Windows.Forms.DialogResult.OK Then
-    '        Me.SpritesTextBox.Text = FolderBrowserDialog1.SelectedPath
-    '    End If
-    'End Sub
+    Public Function GetBASIC_CommentInstruction_Index(value As String) As Integer
+        If value.ToUpper = "REM" Then
+            Return 0
+        Else
+            Return 1
+        End If
+    End Function
 
 
 
@@ -355,43 +272,100 @@ Public Class ConfigWin
 
 
 
-    Private Sub Color0Button_Click(sender As Object, e As EventArgs) Handles Color0Button.Click
-        Me.ColorDialog1.Color = Me.Color0Button.BackColor
+    Private Sub Color0Button_Click(sender As Object, e As EventArgs) Handles Color0Button.Click, GridColorButton.Click, OutputINKcolorButton.Click, OutputBGcolorButton.Click
+        Dim aButtom As Button = CType(sender, Button)
+        Me.ColorDialog1.Color = aButtom.BackColor
         Me.ColorDialog1.ShowDialog()
-        SetZeroColor(Me.ColorDialog1.Color)
-
+        SetColor(aButtom, Me.ColorDialog1.Color)
     End Sub
 
 
 
-    Private Sub GridColorButton_Click(sender As Object, e As EventArgs) Handles GridColorButton.Click
-        Me.ColorDialog1.Color = Me.GridColorButton.BackColor
-        Me.ColorDialog1.ShowDialog()
-        SetGridColor(Me.ColorDialog1.Color)
-    End Sub
+    'Private Sub GridColorButton_Click(sender As Object, e As EventArgs) Handles GridColorButton.Click
+    '    Me.ColorDialog1.Color = Me.GridColorButton.BackColor
+    '    Me.ColorDialog1.ShowDialog()
+    '    SetColor(Me.GridColorButton, Me.ColorDialog1.Color)
+    'End Sub
+
+
+    'Private Sub OutputINKcolorButton_Click(sender As Object, e As EventArgs) Handles OutputINKcolorButton.Click
+
+    'End Sub
+
+    'Private Sub OutputBGcolorButton_Click(sender As Object, e As EventArgs) Handles OutputBGcolorButton.Click
+
+    'End Sub
 
 
 
-    Private Sub SetZeroColor(ByVal newColor As Color)
-        Me.Color0Button.BackColor = newColor
-        Me.Color0Button.Text = newColor.Name
+    Private Sub SetColor(ByRef aButton As Button, ByVal newColor As Color)
+        aButton.BackColor = newColor
+        aButton.Text = newColor.Name
         If newColor.GetBrightness > 0.7 Then
-            Me.Color0Button.ForeColor = Color.Black
+            aButton.ForeColor = Color.Black
         Else
-            Me.Color0Button.ForeColor = Color.White
+            aButton.ForeColor = Color.White
         End If
     End Sub
 
 
 
-    Private Sub SetGridColor(ByVal newColor As Color)
-        Me.GridColorButton.BackColor = newColor
-        Me.GridColorButton.Text = newColor.Name
-        If newColor.GetBrightness > 0.7 Then
-            Me.GridColorButton.ForeColor = Color.Black
-        Else
-            Me.GridColorButton.ForeColor = Color.White
-        End If
+    'Private Sub SetZeroColor(ByVal newColor As Color)
+    '    Me.Color0Button.BackColor = newColor
+    '    Me.Color0Button.Text = newColor.Name
+    '    If newColor.GetBrightness > 0.7 Then
+    '        Me.Color0Button.ForeColor = Color.Black
+    '    Else
+    '        Me.Color0Button.ForeColor = Color.White
+    '    End If
+    'End Sub
+
+
+
+    'Private Sub SetGridColor(ByVal newColor As Color)
+    '    Me.GridColorButton.BackColor = newColor
+    '    Me.GridColorButton.Text = newColor.Name
+    '    If newColor.GetBrightness > 0.7 Then
+    '        Me.GridColorButton.ForeColor = Color.Black
+    '    Else
+    '        Me.GridColorButton.ForeColor = Color.White
+    '    End If
+    'End Sub
+
+
+
+    Private Sub AsmByteValuesComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles AsmByteValuesComboBox.SelectedIndexChanged
+        AsmByteDataTextBox.Text = AsmByteValuesComboBox.SelectedItem
+    End Sub
+
+
+
+    Private Sub AsmWordComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles AsmWordValuesComboBox.SelectedIndexChanged
+        AsmWordDataTextBox.Text = AsmWordValuesComboBox.SelectedItem
+    End Sub
+
+
+
+    Private Sub ColorConfigsComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ColorConfigsComboBox.SelectedIndexChanged
+
+        Select Case ColorConfigsComboBox.SelectedIndex
+            Case 1
+                ' blue MSX BASIC
+                SetColor(Me.OutputINKcolorButton, Color.FromArgb(255, 255, 255, 255))   'White
+                SetColor(Me.OutputBGcolorButton, Color.FromArgb(255, 84, 85, 237))      'TMS9918A Dark Blue
+
+            Case 2
+                ' green GB
+                SetColor(Me.OutputINKcolorButton, Color.FromArgb(255, 15, 56, 15))    ' light green
+                SetColor(Me.OutputBGcolorButton, Color.FromArgb(255, 202, 220, 159))  ' dark green
+
+            Case Else
+                ' default
+                SetColor(Me.OutputINKcolorButton, Me.AppConfig.def_Color_OUTPUT_INK)
+                SetColor(Me.OutputBGcolorButton, Me.AppConfig.def_Color_OUTPUT_BG)
+
+        End Select
+
     End Sub
 
 

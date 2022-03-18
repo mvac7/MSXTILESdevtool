@@ -214,6 +214,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MSXTILESdevtool.ico" />
+    <None Include="Resources\config_x24.png" />
     <None Include="Resources\saveNM_x24.png" />
     <None Include="Resources\exchange2_x24.png" />
     <None Include="Resources\copy_color_x24.png" />

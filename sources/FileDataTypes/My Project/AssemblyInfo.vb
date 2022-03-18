@@ -12,7 +12,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("File Types")>
 <Assembly: AssemblyCompany("MSX Community")>
 <Assembly: AssemblyProduct("tMSgfX")>
-<Assembly: AssemblyCopyright("Copyright 2021 MSX Community")>
+<Assembly: AssemblyCopyright("Copyright 2022 MSX Community")>
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(False)>
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' mediante el asterisco ('*'), como se muestra a continuación:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("0.9.4.0")>
-<Assembly: AssemblyFileVersion("0.9.4.0")>
+<Assembly: AssemblyVersion("0.9.5.0")>
+<Assembly: AssemblyFileVersion("0.9.5.0")>

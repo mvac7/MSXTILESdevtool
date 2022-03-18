@@ -40,6 +40,9 @@ Public Class MainScreen
     Private Path_Project As String
     Private Filename_Project As String
 
+    Private Path_binary As String
+    Private Path_source As String
+
     Private MapName As String
     Private TilesetsName As String
 
@@ -160,8 +163,10 @@ Public Class MainScreen
 
         NewProject()
 
-        DataTypeInput.AppConfig = Me.AppConfig
-        DataTypeInput.InitControl()
+        DataTypeInput.InitControl(Me.AppConfig)
+
+        OutputText.ForeColor = Me.AppConfig.Color_OUTPUT_INK
+        OutputText.BackColor = Me.AppConfig.Color_OUTPUT_BG
 
         SelectDataComboBox.SelectedIndex = 0
         TilesetDataComboBox.SelectedIndex = 0
@@ -199,9 +204,12 @@ Public Class MainScreen
         Me.TMS9918Aviewer.SetBlock(iVDP.TableBase.GRPCGP, dragNdropPicture)
         Me.TMS9918Aviewer.RefreshScreen()
 
+        Me.Path_Project = ""
+        Me.Path_source = ""
+        Me.Path_binary = ""
+
         Info.Clear()
-        Info.Name = default_TITLE
-        Me.ProjectNameTextBox.Text = Me.Info.Name
+        Me.ProjectNameTextBox.Text = Info.Name
 
         SetTitle(Me.Info.Name)
 
@@ -2152,20 +2160,6 @@ Public Class MainScreen
 
 
 
-    'Private Sub NewProject(ByVal name As String)
-    '    Me.Info.Name = name
-    '    Me.ProjectVersion = "0"
-    '    Me.ProjectGroup = ""
-    '    Me.ProjectAuthor = ""
-    '    Me.ProjectDescription = ""
-    '    Me.ProjectStartDate = DateTime.Today.Ticks
-
-    '    'LoadScrText.Text = Me.MapName + ".scr"
-    '    'LoadTilText.Text = Me.TilesetsName + ".til"
-    'End Sub
-
-
-
     Private Sub LoadTilesetButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Me.OpenFileDialog1.DefaultExt = TilesetDocumentExtension
         Me.OpenFileDialog1.Filter = "Open Document Tileset file|*." + TilesetDocumentExtension + "|Open Document SCreen Project file|*." + ScreenDocumentExtension + "|All files|*.*"
@@ -2237,20 +2231,24 @@ Public Class MainScreen
 
 
 
+    Private Sub NewProjectButton_Click(sender As Object, e As EventArgs) Handles NewProjectButton.Click
+        NewProjectDialog()
+    End Sub
+
+    Private Sub LoadProjectButton_Click(sender As Object, e As EventArgs) Handles LoadProjectButton.Click
+        LoadProjectDialog()
+    End Sub
+
     Private Sub ProjectInfoButton_Click(sender As Object, e As EventArgs) Handles ProjectInfoButton.Click
         SetProjectInfo()
     End Sub
 
-
+    Private Sub ConfigButton_Click(sender As Object, e As EventArgs) Handles ConfigButton.Click
+        SetConfig()
+    End Sub
 
     Private Sub AboutButton_Click(sender As Object, e As EventArgs) Handles AboutButton.Click
         ShowAbout(False)
-    End Sub
-
-
-
-    Private Sub LoadProjectButton_Click(sender As Object, e As EventArgs) Handles LoadProjectButton.Click
-        LoadProjectDialog()
     End Sub
 
 
@@ -2919,10 +2917,10 @@ Public Class MainScreen
 
         Dim comments As New ArrayList
 
+        Me.aMSXDataFormat.BASIC_Line = DataTypeInput.BASIClineNumber
         comments.Add(My.Application.Info.ProductName + " v" + My.Application.Info.Version.ToString)
         comments.Add("File: " + Me.Filename_Project)
-
-        _outputText = Me.aMSXDataFormat.GetComments(comments, Me.DataTypeInput.CodeLanguage)  ' <<<----------------------  NO TIENE PARA BASIC!!!
+        _outputText = Me.aMSXDataFormat.GetComments(comments, Me.DataTypeInput.CodeLanguage)
 
         Select Case HoriTAB1.SelectTab
             Case HoriTAB.TAB_NAME.SCREEN
@@ -3038,9 +3036,9 @@ Public Class MainScreen
 
         label_suffix = "_MAP"
 
+        Me.aMSXDataFormat.BASIC_Line = DataTypeInput.BASIClineNumber
         comments.Add(" Map Area data - Width:" + CStr(line_length) + " Height:" + CStr((area_endY - area_startY) + 1))
-
-        _outputText = Me.aMSXDataFormat.GetComments(comments, Me.DataTypeInput.CodeLanguage)  ' <<<----------------------  NO TIENE PARA BASIC!!!
+        _outputText = Me.aMSXDataFormat.GetComments(comments, Me.DataTypeInput.CodeLanguage)
 
         For i As Integer = area_startY To area_endY
 
@@ -3135,9 +3133,10 @@ Public Class MainScreen
             label_suffix = "_COL"
         End If
 
+        Me.aMSXDataFormat.BASIC_Line = DataTypeInput.BASIClineNumber
         comment1 += " - Width:" + CStr(line_length) + " Height:" + CStr((area_endY - area_startY) + 1)
         comments.Add(comment1)
-        _outputText = Me.aMSXDataFormat.GetComments(comments, Me.DataTypeInput.CodeLanguage)  ' <<<----------------------  NO TIENE PARA BASIC!!!
+        _outputText = Me.aMSXDataFormat.GetComments(comments, Me.DataTypeInput.CodeLanguage)
 
         For i As Integer = area_startY To area_endY
 
@@ -3332,7 +3331,7 @@ Public Class MainScreen
                 outputSource = Me.aMSXDataFormat.GetAssemblerCode(data, Me.DataTypeInput.SizeLine, Me.DataTypeInput.NumeralSystem, dataname, comments, "<tab>DB") 'Me.AppConfig.lastAsmByteCommand)
 
             Case DataFormat.ProgrammingLanguage.BASIC
-                outputSource = Me.aMSXDataFormat.GetBASICcode(data, Me.DataTypeInput.SizeLine, Me.DataTypeInput.NumeralSystem, Me.DataTypeInput.BASICremoveZeros, Me.DataTypeInput.BASIClineNumber, Me.DataTypeInput.BASICInterval, comments)
+                outputSource = Me.aMSXDataFormat.GetBASICcode(data, Me.DataTypeInput.SizeLine, Me.DataTypeInput.NumeralSystem, Me.DataTypeInput.BASICremoveZeros, aMSXDataFormat.BASIC_Line, Me.DataTypeInput.BASICInterval, comments)
         End Select
 
 
@@ -3377,34 +3376,6 @@ Public Class MainScreen
         Return outputData
 
     End Function
-
-
-
-    Public Sub SaveBinary(ByVal filePath As String)
-
-        Dim aStream As System.IO.FileStream
-
-        'Try
-
-        If Me.outputCompressData.Count > 0 Then
-
-            Dim patternData() As Byte = CType(Me.outputCompressData.ToArray(GetType(Byte)), Byte())
-
-            aStream = New System.IO.FileStream(filePath, IO.FileMode.Create)
-            aStream.Write(patternData, 0, patternData.Length)
-            aStream.Close()
-
-        Else
-
-            ' Nothing que grabar!
-
-        End If
-
-        'Catch ex As Exception
-
-        'End Try
-
-    End Sub
 
 
 
@@ -3498,32 +3469,38 @@ Public Class MainScreen
 
 
     Private Sub CopyAllButton_Click(sender As Object, e As EventArgs) Handles CopyAllButton.Click
-
+        CopyAll()
     End Sub
+
 
     Private Sub SaveSourceButton_Click(sender As Object, e As EventArgs) Handles SaveSourceButton.Click
-
+        SaveSource_Dialog()
     End Sub
+
 
     Private Sub SaveBinaryButton_Click(sender As Object, e As EventArgs) Handles SaveBinaryButton.Click
         If Me.outputCompressData.Count > 0 Then
-            SaveBinaryDialog()
+            SaveBinary_Dialog()
         Else
             MessageWin.ShowDialog(Me, "Alert!", "I have no data to save.", MessageDialog.DIALOG_TYPE.ALERT) '+ vbCrLf
         End If
     End Sub
 
+
     Private Sub SaveSCProjectButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SaveSCProjectButton.Click
         SaveProjectDialog()
     End Sub
+
 
     Private Sub SaveNMSXprj_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SaveNMSXprj_Button.Click
         SaveNMSXprj_Dialog()
     End Sub
 
+
     Private Sub SaveSC2But_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SaveSC2But.Click
         SaveMSXBASICbinaryDialog()
     End Sub
+
 
     Private Sub SavePNGBut_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SavePNGBut.Click
         SavePNG_Dialog()
@@ -3535,17 +3512,17 @@ Public Class MainScreen
         Me.SaveFileDialog1.DefaultExt = ScreenDocumentExtension
         Me.SaveFileDialog1.Filter = "Open Document SCreen Project file|*." + ScreenDocumentExtension
 
-        Me.SaveFileDialog1.FileName = Me.Info.Name_without_Spaces
-
         If Me.Path_Project = "" Then
-            Me.Path_Project = Application.StartupPath
+            Me.SaveFileDialog1.FileName = Me.Info.Name_without_Spaces
+            Me.SaveFileDialog1.InitialDirectory = Application.StartupPath
+        Else
+            Me.SaveFileDialog1.FileName = Path.GetFileNameWithoutExtension(Me.Path_Project)
+            Me.SaveFileDialog1.InitialDirectory = Path.GetDirectoryName(Me.Path_Project)
         End If
-        Me.SaveFileDialog1.InitialDirectory = Me.Path_Project
 
         If SaveFileDialog1.ShowDialog() = Windows.Forms.DialogResult.OK Then
-
-            SaveData(SaveFileDialog1.FileName)
-            Me.Path_Project = Path.GetDirectoryName(SaveFileDialog1.FileName)
+            Me.Path_Project = SaveFileDialog1.FileName
+            SaveData(Me.Path_Project)
         End If
 
     End Sub
@@ -3558,9 +3535,12 @@ Public Class MainScreen
         Me.SaveFileDialog1.FileName = Me.Info.Name_without_Spaces
 
         If Me.Path_Project = "" Then
-            Me.Path_Project = Application.StartupPath
+            Me.SaveFileDialog1.FileName = Me.Info.Name_without_Spaces
+            Me.SaveFileDialog1.InitialDirectory = Application.StartupPath
+        Else
+            Me.SaveFileDialog1.FileName = Path.GetFileNameWithoutExtension(Me.Path_Project)
+            Me.SaveFileDialog1.InitialDirectory = Path.GetDirectoryName(Me.Path_Project)
         End If
-        Me.SaveFileDialog1.InitialDirectory = Me.Path_Project
 
         If SaveFileDialog1.ShowDialog() = Windows.Forms.DialogResult.OK Then
             'Me.Path_SC2 = Path.GetDirectoryName(SaveFileDialog1.FileName)
@@ -3570,8 +3550,9 @@ Public Class MainScreen
 
 
 
-    Private Sub SaveBinaryDialog()
+    Private Sub SaveBinary_Dialog()
 
+        Dim aStream As System.IO.FileStream
 
         Select Case Me.outputCompressData_CompressType
 
@@ -3596,13 +3577,34 @@ Public Class MainScreen
 
         Me.SaveFileDialog1.FileName = Me.Info.Name_without_Spaces + Me.outputCompressData_suffix  '+ "." + Extension_Binary
 
-        If Me.Path_Project = "" Then
-            Me.Path_Project = Application.StartupPath
+        If Me.Path_binary = "" Then
+            If Me.Path_Project = "" Then
+                'Me.SaveFileDialog1.FileName = Me.Info.Name_without_Spaces
+                Me.SaveFileDialog1.InitialDirectory = Application.StartupPath
+            Else
+                'Me.SaveFileDialog1.FileName = Path.GetFileNameWithoutExtension(Me.Path_Project)
+                Me.SaveFileDialog1.InitialDirectory = Path.GetDirectoryName(Me.Path_Project)
+            End If
+        Else
+            'Me.SaveFileDialog1.FileName = Path.GetFileNameWithoutExtension(Me.Path_binary)
+            Me.SaveFileDialog1.InitialDirectory = Path.GetDirectoryName(Me.Path_binary)
         End If
-        Me.SaveFileDialog1.InitialDirectory = Me.Path_Project
 
         If SaveFileDialog1.ShowDialog() = Windows.Forms.DialogResult.OK Then
-            SaveBinary(SaveFileDialog1.FileName)
+
+            Try
+                Dim patternData() As Byte = CType(Me.outputCompressData.ToArray(GetType(Byte)), Byte())
+
+                Me.Path_binary = SaveFileDialog1.FileName
+
+                aStream = New System.IO.FileStream(Me.Path_binary, IO.FileMode.Create)
+                aStream.Write(patternData, 0, patternData.Length)
+                aStream.Close()
+
+            Catch ex As Exception
+                MsgBox(ex.Message, MsgBoxStyle.Critical, "I/O Error")
+            End Try
+
         End If
 
     End Sub
@@ -3612,12 +3614,13 @@ Public Class MainScreen
         Me.SaveFileDialog1.DefaultExt = "prj"
         Me.SaveFileDialog1.Filter = "nMSXtiles Project file|*.prj"
 
-        Me.SaveFileDialog1.FileName = Me.Info.Name_without_Spaces
-
         If Me.Path_Project = "" Then
-            Me.Path_Project = Application.StartupPath
+            Me.SaveFileDialog1.FileName = Me.Info.Name_without_Spaces
+            Me.SaveFileDialog1.InitialDirectory = Application.StartupPath
+        Else
+            Me.SaveFileDialog1.FileName = Path.GetFileNameWithoutExtension(Me.Path_Project)
+            Me.SaveFileDialog1.InitialDirectory = Path.GetDirectoryName(Me.Path_Project)
         End If
-        Me.SaveFileDialog1.InitialDirectory = Me.Path_Project
 
         If SaveFileDialog1.ShowDialog() = Windows.Forms.DialogResult.OK Then
             'SaveNMSXtilesProject(SaveFileDialog1.FileName)
@@ -3634,9 +3637,12 @@ Public Class MainScreen
         Me.SaveFileDialog1.FileName = Me.Info.Name_without_Spaces + DataType_Suffix(HoriTAB1.SelectTab)
 
         If Me.Path_Project = "" Then
-            Me.Path_Project = Application.StartupPath
+            'Me.SaveFileDialog1.FileName = Me.Info.Name_without_Spaces
+            Me.SaveFileDialog1.InitialDirectory = Application.StartupPath
+        Else
+            'Me.SaveFileDialog1.FileName = Path.GetFileNameWithoutExtension(Me.Path_Project)
+            Me.SaveFileDialog1.InitialDirectory = Path.GetDirectoryName(Me.Path_Project)
         End If
-        Me.SaveFileDialog1.InitialDirectory = Me.Path_Project
 
         If SaveFileDialog1.ShowDialog() = Windows.Forms.DialogResult.OK Then
 
@@ -3647,51 +3653,6 @@ Public Class MainScreen
     End Sub
 
 
-    Private Sub SaveSource_Dialog()
-
-        If Me.OutputText.Text = "" Then
-            MsgBox("There is nothing to save.", MsgBoxStyle.Exclamation, "Alert")
-        Else
-
-            Select Case DataTypeInput.CodeLanguage
-                Case DataTypeInputControl.Language_CODE.BASIC
-                    Me.SaveFileDialog1.DefaultExt = "BAS"
-                    Me.SaveFileDialog1.Filter = "BASIC file|*.BAS"
-
-                Case DataTypeInputControl.Language_CODE.C
-                    Me.SaveFileDialog1.DefaultExt = "c"
-                    Me.SaveFileDialog1.Filter = "C file|*.c|Header file|*.h"
-
-                Case Else 'ASSEMBLER
-                    Me.SaveFileDialog1.DefaultExt = "asm"
-                    Me.SaveFileDialog1.Filter = "ASM file|*.asm|ASM file|*.s"
-            End Select
-
-            If Me.Path_Project = "" Then
-                Me.Path_Project = Application.StartupPath
-            End If
-            Me.SaveFileDialog1.InitialDirectory = Me.Path_Project
-
-            SaveFileDialog1.FileName = Replace(Me.Info.Name, " ", "_")
-
-            If SaveFileDialog1.ShowDialog() = Windows.Forms.DialogResult.OK Then
-
-                SaveSourceCode(SaveFileDialog1.FileName)
-
-            End If
-
-        End If
-
-    End Sub
-
-
-    Private Sub SaveSourceCode(ByVal filePath As String)
-
-        Dim aStreamWriterFile As New System.IO.StreamWriter(filePath)
-        aStreamWriterFile.WriteLine(Me.OutputText.Text)
-        aStreamWriterFile.Close()
-
-    End Sub
 
 
 
@@ -3763,20 +3724,17 @@ Public Class MainScreen
 
 
 
-    Private Sub NewProjectButton_Click(sender As Object, e As EventArgs) Handles NewProjectButton.Click
-
+    Private Sub NewProjectDialog()
         Dim result As DialogResult
 
         Beep()
         result = MessageWin.ShowDialog(Me, "New Project", "This option will erase all data." + vbCrLf + "Do you want to continue?", MessageDialog.DIALOG_TYPE.YES_NO) '+ vbCrLf
 
         If result = DialogResult.Yes Then
-            'DisableEventHandlers()
+            'RemoveHandlers()
             NewProject()
-            'EnableEventHandlers()
-            'ShowProjectData()
+            'AddHandlers()
         End If
-
     End Sub
 
 
@@ -3885,6 +3843,90 @@ Public Class MainScreen
         Next
 
         TileViewerPictureBox.Refresh()
+
+    End Sub
+
+
+
+
+    Private Sub SetConfig()
+        Dim aConfig As New ConfigWin(Me.AppConfig, ConfigWin.CONFIG_TYPE.BYTEGEN)
+
+        If aConfig.ShowDialog() = DialogResult.OK Then
+            Me.AppConfig.Save()
+
+            Me.OutputText.BackColor = Me.AppConfig.Color_OUTPUT_BG
+            Me.OutputText.ForeColor = Me.AppConfig.Color_OUTPUT_INK
+
+            Me.DataTypeInput.RefreshControl()
+            'GenerateData()
+        End If
+    End Sub
+
+
+    ''' <summary>
+    ''' Copy output data to clipboard
+    ''' </summary>
+    ''' <remarks></remarks>
+    Private Sub CopyAll()
+        My.Computer.Clipboard.SetText(Me.OutputText.Text)
+    End Sub
+
+
+
+
+
+    Private Sub SaveSource_Dialog()
+
+        Dim aStreamWriterFile As StreamWriter
+
+        If Me.OutputText.Text = "" Then
+            Dim MessageWin As New MessageDialog
+            MessageWin.ShowDialog(Me, "Alert!", "There is nothing to save.", MessageDialog.DIALOG_TYPE.ALERT) '+ vbCrLf
+
+        Else
+
+            If Me.Path_source = "" Then
+                If Me.Path_Project = "" Then
+                    Me.SaveFileDialog1.FileName = Me.Info.Name_without_Spaces
+                    Me.SaveFileDialog1.InitialDirectory = Application.StartupPath
+                Else
+                    Me.SaveFileDialog1.FileName = Path.GetFileNameWithoutExtension(Me.Path_Project)
+                    Me.SaveFileDialog1.InitialDirectory = Path.GetDirectoryName(Me.Path_Project)
+                End If
+            Else
+                Me.SaveFileDialog1.FileName = Path.GetFileNameWithoutExtension(Me.Path_source)
+                Me.SaveFileDialog1.InitialDirectory = Path.GetDirectoryName(Me.Path_source)
+            End If
+
+            Select Case DataTypeInput.CodeLanguage
+                Case DataFormat.ProgrammingLanguage.BASIC
+                    Me.SaveFileDialog1.DefaultExt = "BAS"
+                    Me.SaveFileDialog1.Filter = "BASIC file|*.BAS"
+                Case DataFormat.ProgrammingLanguage.C
+                    Me.SaveFileDialog1.DefaultExt = "c"
+                    Me.SaveFileDialog1.Filter = "C file|*.c|Header file|*.h"
+                Case DataFormat.ProgrammingLanguage.ASSEMBLER
+                    Me.SaveFileDialog1.DefaultExt = "asm"
+                    Me.SaveFileDialog1.Filter = "ASM file|*.asm|ASM file|*.s"
+            End Select
+
+
+            If SaveFileDialog1.ShowDialog() = DialogResult.OK Then
+
+                Try
+                    Me.Path_source = SaveFileDialog1.FileName
+
+                    aStreamWriterFile = New System.IO.StreamWriter(Me.Path_source)
+                    aStreamWriterFile.WriteLine(Me.OutputText.Text)
+                    aStreamWriterFile.Close()
+                Catch ex As Exception
+                    MsgBox(ex.Message, MsgBoxStyle.Critical, "I/O Error")
+                End Try
+
+            End If
+
+        End If
 
     End Sub
 

@@ -333,6 +333,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\about_24.png" />
+    <None Include="Resources\arrow_left_24blue.png" />
     <Content Include="Resources\config_x24.png" />
     <Content Include="Resources\help_x24.png" />
     <Content Include="Resources\ico_dataOutput_24x24.png" />
