@@ -12,7 +12,12 @@ Public Class paletteEditor
     Private AppConfig As Config
     Private _AppID As String = "paletteSX"
 
-    Private Project As tMSgfXProject
+    Private Project As tMSgfXProject ' for App mode
+
+    Public Palettes As PaletteProject
+    Private Info As ProjectInfo
+
+    Private Path_Project As String
 
     Private HelpPath As String
 
@@ -59,7 +64,6 @@ Public Class paletteEditor
 
 
 
-
     Public ReadOnly Property AppID As String Implements IEditorContainer.AppID
         Get
             Return Me._AppID
@@ -89,11 +93,7 @@ Public Class paletteEditor
 
     Public ReadOnly Property ProjectName As String Implements IEditorContainer.ProjectName
         Get
-            If Me.Project Is Nothing Then
-                Return ""
-            Else
-                Return Me.Project.Info.Name
-            End If
+            Return Me.Info.Name
         End Get
     End Property
 
@@ -117,10 +117,6 @@ Public Class paletteEditor
 
 
 
-
-
-
-
     Public ReadOnly Property SelectedPaletteID() As Integer
         Get
             Return Me.edit_Palette.ID
@@ -140,8 +136,6 @@ Public Class paletteEditor
 
 
 
-
-
     Public Sub New(ByRef _config As Config)
 
         ' Esta llamada es exigida por el diseñador.
@@ -150,40 +144,38 @@ Public Class paletteEditor
         ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
         Me.AppConfig = _config
 
-        Me.Project = New tMSgfXProject
+        Me.Palettes = New PaletteProject
+        Me.Info = New ProjectInfo
 
     End Sub
 
 
 
-    Public Sub New(ByRef _config As Config, ByRef aProject As tMSgfXProject)
+    Public Sub New(ByRef _config As Config, ByVal _palettes As PaletteProject)
 
         ' Esta llamada es exigida por el diseñador.
         InitializeComponent()
 
         ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
         Me.AppConfig = _config
+        Me.Palettes = _palettes
 
-        Me.Project = aProject
+        Me.Info = New ProjectInfo
 
     End Sub
 
 
 
-    Public Sub New(ByRef _config As Config, ByRef _Project As tMSgfXProject, ByVal paleteID As Integer)
+    Public Sub New(ByRef _config As Config, ByVal _palettes As PaletteProject, ByVal paleteID As Integer)
 
-        ' Llamada necesaria para el Diseñador de Windows Forms.
+        ' Esta llamada es exigida por el diseñador.
         InitializeComponent()
 
         ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
         Me.AppConfig = _config
+        Me.Palettes = _palettes
 
-        Me.Project = _Project
-
-        Me.HelpPath = Application.StartupPath + System.IO.Path.DirectorySeparatorChar + "Help" + System.IO.Path.DirectorySeparatorChar + Me.AppID + System.IO.Path.DirectorySeparatorChar + "UserGuide.html"
-
-
-        Me.def_WorkPath = Me.AppConfig.PathItemPalette.Path
+        Me.Info = New ProjectInfo
 
         Me.initPaletteID = paleteID
 
@@ -191,6 +183,37 @@ Public Class paletteEditor
 
 
 
+    Public Sub New(ByRef _config As Config, ByVal aProject As tMSgfXProject)
+
+        ' Esta llamada es exigida por el diseñador.
+        InitializeComponent()
+
+        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
+        Me.Project = aProject
+        Me.AppConfig = _config
+        Me.Palettes = aProject.Palettes
+
+        Me.Info = New ProjectInfo
+
+    End Sub
+
+
+
+    Public Sub New(ByRef _config As Config, ByVal aProject As tMSgfXProject, ByVal paleteID As Integer)
+
+        ' Llamada necesaria para el Diseñador de Windows Forms.
+        InitializeComponent()
+
+        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
+        Me.AppConfig = _config
+
+        Me.Project = aProject
+        Me.Palettes = aProject.Palettes
+        Me.Info = New ProjectInfo
+
+        Me.initPaletteID = paleteID
+
+    End Sub
 
 
 
@@ -208,7 +231,11 @@ Public Class paletteEditor
 
         Me._ProgressController = New ProgressController(Me.ParentForm)
 
-        Me.Project.Palettes.SetZeroColor(Me.AppConfig.Color_Zero)
+        Me.Palettes.SetZeroColor(Me.AppConfig.Color_Zero)
+
+        Me.HelpPath = Application.StartupPath + System.IO.Path.DirectorySeparatorChar + "Help" + System.IO.Path.DirectorySeparatorChar + Me.AppID + System.IO.Path.DirectorySeparatorChar + "UserGuide.html"
+
+        Me.def_WorkPath = Me.AppConfig.PathItemPalette.Path
 
         If Me._isanApp = False Then
             Me.GetDataButton.Visible = True
@@ -234,7 +261,7 @@ Public Class paletteEditor
 
         SelectPaletteByID(Me.initPaletteID)
 
-        Me.edit_Palette = Me.Project.Palettes.GetPaletteByID(Me.initPaletteID)
+        Me.edit_Palette = Me.Palettes.GetPaletteByID(Me.initPaletteID)
         RefreshPalette()
 
 
@@ -242,7 +269,6 @@ Public Class paletteEditor
         AddHandler Me.PaletteComboBox.SelectedIndexChanged, AddressOf Me.PaletteComboBox_SelectedIndexChanged
 
     End Sub
-
 
 
 
@@ -256,7 +282,8 @@ Public Class paletteEditor
         Me.initPaletteID = 0
         Me._ColorSelected = 1
 
-        SelectPaletteByID(Me.initPaletteID)
+        SelectPalette(0)
+
     End Sub
 
 
@@ -268,24 +295,24 @@ Public Class paletteEditor
 
 
     Public Sub UpdateConfig() Implements IEditorContainer.UpdateConfig
-        Me.Project.Palettes.SetZeroColor(Me.AppConfig.Color_Zero)
+        Me.Palettes.SetZeroColor(Me.AppConfig.Color_Zero)
         RefreshEditor()
     End Sub
 
 
 
     Public Sub ShowOutputDataWindow() Implements IEditorContainer.ShowOutputDataWindow
-        Dim codeWin As New OutputDataWin(Me.AppConfig, Me.Project.Info, Me.Project.Palettes, Me.edit_Palette.ID)
+        Dim codeWin As New OutputDataWin(Me.AppConfig, Me.Info, Me.Palettes, Me.edit_Palette.ID)
         codeWin.ShowDialog()
     End Sub
 
 
 
     Public Sub EditProjectInfo() Implements IEditorContainer.EditProjectInfo
-        Dim ProjectProperties As New ProjectPropertiesDialog(Me.AppConfig, Me.Project.Info)
+        Dim ProjectProperties As New ProjectPropertiesDialog(Me.AppConfig, Me.Info)
 
         If ProjectProperties.ShowDialog = DialogResult.OK Then
-            Me.Project.Info = ProjectProperties.GetProjectInfo()
+            Me.Info = ProjectProperties.GetProjectInfo()
         End If
     End Sub
 
@@ -338,7 +365,8 @@ Public Class paletteEditor
 
 
     Public Function SaveProject(filePath As String) As Boolean Implements IEditorContainer.SaveProject
-        Dim result As Boolean = False
+
+        Dim result As Boolean
         Dim extension As String
 
         Dim _tmsgfxIO As New MSXOpenDocumentIO(Me.AppConfig, Me.Project)
@@ -349,14 +377,8 @@ Public Class paletteEditor
         extension = Path.GetExtension(filePath).ToUpper
         If extension = "." + MSXOpenDocumentIO.Extension_PaletteDocument Then
             result = _tmsgfxIO.SavePaletteProject(filePath)
-            If result = True And Me._isanApp = True Then
-                Me.Project.Path = filePath
-            End If
         Else
             result = _tmsgfxIO.SaveProject(filePath)
-            If result = True Then
-                Me.Project.Path = filePath
-            End If
         End If
 
         Me._ProgressController.CloseProgressWin()
@@ -365,6 +387,9 @@ Public Class paletteEditor
         If result = True Then
             Me.AppConfig.AddRecentProject(filePath, AppID)
         End If
+
+        Return result
+
     End Function
 
 
@@ -384,15 +409,17 @@ Public Class paletteEditor
         If Me._isanApp = True Then
 
             Me.Project = New tMSgfXProject
+            'Me.Info.Clear()
+            'Me.Palettes.Clear()
 
         Else
             'tMSgfX project
-            Me.Project.Info.Clear()
-            Me.Project.Palettes.Clear()
-
+            Me.Info.Clear()
+            Me.Palettes.Clear()
         End If
 
     End Sub
+
 
 
     ''' <summary>
@@ -411,17 +438,16 @@ Public Class paletteEditor
         Dim counter As Integer = 1
 
         Me.PaletteComboBox.Items.Clear()
-        Me.PaletteComboBox.Items.Add("0 - " + Me.Project.Palettes.GetPaletteByID(0).Name)
+        Me.PaletteComboBox.Items.Add("0 - " + Me.Palettes.GetPaletteByID(0).Name)
 
-        If Me.Project.Palettes.Count > 0 Then
-            For Each aName As String In Me.Project.Palettes.GetNameList()
+        If Me.Palettes.Count > 0 Then
+            For Each aName As String In Me.Palettes.GetNameList()
                 Me.PaletteComboBox.Items.Add(CStr(counter) + " - " + aName)
                 counter += 1
             Next
         End If
 
     End Sub
-
 
 
 
@@ -433,7 +459,7 @@ Public Class paletteEditor
 
     Private Sub SelectPaletteByID(ByVal ID As Integer)
 
-        Dim indexPalette As Integer = Me.Project.Palettes.GetIndexFromID(ID)
+        Dim indexPalette As Integer = Me.Palettes.GetIndexFromID(ID)
 
         If indexPalette < 0 Then
             ' si ya no existe ese ID, se proporciona el valor de la paleta por defecto (0-TMS9918)
@@ -443,8 +469,6 @@ Public Class paletteEditor
         Me.PaletteComboBox.SelectedIndex = indexPalette
 
     End Sub
-
-
 
 
 
@@ -468,6 +492,7 @@ Public Class paletteEditor
     End Sub
 
 
+
     Private Function getColorBox(ByVal id As String, ByVal x As Integer, ByVal y As Integer, ByVal aColor As Color) As System.Windows.Forms.Control
         Dim ColorBox As PictureBox
         ColorBox = New PictureBox
@@ -486,6 +511,7 @@ Public Class paletteEditor
     End Function
 
 
+
     Private Sub colorPalette_Click(ByVal sender As Object, ByVal e As System.EventArgs)
         Dim numColor As Integer = CInt(sender.name)
 
@@ -498,6 +524,7 @@ Public Class paletteEditor
     End Sub
 
 
+
     Private Sub SelectColor(ByVal numColor As Integer)
 
         If numColor > 0 And numColor < 16 Then
@@ -507,7 +534,7 @@ Public Class paletteEditor
             If Me.edit_Palette.Type = iPaletteMSX.VDP.V9938 Then
 
                 Dim aColorMSX As ColorMSX = Me.edit_Palette.GetMSXColor(numColor)
-                Dim TMSColorMSX As Color = Me.Project.Palettes.GetPalette(0).GetRGBColor(numColor)
+                Dim TMSColorMSX As Color = Me.Palettes.GetPalette(0).GetRGBColor(numColor)
                 'Dim SumOfColors As Short = CShort(TMSColorMSX.R) + CShort(TMSColorMSX.G) + CShort(TMSColorMSX.B)
 
                 Me.oldColor = aColorMSX.Clone()
@@ -577,6 +604,7 @@ Public Class paletteEditor
     End Sub
 
 
+
     Private Sub setEditColor(ByVal aColorMSX As ColorMSX)
 
         Dim dataTools As New DataFormat
@@ -598,6 +626,7 @@ Public Class paletteEditor
     End Sub
 
 
+
     Private Sub setTone()
         Dim aRed As Byte = RedTrackBar.Value
         Dim aGreen As Byte = GreenTrackBar.Value
@@ -608,9 +637,6 @@ Public Class paletteEditor
         Me.ToneTextBox.Text = media
         Me._lastTone = media
     End Sub
-
-
-
 
 
 
@@ -813,13 +839,13 @@ Public Class paletteEditor
         Dim newName As String
         Dim aCommonFunctions As New CommonFunctions
 
-        newName = aCommonFunctions.GetNameWithNumberByRepetition(newPalette.Name, Me.Project.Palettes.GetNameList())
+        newName = aCommonFunctions.GetNameWithNumberByRepetition(newPalette.Name, Me.Palettes.GetNameList())
 
         _configPalette.Name = newName
 
         If _configPalette.ShowDialog = DialogResult.OK Then
             newPalette.Name = _configPalette.Name
-            If Not Me.Project.Palettes.Add(newPalette) < -1 Then
+            If Not Me.Palettes.Add(newPalette) < -1 Then
                 RefreshPaletteSelector()
                 SelectPaletteByID(newPalette.ID)
             End If
@@ -844,7 +870,7 @@ Public Class paletteEditor
         If ID = 0 Then
             'esta paleta no se puede borrar. Es la TMS9918
         Else
-            Me.Project.Palettes.DeleteByID(ID)
+            Me.Palettes.DeleteByID(ID)
             RefreshPaletteSelector()
             SelectPalette(0)
         End If
@@ -859,7 +885,7 @@ Public Class paletteEditor
         If Me.edit_Palette.Type = iPaletteMSX.VDP.V9938 Then
 
             If _configPalette.ShowDialog = DialogResult.OK Then
-                Me.Project.Palettes.ChangeName(Me.edit_Palette.ID, _configPalette.Name)
+                Me.Palettes.ChangeName(Me.edit_Palette.ID, _configPalette.Name)
                 'Me.edit_Palette.Name = _configPalette.Name
                 RefreshPaletteSelector()
                 SelectPaletteByID(Me.edit_Palette.ID)
@@ -868,6 +894,7 @@ Public Class paletteEditor
         End If
 
     End Sub
+
 
 
     Private Sub Copy()
@@ -947,7 +974,7 @@ Public Class paletteEditor
 
 
     Private Sub PaletteComboBox_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) 'Handles PaletteComboBox.SelectedIndexChanged
-        Me.edit_Palette = Me.Project.Palettes.GetPalette(Me.PaletteComboBox.SelectedIndex)
+        Me.edit_Palette = Me.Palettes.GetPalette(Me.PaletteComboBox.SelectedIndex)
         RefreshPalette()
         undo.Clear()
     End Sub
@@ -1294,11 +1321,29 @@ Public Class paletteEditor
 
 
     Private Sub LoadPaletteButton_Click(sender As Object, e As EventArgs) Handles LoadPaletteButton.Click
+
         Dim filePath As String = LoadPaletteDialog()
 
         If Not filePath = "" Then
-            Me.LoadPalette(filePath)
+            If LoadPalette(filePath) = True Then
+                Path_Project = filePath
+            End If
         End If
+
+    End Sub
+
+
+
+    Private Sub AddPaletteButton_Click(sender As Object, e As EventArgs) Handles AddPaletteButton.Click
+
+        Dim filePath As String = LoadPaletteDialog()
+
+        If Not filePath = "" Then
+            If AddPalette(filePath) = True Then
+                Path_Project = filePath
+            End If
+        End If
+
     End Sub
 
 
@@ -1318,23 +1363,46 @@ Public Class paletteEditor
     'End Sub
 
 
-
-
-
     Private Function LoadPalette(ByVal filePath As String) As Boolean
 
-        Dim result As Boolean = True
+        Dim result As Boolean = False
 
-        Dim _tmsgfxIO As New MSXOpenDocumentIO(Me.AppConfig, Me.Project)
+        Dim newID As Integer
+
+        Dim _tmsgfxIO As New MSXOpenDocumentIO(Me.AppConfig)
+
+        Dim tmpPaletteProject As PaletteProject
+
+        tmpPaletteProject = _tmsgfxIO.LoadPaletteProject(filePath)
+
+        newID = Me.Palettes.AddPalettes(tmpPaletteProject)
+
+        If newID > 0 Then
+            RefreshPaletteSelector()
+            SelectPaletteByID(newID)
+            result = True
+        End If
+
+        Return result
+
+    End Function
+
+
+
+
+    Private Function AddPalette(ByVal filePath As String) As Boolean
+
+        Dim result As Boolean = False
+
+        Dim _tmsgfxIO As New MSXOpenDocumentIO(Me.AppConfig)  ', Me.Project)
 
         Dim paletteName As String = ""
         Dim nameList As ArrayList
 
         Dim newID As Integer
 
-
         ' Get Map List
-        nameList = _tmsgfxIO.GetNameListByNodeName(filePath, MSXOpenDocumentIO.PALETTES, MSXOpenDocumentIO.PALETTES_PAL)
+        nameList = _tmsgfxIO.GetNameListByNodeName(filePath, MSXOpenDocumentIO.PALETTES, MSXOpenDocumentIO.PALETTES_SET)
 
         ' si solo hay uno, lo carga directamente
         If nameList.Count = 1 Then
@@ -1349,19 +1417,44 @@ Public Class paletteEditor
                 Else
                     paletteName = ""
                 End If
+
             End If
         End If
 
+        If paletteName = "" Then
+            'newID = _tmsgfxIO.AddPaletteProject(filePath)
 
-        newID = _tmsgfxIO.LoadPalette(filePath, paletteName)
+            Dim tmpPaletteProject As PaletteProject
+
+            tmpPaletteProject = _tmsgfxIO.LoadPaletteProject(filePath)
+
+            newID = Me.Palettes.AddPalettes(tmpPaletteProject)
+
+
+        Else
+            'newID = _tmsgfxIO.AddPalette(filePath, paletteName)
+
+            Dim tmpPalette As PaletteV9938
+
+            'Try
+
+            tmpPalette = _tmsgfxIO.LoadPalette(filePath, paletteName)
+
+            If tmpPalette Is Nothing Then
+                newID = -1
+            Else
+                newID = Me.Palettes.Add(tmpPalette)
+            End If
+
+        End If
 
         If newID > 0 Then
             RefreshPaletteSelector()
             SelectPaletteByID(newID)
-            Return True
+            result = True
         End If
 
-        Return False
+        Return result
 
     End Function
 
@@ -1370,14 +1463,14 @@ Public Class paletteEditor
     Public Function LoadPaletteDialog() As String
 
         'Me.OpenFileDialog1.DefaultExt = MSXOpenDocumentIO.Extension_PictureDocument
-        Me.OpenFileDialog1.Filter = LoadTypes '"MSX Color Palette Open Document|*." + MSXOpenDocumentIO.Extension_PaletteDocument
+        Me.OpenFileDialog1.Filter = LoadTypes + "|Old sxOD file format|*.XPAL"
 
-        If Me.Project.Path = "" Then
+        If Me.Path_Project = "" Then
             Me.OpenFileDialog1.FileName = ""
-            Me.OpenFileDialog1.InitialDirectory = Me.AppConfig.PathPicture.Path
+            Me.OpenFileDialog1.InitialDirectory = Me.AppConfig.PathItemPalette.Path
         Else
-            Me.OpenFileDialog1.FileName = Path.GetFileNameWithoutExtension(Me.Project.Path)
-            Me.OpenFileDialog1.InitialDirectory = Path.GetDirectoryName(Me.Project.Path)
+            Me.OpenFileDialog1.FileName = Path.GetFileNameWithoutExtension(Me.Path_Project)
+            Me.OpenFileDialog1.InitialDirectory = Path.GetDirectoryName(Me.Path_Project)
         End If
 
         If Me.OpenFileDialog1.ShowDialog = DialogResult.OK Then
@@ -1414,19 +1507,21 @@ Public Class paletteEditor
         '    Me.SaveFileDialog1.InitialDirectory = Me.defaultPath
         'End If
 
-        If Me.Project.Path = "" Then
+        If Me.Path_Project = "" Then
             Me.SaveFileDialog1.FileName = "" 'Me._mapsProject.Name
             Me.SaveFileDialog1.InitialDirectory = Me.AppConfig.PathItemPalette.Path
         Else
-            Me.SaveFileDialog1.FileName = Path.GetFileNameWithoutExtension(Me.Project.Path)
-            Me.SaveFileDialog1.InitialDirectory = Path.GetDirectoryName(Me.Project.Path)
+            Me.SaveFileDialog1.FileName = Path.GetFileNameWithoutExtension(Me.Path_Project)
+            Me.SaveFileDialog1.InitialDirectory = Path.GetDirectoryName(Me.Path_Project)
         End If
 
         resultado = SaveFileDialog1.ShowDialog()
 
         If resultado = DialogResult.OK Then
 
-            SaveProject(SaveFileDialog1.FileName)
+            If SaveProject(SaveFileDialog1.FileName) = True Then
+                Path_Project = SaveFileDialog1.FileName
+            End If
 
         End If
 

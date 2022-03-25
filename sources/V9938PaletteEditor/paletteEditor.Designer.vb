@@ -26,6 +26,7 @@ Partial Class paletteEditor
         Me.PaletteToolStrip = New System.Windows.Forms.ToolStrip()
         Me.NewPaletteButton = New System.Windows.Forms.ToolStripButton()
         Me.LoadPaletteButton = New System.Windows.Forms.ToolStripButton()
+        Me.AddPaletteButton = New System.Windows.Forms.ToolStripButton()
         Me.DuplicatePaletteButton = New System.Windows.Forms.ToolStripButton()
         Me.PaletteComboBox = New System.Windows.Forms.ToolStripComboBox()
         Me.ConfigPaletteButton = New System.Windows.Forms.ToolStripButton()
@@ -82,7 +83,7 @@ Partial Class paletteEditor
         '
         Me.PaletteToolStrip.BackColor = System.Drawing.Color.Gainsboro
         Me.PaletteToolStrip.ImageScalingSize = New System.Drawing.Size(24, 24)
-        Me.PaletteToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewPaletteButton, Me.LoadPaletteButton, Me.DuplicatePaletteButton, Me.PaletteComboBox, Me.ConfigPaletteButton, Me.DeletePaletteButton, Me.ToolStripSeparator3, Me.SaveButton, Me.ToolStripSeparator1, Me.GetDataButton, Me.HelpButton})
+        Me.PaletteToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewPaletteButton, Me.LoadPaletteButton, Me.AddPaletteButton, Me.DuplicatePaletteButton, Me.PaletteComboBox, Me.ConfigPaletteButton, Me.DeletePaletteButton, Me.ToolStripSeparator3, Me.SaveButton, Me.ToolStripSeparator1, Me.GetDataButton, Me.HelpButton})
         Me.PaletteToolStrip.Location = New System.Drawing.Point(0, 0)
         Me.PaletteToolStrip.Name = "PaletteToolStrip"
         Me.PaletteToolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
@@ -102,12 +103,22 @@ Partial Class paletteEditor
         'LoadPaletteButton
         '
         Me.LoadPaletteButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.LoadPaletteButton.Image = Global.mSXdevtools.V9938PaletteEditor.My.Resources.Resources.merge_x24
+        Me.LoadPaletteButton.Image = Global.mSXdevtools.V9938PaletteEditor.My.Resources.Resources.load_24x24
         Me.LoadPaletteButton.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.LoadPaletteButton.Name = "LoadPaletteButton"
         Me.LoadPaletteButton.Size = New System.Drawing.Size(28, 28)
         Me.LoadPaletteButton.Text = "LoadButton"
         Me.LoadPaletteButton.ToolTipText = "Load Palette"
+        '
+        'AddPaletteButton
+        '
+        Me.AddPaletteButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.AddPaletteButton.Image = Global.mSXdevtools.V9938PaletteEditor.My.Resources.Resources.merge_x24
+        Me.AddPaletteButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.AddPaletteButton.Name = "AddPaletteButton"
+        Me.AddPaletteButton.Size = New System.Drawing.Size(28, 28)
+        Me.AddPaletteButton.Text = "AddButton"
+        Me.AddPaletteButton.ToolTipText = "Add Palette"
         '
         'DuplicatePaletteButton
         '
@@ -125,7 +136,7 @@ Partial Class paletteEditor
         Me.PaletteComboBox.BackColor = System.Drawing.Color.WhiteSmoke
         Me.PaletteComboBox.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.PaletteComboBox.Name = "PaletteComboBox"
-        Me.PaletteComboBox.Size = New System.Drawing.Size(220, 31)
+        Me.PaletteComboBox.Size = New System.Drawing.Size(200, 31)
         '
         'ConfigPaletteButton
         '
@@ -539,7 +550,7 @@ Partial Class paletteEditor
 
     Friend WithEvents PaletteToolStrip As ToolStrip
     Friend WithEvents NewPaletteButton As ToolStripButton
-    Friend WithEvents LoadPaletteButton As ToolStripButton
+    Friend WithEvents AddPaletteButton As ToolStripButton
     Friend WithEvents DuplicatePaletteButton As ToolStripButton
     Friend WithEvents PaletteComboBox As ToolStripComboBox
     Friend WithEvents ConfigPaletteButton As ToolStripButton
@@ -579,4 +590,5 @@ Partial Class paletteEditor
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
     Friend WithEvents GetDataButton As ToolStripButton
     Friend WithEvents HelpButton As ToolStripButton
+    Friend WithEvents LoadPaletteButton As ToolStripButton
 End Class

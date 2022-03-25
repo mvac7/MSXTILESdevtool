@@ -10,9 +10,9 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyTitle("TMS9918A")>
 <Assembly: AssemblyDescription("GUI TMS9918A Video Display Processor .net User Control")>
-<Assembly: AssemblyCompany("MSX Community")>
-<Assembly: AssemblyProduct("TMS9918A")>
-<Assembly: AssemblyCopyright("Copyright 2021 MSX Community")>
+<Assembly: AssemblyCompany("MSX Comm·unity")>
+<Assembly: AssemblyProduct("mSXdevtools")>
+<Assembly: AssemblyCopyright("Copyright 2022 mvac7")>
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(False)>
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' mediante el asterisco ('*'), como se muestra a continuación:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.0.8.0")>
-<Assembly: AssemblyFileVersion("1.0.8.0")>
+<Assembly: AssemblyVersion("1.0.9.0")>
+<Assembly: AssemblyFileVersion("1.0.9.0")>

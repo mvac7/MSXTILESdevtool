@@ -1,7 +1,4 @@
-﻿Imports System.IO
-
-
-''' <summary>
+﻿''' <summary>
 ''' TMS9918A User Control
 ''' </summary>
 ''' <remarks></remarks>
@@ -31,26 +28,13 @@ Public Class TMS9918A
     Private Const TMSWIDTH = 256
     Private Const TMSHEIGHT = 192
 
-
-    'Private isSelector As Boolean = False
     Private _controlType As CONTROL_TYPE = CONTROL_TYPE.VIEWER
 
-
     Private Const VRAMaddr_PALETTE = &H1B80   '&H1B80 VRAM adress for palette for screen2 (Only used by MSX Basic)
-
-    'Private pixelscreen(TMSWIDTH, TMSHEIGHT) As Byte
-    'Private Bit() As Byte = {128, 64, 32, 16, 8, 4, 2, 1}
-    ' END conversion SC2
-
-
 
     Public Palette As iPaletteMSX
 
     Public GridColor As Color = Color.LightSkyBlue
-
-
-    'Private Cursor_Draw As Cursor
-
 
     Private VRAM(16383) As Byte ' 16k de memoria de video
     Private tilesetBitmap As Bitmap
@@ -60,14 +44,6 @@ Public Class TMS9918A
 
     Private spritePatterns As ArrayList
 
-    'Private Tile_Bank0(255) As Bitmap ' An array containing the individual Puzzle Tiles
-    'Private Tile_Bank1(255) As Bitmap
-    'Private Tile_Bank2(255) As Bitmap
-
-
-
-    'Public PaletteType As Byte = 0 'default palette
-
     Private isDrag As Boolean = False
     Private theRectangle As New Rectangle(0, 0, 0, 0)
     Private startPoint As Point
@@ -75,8 +51,6 @@ Public Class TMS9918A
     Private start_posY As Integer
     Private end_posX As Integer
     Private end_posY As Integer
-
-
 
     Private Default_Cursor As Cursor
     Private Selecter_Cursor As Cursor
@@ -97,54 +71,6 @@ Public Class TMS9918A
 
     ' END EVENTs #######################################################################################################################
 
-
-
-    'Public Shadows Enum SCREEN_MODE As Integer
-    '    T1
-    '    G1
-    '    G2
-    '    MC
-    '    G3
-    'End Enum
-
-
-    'Public Shadows Enum SPRITE_SIZE As Integer
-    '    SIZE8 = 1
-    '    SIZE16 = 2
-    'End Enum
-
-
-
-    'Public Shadows Enum SPRITE_MODE As Integer
-    '    MONO = 1
-    '    COLOR = 2
-    'End Enum
-
-
-
-    'Public Shadows Enum SPRITE_SIZE As Integer
-    '    SIZE8
-    '    SIZE16
-    'End Enum
-
-
-    'Public Shadows Enum SPRITE_ZOOM As Integer
-    '    X1
-    '    X2
-    'End Enum
-
-
-    'Public Shadows Enum MSXVDP As Integer
-    '    'AUTO = 0
-    '    TMS9918 = 1
-    '    V9938 = 2
-    'End Enum
-
-
-    'Public Shadows Enum SPRITE_COLOR As Integer
-    '    MONOCOLOUR   'TMS9918
-    '    MULTICOLOUR  'V9938
-    'End Enum
 
 
 
@@ -544,15 +470,12 @@ Public Class TMS9918A
         Me.spritesLayerBitmap = New Bitmap(screen_width, screen_height)
         Me.spritesLayerPictureBox.Image = Me.spritesLayerBitmap
 
-        'Me._palette.SetDefault()
-
-        Me.Default_Cursor = New Cursor(New MemoryStream(My.Resources.cursor_draw01))
-        Me.Selecter_Cursor = New Cursor(New MemoryStream(My.Resources.cursor_draw02))
+        Me.Default_Cursor = New Cursor(New System.IO.MemoryStream(My.Resources.cursor_draw01))
+        Me.Selecter_Cursor = New Cursor(New System.IO.MemoryStream(My.Resources.cursor_draw02))
 
         SetView(Me.ViewMode)
 
     End Sub
-
 
 
 
@@ -604,6 +527,11 @@ Public Class TMS9918A
     Public Sub RefreshScreen()
 
         Dim aGraphics As Graphics = Graphics.FromImage(Me.outputBitmap)
+
+        If Me.Palette.Type = iPaletteMSX.VDP.V9938 Then
+            If isColorPalette() = True Then RestoreColorPalette()
+        End If
+
         aGraphics.Clear(Me.Palette.GetRGBColor(Me._borderColor))
 
         'If Not Me.ViewMode = VIEW_MODE.SPRITES_LAYERS And Not Me.ViewMode = VIEW_MODE.SPRITES_PATTERNS Then
@@ -644,13 +572,9 @@ Public Class TMS9918A
 
     Public Sub RefreshSprites()
 
-        'Dim aGraphics As Graphics = Graphics.FromImage(Me.outputBitmap)
-        'aGraphics.Clear(getColor(Me._borderColor))
-
         Dim aGraphics As Graphics = Graphics.FromImage(Me.spritesLayerBitmap)
         aGraphics.Clear(Color.Transparent)
         spritePatternsBitmap.MakeTransparent()
-
 
         'If Me.ViewMode = VIEW_MODE.ALL Or Me.ViewMode = VIEW_MODE.MAP Then
         '    showMap()
@@ -659,7 +583,6 @@ Public Class TMS9918A
         'If Me._IsShowSprites And Not Me.ScreenMode = SCREEN_MODE.T1 Then
         ShowSprites()
         'End If
-
 
 
         Me.Refresh()
@@ -795,7 +718,7 @@ Public Class TMS9918A
 
 
     ''' <summary>
-    ''' escribe en la VRAM (h1B80) los valores de la paleta V9938
+    ''' writes to VRAM the values of a V9938 color palette
     ''' </summary>
     ''' <remarks></remarks>
     Public Sub SetPaletteVRAM()
@@ -812,11 +735,9 @@ Public Class TMS9918A
 
         If Not Me.Palette Is Nothing Then
 
+            'if you use the TMS9918A palette it does not update the palette
             If Me.Palette.Type = iPaletteMSX.VDP.V9938 Then
 
-                'si esta en modo TMS9918 no actualiza la paleta 
-
-                'Me.Palette = _PaletteData
                 paletteData = Me.Palette.GetData()
 
                 ' escribe los valores de la paleta (V9938) a la vram
@@ -844,77 +765,60 @@ Public Class TMS9918A
 
 
 
-    ''' <summary>
-    ''' Recoge de la VRAM la paleta (SC4) para modo V9938
-    ''' </summary>
-    ''' <remarks></remarks>
-    Public Sub SetVRAMPalette()
-        Dim data As Byte()
-        Dim vaddr As Short = VRAMaddr_PALETTE
+    Public Function isColorPalette() As Boolean
 
         Dim checksum As Integer = 0
 
-        ReDim data(31)
-
         For i As Integer = 0 To 31
-            data(i) = Me.VRAM(vaddr)
-            checksum += data(i)
-            vaddr += 1
+            checksum += Me.VRAM(VRAMaddr_PALETTE + i)
         Next
 
-        If checksum > 0 And checksum < 4000 Then ' solo si hay una paleta. Si todos fueran color blanco el maximo valor seria 2016
-            ' si hay ruido puede ser interpretado como una paleta
-            ' lo normal en el caso de un sc2 sin paleta, sera que todos los valores sean 0 o FF
-            Me.Palette.SetData(data)
-            'If Me._VDPtype = MSXpalette.MSXVDP.AUTO Then
-            '    _msxPalette.VDPtype = MSXpalette.MSXVDP.V9938
-            'End If
-            RaiseEvent PaletteChanged(data)
+        If checksum > 0 And checksum < 4000 Then
+            ' the usual thing in the case of a sc2 without palette, will be that all the values are 0 or FF
+
+            Return True
 
         Else
 
-            Me.Palette.SetDefault()
-            'If Not Me._VDPtype = MSXpalette.MSXVDP.V9938 Then
-            '    _msxPalette.VDPtype = MSXpalette.MSXVDP.TMS9918
-            'End If
+            Return False
 
         End If
+
+    End Function
+
+
+
+    ''' <summary>
+    ''' Restore the color palette from the VRAM Color Table. For G2 and G3 graphics modes on the VDP V9938.
+    ''' Same as MSX BASIC v2 "COLOR = RESTORE"
+    ''' </summary>
+    ''' <remarks></remarks>
+    Public Sub RestoreColorPalette() 'SetVRAMPalette
+        Dim data As Byte()
+
+        data = GetPaletteDataFromVRAM()
+
+        Me.Palette.SetData(data)
+
+        RaiseEvent PaletteChanged(data)
 
     End Sub
 
 
 
     ''' <summary>
-    ''' Proporciona la paleta extraida desde la VRAM, directamente a un array.
+    ''' Provides the color palette in an Array from data stored in the VRAM color table.
     ''' </summary>
     ''' <returns></returns>
     ''' <remarks></remarks>
     Public Function GetPaletteDataFromVRAM() As Byte()
-        Dim data As Byte()
-        Dim vaddr As Short = VRAMaddr_PALETTE
-
-        Dim checksum As Integer = 0
-
-        ReDim data(31)
+        Dim data(31) As Byte
 
         For i As Integer = 0 To 31
-            data(i) = Me.VRAM(vaddr)
-            checksum += data(i)
-            vaddr += 1
+            data(i) = Me.VRAM(VRAMaddr_PALETTE + i)
         Next
 
-        If checksum > 0 And checksum < 4000 Then ' solo si hay una paleta. Si todos fueran color blanco el maximo valor seria 2016
-            ' si hay ruido puede ser interpretado como una paleta
-            ' lo normal en el caso de un sc2 sin paleta, sera que todos los valores sean 0 o FF
-
-            Return data
-
-        Else
-
-            Return Nothing
-
-        End If
-
+        Return data
     End Function
 
 
@@ -947,7 +851,6 @@ Public Class TMS9918A
         Try
             For Each value As Byte In block
                 VRAM(VRAMaddr) = value
-                'VPOKE(vaddr, value)
                 VRAMaddr += 1
             Next
 
@@ -1005,7 +908,6 @@ Public Class TMS9918A
         For i = 0 To length
             If VRAMaddr < &H4000 Then
                 VRAM(VRAMaddr) = value
-                'VPOKE(VRAMaddr, value)
                 VRAMaddr += 1
             End If
         Next
@@ -1016,7 +918,7 @@ Public Class TMS9918A
     Public Sub CopyVRAM(ByVal source As Integer, ByVal target As Integer, ByVal length As Integer)
         For VRAMaddr As Integer = source To source + length
             If target < &H4000 And VRAMaddr < &H4000 Then
-                VPOKE(target, VRAM(VRAMaddr))
+                VRAM(target) = VRAM(VRAMaddr)
                 target += 1
             End If
         Next
@@ -1086,6 +988,10 @@ Public Class TMS9918A
 
 
 
+    ''' <summary>
+    ''' Writes in the Name Table, correlative values from 0 to 255. 
+    ''' Needed to display images in G2/G3 mode, which are not based on repeated tiles.
+    ''' </summary>
     Public Sub SetOrderMap()
 
         Dim VRAMaddr As Short = BASE(iVDP.NumberOfBase.Name_Table_Base_Address)
@@ -1104,17 +1010,12 @@ Public Class TMS9918A
 
         End If
 
-
-        'Me.showMap()
-
-        'Me.Refresh()
-
     End Sub
 
 
 
     ''' <summary>
-    ''' Visualiza los patrones (tiles)
+    ''' Build a screen from tiles.
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub showMap()
@@ -1323,7 +1224,6 @@ Public Class TMS9918A
             aGraphics.Flush()
 
         End If
-        
 
     End Sub
 

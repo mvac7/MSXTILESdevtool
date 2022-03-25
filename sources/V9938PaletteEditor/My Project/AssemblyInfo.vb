@@ -10,8 +10,8 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyTitle("V9938PaletteEditor")>
 <Assembly: AssemblyDescription("V9938 Color Palette Editor")>
-<Assembly: AssemblyCompany("MSX Community")>
-<Assembly: AssemblyProduct("V9938 Palette Editor")>
+<Assembly: AssemblyCompany("MSX Comm·unity")>
+<Assembly: AssemblyProduct("mSXdevtools")>
 <Assembly: AssemblyCopyright("Copyright 2022 mvac7")>
 <Assembly: AssemblyTrademark("")> 
 
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' mediante el asterisco ('*'), como se muestra a continuación:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("0.9.5.0")>
-<Assembly: AssemblyFileVersion("0.9.5.0")>
+<Assembly: AssemblyVersion("0.9.6.0")>
+<Assembly: AssemblyFileVersion("0.9.6.0")>

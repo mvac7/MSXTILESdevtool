@@ -12,14 +12,11 @@ Imports mSXdevtools.GUI.Controls
 Public Class Palette512Dialog
 
     Private AppConfig As Config
-    Private Const AppID As String = "paletteSX"
-    'Private Const ConfigFileName As String = "tMSgfX.config"
 
-    Private helpURL As String = Application.StartupPath + System.IO.Path.DirectorySeparatorChar + "Help" + System.IO.Path.DirectorySeparatorChar + AppID + System.IO.Path.DirectorySeparatorChar + AppID + "_UserGuide.html"
+    'Private Const AppID As String = "paletteSX"
+    ''Private Const ConfigFileName As String = "tMSgfX.config"
 
-    Private paletteEd As paletteEditor
-
-
+    'Private helpURL As String = Application.StartupPath + System.IO.Path.DirectorySeparatorChar + "Help" + System.IO.Path.DirectorySeparatorChar + AppID + System.IO.Path.DirectorySeparatorChar + AppID + "_UserGuide.html"
 
 
     '#########################################################################################
@@ -36,23 +33,13 @@ Public Class Palette512Dialog
     '#########################################################################################
 
 
-
-
-    ' ----------------------------------------
     Private Project As tMSgfXProject
+    Private Palettes As PaletteProject
 
-    'Private _paletteProject As PaletteProject
-    ' ----------------------------------------
 
-    Private initPaletteID As Integer = 0
-    Public edit_Palette As iPaletteMSX
-
+    Private paletteEd As paletteEditor
 
     Private _ProgressController As ProgressController
-
-
-    Private def_WorkPath As String = ""
-
 
 
 
@@ -89,34 +76,42 @@ Public Class Palette512Dialog
 
 
 
+    Public Sub New(ByRef _config As Config, ByRef _palettes As PaletteProject, ByVal paleteID As Integer)
+
+        ' Llamada necesaria para el Diseñador de Windows Forms.
+        InitializeComponent()
+
+        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
+
+        Dim editPalettes As PaletteProject
+
+        Me.AppConfig = _config
+        Me.ControlBox = False
+        Me.Palettes = _palettes
+
+        editPalettes = CopyPaletteProject(Me.Palettes)
+
+        Me.paletteEd = New paletteEditor(_config, editPalettes, paleteID)
+
+    End Sub
+
+
+
     Public Sub New(ByRef _config As Config, ByRef _Project As tMSgfXProject, ByVal paleteID As Integer)
 
         ' Llamada necesaria para el Diseñador de Windows Forms.
         InitializeComponent()
 
         ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
-        Me.paletteEd = New paletteEditor(_config, _Project, paleteID)
-        Me.SuspendLayout()
-        Me.paletteEd.Name = "paletteEditor"
-        Me.paletteEd.Location = New System.Drawing.Point(0, 0)
-        Me.paletteEd.Size = New System.Drawing.Size(480, 330)
-        Me.paletteEd.Dock = DockStyle.Fill
-        Me.Controls.Add(Me.paletteEd)
-        Me.ResumeLayout(False)
-
+        Dim editPalettes As PaletteProject
 
         Me.AppConfig = _config
-
         Me.ControlBox = False
-        'Me.AboutButton.Visible = False
-        'Me.Cancel_Button.Visible = False
+        Me.Palettes = _Project.Palettes
 
-        Me.Project = _Project
-        'Me.edit_Palette = aPalette
+        editPalettes = CopyPaletteProject(Me.Palettes)
 
-        Me.def_WorkPath = Me.AppConfig.PathItemPalette.Path
-
-        Me.initPaletteID = paleteID
+        Me.paletteEd = New paletteEditor(_config, editPalettes, paleteID)
 
     End Sub
 
@@ -126,23 +121,17 @@ Public Class Palette512Dialog
 
         Me._ProgressController = New ProgressController(Me)
 
-
-
-        'If Not System.IO.File.Exists(Me.helpURL) Then
-        '    HelpAppButton.Enabled = False
-        'End If
+        Me.SuspendLayout()
+        Me.paletteEd.Name = "paletteEditor"
+        Me.paletteEd.Location = New System.Drawing.Point(0, 0)
+        Me.paletteEd.Size = New System.Drawing.Size(480, 330)
+        Me.paletteEd.Dock = DockStyle.Fill
+        Me.Controls.Add(Me.paletteEd)
+        Me.ResumeLayout(False)
 
         'SetTitle(Path.GetFileName(Me.Project.Path))
-        'Me.ProjectNameTextBox.Text = Me.Project.Info.Name
 
         'Me.BackColor = Color.FromArgb(211, 211, 211)
-
-
-        'If _ColorSelected < 1 Then
-        '    Me._ColorSelected = 1
-        'End If
-
-        'SelectPaletteByID(Me.initPaletteID)
 
     End Sub
 
@@ -157,15 +146,45 @@ Public Class Palette512Dialog
     'End Sub
 
 
+
+    Private Function CopyPaletteProject(ByRef aPaletteProject As PaletteProject) As PaletteProject
+
+        Dim editPalettes As New PaletteProject
+
+        For Each tmpPalette As iPaletteMSX In aPaletteProject.Values
+            editPalettes.Add(tmpPalette.Copy)
+        Next
+
+        Return editPalettes
+
+    End Function
+
+
+
     Private Sub OK_Button_Click(sender As Object, e As EventArgs) Handles OK_Button.Click
+
+        For Each tmpPalette As iPaletteMSX In paletteEd.Palettes.Values
+
+            If Me.Palettes.Contains(tmpPalette.ID) Then
+                Me.Palettes.Update(tmpPalette.ID, tmpPalette)
+            Else
+                Me.Palettes.Add(tmpPalette)
+            End If
+
+        Next
+
         Me.DialogResult = DialogResult.OK
+
         Me.Close()
     End Sub
+
+
 
     Private Sub Cancel_Button_Click(sender As Object, e As EventArgs) Handles Cancel_Button.Click
         Me.DialogResult = DialogResult.Cancel
         Me.Close()
     End Sub
+
 
 
 End Class

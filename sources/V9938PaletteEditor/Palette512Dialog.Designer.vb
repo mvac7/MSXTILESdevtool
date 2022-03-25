@@ -30,8 +30,8 @@ Partial Class Palette512Dialog
         Me.FilesContextMenuStrip = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.PrjImageList = New System.Windows.Forms.ImageList(Me.components)
         Me.OkPanel = New System.Windows.Forms.Panel()
-        Me.Cancel_Button = New System.Windows.Forms.Button()
         Me.OK_Button = New System.Windows.Forms.Button()
+        Me.Cancel_Button = New System.Windows.Forms.Button()
         Me.OkPanel.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -59,40 +59,47 @@ Partial Class Palette512Dialog
         'OkPanel
         '
         Me.OkPanel.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.OkPanel.Controls.Add(Me.Cancel_Button)
         Me.OkPanel.Controls.Add(Me.OK_Button)
+        Me.OkPanel.Controls.Add(Me.Cancel_Button)
         Me.OkPanel.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.OkPanel.Location = New System.Drawing.Point(0, 331)
+        Me.OkPanel.Location = New System.Drawing.Point(0, 330)
         Me.OkPanel.Name = "OkPanel"
-        Me.OkPanel.Size = New System.Drawing.Size(474, 50)
+        Me.OkPanel.Padding = New System.Windows.Forms.Padding(4)
+        Me.OkPanel.Size = New System.Drawing.Size(474, 51)
         Me.OkPanel.TabIndex = 27
-        '
-        'Cancel_Button
-        '
-        Me.Cancel_Button.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Cancel_Button.BackColor = System.Drawing.Color.LightSalmon
-        Me.Cancel_Button.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.Cancel_Button.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Cancel_Button.Location = New System.Drawing.Point(391, 12)
-        Me.Cancel_Button.Margin = New System.Windows.Forms.Padding(4)
-        Me.Cancel_Button.Name = "Cancel_Button"
-        Me.Cancel_Button.Size = New System.Drawing.Size(70, 30)
-        Me.Cancel_Button.TabIndex = 280
-        Me.Cancel_Button.Text = "Cancel"
-        Me.Cancel_Button.UseVisualStyleBackColor = False
         '
         'OK_Button
         '
-        Me.OK_Button.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.OK_Button.BackColor = System.Drawing.Color.PaleGreen
+        Me.OK_Button.BackColor = System.Drawing.Color.Transparent
         Me.OK_Button.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.OK_Button.Dock = System.Windows.Forms.DockStyle.Right
+        Me.OK_Button.FlatAppearance.BorderSize = 0
+        Me.OK_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.OK_Button.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.OK_Button.Location = New System.Drawing.Point(276, 6)
+        Me.OK_Button.Image = Global.mSXdevtools.V9938PaletteEditor.My.Resources.Resources.button_Ok
+        Me.OK_Button.Location = New System.Drawing.Point(228, 4)
+        Me.OK_Button.Margin = New System.Windows.Forms.Padding(4)
         Me.OK_Button.Name = "OK_Button"
-        Me.OK_Button.Size = New System.Drawing.Size(110, 36)
+        Me.OK_Button.Size = New System.Drawing.Size(132, 43)
         Me.OK_Button.TabIndex = 9
-        Me.OK_Button.Text = "Ok"
         Me.OK_Button.UseVisualStyleBackColor = False
+        '
+        'Cancel_Button
+        '
+        Me.Cancel_Button.BackColor = System.Drawing.Color.Transparent
+        Me.Cancel_Button.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.Cancel_Button.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Cancel_Button.FlatAppearance.BorderSize = 0
+        Me.Cancel_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Cancel_Button.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Cancel_Button.Image = Global.mSXdevtools.V9938PaletteEditor.My.Resources.Resources.button_Cancel
+        Me.Cancel_Button.ImageAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.Cancel_Button.Location = New System.Drawing.Point(360, 4)
+        Me.Cancel_Button.Margin = New System.Windows.Forms.Padding(4)
+        Me.Cancel_Button.Name = "Cancel_Button"
+        Me.Cancel_Button.Size = New System.Drawing.Size(110, 43)
+        Me.Cancel_Button.TabIndex = 280
+        Me.Cancel_Button.UseVisualStyleBackColor = False
         '
         'Palette512Dialog
         '

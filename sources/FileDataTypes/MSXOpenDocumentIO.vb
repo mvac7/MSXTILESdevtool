@@ -42,7 +42,7 @@ Public Class MSXOpenDocumentIO
     Public Shadows Const SPRITES_ITEM As String = "sprite"
 
     Public Shadows Const PALETTES As String = "palettes"
-    Public Shadows Const PALETTES_PAL As String = "palette"
+    Public Shadows Const PALETTES_SET As String = "palette"
     Public Shadows Const PALETTES_ITEM As String = "color"
 
     Public Shadows Const SCREENS As String = "screens"
@@ -64,8 +64,14 @@ Public Class MSXOpenDocumentIO
 
 
 
-    Public Sub New() 'ByVal _config As Config)
-        'Me.AppConfig = _config
+    'Public Sub New() 'ByVal _config As Config)
+    '    'Me.AppConfig = _config
+    'End Sub
+
+
+    Public Sub New(ByVal _config As Config)
+        Me.AppConfig = _config
+        'Me.Project = aProject
     End Sub
 
 
@@ -104,7 +110,7 @@ Public Class MSXOpenDocumentIO
             ' palette data #####################################################
             'If Not Me.Palettes Is Nothing Then
             If Me.Project.Palettes.Count > 0 Then
-                rootElement.AppendChild(GetPalettesElement(aXmlDoc))
+                rootElement.AppendChild(GetPalettesElement(aXmlDoc, Me.Project.Palettes))
             End If
             'End If
             ' END palette data #################################################
@@ -224,7 +230,7 @@ Public Class MSXOpenDocumentIO
                 If aNode Is Nothing Then
                     Me.Project.Palettes.Clear()
                 Else
-                    SetPalettesFromNode(aNode)
+                    Me.Project.Palettes.AddPalettes(GetPaletteProjectFromNode(aNode))
                 End If
                 Me.Project.Palettes.SetZeroColor(Me.AppConfig.Color_Zero)
                 ' END Palette Project ##############################################
@@ -372,7 +378,7 @@ Public Class MSXOpenDocumentIO
                 Me.Project.Palettes = New PaletteProject
                 aNode = aDataNode.SelectSingleNode(MSXOpenDocumentIO.PALETTES) '<--- change to palettetProject?
                 If Not aNode Is Nothing Then
-                    SetPalettesFromNode(aNode)
+                    Me.Project.Palettes.AddPalettes(GetPaletteProjectFromNode(aNode))
                 End If
                 ' END Palette Project ##############################################
 
@@ -1429,25 +1435,6 @@ Public Class MSXOpenDocumentIO
             aNode = aDataNode.SelectSingleNode(MSXOpenDocumentIO.MAPS)
             If Not aNode Is Nothing Then
 
-                ' Get Map List
-                'nameList = GetNameListFromNode(aNode, MSXOpenDocumentIO.MAPS_ITEM)
-
-                '' si solo hay uno, lo carga directamente
-                'If nameList.Count = 1 Then
-                '    itemName = nameList.Item(0)
-                'ElseIf nameList.Count > 1 Then
-                '    ' show win with Map selector
-                '    Dim aListSelectorDialog As New ListSelectorDialog("Load Map", "Select a Map:", "All Maps", nameList)
-                '    If aListSelectorDialog.ShowDialog() = DialogResult.OK Then
-                '        itemName = aListSelectorDialog.SelectedItem()
-                '        If aListSelectorDialog.SelectedIndex = 0 Then
-                '            allItems = True
-                '        End If
-                '    End If
-                'End If
-
-
-
                 If itemName = "" Then
 
                     aNode = aDataNode.SelectSingleNode(MSXOpenDocumentIO.MAPS)
@@ -1891,13 +1878,13 @@ Public Class MSXOpenDocumentIO
             If ID > 0 Then
 
                 ' palette data ##############################################
-                rootElement.AppendChild(GetPaletteElementByID(aXmlDoc, ID))
+                rootElement.AppendChild(GetPaletteElementByID(aXmlDoc, Me.Project.Palettes, ID))
                 ' end gfx data ##############################################
 
             Else
                 ' palette data #####################################################
                 If Me.Project.Palettes.Count > 0 Then
-                    rootElement.AppendChild(GetPaletteElementByID(aXmlDoc, -1))
+                    rootElement.AppendChild(GetPaletteElementByID(aXmlDoc, Me.Project.Palettes, -1))
                 Else
                     Return False
                 End If
@@ -1919,32 +1906,15 @@ Public Class MSXOpenDocumentIO
 
 
 
-
-    Public Function LoadPalette(ByVal filePath As String, itemName As String) As Integer
-
-        Dim newID As Integer = -1
-        'Dim result As Boolean = True
-
-        'Dim paletteName As String = ""
-        'Dim nameList As ArrayList
-        'Dim allItems As Boolean = False
-
+    Public Function LoadPalette(ByVal filePath As String, itemName As String) As PaletteV9938
 
         Dim aXmlDoc As New XmlDocument
         Dim aDataNode As XmlNode
         Dim aNode As XmlNode
         Dim aNodeList As XmlNodeList
 
-
-
-
-        Dim tmpPalette As New PaletteV9938
-
-        'Me.Enabled = False
-
-        Try
-            aXmlDoc.Load(filePath)
-
+        'Try
+        aXmlDoc.Load(filePath)
 
             aDataNode = aXmlDoc.SelectSingleNode(MSXOpenDocumentIO.ROOT)
             If Not aDataNode Is Nothing Then 'aXmlDoc.GetElementsByTagName("msxOpenDocument").Count > 0 Then
@@ -1953,43 +1923,100 @@ Public Class MSXOpenDocumentIO
                 aNode = aDataNode.SelectSingleNode(MSXOpenDocumentIO.PALETTES) '"palettes"
                 'aNode = aXmlDoc.SelectSingleNode("msxOpenDocument/palettes")
                 If aNode Is Nothing Then
-                    Return -1
+                    Return Nothing
                 Else
 
-                    If itemName = "" Then
+                ' load selected Map
+                aNodeList = aXmlDoc.SelectNodes(MSXOpenDocumentIO.ROOT + "/" + MSXOpenDocumentIO.PALETTES + "/" + MSXOpenDocumentIO.PALETTES_SET + "[@name='" + itemName + "']")
 
-                        aNode = aDataNode.SelectSingleNode(MSXOpenDocumentIO.PALETTES) '"palettes"
-                        If Not aNode Is Nothing Then
-                            SetPalettesFromNode(aNode)
-                        End If
-
-                    Else
-                        ' load selected Map
-                        aNodeList = aXmlDoc.SelectNodes(MSXOpenDocumentIO.ROOT + "/" + MSXOpenDocumentIO.PALETTES + "/" + MSXOpenDocumentIO.PALETTES_PAL + "[@name='" + itemName + "']")
-
-                        tmpPalette = GetPaletteFromNode(aNodeList.Item(0))
-                        If Not tmpPalette Is Nothing Then
-                            Me.Project.Palettes.Add(tmpPalette)
-                            newID = tmpPalette.ID
-                        Else
-                            newID = -1
-                        End If
-
-                    End If
-
-                    Return newID
+                Return GetPaletteFromNode(aNodeList.Item(0))
 
                 End If
 
             Else
-                Return -1
+                Return Nothing
             End If
 
-        Catch ex As Exception
-            Return -1
-        End Try
+        'Catch ex As Exception
+        '    Return Nothing
+        'End Try
 
     End Function
+
+
+
+    Public Function LoadPaletteProject(ByVal filePath As String) As PaletteProject
+
+        Dim aXmlDoc As New XmlDocument
+        Dim aDataNode As XmlNode
+        Dim aNode As XmlNode
+
+        'Try
+        aXmlDoc.Load(filePath)
+
+        aDataNode = aXmlDoc.SelectSingleNode(MSXOpenDocumentIO.ROOT)
+        If Not aDataNode Is Nothing Then
+
+            aNode = aDataNode.SelectSingleNode(MSXOpenDocumentIO.PALETTES) '"palettes"
+            Return GetPaletteProjectFromNode(aNode)
+
+        Else
+            Return Nothing
+        End If
+
+        'Catch ex As Exception
+        '    Return Nothing
+        'End Try
+
+    End Function
+
+
+
+
+    Public Function AddPalette(ByVal filePath As String, itemName As String) As Integer
+
+        Dim tmpPalette As PaletteV9938
+
+        'Try
+
+        tmpPalette = LoadPalette(filePath, itemName)
+
+        If tmpPalette Is Nothing Then
+            Return -1
+        Else
+            Me.Project.Palettes.Add(tmpPalette)
+            Return tmpPalette.ID
+        End If
+
+        'Catch ex As Exception
+        '    Return -1
+        'End Try
+
+    End Function
+
+
+
+    Public Function AddPaletteProject(ByVal filePath As String) As Integer
+
+        Dim tmpPaletteProject As PaletteProject
+
+        Dim newID As Integer
+        'Dim tmpPalette As PaletteV9938
+
+        'Try
+
+        tmpPaletteProject = LoadPaletteProject(filePath)
+
+        newID = Me.Project.Palettes.AddPalettes(tmpPaletteProject)
+
+        'Catch ex As Exception
+        '    Return -1
+        'End Try
+
+        Return newID
+
+    End Function
+
 
 
 
@@ -2006,7 +2033,7 @@ Public Class MSXOpenDocumentIO
         aDataNode = aXmlDoc.SelectSingleNode("msxdevtools")
 
         If Not aDataNode Is Nothing Then
-            aNode = aDataNode.SelectSingleNode("palette")
+            aNode = aDataNode.SelectSingleNode(MSXOpenDocumentIO.PALETTES_SET)
             If Not aNode Is Nothing Then
 
                 tmpPalette = GetPaletteFromNode(aNode)
@@ -2024,35 +2051,36 @@ Public Class MSXOpenDocumentIO
 
 
 
-    Private Function SetPalettesFromNode(ByVal aDataNode As XmlNode) As Integer
+    Private Function GetPaletteProjectFromNode(ByVal aDataNode As XmlNode) As PaletteProject
 
-        Dim lastID As Integer = -1
+        'Dim lastID As Integer = -1
 
         Dim aNodeList As XmlNodeList
 
-        Dim tmpPalette As New PaletteV9938
+        Dim tmpPaletteProject As New PaletteProject
+        Dim tmpPalette As PaletteV9938
 
 
-        aNodeList = aDataNode.SelectNodes("palette")
+        aNodeList = aDataNode.SelectNodes(MSXOpenDocumentIO.PALETTES_SET)
         If Not aNodeList Is Nothing Then
             If aNodeList.Count > 0 Then
                 For Each anItemElement As XmlElement In aNodeList
                     tmpPalette = GetPaletteFromNode(anItemElement)
                     If Not tmpPalette Is Nothing Then
-                        lastID = Me.Project.Palettes.Add(tmpPalette)
+                        tmpPaletteProject.Add(tmpPalette)
                     End If
                 Next
             Else
                 ' OLD palette format
                 tmpPalette = GetPaletteFromNode(aDataNode)
                 If Not tmpPalette Is Nothing Then
-                    lastID = Me.Project.Palettes.Add(tmpPalette)
+                    tmpPaletteProject.Add(tmpPalette)
                 End If
             End If
         End If
 
 
-        Return lastID
+        Return tmpPaletteProject
 
     End Function
 
@@ -2067,7 +2095,7 @@ Public Class MSXOpenDocumentIO
 
         aDataNode = aXmlDoc.SelectSingleNode(MSXOpenDocumentIO.ROOT + "/" + MSXOpenDocumentIO.PALETTES) ' comprueba si contiene datos de la paleta msxOpenDocument/palettes
         If Not aDataNode Is Nothing Then
-            aNodeList = aDataNode.SelectNodes(MSXOpenDocumentIO.PALETTES_PAL + "[@id='" + CStr(ID) + "']")
+            aNodeList = aDataNode.SelectNodes(MSXOpenDocumentIO.PALETTES_SET + "[@id='" + CStr(ID) + "']")
 
             If aNodeList.Count > 0 Then
                 tmpPalette = GetPaletteFromNode(aNodeList.Item(0))
@@ -2179,40 +2207,30 @@ Public Class MSXOpenDocumentIO
 
 
 
-    Public Function GetPalettesElement(ByRef aXmlDoc As XmlDocument) As XmlElement
+    Public Function GetPalettesElement(ByRef aXmlDoc As XmlDocument, ByRef _palettes As PaletteProject) As XmlElement
 
-        Return GetPaletteElementByID(aXmlDoc, -1)
+        Return GetPaletteElementByID(aXmlDoc, _palettes, -1)
 
     End Function
 
 
 
-    Public Function GetPaletteElementByID(ByRef aXmlDoc As XmlDocument, ByVal ID As Integer) As XmlElement
+    Public Function GetPaletteElementByID(ByRef aXmlDoc As XmlDocument, ByRef _palettes As PaletteProject, ByVal ID As Integer) As XmlElement
 
         Dim anElement As XmlElement
+        anElement = aXmlDoc.CreateElement(MSXOpenDocumentIO.PALETTES)
 
-        If ID = -1 Or Me.Project.Palettes.Contains(ID) Then
-
-            anElement = aXmlDoc.CreateElement(MSXOpenDocumentIO.PALETTES) '  "palettes")
-
-            If ID = -1 Then
-                For Each item As iPaletteMSX In Me.Project.Palettes.Values
-                    If item.Type = iPaletteMSX.VDP.V9938 Then
-                        anElement.AppendChild(GetPaletteElementByPalette(aXmlDoc, item))
-                    End If
-                Next
-            Else
-                anElement.AppendChild(GetPaletteElementByPalette(aXmlDoc, Me.Project.Palettes.GetPaletteByID(ID)))
-            End If
-
-
-            Return anElement
-
-        Else
-
-            Return Nothing
-
+        If ID = -1 Then
+            For Each item As iPaletteMSX In _palettes.Values 'Me.Project.Palettes.Values
+                If item.Type = iPaletteMSX.VDP.V9938 Then
+                    anElement.AppendChild(GetPaletteElementByPalette(aXmlDoc, item))
+                End If
+            Next
+        ElseIf _palettes.Contains(ID) Then
+            anElement.AppendChild(GetPaletteElementByPalette(aXmlDoc, _palettes.GetPaletteByID(ID))) 'Me.Project.Palettes
         End If
+
+        Return anElement
 
     End Function
 
@@ -2226,7 +2244,7 @@ Public Class MSXOpenDocumentIO
 
         Dim aColor As ColorMSX
 
-        anElement = aXmlDoc.CreateElement(MSXOpenDocumentIO.PALETTES_PAL) ' "palette"
+        anElement = aXmlDoc.CreateElement(MSXOpenDocumentIO.PALETTES_SET)
 
         anAttribute = aXmlDoc.CreateAttribute("id")
         anAttribute.Value = CStr(item.ID)
@@ -2309,7 +2327,7 @@ Public Class MSXOpenDocumentIO
             Else
                 ' palette data #####################################################
                 If Me.Project.Palettes.Count > 0 Then
-                    rootElement.AppendChild(GetPalettesElement(aXmlDoc))
+                    rootElement.AppendChild(GetPalettesElement(aXmlDoc, Me.Project.Palettes))
                 End If
                 ' END palette data #################################################
 
@@ -2829,7 +2847,7 @@ Public Class MSXOpenDocumentIO
             Else
                 ' palette data #####################################################
                 If Me.Project.Palettes.Count > 0 Then
-                    rootElement.AppendChild(GetPalettesElement(aXmlDoc))
+                    rootElement.AppendChild(GetPalettesElement(aXmlDoc, Me.Project.Palettes))
                 End If
                 ' END palette data #################################################
 
@@ -2921,8 +2939,8 @@ Public Class MSXOpenDocumentIO
 
                         aNode = aDataNode.SelectSingleNode(MSXOpenDocumentIO.PALETTES) ' comprueba si contiene datos de la paleta
                         If Not aNode Is Nothing Then
-                            SetPalettesFromNode(aNode)
-                        End If
+                        Me.Project.Palettes.AddPalettes(GetPaletteProjectFromNode(aNode))
+                    End If
 
                         aNode = aDataNode.SelectSingleNode(MSXOpenDocumentIO.SPRITES)
                         If Not aNode Is Nothing Then
@@ -3018,7 +3036,7 @@ Public Class MSXOpenDocumentIO
             '<palette name="Color MSX Palette" group="" version="" author="">
             '   <color id = "0" red="0" green="0" blue="0" />
             '</palette>
-            aNode = aDataNode.SelectSingleNode("palette")
+            aNode = aDataNode.SelectSingleNode(MSXOpenDocumentIO.PALETTES_SET)
             If Not aNode Is Nothing Then
                 'Me.Project.Palettes.Info.Name = prjname + "_PAL"
                 tmpPalette = GetPaletteFromNode(aNode)

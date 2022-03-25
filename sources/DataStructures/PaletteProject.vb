@@ -54,59 +54,69 @@ Public Class PaletteProject
         Me.Items.Clear()
         Me.NamesList.Clear()
 
-        Add(New PaletteTMS9918)
+        'Add(New PaletteTMS9918)
+        Me.Items.Add(0, New PaletteTMS9918)
 
     End Sub
 
 
 
     Public Function Add(ByVal item As iPaletteMSX) As Integer
-        Dim ID As Integer
+        Dim newID As Integer = -1
 
         If item Is Nothing Then
             Return -1
         End If
 
-        ID = item.ID
 
         If Me.Items.Count < MAXIMUM Then
 
-            If Not ID = 0 Then
+            If item.GetType.Name = "PaletteV9938" Then 'Type = iPaletteMSX.VDP.V9938
 
-                If Me.Items.ContainsKey(ID) Then
-                    ID = item.GetHashCode + CInt(Rnd() * 100000)
-                    item.ID = ID
-                End If
+                newID = item.ID
 
-                item.Name = Me.NamesList.AddName(ID, item.Name)
+                'If Me.Items.ContainsKey(newID) Then
+                '    newID = item.GetHashCode + CInt(Rnd() * 100000)
+                '    item.ID = newID
+                'End If
+
+                item.Name = Me.NamesList.AddName(newID, item.Name)
                 item.SetZeroColor(Me.ZeroColor)
+
+                Me.Items.Add(newID, item)
             End If
 
-            Me.Items.Add(ID, item)
-
-            Return ID
-
-        Else
-            Return -1
+            'Else
+            '    Return -1
         End If
+
+        Return newID
+
     End Function
 
 
 
-    'Public Sub UpdatePalette(ByVal index As Integer, ByVal _palette As iPaletteMSX)
-    '    Dim ID As Integer = GetIDFromIndex(index) 'Me._palettesIndex.Item(index)
-    '    If Me._palettes.ContainsKey(ID) Then
-    '        Me._palettes.Item(ID) = _palette
-    '    End If
-    'End Sub
+    ''' <summary>
+    ''' Add a list of palettes included in a PaletteProject
+    ''' </summary>
+    ''' <param name="tmpPaletteProject"></param>
+    ''' <returns></returns>
+    Public Function AddPalettes(ByRef tmpPaletteProject) As Integer
+        Dim tmpID As Integer
+        Dim newID As Integer = -1
 
+        If Not tmpPaletteProject Is Nothing Then
 
+            For Each tmpPalette As iPaletteMSX In tmpPaletteProject.Values
+                tmpID = Add(tmpPalette)
+                If tmpID > 0 Then newID = tmpID
+            Next
 
-    'Public Sub UpdatePaletteByID(ByVal ID As Integer, ByVal _palette As iPaletteMSX)
-    '    If Me._palettes.ContainsKey(ID) Then
-    '        Me._palettes.Item(ID) = _palette
-    '    End If
-    'End Sub
+        End If
+
+        Return newID
+
+    End Function
 
 
 
@@ -151,9 +161,11 @@ Public Class PaletteProject
 
 
     Public Sub Update(ByVal ID As Integer, ByVal _palette As iPaletteMSX)
-        If Me.Items.ContainsKey(ID) Then
-            Me.Items.Item(ID) = _palette
-            _palette.Name = Me.NamesList.UpdateName(ID, _palette.Name)
+        If _palette.GetType.Name = "PaletteV9938" Then
+            If Me.Items.ContainsKey(ID) Then
+                Me.Items.Item(ID) = _palette
+                _palette.Name = Me.NamesList.UpdateName(ID, _palette.Name)
+            End If
         End If
     End Sub
 

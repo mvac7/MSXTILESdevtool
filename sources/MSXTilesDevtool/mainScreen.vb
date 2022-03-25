@@ -18,7 +18,8 @@ Public Class MainScreen
 
     Private Info As ProjectInfo
 
-    'Private _AppID As String = "tmsFXinator"
+    Private Palettes As PaletteProject
+
 
     Public Shadows Const Extension_Project As String = "SXSCR"
 
@@ -67,6 +68,7 @@ Public Class MainScreen
     Private tileBitmap As Bitmap
 
 
+
     Private Range_maximumValue As Byte = 255
 
     Private _oldTile As Byte = 0
@@ -110,6 +112,7 @@ Public Class MainScreen
         Me.Info = New ProjectInfo
 
         Me.AppConfig = New Config()
+        Me.Palettes = New PaletteProject
 
         Me.outputCompressData = New ArrayList
 
@@ -134,7 +137,6 @@ Public Class MainScreen
 
         Beep()
 
-        'result = MessageBox.Show(Me, "Are you sure you want to close " + My.Application.Info.Title + "?", "Closing Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
         result = MessageWin.ShowDialog(Me, "Closing Application!", "Are you sure you want to close " + My.Application.Info.Title + "?", MessageDialog.DIALOG_TYPE.YES_NO) '+ vbCrLf
 
         If result = Windows.Forms.DialogResult.No Then
@@ -167,6 +169,9 @@ Public Class MainScreen
 
         OutputText.ForeColor = Me.AppConfig.Color_OUTPUT_INK
         OutputText.BackColor = Me.AppConfig.Color_OUTPUT_BG
+
+        'Me.Project.Palettes.SetZeroColor(Me.AppConfig.Color_Zero)
+        TMS9918Aviewer.GridColor = Me.AppConfig.Color_Grid
 
         SelectDataComboBox.SelectedIndex = 0
         TilesetDataComboBox.SelectedIndex = 0
@@ -1060,21 +1065,12 @@ Public Class MainScreen
 
 
     ''' <summary>
-    ''' Muestra una ventana que avisa y pide confirmación, ya que la accion ejecutada borrará todos los datos del proyecto.
+    ''' It shows a window that warns and asks for confirmation, since the executed action will erase all project data.
     ''' </summary>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    Private Function AreYouSure() As Boolean
-        Dim result As System.Windows.Forms.DialogResult
-
-        result = MsgBox("This option will delete all data." + Chr(13) + "Are you sure?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Question")
-
-        If result = Windows.Forms.DialogResult.Yes Then
-            Return True
-        End If
-
-        Return False
-
+    Private Function AreYouSure() As DialogResult
+        Return MessageWin.ShowDialog(Me, "Alert!", "This option will delete all data." + Chr(13) + "Are you sure?", MessageDialog.DIALOG_TYPE.YES_NO) '+ vbCrLf
     End Function
 
 
@@ -1808,19 +1804,7 @@ Public Class MainScreen
 
 
 
-    Private Sub TilesClearBut_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        '
-        Dim result As DialogResult
 
-        Dim toolFillMapForm As New FillMapForm()
-        result = toolFillMapForm.ShowDialog()
-
-        If result = Windows.Forms.DialogResult.OK Then
-            Me.TMS9918Aviewer.FillVRAM(iVDP.TableBase.GRPNAM, 767, toolFillMapForm.Tile)
-            Me.TMS9918Aviewer.RefreshScreen()
-        End If
-
-    End Sub
 
 
 
@@ -2000,12 +1984,13 @@ Public Class MainScreen
     Private Sub EditPalette()
 
         Dim result As DialogResult
-        'result = PaletteDialog.ShowWinDialog()
+        PaletteDialog = New Palette512Dialog(Me.AppConfig, Me.Palettes, Me.TMS9918Aviewer.Palette.ID)
+        result = PaletteDialog.ShowDialog()
 
-        'If result = Windows.Forms.DialogResult.OK Then
-        '    Me.screen2.SetPalette(PaletteDialog.PaletteColors)
-        '    Me.screen2.RefreshScreen()
-        'End If
+        If result = Windows.Forms.DialogResult.OK Then
+            Me.TMS9918Aviewer.SetPalette(Me.Palettes.GetPaletteByID(PaletteDialog.SelectedPaletteID))
+            Me.TMS9918Aviewer.RefreshScreen()
+        End If
 
     End Sub
 
@@ -2674,6 +2659,80 @@ Public Class MainScreen
     End Sub
 
 
+    Private Sub Clear()
+
+        If AreYouSure() = DialogResult.Yes Then
+
+            Select Case HoriTAB1.SelectTab
+                Case HoriTAB.TAB_NAME.MAP
+                    ClearMAP()
+
+                Case HoriTAB.TAB_NAME.TILESET
+                    ClearTILESET()
+
+                Case HoriTAB.TAB_NAME.SPRITESET
+                    ClearSPRITESET()
+
+                Case HoriTAB.TAB_NAME.OAM
+                    ClearOAM()
+
+                Case Else
+                    'HoriTAB.TAB_NAME.SCREEN
+                    'TMS9918Aviewer.Clear()
+                    ClearMAP()
+                    ClearTILESET()
+                    ClearSPRITESET()
+                    ClearOAM()
+
+            End Select
+
+            Me.TMS9918Aviewer.RefreshScreen()
+
+        End If
+
+    End Sub
+
+
+    Private Sub ClearMAP()
+        Me.TMS9918Aviewer.FillVRAM(iVDP.TableBase.GRPNAM, iVDP.TableBaseSize.GRPNAM, 0)
+    End Sub
+
+
+    Private Sub ClearTILESET()
+        Me.TMS9918Aviewer.FillVRAM(iVDP.TableBase.GRPCGP, iVDP.TableBaseSize.GRPCGP, 0)
+        Me.TMS9918Aviewer.FillVRAM(iVDP.TableBase.GRPCOL, iVDP.TableBaseSize.GRPCOL, &H4F)
+    End Sub
+
+
+    Private Sub ClearSPRITESET()
+        Me.TMS9918Aviewer.FillVRAM(iVDP.TableBase.GRPPAT, iVDP.TableBaseSize.GRPPAT, 0)
+    End Sub
+
+
+    Private Sub ClearOAM()
+        Dim VRAMaddr As Integer = iVDP.TableBase.GRPATR
+        Me.TMS9918Aviewer.FillVRAM(VRAMaddr, iVDP.TableBaseSize.GRPATR, 0)
+        For i As Integer = 0 To 31
+            Me.TMS9918Aviewer.VPOKE(VRAMaddr + (i * 4), 211) 'y=211 hiding position
+        Next
+    End Sub
+
+
+    Private Sub Tool_FillMap()
+        '
+        Dim result As DialogResult
+
+        Dim toolFillMapForm As New FillMapForm()
+        result = toolFillMapForm.ShowDialog()
+
+        If result = Windows.Forms.DialogResult.OK Then
+            Me.TMS9918Aviewer.FillVRAM(iVDP.TableBase.GRPNAM, 767, toolFillMapForm.Tile)
+            Me.TMS9918Aviewer.RefreshScreen()
+        End If
+
+    End Sub
+
+
 
     Private Sub TMS9918Aviewer_MouseScreenData(x As Integer, y As Integer) Handles TMS9918Aviewer.MouseScreenData
 
@@ -2718,8 +2777,6 @@ Public Class MainScreen
 
         ColumnLabel.Text = CStr(column)
         LineLabel.Text = CStr(line)
-
-
 
 
         If Me.TMS9918Aviewer.ViewMode = TMS9918A.VIEW_MODE.SPRITE_PATTERNS Then
@@ -2823,7 +2880,7 @@ Public Class MainScreen
     End Sub
 
     Private Sub FillMapButton_Click(sender As Object, e As EventArgs) Handles FillMapButton.Click
-
+        Tool_FillMap()
     End Sub
 
     Private Sub SwitchTilesButton_Click(sender As Object, e As EventArgs) Handles SwitchButton.Click
@@ -2848,6 +2905,8 @@ Public Class MainScreen
         End Try
     End Sub
 
+
+
     Private Sub SwitchColorsButton_Click(sender As Object, e As EventArgs)
         Try
             Dim result As DialogResult
@@ -2864,9 +2923,13 @@ Public Class MainScreen
         End Try
     End Sub
 
+
+
     Private Sub SwapColorsButton_Click(sender As Object, e As EventArgs)
 
     End Sub
+
+
 
     Private Sub SelectAreaButton_Click(sender As Object, e As EventArgs) Handles SelectAreaButton.Click
         If TMS9918Aviewer.ViewMode = TMS9918A.VIEW_MODE.MAP Then
@@ -2882,7 +2945,7 @@ Public Class MainScreen
     End Sub
 
     Private Sub ClearButton_Click(sender As Object, e As EventArgs) Handles ClearButton.Click
-
+        Clear()
     End Sub
 
     Private Sub UndoButton_Click(sender As Object, e As EventArgs) Handles UndoButton.Click
@@ -2918,6 +2981,8 @@ Public Class MainScreen
         Dim comments As New ArrayList
 
         Me.aMSXDataFormat.BASIC_Line = DataTypeInput.BASIClineNumber
+        Me.aMSXDataFormat.BASIC_increment = DataTypeInput.BASICInterval
+
         comments.Add(My.Application.Info.ProductName + " v" + My.Application.Info.Version.ToString)
         comments.Add("File: " + Me.Filename_Project)
         _outputText = Me.aMSXDataFormat.GetComments(comments, Me.DataTypeInput.CodeLanguage)
@@ -3848,9 +3913,8 @@ Public Class MainScreen
 
 
 
-
     Private Sub SetConfig()
-        Dim aConfig As New ConfigWin(Me.AppConfig, ConfigWin.CONFIG_TYPE.BYTEGEN)
+        Dim aConfig As New ConfigWin(Me.AppConfig, ConfigWin.CONFIG_TYPE.TMSGFX)
 
         If aConfig.ShowDialog() = DialogResult.OK Then
             Me.AppConfig.Save()
@@ -3858,10 +3922,14 @@ Public Class MainScreen
             Me.OutputText.BackColor = Me.AppConfig.Color_OUTPUT_BG
             Me.OutputText.ForeColor = Me.AppConfig.Color_OUTPUT_INK
 
+            'Me.Project.Palettes.SetZeroColor(Me.AppConfig.Color_Zero)
+            TMS9918Aviewer.GridColor = Me.AppConfig.Color_Grid
+
             Me.DataTypeInput.RefreshControl()
             'GenerateData()
         End If
     End Sub
+
 
 
     ''' <summary>
@@ -3871,8 +3939,6 @@ Public Class MainScreen
     Private Sub CopyAll()
         My.Computer.Clipboard.SetText(Me.OutputText.Text)
     End Sub
-
-
 
 
 

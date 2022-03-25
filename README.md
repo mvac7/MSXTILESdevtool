@@ -20,15 +20,36 @@ This application is designed for agile and intuitive handling, but always can be
 This software was developed in Microsoft Visual Basic 2008 Express.
    
 
-    
+<br/>
+
 ---
+
+## License 
+
+Copyright (C) 2022 mvac7
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+<br/>
+
+---
+
 ## Requirements 
  
 PC with Microsoft Windows OS and Framework 3.0
 
 
+<br/>
 
 ---
+
 ## How to install 
  
 Unpack and Copy MSXTILESdevtool folder somewhere on your hard disk. 
@@ -36,8 +57,10 @@ Unpack and Copy MSXTILESdevtool folder somewhere on your hard disk.
 Run MSXTILESdevtool.exe 
 
 
+<br/>
 
 ---
+
 ## Features
 
 * Load or Save: project files, screens and tilesets from Pentacour's nMSXtiles tool. [nMSXtiles](https://github.com/pipagerardo/nMSXtiles)
@@ -65,22 +88,19 @@ Run MSXTILESdevtool.exe
 
 
 
+<br/>
+
 ---
+
 ## History
 
 * v0.9b - First version.
   
-           
+
+<br/>
 
 ---
-## Acknowledgements
-   
-* pentacour, JamQue and MsxKun.   
-* Dedicated to Karoshi MSX Community  http://karoshi.auic.es/
 
-
-
----
 ## Code Examples
 
 The package includes a few examples of sources in C (SDCC) and assembler 

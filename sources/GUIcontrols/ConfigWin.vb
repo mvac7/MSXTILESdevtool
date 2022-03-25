@@ -18,9 +18,9 @@ Public Class ConfigWin
         TILESETSX
         PALETTESX
         SQUAREDSX
-        BYTEGEN
         OAMSX
         PAINTSX
+        OTHER
     End Enum
 
 
@@ -35,9 +35,18 @@ Public Class ConfigWin
         Me._type = aType
 
         Select Case Me._type
-            Case CONFIG_TYPE.BYTEGEN
-                Me.BytegenPathControl.Visible = True
+            Case CONFIG_TYPE.TMSGFX
+                Me.tMSgfXProjectPathControl.Visible = True
+                Me.SpritesPathControl.Visible = True
+                Me.MapsPathControl.Visible = True
+                Me.TilesetsPathControl.Visible = True
+                Me.SquaredsetsPathControl.Visible = True
+                Me.PalettesPathControl.Visible = True
+                Me.OAMPathControl.Visible = True
+
+                Me.nMSXtilesPathControl.Visible = True
                 Me.MSXBASICPathControl.Visible = True
+                Me.BitmapsPathControl.Visible = True
                 Me.BinaryPathControl.Visible = True
 
             Case CONFIG_TYPE.PAINTSX
@@ -82,18 +91,9 @@ Public Class ConfigWin
                 Me.PalettesPathControl.Visible = True
 
             Case Else
-                Me.tMSgfXProjectPathControl.Visible = True
-                Me.SpritesPathControl.Visible = True
-                Me.MapsPathControl.Visible = True
-                Me.TilesetsPathControl.Visible = True
-                Me.SquaredsetsPathControl.Visible = True
-                Me.PalettesPathControl.Visible = True
-                Me.OAMPathControl.Visible = True
-
-                Me.nMSXtilesPathControl.Visible = True
-                Me.MSXBASICPathControl.Visible = True
-                Me.BitmapsPathControl.Visible = True
-                Me.BinaryPathControl.Visible = True
+                'Me.BytegenPathControl.Visible = True
+                'Me.MSXBASICPathControl.Visible = True
+                'Me.BinaryPathControl.Visible = True
 
         End Select
 
