@@ -13,8 +13,8 @@
 
     Public Shadows Enum TAB_NAME As Integer
         SCREEN
-        MAP
         TILESET
+        MAP
         SPRITESET
         OAM
     End Enum
@@ -58,10 +58,10 @@
             Case TAB_NAME.SCREEN
                 Tab0Button.ImageIndex = 0 + offset
 
-            Case TAB_NAME.MAP
+            Case TAB_NAME.TILESET
                 Tab1Button.ImageIndex = 2 + offset
 
-            Case TAB_NAME.TILESET
+            Case TAB_NAME.MAP
                 Tab2Button.ImageIndex = 4 + offset
 
             Case TAB_NAME.SPRITESET

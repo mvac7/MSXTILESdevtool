@@ -36,16 +36,16 @@ Partial Class HoriTAB
         '
         Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), System.Windows.Forms.ImageListStreamer)
         Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
-        Me.ImageList1.Images.SetKeyName(0, "Htab00sel.png")
-        Me.ImageList1.Images.SetKeyName(1, "Htab00unsel.png")
-        Me.ImageList1.Images.SetKeyName(2, "Htab01sel.png")
-        Me.ImageList1.Images.SetKeyName(3, "Htab01unsel.png")
-        Me.ImageList1.Images.SetKeyName(4, "Htab02sel.png")
-        Me.ImageList1.Images.SetKeyName(5, "Htab02unsel.png")
-        Me.ImageList1.Images.SetKeyName(6, "Htab03sel.png")
-        Me.ImageList1.Images.SetKeyName(7, "Htab03unsel.png")
-        Me.ImageList1.Images.SetKeyName(8, "Htab04sel.png")
-        Me.ImageList1.Images.SetKeyName(9, "Htab04unsel.png")
+        Me.ImageList1.Images.SetKeyName(0, "tab0_select.png")
+        Me.ImageList1.Images.SetKeyName(1, "tab0_unselect.png")
+        Me.ImageList1.Images.SetKeyName(2, "tab1_select.png")
+        Me.ImageList1.Images.SetKeyName(3, "tab1_unselect.png")
+        Me.ImageList1.Images.SetKeyName(4, "tab2_select.png")
+        Me.ImageList1.Images.SetKeyName(5, "tab2_unselect.png")
+        Me.ImageList1.Images.SetKeyName(6, "tab3_select.png")
+        Me.ImageList1.Images.SetKeyName(7, "tab3_unselect.png")
+        Me.ImageList1.Images.SetKeyName(8, "tab4_select.png")
+        Me.ImageList1.Images.SetKeyName(9, "tab4_unselect.png")
         '
         'Tab3Button
         '
@@ -56,10 +56,10 @@ Partial Class HoriTAB
         Me.Tab3Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Tab3Button.ImageIndex = 7
         Me.Tab3Button.ImageList = Me.ImageList1
-        Me.Tab3Button.Location = New System.Drawing.Point(288, 0)
+        Me.Tab3Button.Location = New System.Drawing.Point(378, 0)
         Me.Tab3Button.Margin = New System.Windows.Forms.Padding(0)
         Me.Tab3Button.Name = "Tab3Button"
-        Me.Tab3Button.Size = New System.Drawing.Size(96, 33)
+        Me.Tab3Button.Size = New System.Drawing.Size(126, 33)
         Me.Tab3Button.TabIndex = 3
         Me.Tab3Button.UseVisualStyleBackColor = False
         '
@@ -71,10 +71,10 @@ Partial Class HoriTAB
         Me.Tab2Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Tab2Button.ImageIndex = 5
         Me.Tab2Button.ImageList = Me.ImageList1
-        Me.Tab2Button.Location = New System.Drawing.Point(192, 0)
+        Me.Tab2Button.Location = New System.Drawing.Point(252, 0)
         Me.Tab2Button.Margin = New System.Windows.Forms.Padding(0)
         Me.Tab2Button.Name = "Tab2Button"
-        Me.Tab2Button.Size = New System.Drawing.Size(96, 33)
+        Me.Tab2Button.Size = New System.Drawing.Size(126, 33)
         Me.Tab2Button.TabIndex = 2
         Me.Tab2Button.UseVisualStyleBackColor = False
         '
@@ -86,10 +86,10 @@ Partial Class HoriTAB
         Me.Tab1Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Tab1Button.ImageIndex = 3
         Me.Tab1Button.ImageList = Me.ImageList1
-        Me.Tab1Button.Location = New System.Drawing.Point(96, 0)
+        Me.Tab1Button.Location = New System.Drawing.Point(126, 0)
         Me.Tab1Button.Margin = New System.Windows.Forms.Padding(0)
         Me.Tab1Button.Name = "Tab1Button"
-        Me.Tab1Button.Size = New System.Drawing.Size(96, 33)
+        Me.Tab1Button.Size = New System.Drawing.Size(126, 33)
         Me.Tab1Button.TabIndex = 1
         Me.Tab1Button.UseVisualStyleBackColor = False
         '
@@ -104,7 +104,7 @@ Partial Class HoriTAB
         Me.Tab0Button.Location = New System.Drawing.Point(0, 0)
         Me.Tab0Button.Margin = New System.Windows.Forms.Padding(0)
         Me.Tab0Button.Name = "Tab0Button"
-        Me.Tab0Button.Size = New System.Drawing.Size(96, 33)
+        Me.Tab0Button.Size = New System.Drawing.Size(126, 33)
         Me.Tab0Button.TabIndex = 0
         Me.Tab0Button.UseVisualStyleBackColor = False
         '
@@ -117,10 +117,10 @@ Partial Class HoriTAB
         Me.Tab4Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Tab4Button.ImageIndex = 9
         Me.Tab4Button.ImageList = Me.ImageList1
-        Me.Tab4Button.Location = New System.Drawing.Point(384, 0)
+        Me.Tab4Button.Location = New System.Drawing.Point(504, 0)
         Me.Tab4Button.Margin = New System.Windows.Forms.Padding(0)
         Me.Tab4Button.Name = "Tab4Button"
-        Me.Tab4Button.Size = New System.Drawing.Size(96, 33)
+        Me.Tab4Button.Size = New System.Drawing.Size(126, 33)
         Me.Tab4Button.TabIndex = 4
         Me.Tab4Button.UseVisualStyleBackColor = False
         '
@@ -135,7 +135,7 @@ Partial Class HoriTAB
         Me.Controls.Add(Me.Tab0Button)
         Me.Margin = New System.Windows.Forms.Padding(0)
         Me.Name = "HoriTAB"
-        Me.Size = New System.Drawing.Size(500, 33)
+        Me.Size = New System.Drawing.Size(640, 33)
         Me.ResumeLayout(False)
 
     End Sub

@@ -356,8 +356,13 @@ Public Class ConfigWin
 
             Case 2
                 ' green GB
-                SetColor(Me.OutputINKcolorButton, Color.FromArgb(255, 15, 56, 15))    ' light green
-                SetColor(Me.OutputBGcolorButton, Color.FromArgb(255, 202, 220, 159))  ' dark green
+                SetColor(Me.OutputINKcolorButton, Color.FromArgb(255, 15, 56, 15))      ' dark green
+                SetColor(Me.OutputBGcolorButton, Color.FromArgb(255, 202, 220, 159))    ' light green
+
+            Case 3
+                ' green TMS9918A
+                SetColor(Me.OutputINKcolorButton, Color.FromArgb(255, 116, 208, 125))   ' light green
+                SetColor(Me.OutputBGcolorButton, Color.FromArgb(255, 45, 92, 48))      ' dark green (58, 162, 65)
 
             Case Else
                 ' default

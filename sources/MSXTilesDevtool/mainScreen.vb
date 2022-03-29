@@ -77,8 +77,8 @@ Public Class MainScreen
 
     Private Enum DATA_TYPE As Integer
         SCREEN
-        MAP
         TILESET
+        MAP
         SPRITESET
         OAM
     End Enum
@@ -195,6 +195,8 @@ Public Class MainScreen
 
     Private Sub NewProject()
 
+        Dim _tmpText As String
+
         Dim newData As New DataFormat
 
         Dim dragNdropPicture() As Byte
@@ -219,6 +221,19 @@ Public Class MainScreen
         SetTitle(Me.Info.Name)
 
         ShowGUImode(HoriTAB.TAB_NAME.SCREEN)
+
+        _tmpText = "Welcome to " + My.Application.Info.Title + " v" + My.Application.Info.Version.ToString + "b " + vbNewLine
+        _tmpText += Strings.StrDup(80, "-") + vbNewLine
+        '_tmpText += "1) Load a .SC2/.PNG image (you can drag&drop it in this window)." + vbNewLine
+        '_tmpText += "2) Select Opening FX, Wait type and Ending FX." + vbNewLine
+        '_tmpText += "3) Configure output parameters." + vbNewLine
+        '_tmpText += "4) Save a source code and/or binaries." + vbNewLine
+        '_tmpText += "5) Assemble with your favorite cross-assembler (asMSX, Sjasm or tniASM)." + vbNewLine
+        '_tmpText += "6) Save project data." + vbNewLine
+        '_tmpText += "7) Run'n Fun in your MSX computer." + vbNewLine
+        _tmpText += "More information in: https://github.com/mvac7/MSXTILESdevtool"
+
+        OutputText.Text = _tmpText
 
     End Sub
 
@@ -2620,7 +2635,7 @@ Public Class MainScreen
 
         AreaPanel_Visible = False
 
-        TilezoomGroupBox.Visible = Not spriteModes
+        TilezoomPanel.Visible = Not spriteModes
 
         SelectAreaGroupBox.Visible = AreaPanel_Visible
         'TileRangePanel.Visible = TileRangePanel_Visible
@@ -2832,7 +2847,7 @@ Public Class MainScreen
 
             'BloqValue_Label.Text = CStr(nTile)
             Tilenumber_TextBox.Text = CStr(nTile)
-            TilesetBank_TextBox.Text = CStr(Fix(line / 8))
+            'TilesetBank_TextBox.Text = CStr(Fix(line / 8))
 
             vaddr = (nTile * 8) + (Fix(y / 64) * &H800) + (y - (Fix(y / 8) * 8))
             color = TMS9918Aviewer.VPEEK(vaddr + iVDP.TableBase.GRPCOL)
@@ -3552,24 +3567,31 @@ Public Class MainScreen
     End Sub
 
 
-    Private Sub SaveSCProjectButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SaveSCProjectButton.Click
+
+    Private Sub SaveProjectButton_Click(sender As Object, e As EventArgs) Handles SaveProjectButton.Click
+
+    End Sub
+
+
+    Private Sub SaveasButton_Click(sender As Object, e As EventArgs) Handles SaveasButton.Click
         SaveProjectDialog()
     End Sub
 
 
-    Private Sub SaveNMSXprj_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SaveNMSXprj_Button.Click
+    Private Sub SaveNMSXProjectButton1_Click(sender As Object, e As EventArgs) Handles Save_nMSXProjectButton.Click
         SaveNMSXprj_Dialog()
     End Sub
 
 
-    Private Sub SaveSC2But_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SaveSC2But.Click
+    Private Sub SaveMSXBASICGButton1_Click(sender As Object, e As EventArgs) Handles SaveMSXBASICGButton1.Click
         SaveMSXBASICbinaryDialog()
     End Sub
 
 
-    Private Sub SavePNGBut_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SavePNGBut.Click
+    Private Sub SaveBitmapButton1_Click(sender As Object, e As EventArgs) Handles SaveBitmapButton1.Click
         SavePNG_Dialog()
     End Sub
+
 
 
 
