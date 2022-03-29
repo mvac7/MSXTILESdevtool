@@ -59,7 +59,7 @@ Public Class paletteEditor
 
 
 
-    Public Shadows Const LoadTypes As String = "All files|*." + MSXOpenDocumentIO.Extension_ProjectDocument + ";*." + MSXOpenDocumentIO.Extension_PaletteDocument + ";*." + MSXOpenDocumentIO.Extension_TilesetDocument + ";*." + MSXOpenDocumentIO.Extension_PictureDocument + "|MSX Open Document Project|*." + MSXOpenDocumentIO.Extension_ProjectDocument + "|MSX Color Palette Open Document|*." + MSXOpenDocumentIO.Extension_PaletteDocument + "|MSX Picture Open Document Project|*." + MSXOpenDocumentIO.Extension_PictureDocument + "|MSX Tileset Open Document|*." + MSXOpenDocumentIO.Extension_TilesetDocument
+    Public Shadows Const LoadTypes As String = "All files|*." + MSXOpenDocumentIO.Extension_ProjectDocument + ";*." + MSXOpenDocumentIO.Extension_PaletteDocument + ";*." + MSXOpenDocumentIO.Extension_TilesetDocument + ";*." + MSXOpenDocumentIO.Extension_PictureDocument + ";*." + MSXOpenDocumentIO.Extension_PaletteOLDformat + "|MSX Open Document Project|*." + MSXOpenDocumentIO.Extension_ProjectDocument + "|MSX Color Palette Open Document|*." + MSXOpenDocumentIO.Extension_PaletteDocument + "|MSX Picture Open Document Project|*." + MSXOpenDocumentIO.Extension_PictureDocument + "|MSX Tileset Open Document|*." + MSXOpenDocumentIO.Extension_TilesetDocument + "|Old mSXdevtools file format|*." + MSXOpenDocumentIO.Extension_PaletteOLDformat
     Public Shadows Const SaveTypes As String = "MSX Open Document Project|*." + MSXOpenDocumentIO.Extension_ProjectDocument + "|MSX Color Palette Open Document|*." + MSXOpenDocumentIO.Extension_PaletteDocument
 
 
@@ -1322,12 +1322,24 @@ Public Class paletteEditor
 
     Private Sub LoadPaletteButton_Click(sender As Object, e As EventArgs) Handles LoadPaletteButton.Click
 
+        Dim fileExtension As String
         Dim filePath As String = LoadPaletteDialog()
 
         If Not filePath = "" Then
-            If LoadPalette(filePath) = True Then
-                Path_Project = filePath
+
+            fileExtension = Path.GetExtension(filePath).ToUpper
+
+            If fileExtension = "." + MSXOpenDocumentIO.Extension_PaletteOLDformat Then
+                'OLD format
+                If LoadPaletteOLDformat(filePath) = True Then
+                    Path_Project = filePath
+                End If
+            Else
+                If LoadPalette(filePath) = True Then
+                    Path_Project = filePath
+                End If
             End If
+
         End If
 
     End Sub
@@ -1336,11 +1348,21 @@ Public Class paletteEditor
 
     Private Sub AddPaletteButton_Click(sender As Object, e As EventArgs) Handles AddPaletteButton.Click
 
+        Dim fileExtension As String
         Dim filePath As String = LoadPaletteDialog()
 
         If Not filePath = "" Then
-            If AddPalette(filePath) = True Then
-                Path_Project = filePath
+            fileExtension = Path.GetExtension(filePath).ToUpper
+
+            If fileExtension = "." + MSXOpenDocumentIO.Extension_PaletteOLDformat Then
+                'OLD format
+                If AddPaletteOLDformat(filePath) = True Then
+                    Path_Project = filePath
+                End If
+            Else
+                If AddPalette(filePath) = True Then
+                    Path_Project = filePath
+                End If
             End If
         End If
 
@@ -1375,9 +1397,37 @@ Public Class paletteEditor
 
         tmpPaletteProject = _tmsgfxIO.LoadPaletteProject(filePath)
 
-        newID = Me.Palettes.AddPalettes(tmpPaletteProject)
+        If Not tmpPaletteProject Is Nothing Then
+            Me.Palettes.Clear()
+            newID = Me.Palettes.AddPalettes(tmpPaletteProject)
+            If newID > 0 Then
+                RefreshPaletteSelector()
+                SelectPaletteByID(newID)
+                result = True
+            End If
+        End If
 
-        If newID > 0 Then
+        Return result
+
+    End Function
+
+
+
+    Private Function LoadPaletteOLDformat(ByVal filePath As String) As Boolean
+
+        Dim result As Boolean = False
+
+        Dim newID As Integer
+
+        Dim _tmsgfxIO As New MSXOpenDocumentIO(Me.AppConfig)
+
+        Dim tmpPalette As PaletteV9938
+
+        tmpPalette = _tmsgfxIO.LoadPaletteOLDformat(filePath)
+
+        If Not tmpPalette Is Nothing Then
+            Me.Palettes.Clear()
+            newID = Me.Palettes.Add(tmpPalette)
             RefreshPaletteSelector()
             SelectPaletteByID(newID)
             result = True
@@ -1386,7 +1436,6 @@ Public Class paletteEditor
         Return result
 
     End Function
-
 
 
 
@@ -1460,10 +1509,35 @@ Public Class paletteEditor
 
 
 
+    Private Function AddPaletteOLDformat(ByVal filePath As String) As Boolean
+
+        Dim result As Boolean = False
+
+        Dim newID As Integer
+
+        Dim _tmsgfxIO As New MSXOpenDocumentIO(Me.AppConfig)
+
+        Dim tmpPalette As PaletteV9938
+
+        tmpPalette = _tmsgfxIO.LoadPaletteOLDformat(filePath)
+
+        If Not tmpPalette Is Nothing Then
+            newID = Me.Palettes.Add(tmpPalette)
+            RefreshPaletteSelector()
+            SelectPaletteByID(newID)
+            result = True
+        End If
+
+        Return result
+
+    End Function
+
+
+
     Public Function LoadPaletteDialog() As String
 
         'Me.OpenFileDialog1.DefaultExt = MSXOpenDocumentIO.Extension_PictureDocument
-        Me.OpenFileDialog1.Filter = LoadTypes + "|Old sxOD file format|*.XPAL"
+        Me.OpenFileDialog1.Filter = LoadTypes
 
         If Me.Path_Project = "" Then
             Me.OpenFileDialog1.FileName = ""

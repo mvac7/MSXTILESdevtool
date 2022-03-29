@@ -62,12 +62,12 @@ Public Class PaletteProject
 
 
     Public Function Add(ByVal item As iPaletteMSX) As Integer
+
         Dim newID As Integer = -1
 
         If item Is Nothing Then
             Return -1
         End If
-
 
         If Me.Items.Count < MAXIMUM Then
 

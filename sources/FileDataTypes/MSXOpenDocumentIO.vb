@@ -10,17 +10,21 @@ Public Class MSXOpenDocumentIO
     Public Project As tMSgfXProject
 
 
-    ' file extensions
+    ' file extensions ---------------------------------------------------
     Public Shadows Const Extension_ProjectDocument As String = "SXSCP"
     Public Shadows Const Extension_ScreenDocument As String = "SXSCR"
     Public Shadows Const Extension_TilesetDocument As String = "SXTIL"
     Public Shadows Const Extension_SupertileDocument As String = "SX2TIL"
     Public Shadows Const Extension_MapDocument As String = "SXMAP"
     Public Shadows Const Extension_SpriteDocument As String = "SXSPR"
-    Public Shadows Const Extension_OldSpriteDocument As String = "XSPR"
     Public Shadows Const Extension_SpriteOAMDocument As String = "SXOAM"
     Public Shadows Const Extension_PaletteDocument As String = "SXPAL"
     Public Shadows Const Extension_PictureDocument As String = "SXPIC"
+
+    ' OLD formats 
+    Public Shadows Const Extension_PaletteOLDformat As String = "XPAL"
+    Public Shadows Const Extension_SpriteOLDformat As String = "XSPR"
+    ' -------------------------------------------------------------------
 
 
     Public Shadows Const ROOT As String = "msxOpenDocument"
@@ -1916,26 +1920,25 @@ Public Class MSXOpenDocumentIO
         'Try
         aXmlDoc.Load(filePath)
 
-            aDataNode = aXmlDoc.SelectSingleNode(MSXOpenDocumentIO.ROOT)
-            If Not aDataNode Is Nothing Then 'aXmlDoc.GetElementsByTagName("msxOpenDocument").Count > 0 Then
-                'If aXmlDoc.GetElementsByTagName("msxOpenDocument").Count > 0 Then
+        aDataNode = aXmlDoc.SelectSingleNode(MSXOpenDocumentIO.ROOT)
+        If Not aDataNode Is Nothing Then
 
-                aNode = aDataNode.SelectSingleNode(MSXOpenDocumentIO.PALETTES) '"palettes"
-                'aNode = aXmlDoc.SelectSingleNode("msxOpenDocument/palettes")
-                If aNode Is Nothing Then
-                    Return Nothing
-                Else
+            aNode = aDataNode.SelectSingleNode(MSXOpenDocumentIO.PALETTES) '"palettes"
+            'aNode = aXmlDoc.SelectSingleNode("msxOpenDocument/palettes")
+            If aNode Is Nothing Then
+                Return Nothing
+            Else
 
                 ' load selected Map
                 aNodeList = aXmlDoc.SelectNodes(MSXOpenDocumentIO.ROOT + "/" + MSXOpenDocumentIO.PALETTES + "/" + MSXOpenDocumentIO.PALETTES_SET + "[@name='" + itemName + "']")
 
                 Return GetPaletteFromNode(aNodeList.Item(0))
 
-                End If
-
-            Else
-                Return Nothing
             End If
+
+        Else
+            Return Nothing
+        End If
 
         'Catch ex As Exception
         '    Return Nothing
@@ -2020,12 +2023,12 @@ Public Class MSXOpenDocumentIO
 
 
 
-    Public Function LoadOLDpaletteMSXTILESdevtool(ByVal filePath As String) As Boolean
+    Public Function LoadPaletteOLDformat(ByVal filePath As String) As PaletteV9938
         Dim aXmlDoc As New XmlDocument
         Dim aDataNode As XmlNode
         Dim aNode As XmlNode
 
-        Dim result As Boolean = False
+        'Dim result As Boolean = False
 
         Dim tmpPalette As New PaletteV9938
 
@@ -2037,15 +2040,15 @@ Public Class MSXOpenDocumentIO
             If Not aNode Is Nothing Then
 
                 tmpPalette = GetPaletteFromNode(aNode)
-                If Not tmpPalette Is Nothing Then
-                    Me.Project.Palettes.Add(tmpPalette)
-                    result = True
-                End If
+                'If Not tmpPalette Is Nothing Then
+                '    Me.Project.Palettes.Add(tmpPalette)
+                '    result = True
+                'End If
 
             End If
         End If
 
-        Return result
+        Return tmpPalette
 
     End Function
 
@@ -2158,7 +2161,7 @@ Public Class MSXOpenDocumentIO
 
                 anAttribute = anItemElement.GetAttributeNode(MSXOpenDocumentIO.ITEM_INDEX)
                 If anAttribute Is Nothing Then
-                    anAttribute = anItemElement.GetAttributeNode("id") ' OLD BAD format 
+                    anAttribute = anItemElement.GetAttributeNode("id") ' OLD format 
                     If anAttribute Is Nothing Then
                         index = 0
                     Else

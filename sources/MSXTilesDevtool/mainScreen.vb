@@ -63,9 +63,11 @@ Public Class MainScreen
 
     Private myBitmapImage As Bitmap
 
-    Private aGraphics As Graphics
+    Private tileGraphics As Graphics
+    Private tileColorsGraphics As Graphics
 
-    Private tileBitmap As Bitmap
+    'Private tileBitmap As Bitmap
+    'Private tileColors As Bitmap
 
 
 
@@ -120,10 +122,18 @@ Public Class MainScreen
 
         Me.MessageWin = New MessageDialog()
 
-        tileBitmap = New Bitmap(TileViewerPictureBox.Size.Width, TileViewerPictureBox.Size.Height)
 
-        TileViewerPictureBox.BackgroundImage = tileBitmap
-        aGraphics = Graphics.FromImage(tileBitmap)
+        TileViewerPictureBox.BackgroundImage = New Bitmap(TileViewerPictureBox.Size.Width, TileViewerPictureBox.Size.Height)
+        tileGraphics = Graphics.FromImage(TileViewerPictureBox.BackgroundImage)
+
+        'tileBitmap = New Bitmap(TileViewerPictureBox.Size.Width, TileViewerPictureBox.Size.Height)
+        'tileColors = New Bitmap(TileColorsPictureBox.Size.Width, TileColorsPictureBox.Size.Height)
+
+        'TileViewerPictureBox.BackgroundImage = tileBitmap
+        'tileGraphics = Graphics.FromImage(tileBitmap)
+
+        TileColorsPictureBox.BackgroundImage = New Bitmap(TileColorsPictureBox.Size.Width, TileColorsPictureBox.Size.Height)
+        tileColorsGraphics = Graphics.FromImage(TileColorsPictureBox.BackgroundImage)
 
     End Sub
 
@@ -1043,39 +1053,31 @@ Public Class MainScreen
 
 
 
-    ''' <summary>
-    ''' Proporciona un array a partir de una cadena con datos separados por comas.
-    ''' </summary>
-    ''' <param name="data"></param>
-    ''' <param name="size"></param>
-    ''' <param name="initpos"></param>
-    ''' <param name="defaultvalue"></param>
-    ''' <returns></returns>
-    ''' <remarks></remarks>
-    Private Function ByteSpliter(ByVal data As String, ByVal size As Integer, ByVal initpos As Integer, ByVal defaultvalue As Byte) As Byte()
-        Dim tmpData As Byte()
-        Dim numitems As Integer = 0
-        Dim counter As Integer = 0
 
-        Dim defaultString As String = "," + CStr(defaultvalue)
+    'Private Function ByteSpliter(ByVal data As String, ByVal size As Integer, ByVal initpos As Integer, ByVal defaultvalue As Byte) As Byte()
+    '    Dim tmpData As Byte()
+    '    Dim numitems As Integer = 0
+    '    Dim counter As Integer = 0
 
-        'data += ",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"
-        For i As Integer = 0 To 31
-            data += defaultString
-        Next
+    '    Dim defaultString As String = "," + CStr(defaultvalue)
 
-        ReDim tmpData(size)
+    '    'data += ",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"
+    '    For i As Integer = 0 To 31
+    '        data += defaultString
+    '    Next
 
-        Dim splitdata As String() = data.Split(",")
-        numitems = splitdata.GetLength(0)
+    '    ReDim tmpData(size)
 
-        For i As Integer = initpos To initpos + size
-            tmpData(counter) = CByte(splitdata(i))
-            counter += 1
-        Next
+    '    Dim splitdata As String() = data.Split(",")
+    '    numitems = splitdata.GetLength(0)
 
-        Return tmpData
-    End Function
+    '    For i As Integer = initpos To initpos + size
+    '        tmpData(counter) = CByte(splitdata(i))
+    '        counter += 1
+    '    Next
+
+    '    Return tmpData
+    'End Function
 
 
 
@@ -1196,155 +1198,6 @@ Public Class MainScreen
         Return True
 
     End Function
-
-
-
-
-    ''' <summary>
-    ''' --------------------------------------------------------------------------- DEPRECATED 
-    ''' </summary>
-    Private Sub GenerateScreenData()
-
-        Dim outputSource As String = ""
-        Dim vaddr As String
-        Dim linesize As Integer = 0
-
-        Dim startX As Integer = Val(Me.AreaStartX_TextBox.Text)
-        Dim startY As Integer = Val(Me.AreaStartY_TextBox.Text)
-        Dim endX As Integer = Val(Me.AreaEndX_TextBox.Text)
-        Dim endY As Integer = Val(Me.AreaEndY_TextBox.Text)
-
-        Dim comment As New ArrayList
-        Dim tmpData() As Byte
-
-        Dim aRLE As New RLE
-
-
-        ' validate input data
-        If startX < 0 Then
-            startX = 0
-        End If
-
-        If startX > 31 Then
-            startX = 0
-        End If
-
-
-        If startY < 0 Then
-            startY = 0
-        End If
-
-        If startY > 23 Then
-            startY = 0
-        End If
-
-
-        If endX < 0 Then
-            endX = 31
-        End If
-
-        If endX > 31 Then
-            endX = 31
-        End If
-
-
-        If endY < 0 Then
-            endY = 23
-        End If
-
-        If endY > 23 Then
-            endY = 23
-        End If
-
-
-        If startX > endX Then
-            startX = 0
-            endX = 31
-        End If
-
-        If startY > endY Then
-            startY = 0
-            endY = 23
-        End If
-        ' end validate
-
-
-        Me.AreaStartX_TextBox.Text = startX
-        Me.AreaStartY_TextBox.Text = startY
-        Me.AreaEndX_TextBox.Text = endX
-        Me.AreaEndY_TextBox.Text = endY
-
-        ' generate byte array with screen data
-        Dim data As Byte()
-        Dim datasize As Integer = (endX - startX + 1) * (endY - startY + 1) - 1
-        Dim conta As Integer = 0
-        Dim addr As Short = 0
-        Dim Base10 As Short '= screen2.BASE(TMS9918.NumberOfBase.Name_Table_Base_Address)
-        ReDim data(datasize)
-
-        'For i = startY To endY
-        '    For o = startX To endX
-        '        addr = Base10 + (i * 32) + o
-        '        data(conta) = screen2.VPEEK(addr)
-        '        conta += 1
-        '    Next
-        'Next
-        ' end
-
-        'vaddr = getHexShort(screen2.BASE(TMS9918.NumberOfBase.Name_Table_Base_Address) + (startY * 32) + startX)
-
-
-        comment.Add("map " + MapName)
-        comment.Add("VRAM address= " + vaddr + "h")
-        comment.Add("start x=" + CStr(startX) + " y=" + CStr(startY))
-        comment.Add("end   x=" + CStr(endX) + " y=" + CStr(endY))
-
-
-        'Select Case Map_compressionScrCB.SelectedIndex
-
-        '    Case 1
-        '        tmpData = aRLE.GetRLE(data)
-        '        comment.Add("RLE compressed - Original size= " + CStr(data.Length) + " - Final size= " + CStr(tmpData.Length))
-        '    Case 2
-        '        tmpData = aRLE.GetRLE_WB(data)
-        '        comment.Add("RLE WB compressed - Original size= " + CStr(data.Length) + " - Final size= " + CStr(tmpData.Length))
-        '        'Case 3
-        '        '    tmpData = Me.GetRLE3(data)
-        '        '    comment.Add("RLE3 compressed - Original size:" + CStr(data.Length) + " - RLE size:" + CStr(tmpData.Length))
-
-        '    Case Else
-        '        tmpData = data
-        '        comment.Add("Size= " + CStr(data.Length))
-
-        'End Select
-
-
-        'If Me.Map_SizeLineComboB.SelectedIndex = 0 Then
-        '    linesize = endX - startX + 1
-        'Else
-        '    linesize = CInt(Me.Map_SizeLineComboB.SelectedItem)
-        'End If
-
-        'Me.Tiles_TxtOutput.Clear()
-
-        '' show data in respective code language
-        'Select Case Map_CodeOutComboB.SelectedIndex
-        '    Case MSXDataFormat.OutputFormat.C
-        '        outputSource = genData.C_codeGen(tmpData, linesize, Map_NumSysComboBox.SelectedIndex, Me.Map_FieldName.Text, comment)
-        '    Case MSXDataFormat.OutputFormat.ASM
-        '        outputSource = genData.Asm_codeGen(tmpData, linesize, Map_NumSysComboBox.SelectedIndex, Me.Map_FieldName.Text, comment, "db")
-        '    Case MSXDataFormat.OutputFormat.ASM_SDCC
-        '        outputSource = genData.Asm_codeGen(tmpData, linesize, Map_NumSysComboBox.SelectedIndex, Me.Map_FieldName.Text, comment, ".db")
-        '    Case MSXDataFormat.OutputFormat.BASIC
-        '        outputSource = genData.BasicMSX_codeGen(tmpData, linesize, Map_NumSysComboBox.SelectedIndex, BasicConfig.RemoveZeros, BasicConfig.StartingLine, BasicConfig.Interval, comment)
-        'End Select
-
-        'Tiles_TxtOutput.AppendText(outputSource)
-
-    End Sub
-
-
-
 
 
 
@@ -1759,71 +1612,6 @@ Public Class MainScreen
     End Sub
 
 
-    Private Sub CodeOutComboB_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
-        'Tileset_TxtOutput.Clear()
-
-        'If Tileset_CodeOutComboB.SelectedIndex = MSXDataFormat.OutputFormat.BASIC Then
-        '    'Basic
-        '    BasicConfigButton.Enabled = True
-        'Else
-        '    Me.BasicConfigButton.Enabled = False
-        'End If
-
-        'Select Case Tileset_CodeOutComboB.SelectedIndex
-        '    Case MSXDataFormat.OutputFormat.BASIC
-        '        Tileset_NumSysComboBox.SelectedIndex = MSXDataFormat.DataFormat.DECIMAL_nnn
-
-        '    Case MSXDataFormat.OutputFormat.C
-        '        Tileset_NumSysComboBox.SelectedIndex = MSXDataFormat.DataFormat.HEXADECIMAL_0xnn
-
-        '    Case MSXDataFormat.OutputFormat.ASM
-        '        Tileset_NumSysComboBox.SelectedIndex = MSXDataFormat.DataFormat.HEXADECIMAL_0nnh
-
-        '    Case MSXDataFormat.OutputFormat.ASM_SDCC
-        '        Tileset_NumSysComboBox.SelectedIndex = MSXDataFormat.DataFormat.HEXADECIMAL_0xnn
-
-        'End Select
-
-    End Sub
-
-
-
-    Private Sub Map_CodeOutComboB_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
-        'Tiles_TxtOutput.Clear()
-
-        'If Map_CodeOutComboB.SelectedIndex = MSXDataFormat.OutputFormat.BASIC Then
-        '    'Basic
-        '    BasicConfigButton2.Enabled = True
-        'Else
-        '    BasicConfigButton2.Enabled = False
-        'End If
-
-        'Select Case Map_CodeOutComboB.SelectedIndex
-        '    Case MSXDataFormat.OutputFormat.BASIC
-        '        Map_NumSysComboBox.SelectedIndex = MSXDataFormat.DataFormat.DECIMAL_nnn
-
-        '    Case MSXDataFormat.OutputFormat.C
-        '        Map_NumSysComboBox.SelectedIndex = MSXDataFormat.DataFormat.HEXADECIMAL_0xnn
-
-        '    Case MSXDataFormat.OutputFormat.ASM
-        '        Map_NumSysComboBox.SelectedIndex = MSXDataFormat.DataFormat.HEXADECIMAL_0nnh
-
-        '    Case MSXDataFormat.OutputFormat.ASM_SDCC
-        '        Map_NumSysComboBox.SelectedIndex = MSXDataFormat.DataFormat.HEXADECIMAL_0xnn
-
-        'End Select
-
-    End Sub
-
-
-
-
-
-
-
-
 
     Private Sub ChangeColor(ByVal OldColor As Byte, ByVal NewColor As Byte)
 
@@ -1897,21 +1685,19 @@ Public Class MainScreen
 
 
 
-    Private Sub aScreen2_MouseSelectedPos(ByVal startx As Integer, ByVal starty As Integer, ByVal endx As Integer, ByVal endy As Integer) ' Handles screen2.MouseSelectedPos
+    'Private Sub aScreen2_MouseSelectedPos(ByVal startx As Integer, ByVal starty As Integer, ByVal endx As Integer, ByVal endy As Integer) ' Handles screen2.MouseSelectedPos
 
-        If endx < startx Then
-            'unselect area
-            SetDefaultMapArea()
-        Else
-            AreaStartX_TextBox.Text = startx
-            AreaStartY_TextBox.Text = starty
-            AreaEndX_TextBox.Text = endx
-            AreaEndY_TextBox.Text = endy
-        End If
+    '    If endx < startx Then
+    '        'unselect area
+    '        SetDefaultMapArea()
+    '    Else
+    '        AreaStartX_TextBox.Text = startx
+    '        AreaStartY_TextBox.Text = starty
+    '        AreaEndX_TextBox.Text = endx
+    '        AreaEndY_TextBox.Text = endy
+    '    End If
 
-    End Sub
-
-
+    'End Sub
 
 
 
@@ -2011,77 +1797,7 @@ Public Class MainScreen
 
 
 
-    Private Sub GetPaletteButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        Dim comments As New ArrayList
-        'Dim tmpData() As Byte
 
-        Dim outputSource As String = ""
-        Dim linesize As Integer = 0
-
-        'linesize = CInt(Me.Palette_SizeLineComboB.SelectedItem)
-
-        'comments.Add(Me.screen2.GetPalette().Name)
-
-
-        'Me.Palette_TxtOutput.Clear()
-
-        '' show data in respective code language
-        'Select Case Palette_CodeOutComboB.SelectedIndex
-        '    Case MSXDataFormat.OutputFormat.C
-        '        comments.Add("RB,G")
-        '        outputSource = genData.C_codeGen(Me.screen2.GetPalette().GetData(), linesize, Me.Palette_NumSysCombo.SelectedIndex, Palette_FieldName.Text, comments)
-
-        '    Case MSXDataFormat.OutputFormat.ASM
-        '        comments.Add("RB,G")
-        '        outputSource = genData.Asm_codeGen(Me.screen2.GetPalette().GetData(), linesize, Me.Palette_NumSysCombo.SelectedIndex, Palette_FieldName.Text, comments, "db")
-
-        '    Case MSXDataFormat.OutputFormat.ASM_SDCC
-        '        comments.Add("RB,G")
-        '        outputSource = genData.Asm_codeGen(Me.screen2.GetPalette().GetData(), linesize, Me.Palette_NumSysCombo.SelectedIndex, Palette_FieldName.Text, comments, ".db")
-
-        '    Case MSXDataFormat.OutputFormat.BASIC
-        '        comments.Add("Num color, Red, Green, Blue")
-        '        outputSource = genData.BasicMSX_codeGen(Me.screen2.GetPalette().GetDataBasic(), linesize, Me.Palette_NumSysCombo.SelectedIndex, BasicConfig.RemoveZeros, BasicConfig.StartingLine, BasicConfig.Interval, comments)
-
-        'End Select
-
-
-        'Me.Palette_TxtOutput.AppendText(outputSource)
-
-    End Sub
-
-
-
-    ' realiza cambios en la interfaz segun Lenguage de programacion seleccionado
-    Private Sub Palette_CodeOutComboB_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
-        'Me.Palette_SizeLineComboB.Items.Clear()
-        'If Palette_CodeOutComboB.SelectedIndex = MSXDataFormat.OutputFormat.BASIC Then
-        '    ' BASIC
-        '    BasicConfigButton3.Enabled = True
-        '    Me.Palette_SizeLineComboB.Items.AddRange(New Object() {"3", "6", "9", "18", "48"})
-        'Else
-        '    BasicConfigButton3.Enabled = False
-        '    Me.Palette_SizeLineComboB.Items.AddRange(New Object() {"2", "4", "8", "16", "32"})
-        'End If
-        'Me.Palette_SizeLineComboB.SelectedIndex = 0
-
-        'Select Case Palette_CodeOutComboB.SelectedIndex
-        '    Case MSXDataFormat.OutputFormat.BASIC
-        '        Palette_NumSysCombo.SelectedIndex = MSXDataFormat.DataFormat.DECIMAL_nnn
-
-        '    Case MSXDataFormat.OutputFormat.C
-        '        Palette_NumSysCombo.SelectedIndex = MSXDataFormat.DataFormat.HEXADECIMAL_0xnn
-
-        '    Case MSXDataFormat.OutputFormat.ASM
-        '        Palette_NumSysCombo.SelectedIndex = MSXDataFormat.DataFormat.HEXADECIMAL_0nnh
-
-        '    Case MSXDataFormat.OutputFormat.ASM_SDCC
-        '        Palette_NumSysCombo.SelectedIndex = MSXDataFormat.DataFormat.HEXADECIMAL_0xnn
-
-        'End Select
-
-    End Sub
 
 
 
@@ -2095,6 +1811,8 @@ Public Class MainScreen
             InvertTool(aInvertDialog.PatternCheckBox.Checked, aInvertDialog.ColorCheckBox.Checked)
         End If
     End Sub
+
+
 
 
 
@@ -3894,12 +3612,13 @@ Public Class MainScreen
         Dim linePattern As Byte
         Dim lineColor As Byte
 
-        Dim aInkColor As Byte '= _color >> 4 
-        Dim aBGColor As Byte '= _color And 15
+        Dim aInkColor As System.Drawing.Color '= _color >> 4 
+        Dim aBGColor As System.Drawing.Color '= _color And 15
 
         Dim aColor As System.Drawing.Color
 
-        aGraphics.Clear(Color.Black)
+        'tileGraphics.Clear(Color.Black)
+
 
         For line As Integer = 0 To 7
 
@@ -3910,26 +3629,30 @@ Public Class MainScreen
 
             VRAMaddr += 1
 
-            aInkColor = lineColor >> 4
-            aBGColor = lineColor And 15
+            aInkColor = TMS9918Aviewer.Palette.GetRGBColor(lineColor >> 4)
+            aBGColor = TMS9918Aviewer.Palette.GetRGBColor(lineColor And 15)
+
+            tileColorsGraphics.FillRectangle(New SolidBrush(aInkColor), 1, posY, 16, 16)
+            tileColorsGraphics.FillRectangle(New SolidBrush(aBGColor), 17, posY, 16, 16)
 
             For column As Integer = 0 To 7
 
                 posX = ((7 - column) * 17) + 1
 
                 If ((linePattern >> column) And 1) = 1 Then 'TempValue = Me.bite_MASKs(x) Then
-                    aColor = TMS9918Aviewer.Palette.GetRGBColor(aInkColor)
+                    aColor = aInkColor
                 Else
-                    aColor = TMS9918Aviewer.Palette.GetRGBColor(aBGColor)
+                    aColor = aBGColor
                 End If
 
-                aGraphics.FillRectangle(New SolidBrush(aColor), posX, posY, 16, 16)
+                tileGraphics.FillRectangle(New SolidBrush(aColor), posX, posY, 16, 16)
 
             Next
 
         Next
 
         TileViewerPictureBox.Refresh()
+        TileColorsPictureBox.Refresh()
 
     End Sub
 

@@ -163,13 +163,15 @@ Public Class Palette512Dialog
 
     Private Sub OK_Button_Click(sender As Object, e As EventArgs) Handles OK_Button.Click
 
+        Me.Palettes.Clear()
+
         For Each tmpPalette As iPaletteMSX In paletteEd.Palettes.Values
 
-            If Me.Palettes.Contains(tmpPalette.ID) Then
-                Me.Palettes.Update(tmpPalette.ID, tmpPalette)
-            Else
-                Me.Palettes.Add(tmpPalette)
-            End If
+            'If Me.Palettes.Contains(tmpPalette.ID) Then
+            '    Me.Palettes.Update(tmpPalette.ID, tmpPalette)
+            'Else
+            Me.Palettes.Add(tmpPalette.Copy)
+            'End If
 
         Next
 

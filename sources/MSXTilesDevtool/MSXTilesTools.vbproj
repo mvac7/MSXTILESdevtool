@@ -218,7 +218,6 @@
     <None Include="Resources\button_savesource.png" />
     <None Include="Resources\piXel_pane_XL.png" />
     <None Include="Resources\button_savebinary.png" />
-    <None Include="Resources\piXel_panel_L.png" />
     <None Include="Resources\BG_panel_TileZoom.png" />
     <None Include="Resources\button_generate_pixelS.png" />
     <None Include="Resources\config_x24.png" />
