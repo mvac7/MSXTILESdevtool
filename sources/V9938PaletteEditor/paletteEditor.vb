@@ -369,15 +369,18 @@ Public Class paletteEditor
         Dim result As Boolean
         Dim extension As String
 
-        Dim _tmsgfxIO As New MSXOpenDocumentIO(Me.AppConfig, Me.Project)
+        Dim _tmsgfxIO As MSXOpenDocumentIO
 
         Me._ProgressController.ShowProgressWin()
 
 
         extension = Path.GetExtension(filePath).ToUpper
         If extension = "." + MSXOpenDocumentIO.Extension_PaletteDocument Then
-            result = _tmsgfxIO.SavePaletteProject(filePath)
+            _tmsgfxIO = New MSXOpenDocumentIO(Me.AppConfig) ', Me.Project
+            result = _tmsgfxIO.SavePalette(filePath, Palettes)
+            'result = _tmsgfxIO.SavePaletteProject(filePath)
         Else
+            _tmsgfxIO = New MSXOpenDocumentIO(Me.AppConfig, Me.Project)
             result = _tmsgfxIO.SaveProject(filePath)
         End If
 
@@ -1331,13 +1334,9 @@ Public Class paletteEditor
 
             If fileExtension = "." + MSXOpenDocumentIO.Extension_PaletteOLDformat Then
                 'OLD format
-                If LoadPaletteOLDformat(filePath) = True Then
-                    Path_Project = filePath
-                End If
+                LoadPaletteOLDformat(filePath)
             Else
-                If LoadPalette(filePath) = True Then
-                    Path_Project = filePath
-                End If
+                LoadPalette(filePath)
             End If
 
         End If
@@ -1548,7 +1547,8 @@ Public Class paletteEditor
         End If
 
         If Me.OpenFileDialog1.ShowDialog = DialogResult.OK Then
-            Return Me.OpenFileDialog1.FileName
+            Path_Project = OpenFileDialog1.FileName
+            Return OpenFileDialog1.FileName
         Else
             Return ""
         End If
@@ -1570,8 +1570,8 @@ Public Class paletteEditor
 
 
     Public Sub SaveProjectDialog()
-        Dim resultado As DialogResult
 
+        Dim resultado As DialogResult
 
         'Me.SaveFileDialog1.DefaultExt = MSXOpenDocumentIO.Extension_PaletteDocument
         Me.SaveFileDialog1.Filter = "MSX Color Palette Open Document|*." + MSXOpenDocumentIO.Extension_PaletteDocument

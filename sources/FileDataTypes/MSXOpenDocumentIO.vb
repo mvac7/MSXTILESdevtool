@@ -1864,6 +1864,45 @@ Public Class MSXOpenDocumentIO
 
 
 
+    Public Function SavePalette(ByVal filePath As String, ByVal palettesPRJ As PaletteProject) As Boolean
+
+        Dim aXmlDoc As New XmlDocument
+        Dim rootElement As XmlElement
+
+
+        Try
+
+            rootElement = GetHeaderDataElement(aXmlDoc)
+
+            ' project data #####################################################
+            'If Not Me.Project Is Nothing Then
+            '    rootElement.AppendChild(GetInfoElement(aXmlDoc, Me.Project.Info))
+            'End If
+            ' END project data #################################################
+
+
+            ' palette data #####################################################
+            If palettesPRJ.Count > 0 Then
+                rootElement.AppendChild(GetPaletteElementByID(aXmlDoc, palettesPRJ, -1))
+            Else
+                Return False
+            End If
+            ' END palette data #################################################
+
+            aXmlDoc.Save(filePath)  ' save file
+
+
+        Catch ex As Exception
+            Return False
+        End Try
+
+        Return True
+
+    End Function
+
+
+
+
     Public Function SavePalette(ByVal filePath As String, ByVal ID As Integer) As Boolean
 
         Dim aXmlDoc As New XmlDocument
@@ -2224,7 +2263,7 @@ Public Class MSXOpenDocumentIO
         anElement = aXmlDoc.CreateElement(MSXOpenDocumentIO.PALETTES)
 
         If ID = -1 Then
-            For Each item As iPaletteMSX In _palettes.Values 'Me.Project.Palettes.Values
+            For Each item As iPaletteMSX In _palettes.Values
                 If item.Type = iPaletteMSX.VDP.V9938 Then
                     anElement.AppendChild(GetPaletteElementByPalette(aXmlDoc, item))
                 End If
