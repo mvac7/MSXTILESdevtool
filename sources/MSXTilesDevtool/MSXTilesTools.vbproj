@@ -214,6 +214,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MSXTILESdevtool.ico" />
+    <None Include="Resources\BG_panel_Area.png" />
+    <None Include="Resources\BG_panel_Range.png" />
+    <None Include="Resources\BG_panel_Data.png" />
     <None Include="Resources\button_CopyAll.png" />
     <None Include="Resources\button_savesource.png" />
     <None Include="Resources\piXel_pane_XL.png" />

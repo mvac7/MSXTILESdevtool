@@ -124,11 +124,14 @@
   <data name="palette3_x24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\palette3_x24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="fill_x24_01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fill_x24_01.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="save3_x24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\save3_x24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="gplv3-88x31" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\gplv3-88x31.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="project_properties_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\project_properties_24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="dragdrop_48_06Y" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\dragdrop_48_06Y.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -139,14 +142,17 @@
   <data name="copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\copy.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="change_x24_02" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\change_x24_02.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="copy_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\copy_24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="auto_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\auto_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="BG_panel_Range" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BG_panel_Range.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="undo_clear" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\undo_clear.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="project_properties_24p" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\project_properties_24p.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="load" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\load.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -165,9 +171,6 @@
   </data>
   <data name="exchange_color_x24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\exchange_color_x24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="project_properties_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\project_properties_24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="select_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\select_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -193,23 +196,26 @@
   <data name="copy_color_x24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\copy_color_x24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="gplv3-88x31" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gplv3-88x31.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="about_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\about_24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="change_x24_02" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\change_x24_02.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="button_savesource" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\button_savesource.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="button_savebinary" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\button_savebinary.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="help_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\help_24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="gradient_up_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gradient_up_24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="save_as3_x24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\save_as3_x24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BG_panel_Data" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BG_panel_Data.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Aboud_win_msxTiles" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Aboud_win_msxTiles.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -229,16 +235,19 @@
   <data name="reload_24x24_02" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\reload_24x24_02.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="project_properties_24p" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\project_properties_24p.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="gradient_up_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\gradient_up_24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="fill_x24_01" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\fill_x24_01.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="auto_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\auto_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="button_CopyAll" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\button_CopyAll.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="undo_clear" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\undo_clear.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="button_savebinary" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\button_savebinary.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BG_panel_Area" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BG_panel_Area.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

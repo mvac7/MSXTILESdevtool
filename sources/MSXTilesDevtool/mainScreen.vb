@@ -2355,16 +2355,16 @@ Public Class MainScreen
 
         TilezoomPanel.Visible = Not spriteModes
 
-        SelectAreaGroupBox.Visible = AreaPanel_Visible
+        AreaPanel.Visible = AreaPanel_Visible
         'TileRangePanel.Visible = TileRangePanel_Visible
-        OutputDataGroupBox.Visible = OutputDataGroupBox_Visible
+        DataPanel.Visible = OutputDataGroupBox_Visible
 
         SelectDataComboBox.SelectedIndex = 0
         'TilesetComboBox.Visible = (index = HoriTAB.TAB_NAME.TILESET)
         'TilesetLabel.Visible = TilesetComboBox.Visible
 
         RangeEndTextBox.Text = CStr(Range_maximumValue)
-        RangeGroupBox.Visible = range_visible
+        RangePanel.Visible = range_visible
 
         TilesetDataLabel.Visible = (index = HoriTAB.TAB_NAME.TILESET)
         TilesetDataComboBox.Visible = TilesetDataLabel.Visible
@@ -3499,16 +3499,16 @@ Public Class MainScreen
         If HoriTAB1.SelectTab = HoriTAB.TAB_NAME.TILESET Then
             If SelectDataComboBox.SelectedIndex = 4 Then
                 TMS9918Aviewer.ControlType = TMS9918A.CONTROL_TYPE.SELECTER
-                SelectAreaGroupBox.Visible = True
-                RangeGroupBox.Visible = False
+                AreaPanel.Visible = True
+                RangePanel.Visible = False
             Else
                 TMS9918Aviewer.ControlType = TMS9918A.CONTROL_TYPE.VIEWER
-                SelectAreaGroupBox.Visible = False
+                AreaPanel.Visible = False
 
                 If SelectDataComboBox.SelectedIndex = 0 Then
-                    RangeGroupBox.Visible = False
+                    RangePanel.Visible = False
                 Else
-                    RangeGroupBox.Visible = True
+                    RangePanel.Visible = True
                 End If
 
             End If
@@ -3517,10 +3517,10 @@ Public Class MainScreen
 
             If SelectDataComboBox.SelectedIndex = 1 Then
                 TMS9918Aviewer.ControlType = TMS9918A.CONTROL_TYPE.SELECTER
-                SelectAreaGroupBox.Visible = True
+                AreaPanel.Visible = True
             Else
                 TMS9918Aviewer.ControlType = TMS9918A.CONTROL_TYPE.VIEWER
-                SelectAreaGroupBox.Visible = False
+                AreaPanel.Visible = False
             End If
 
         End If
