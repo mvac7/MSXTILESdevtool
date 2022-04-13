@@ -114,7 +114,7 @@
         Application.DoEvents()
         Me._ProgressController.CloseProgressWin()
 
-        Me.DoitButton.Enabled = True
+        Me.OK_Button.Enabled = True
     End Sub
 
 
@@ -131,7 +131,7 @@
         Application.DoEvents()
         'Me._ProgressController.CloseProgressWin()
 
-        Me.DoitButton.Enabled = True
+        Me.OK_Button.Enabled = True
     End Sub
 
 
@@ -174,10 +174,10 @@
 
     Private Sub ConversionTypeComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ConversionTypeComboBox.SelectedIndexChanged
         If ConversionTypeComboBox.SelectedIndex = CONVERSION_TYPE.SIMPLE Then
-            AdvancedGroupBox.Enabled = False
+            AdvancedPanel.Enabled = False
             ConvertSimple()
         Else
-            AdvancedGroupBox.Enabled = True
+            AdvancedPanel.Enabled = True
             Me.TMS9918Aviewer.Clear()
             Me.TMS9918Aviewer.BackgroundColor = 4
             Me.TMS9918Aviewer.FillVRAM(iVDP.TableBase.GRPCOL, &H1800, &HF4)
@@ -185,7 +185,5 @@
         End If
 
     End Sub
-
-
 
 End Class

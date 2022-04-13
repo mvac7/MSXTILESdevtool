@@ -203,6 +203,21 @@
       <Name>GUIcontrols</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\info_blue_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\button_Ok.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\button_Cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\button_convert.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\panel_Advanced.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

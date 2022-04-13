@@ -1,23 +1,20 @@
 ﻿
 ''' <summary>
 ''' MSX-GCR 1.0 (MSX Graphic Conversion Routine) by Leandro Correia (2019)
-''' https://pastebin.com/1nThpe7j
-''' www.leandrocorreia.com
-''' 
+''' Many thanks to Rogerio Penchel, Rafael Jannone and Weber Kai for valuable information and support.
+''' Feel free to use this algorithm in any program you want (well, crediting me would be nice).
+''' BlitzBasic version: https://pastebin.com/1nThpe7j
+''' https://www.leandrocorreia.com/
+''' https://www.msx.org/forum/msx-talk/development/graphic-conversion-for-any-256x192-into-msx1-graphics-source-code-in-blit
+''' ------------------------------------------------------------------------------------------------------------------------
+''' Adapted to python 2.7 by MsxKun (uses PIL library): https://pastebin.com/40WL354r
+''' ------------------------------------------------------------------------------------------------------------------------ 
 ''' Adapted to VB.net by mvac7
 ''' </summary>
 Public Class MSXGraphicConversion
 
-    'Color tolerance for dithering (from 0 to 100). Higher values mean dithering between colors that are not similar, which results in better 
-    'color accuracy but ugly squares On degradees. 0 means no dithering
     'Public tolerance As Byte = 100
 
-
-    'Detail level (1 to 255);
-    'Lower values gives priority in areas with strong luminosity changes (usually good when tolerance value Is high, Or in photo conversions).
-    'Higher values makes the conversion ignore these luminosity changes (usually good when tolerance value Is low Or in simple art conversions).
-    'But you should test it. Usually 32.0 Is a good value. 255 will make the routine completely ignore luminosity variations.
-    'At best, this value can give subtle (but still welcome) improvements in conversion quality.
     'Public DetailLevel As Double = 32.0
 
 
@@ -27,66 +24,25 @@ Public Class MSXGraphicConversion
 
 
 
-    'Public Class ColorItem
-    '    Public Sub New(ByVal _colorARGB As Byte, ByVal _count As Byte)
-    '        Me.colorARGB = _colorARGB
-    '        Me.Count = _count
-    '    End Sub
-    '    Public colorARGB As Byte
-    '    Public Count As Byte
-    'End Class
-
-
-
-    'Private Function colorSorter(ByVal colorlist As SortedList) As Array
-
-    '    Dim i As Integer = 0
-    '    Dim o As Integer
-    '    Dim tempValue As ColorItem
-    '    Dim tmpList() As ColorItem
-    '    Dim listLength As Integer = colorlist.Count
-    '    ReDim tmpList(listLength - 1)
-
-    '    Dim colorKeys(listLength - 1) As Integer
-    '    Dim colorCount(listLength - 1) As Integer
-
-    '    colorlist.Keys.CopyTo(colorKeys, 0)
-    '    colorlist.Values.CopyTo(colorCount, 0)
-
-    '    Array.Sort(colorCount, colorKeys)
-
-
-    '    'For Each numColor As Byte In colorlist.Keys
-    '    '    tmpList(i) = New ColorItem(numColor, colorlist.Item(numColor))
-    '    '    i = i + 1
-    '    'Next
-
-    '    'For i = 0 To listLength - 2
-    '    '    For o = i + 1 To listLength - 1
-    '    '        If tmpList(i).Count < tmpList(o).Count Then
-    '    '            tempValue = tmpList(i)
-    '    '            tmpList(i) = tmpList(o)
-    '    '            tmpList(o) = tempValue
-    '    '        End If
-    '    '    Next
-    '    'Next
-
-    '    Return tmpList
-    'End Function
-
-
-
+    ''' <summary>
+    ''' Convert Bitmap to TMS9918A G2 mode
+    ''' </summary>
+    ''' <param name="sourceBitmap"></param>
+    ''' <param name="tolerance">Color tolerance for dithering (from 0 to 100). Higher values mean dithering between colors that are not similar, which results in better color accuracy but ugly squares On degradees. 0 means no dithering</param>
+    ''' <param name="DetailLevel">Detail level (1 to 255)
+    ''' Lower values gives priority in areas with strong luminosity changes (usually good when tolerance value Is high, Or in photo conversions).
+    ''' Higher values makes the conversion ignore these luminosity changes (usually good when tolerance value Is low Or in simple art conversions).
+    ''' But you should test it. Usually 32.0 Is a good value. 255 will make the routine completely ignore luminosity variations.
+    ''' At best, this value can give subtle (but still welcome) improvements in conversion quality.
+    ''' </param>
+    ''' <returns></returns>
     Public Function GetScreenFromBitmap(ByVal sourceBitmap As Bitmap, ByVal tolerance As Byte, ByVal DetailLevel As Double) As Byte()
 
         Dim aColor As Color
 
-        'Dim colorInt As Integer
-        'Dim aColorList As New SortedList()
-
         Dim ColorRed As Short
         Dim ColorGreen As Short
         Dim ColorBlue As Short
-
 
 
         'TMS9918A palette
@@ -123,15 +79,7 @@ Public Class MSXGraphicConversion
                 ColorRed = aColor.R
                 ColorGreen = aColor.G
                 ColorBlue = aColor.B
-                imagedata(i, j) = (ColorRed + ColorGreen + ColorBlue) / 3 '(ColorRed() + ColorGreen() + ColorBlue()) / 3
-
-                'Count colors
-                'colorInt = aColor.ToArgb
-                'If aColorList.ContainsKey(colorInt) Then
-                '    aColorList.Item(colorInt) = aColorList.Item(colorInt) + 1
-                'Else
-                '    aColorList.Add(colorInt, 1)
-                'End If
+                imagedata(i, j) = (ColorRed + ColorGreen + ColorBlue) / 3
             Next
         Next
 
@@ -183,12 +131,6 @@ Public Class MSXGraphicConversion
         End If
 
 
-
-
-
-
-        'Dim imgh As Short = 192
-        'Dim imgw As Short = 256
         Dim y As Short = 0
         Dim x As Short = 0
 
@@ -209,7 +151,6 @@ Public Class MSXGraphicConversion
             bestdistance = 99999999
             For i = 0 To 7
                 ' Get the RGB values of 8 pixels of the original image
-                'GetColor x + i, y
                 aColor = sourceBitmap.GetPixel(x + i, y)
                 octetr(i) = aColor.R 'ColorRed()
                 octetg(i) = aColor.G 'ColorGreen()
@@ -333,7 +274,7 @@ Public Class MSXGraphicConversion
 
 
             ' Bytes to be written in the final MSX screen dump file.
-            msxdumpdata(bytepos) = aByte                              'pattern
+            msxdumpdata(bytepos) = aByte                                'pattern
             msxdumpdata(bytepos + &H2000) = (bestcor2 * 16) + bestcor1  'color
             bytepos = bytepos + 1
 

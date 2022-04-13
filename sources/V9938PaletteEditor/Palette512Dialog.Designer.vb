@@ -71,7 +71,6 @@ Partial Class Palette512Dialog
         'OK_Button
         '
         Me.OK_Button.BackColor = System.Drawing.Color.Transparent
-        Me.OK_Button.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.OK_Button.Dock = System.Windows.Forms.DockStyle.Right
         Me.OK_Button.FlatAppearance.BorderSize = 0
         Me.OK_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
@@ -87,7 +86,6 @@ Partial Class Palette512Dialog
         'Cancel_Button
         '
         Me.Cancel_Button.BackColor = System.Drawing.Color.Transparent
-        Me.Cancel_Button.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.Cancel_Button.Dock = System.Windows.Forms.DockStyle.Right
         Me.Cancel_Button.FlatAppearance.BorderSize = 0
         Me.Cancel_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat

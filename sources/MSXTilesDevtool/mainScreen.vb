@@ -44,6 +44,8 @@ Public Class MainScreen
     Private Path_binary As String
     Private Path_source As String
 
+    Private PictureName As String = ""
+
     Private MapName As String
     Private TilesetsName As String
 
@@ -73,7 +75,7 @@ Public Class MainScreen
 
     Private Range_maximumValue As Byte = 255
 
-    Private _oldTile As Byte = 0
+    Private _oldTile As Byte = 255
 
 
 
@@ -161,6 +163,10 @@ Public Class MainScreen
 
     Private Sub MainScreen_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
+        Dim dragNdrop_image() As Byte
+
+        Dim newData As New DataFormat
+
         Me.Progress = New ProgressController(Me)
 
         If Me.AppConfig.Load() Then
@@ -175,6 +181,13 @@ Public Class MainScreen
 
         NewProject()
 
+        dragNdrop_image = DataDecompress(newData.ByteSpliterHex("ED573D6E833014063178AB2F50E18B20B852C70C089C29D742EA452C75E8584719EA4A08F73D636870690B081252F22D0EC636EFFBDE9FE37977DCD105A194E2A801E7F3CDF3DAE68594720CBFDF402DE63A6F69488B6BDBF15FB075FF6F9DFFD6B175FF2FC93F77FAD81C23726F9E2BA73FAE097D7EF2096538B676F3424C3D7F2EBF2DE57F977F92A54AC1F3C1B7EF954AD3288AA69E7F6BFC916F9630F31DFFA07594A21EA2F861BB5129CADAF8E6EE82B5D72D973FB17ED7553DF2FE6D7E00399264A5D2AFCF7B9C2884542508675EFA81A649AE4B29C41BE4506EF5C4449A6AE7A5FC8F086CFE23276779CB1B428277ED63490EA182358F5112148551A424412DA89567B20E17E0DFE1668CAD8D87EA273FBEF3C6E5A013368F973D9EA34A2898367C78A99E3ADF994B87B901761F4FEF5AF7F914D104EFF9BB00A4606118EAB3FE901BB9306644CF295F001D8C1002FE1C2AB54B87DAB994FF7555AA31F794BC6E0FAA098EDAEB793CF6BB6914C761C8D8D0F5409D187B67FECF3EF69EE6E4857A1CBAD1C15AFA0296673B8EBAE3A1D7A1C4E36FDE5327FF0483048AE36870FCAF0DFA74347163A23F610F30C5391FB617FA2349779847422C68E2A29075F91AE73F3FA0FDDDF3F610DB7A0F151F7BBEA9634E8E10182ACF6730282FD1701DE2B09A5FCDE49BC227"))
+
+        Me.TMS9918Aviewer.FillVRAM(iVDP.TableBase.GRPCOL, iVDP.TableBaseSize.GRPCOL, &HF4)
+        Me.TMS9918Aviewer.SetBlock(iVDP.TableBase.GRPCGP, dragNdrop_image)
+        Me.TMS9918Aviewer.RefreshScreen()
+
+
         DataTypeInput.InitControl(Me.AppConfig)
 
         OutputText.ForeColor = Me.AppConfig.Color_OUTPUT_INK
@@ -185,6 +198,8 @@ Public Class MainScreen
 
         SelectDataComboBox.SelectedIndex = 0
         TilesetDataComboBox.SelectedIndex = 0
+
+        TMS9918Aviewer_MouseScreenData(1, 1)
 
         AddHandler RangeStartTextBox.Validating, AddressOf RangeStartTextBox_Validating
         AddHandler RangeEndTextBox.Validating, AddressOf RangeEndTextBox_Validating
@@ -209,16 +224,15 @@ Public Class MainScreen
 
         Dim newData As New DataFormat
 
-        Dim dragNdropPicture() As Byte
+        'Dim dragNdropPicture() As Byte
 
-        dragNdropPicture = DataDecompress(newData.ByteSpliterHex("ED573D6E833014063178AB2F50E18B20B852C70C089C29D742EA452C75E8584719EA4A08F73D636870690B081252F22D0EC636EFFBDE9FE37977DCD105A194E2A801E7F3CDF3DAE68594720CBFDF402DE63A6F69488B6BDBF15FB075FF6F9DFFD6B175FF2FC93F77FAD81C23726F9E2BA73FAE097D7EF2096538B676F3424C3D7F2EBF2DE57F977F92A54AC1F3C1B7EF954AD3288AA69E7F6BFC916F9630F31DFFA07594A21EA2F861BB5129CADAF8E6EE82B5D72D973FB17ED7553DF2FE6D7E00399264A5D2AFCF7B9C2884542508675EFA81A649AE4B29C41BE4506EF5C4449A6AE7A5FC8F086CFE23276779CB1B428277ED63490EA182358F5112148551A424412DA89567B20E17E0DFE1668CAD8D87EA273FBEF3C6E5A013368F973D9EA34A2898367C78A99E3ADF994B87B901761F4FEF5AF7F914D104EFF9BB00A4606118EAB3FE901BB9306644CF295F001D8C1002FE1C2AB54B87DAB994FF7555AA31F794BC6E0FAA098EDAEB793CF6BB6914C761C8D8D0F5409D187B67FECF3EF69EE6E4857A1CBAD1C15AFA0296673B8EBAE3A1D7A1C4E36FDE5327FF0483048AE36870FCAF0DFA74347163A23F610F30C5391FB617FA2349779847422C68E2A29075F91AE73F3FA0FDDDF3F610DB7A0F151F7BBEA9634E8E10182ACF6730282FD1701DE2B09A5FCDE49BC227"))
-
+        'dragNdropPicture = DataDecompress(newData.ByteSpliterHex("ED573D6E833014063178AB2F50E18B20B852C70C089C29D742EA452C75E8584719EA4A08F73D636870690B081252F22D0EC636EFFBDE9FE37977DCD105A194E2A801E7F3CDF3DAE68594720CBFDF402DE63A6F69488B6BDBF15FB075FF6F9DFFD6B175FF2FC93F77FAD81C23726F9E2BA73FAE097D7EF2096538B676F3424C3D7F2EBF2DE57F977F92A54AC1F3C1B7EF954AD3288AA69E7F6BFC916F9630F31DFFA07594A21EA2F861BB5129CADAF8E6EE82B5D72D973FB17ED7553DF2FE6D7E00399264A5D2AFCF7B9C2884542508675EFA81A649AE4B29C41BE4506EF5C4449A6AE7A5FC8F086CFE23276779CB1B428277ED63490EA182358F5112148551A424412DA89567B20E17E0DFE1668CAD8D87EA273FBEF3C6E5A013368F973D9EA34A2898367C78A99E3ADF994B87B901761F4FEF5AF7F914D104EFF9BB00A4606118EAB3FE901BB9306644CF295F001D8C1002FE1C2AB54B87DAB994FF7555AA31F794BC6E0FAA098EDAEB793CF6BB6914C761C8D8D0F5409D187B67FECF3EF69EE6E4857A1CBAD1C15AFA0296673B8EBAE3A1D7A1C4E36FDE5327FF0483048AE36870FCAF0DFA74347163A23F610F30C5391FB617FA2349779847422C68E2A29075F91AE73F3FA0FDDDF3F610DB7A0F151F7BBEA9634E8E10182ACF6730282FD1701DE2B09A5FCDE49BC227"))
         Me.TMS9918Aviewer.Clear()
         Me.TMS9918Aviewer.ScreenMode = iVDP.SCREEN_MODE.G2
         Me.TMS9918Aviewer.SetOrderMap()
         Me.TMS9918Aviewer.BackgroundColor = 4
-        Me.TMS9918Aviewer.FillVRAM(iVDP.TableBase.GRPCOL, &H1800, &HF4)
-        Me.TMS9918Aviewer.SetBlock(iVDP.TableBase.GRPCGP, dragNdropPicture)
+        Me.TMS9918Aviewer.FillVRAM(iVDP.TableBase.GRPCOL, iVDP.TableBaseSize.GRPCOL, &HF4)
+        'Me.TMS9918Aviewer.SetBlock(iVDP.TableBase.GRPCGP, dragNdropPicture)
         Me.TMS9918Aviewer.RefreshScreen()
 
         Me.Path_Project = ""
@@ -1978,6 +1992,10 @@ Public Class MainScreen
 
         Dim result As Boolean = False
 
+        Me.Activate()
+
+        Application.DoEvents()
+
         If extension = ".png" Then 'extension = ".gif" Or
             result = LoadBitmap(filePath)
         ElseIf extension = ".sc2" Then
@@ -2173,27 +2191,43 @@ Public Class MainScreen
 
     Private Function LoadBitmap(ByVal filePath As String) As Boolean
 
+        Dim BitmapConverter As New BitmapConverterDialog
+
         Dim result As Boolean = True
-        'Dim prjname As String = Path.GetFileNameWithoutExtension(filePath)
 
-        'Dim _bitmapConverterDialog = New BitmapConverterDialog
-
-        Me.Progress.ShowProgressWin()
+        'Me.Progress.ShowProgressWin()
 
         Try
 
             Dim newImage As Image = Image.FromFile(filePath)
             Me.myBitmapImage = New Bitmap(newImage, 256, 192)
-            newImage.Dispose() 'para que no bloquee el fichero
+            newImage.Dispose()
 
-            ConvertBitmap()
+            Application.DoEvents()
+
+            PictureName = Path.GetFileName(filePath)
+
+            BitmapConverter.InitDialog(PictureName, Me.myBitmapImage)
+
+            If BitmapConverter.ShowDialog = DialogResult.OK Then
+                Me.TMS9918Aviewer.ScreenMode = iVDP.SCREEN_MODE.G2
+                'Me.TMS9918Aviewer.PaletteType = TMS9918A.MSXVDP.TMS9918
+                'Me.TMS9918Aviewer.BackgroundColor = Me.PictureBGColorButton.SelectedColor
+                Me.TMS9918Aviewer.SetBlock(0, BitmapConverter.VRAM)
+                Me.TMS9918Aviewer.Optimize()
+                Me.TMS9918Aviewer.SetOrderMap()
+                Me.TMS9918Aviewer.RefreshScreen()
+
+                result = True
+            End If
+
 
         Catch ex As Exception
             result = False
             'MsgBox("Disk I/O error.", MsgBoxStyle.Critical, "Error")
         End Try
 
-        Me.Progress.CloseProgressWin()
+        'Me.Progress.CloseProgressWin()
 
         Return result
 
@@ -2218,26 +2252,6 @@ Public Class MainScreen
     '    End If
 
     'End Sub
-
-
-    Private Sub ConvertBitmap()
-
-        Dim screenVRAM(16383) As Byte
-
-        Dim BitmapConverter As New SimpleBitmapConverter
-
-        screenVRAM = BitmapConverter.GetScreenFromBitmap(Me.myBitmapImage) ', Me.PictureBGColorButton.SelectedColor)
-
-        'Me.TMS9918Aviewer.Clear() 'Initialize()
-        Me.TMS9918Aviewer.ScreenMode = iVDP.SCREEN_MODE.G2
-        'Me.TMS9918Aviewer.PaletteType = TMS9918A.MSXVDP.TMS9918
-        'Me.TMS9918Aviewer.BackgroundColor = Me.PictureBGColorButton.SelectedColor
-        Me.TMS9918Aviewer.SetBlock(0, screenVRAM)
-        Me.TMS9918Aviewer.Optimize()
-        Me.TMS9918Aviewer.SetOrderMap()
-        Me.TMS9918Aviewer.RefreshScreen()
-
-    End Sub
 
 
 
@@ -2459,7 +2473,7 @@ Public Class MainScreen
         result = toolFillMapForm.ShowDialog()
 
         If result = Windows.Forms.DialogResult.OK Then
-            Me.TMS9918Aviewer.FillVRAM(iVDP.TableBase.GRPNAM, 767, toolFillMapForm.Tile)
+            Me.TMS9918Aviewer.FillVRAM(iVDP.TableBase.GRPNAM, iVDP.TableBaseSize.GRPNAM, toolFillMapForm.Tile)
             Me.TMS9918Aviewer.RefreshScreen()
         End If
 
@@ -3107,10 +3121,10 @@ Public Class MainScreen
                 comments.Add("RLE compressed - Original size=" + CStr(originalLength) + " - Compress size=" + CStr(data.Length))
 
             Case iCompressEncoder.COMPRESS_TYPE.RLEWB
-                comments.Add("RLE WB compressed - Original size=" + CStr(originalLength) + " - Compress size=" + CStr(data.Length))
+                comments.Add("RLEWB compressed - Original size=" + CStr(originalLength) + " - Compress size=" + CStr(data.Length))
 
             Case iCompressEncoder.COMPRESS_TYPE.PLETTER
-                comments.Add("Pletter compressed - Original size=" + CStr(originalLength) + " - Compress size=" + CStr(data.Length))
+                comments.Add("Pletter5c1 compressed - Original size=" + CStr(originalLength) + " - Compress size=" + CStr(data.Length))
 
             Case Else
                 comments.Add("Size=" + CStr(data.Length))
@@ -3126,7 +3140,7 @@ Public Class MainScreen
                 outputSource = Me.aMSXDataFormat.GetCcode(data, Me.DataTypeInput.SizeLine, Me.DataTypeInput.NumeralSystem, dataname, comments, Me.AppConfig.lastCByteCommand)
 
             Case DataFormat.ProgrammingLanguage.ASSEMBLER
-                outputSource = Me.aMSXDataFormat.GetAssemblerCode(data, Me.DataTypeInput.SizeLine, Me.DataTypeInput.NumeralSystem, dataname, comments, "<tab>DB") 'Me.AppConfig.lastAsmByteCommand)
+                outputSource = Me.aMSXDataFormat.GetAssemblerCode(data, Me.DataTypeInput.SizeLine, Me.DataTypeInput.NumeralSystem, dataname, comments, Me.DataTypeInput.AsmByteCommand) 'Me.AppConfig.lastAsmByteCommand)
 
             Case DataFormat.ProgrammingLanguage.BASIC
                 outputSource = Me.aMSXDataFormat.GetBASICcode(data, Me.DataTypeInput.SizeLine, Me.DataTypeInput.NumeralSystem, Me.DataTypeInput.BASICremoveZeros, aMSXDataFormat.BASIC_Line, Me.DataTypeInput.BASICInterval, comments)
@@ -3312,7 +3326,6 @@ Public Class MainScreen
 
 
 
-
     Private Sub SaveProjectDialog()
         Me.SaveFileDialog1.DefaultExt = ScreenDocumentExtension
         Me.SaveFileDialog1.Filter = "Open Document SCreen Project file|*." + ScreenDocumentExtension
@@ -3415,6 +3428,7 @@ Public Class MainScreen
     End Sub
 
 
+
     Private Sub SaveNMSXprj_Dialog()
         Me.SaveFileDialog1.DefaultExt = "prj"
         Me.SaveFileDialog1.Filter = "nMSXtiles Project file|*.prj"
@@ -3432,6 +3446,7 @@ Public Class MainScreen
             'Me.Path_nMSXtilesProject = Path.GetDirectoryName(SaveFileDialog1.FileName)
         End If
     End Sub
+
 
 
     Private Sub SavePNG_Dialog()
@@ -3456,8 +3471,6 @@ Public Class MainScreen
         End If
 
     End Sub
-
-
 
 
 
@@ -3682,7 +3695,10 @@ Public Class MainScreen
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub CopyAll()
+        Me.Progress.ShowProgressWin()
         My.Computer.Clipboard.SetText(Me.OutputText.Text)
+        System.Threading.Thread.Sleep(300) 'wait 
+        Me.Progress.CloseProgressWin()
     End Sub
 
 

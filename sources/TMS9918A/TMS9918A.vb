@@ -905,7 +905,10 @@ Public Class TMS9918A
     ''' <param name="value"></param>
     ''' <remarks></remarks>
     Public Sub FillVRAM(ByVal VRAMaddr As Integer, ByVal length As Integer, ByVal value As Byte)
-        For i = 0 To length
+
+        If length < 1 Then Return
+
+        For i = 0 To length - 1
             If VRAMaddr < &H4000 Then
                 VRAM(VRAMaddr) = value
                 VRAMaddr += 1
