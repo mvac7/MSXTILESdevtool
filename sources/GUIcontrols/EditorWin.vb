@@ -306,7 +306,7 @@ Public Class EditorWin
     ''' <remarks></remarks>
     Private Sub ShowAbout()
         Dim aboutWinObject As New mSXdevtools.GUI.Controls.AboutWin()
-        aboutWinObject.SetPicture = Me.EditorContainer.AboutImage 'Global.mSXdevtools.tMSgfX.My.Resources.Aboud_tmsgfx
+        'aboutWinObject.SetPicture = Me.EditorContainer.AboutImage 'Global.mSXdevtools.tMSgfX.My.Resources.Aboud_tmsgfx
         aboutWinObject.ShowDialog()
     End Sub
 

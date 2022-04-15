@@ -26,19 +26,24 @@ Partial Class AboutWin
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.LicenseTextBox = New System.Windows.Forms.TextBox()
-        Me.OKButton = New System.Windows.Forms.Button()
         Me.copyleftLabel = New System.Windows.Forms.Label()
         Me.versionLabel = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.LicenseButton = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.DescriptionLabel = New System.Windows.Forms.Label()
-        Me.Panel1.SuspendLayout()
+        Me.OKButton = New System.Windows.Forms.Button()
+        Me.LicenseButton = New System.Windows.Forms.Button()
+        Me.LogoPictureBox = New System.Windows.Forms.PictureBox()
+        Me.iconPictureBox = New System.Windows.Forms.PictureBox()
+        CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.iconPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LicenseTextBox
         '
+        Me.LicenseTextBox.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.LicenseTextBox.BackColor = System.Drawing.Color.WhiteSmoke
         Me.LicenseTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.LicenseTextBox.Location = New System.Drawing.Point(150, 211)
@@ -47,23 +52,10 @@ Partial Class AboutWin
         Me.LicenseTextBox.Name = "LicenseTextBox"
         Me.LicenseTextBox.ReadOnly = True
         Me.LicenseTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.LicenseTextBox.Size = New System.Drawing.Size(418, 128)
+        Me.LicenseTextBox.Size = New System.Drawing.Size(429, 140)
         Me.LicenseTextBox.TabIndex = 0
         Me.LicenseTextBox.TabStop = False
         Me.LicenseTextBox.Text = "License...."
-        '
-        'OKButton
-        '
-        Me.OKButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.OKButton.BackColor = System.Drawing.Color.PaleGreen
-        Me.OKButton.DialogResult = System.Windows.Forms.DialogResult.OK
-        Me.OKButton.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.OKButton.Location = New System.Drawing.Point(471, 27)
-        Me.OKButton.Name = "OKButton"
-        Me.OKButton.Size = New System.Drawing.Size(90, 32)
-        Me.OKButton.TabIndex = 0
-        Me.OKButton.Text = "Ok"
-        Me.OKButton.UseVisualStyleBackColor = False
         '
         'copyleftLabel
         '
@@ -95,31 +87,6 @@ Partial Class AboutWin
         Me.Label1.TabIndex = 8
         Me.Label1.Text = "Version:"
         '
-        'Panel1
-        '
-        Me.Panel1.BackColor = System.Drawing.Color.White
-        Me.Panel1.Controls.Add(Me.OKButton)
-        Me.Panel1.Controls.Add(Me.LicenseButton)
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(0, 341)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(568, 65)
-        Me.Panel1.TabIndex = 9
-        '
-        'LicenseButton
-        '
-        Me.LicenseButton.BackColor = System.Drawing.Color.Transparent
-        Me.LicenseButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.LicenseButton.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.LicenseButton.FlatAppearance.BorderSize = 0
-        Me.LicenseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.LicenseButton.Image = Global.mSXdevtools.GUI.Controls.My.Resources.Resources.gplv3_127x51
-        Me.LicenseButton.Location = New System.Drawing.Point(3, 6)
-        Me.LicenseButton.Name = "LicenseButton"
-        Me.LicenseButton.Size = New System.Drawing.Size(133, 54)
-        Me.LicenseButton.TabIndex = 5
-        Me.LicenseButton.UseVisualStyleBackColor = False
-        '
         'Label2
         '
         Me.Label2.BackColor = System.Drawing.Color.Transparent
@@ -140,6 +107,58 @@ Partial Class AboutWin
         Me.DescriptionLabel.TabIndex = 11
         Me.DescriptionLabel.Text = "description..."
         '
+        'OKButton
+        '
+        Me.OKButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.OKButton.BackColor = System.Drawing.Color.Transparent
+        Me.OKButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.OKButton.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.OKButton.DialogResult = System.Windows.Forms.DialogResult.OK
+        Me.OKButton.FlatAppearance.BorderSize = 0
+        Me.OKButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.OKButton.Image = Global.mSXdevtools.GUI.Controls.My.Resources.Resources.button_Ok
+        Me.OKButton.Location = New System.Drawing.Point(441, 371)
+        Me.OKButton.Name = "OKButton"
+        Me.OKButton.Size = New System.Drawing.Size(131, 41)
+        Me.OKButton.TabIndex = 1
+        Me.OKButton.TabStop = False
+        Me.OKButton.UseVisualStyleBackColor = False
+        '
+        'LicenseButton
+        '
+        Me.LicenseButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.LicenseButton.BackColor = System.Drawing.Color.Transparent
+        Me.LicenseButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.LicenseButton.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.LicenseButton.FlatAppearance.BorderSize = 0
+        Me.LicenseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.LicenseButton.Image = Global.mSXdevtools.GUI.Controls.My.Resources.Resources.gplv3_127x51
+        Me.LicenseButton.Location = New System.Drawing.Point(12, 358)
+        Me.LicenseButton.Name = "LicenseButton"
+        Me.LicenseButton.Size = New System.Drawing.Size(133, 54)
+        Me.LicenseButton.TabIndex = 5
+        Me.LicenseButton.UseVisualStyleBackColor = False
+        '
+        'LogoPictureBox
+        '
+        Me.LogoPictureBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LogoPictureBox.BackColor = System.Drawing.Color.Transparent
+        Me.LogoPictureBox.Location = New System.Drawing.Point(159, 12)
+        Me.LogoPictureBox.Name = "LogoPictureBox"
+        Me.LogoPictureBox.Size = New System.Drawing.Size(420, 83)
+        Me.LogoPictureBox.TabIndex = 12
+        Me.LogoPictureBox.TabStop = False
+        '
+        'iconPictureBox
+        '
+        Me.iconPictureBox.BackColor = System.Drawing.Color.Transparent
+        Me.iconPictureBox.Location = New System.Drawing.Point(12, 12)
+        Me.iconPictureBox.Name = "iconPictureBox"
+        Me.iconPictureBox.Size = New System.Drawing.Size(128, 128)
+        Me.iconPictureBox.TabIndex = 13
+        Me.iconPictureBox.TabStop = False
+        '
         'AboutWin
         '
         Me.AcceptButton = Me.OKButton
@@ -148,11 +167,14 @@ Partial Class AboutWin
         Me.BackColor = System.Drawing.Color.Gainsboro
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.CancelButton = Me.OKButton
-        Me.ClientSize = New System.Drawing.Size(568, 406)
+        Me.ClientSize = New System.Drawing.Size(584, 421)
         Me.ControlBox = False
+        Me.Controls.Add(Me.iconPictureBox)
+        Me.Controls.Add(Me.LogoPictureBox)
+        Me.Controls.Add(Me.LicenseButton)
+        Me.Controls.Add(Me.OKButton)
         Me.Controls.Add(Me.DescriptionLabel)
         Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.versionLabel)
         Me.Controls.Add(Me.copyleftLabel)
@@ -165,8 +187,9 @@ Partial Class AboutWin
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "About"
-        Me.TransparencyKey = System.Drawing.Color.LemonChiffon
-        Me.Panel1.ResumeLayout(False)
+        Me.TransparencyKey = System.Drawing.Color.LightCoral
+        CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.iconPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -175,7 +198,8 @@ Partial Class AboutWin
     Friend WithEvents versionLabel As System.Windows.Forms.Label
     Friend WithEvents LicenseButton As System.Windows.Forms.Button
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents Label2 As Label
     Friend WithEvents DescriptionLabel As Label
+    Friend WithEvents LogoPictureBox As PictureBox
+    Friend WithEvents iconPictureBox As PictureBox
 End Class

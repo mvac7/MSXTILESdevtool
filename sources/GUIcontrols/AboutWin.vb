@@ -5,9 +5,17 @@ Public NotInheritable Class AboutWin
     Private Const URL_GPL As String = "http://www.gnu.org/licenses/gpl-3.0-standalone.html"
 
 
-    Public WriteOnly Property SetPicture() As Image
+    Public WriteOnly Property SetLogo() As Image
         Set(value As Image)
-            Me.BackgroundImage = value
+            Me.LogoPictureBox.Image = value
+        End Set
+    End Property
+
+
+
+    Public WriteOnly Property SetIcon() As Image
+        Set(value As Image)
+            Me.iconPictureBox.Image = value
         End Set
     End Property
 
@@ -51,16 +59,25 @@ Public NotInheritable Class AboutWin
 
         Me.LicenseTextBox.Text = LicenseText
 
+        ' draw gradient in window-form background
+        Dim gradientBG As New Bitmap(Me.Width, Me.Height)
+        Dim newBrush As New Drawing.Drawing2D.LinearGradientBrush(New PointF(0, 0), New PointF(0, gradientBG.Height), Color.Gainsboro, Color.DarkGray)
+        Dim oneGraphic As Graphics = Graphics.FromImage(gradientBG)
+        oneGraphic.FillRectangle(newBrush, New RectangleF(0, 0, gradientBG.Width, gradientBG.Height))
+        Me.BackgroundImage = gradientBG
+
     End Sub
 
-    Private Sub OKButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OKButton.Click
-        Me.Close()
-    End Sub
+    'Private Sub OKButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OKButton.Click
+    '    Me.Close()
+    'End Sub
 
 
     Private Sub GPLButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LicenseButton.Click
         System.Diagnostics.Process.Start(URL_GPL)
     End Sub
 
+    Private Sub OKButton_Click(sender As Object, e As EventArgs)
 
+    End Sub
 End Class

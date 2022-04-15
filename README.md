@@ -1,4 +1,6 @@
-# MSX Tiles devtool
+# MSXTiles·devtool
+
+![MSXTiles devtool logo](https://github.com/mvac7/MSXTILESdevtool/raw/master/GFX/logo_mSXTiles-devtool.png)
 
 ```
 Short:        Application to work with images in the graphics mode 2 of TMS9918A
@@ -9,6 +11,7 @@ License:      GNU General Public License v3
 ```
 
 ---
+
 ## Description
 
 Application to work with images in the graphcis mode 2 of VDP TMS9918A and get a dump in different code formats (ASM, C and Basic).
@@ -36,6 +39,7 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY o
 See the GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 
 <br/>
 
@@ -85,7 +89,6 @@ Run MSXTILESdevtool.exe
 * Get the source code of one or more banks of tiles.
 * Get the source code in different programming languages (MSX Basic, C, ASM and ASM SDCC).
 * Output can be on Raw, RLE or [RLEWB](https://github.com/mvac7/Z80_RLEWB) compression.  
-
 
 
 <br/>

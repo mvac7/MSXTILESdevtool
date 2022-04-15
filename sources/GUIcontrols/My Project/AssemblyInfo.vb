@@ -10,10 +10,10 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyTitle("GUIcontrols")>
 <Assembly: AssemblyDescription("Specific GUI controls for mSXdevtools applications")>
-<Assembly: AssemblyCompany("MSX Community")>
+<Assembly: AssemblyCompany("MSX Comm·unity")>
 <Assembly: AssemblyProduct("mSXdevtools GUI Controls")>
 <Assembly: AssemblyCopyright("MSX Library")>
-<Assembly: AssemblyTrademark("Copyright 2021 MSX Community")>
+<Assembly: AssemblyTrademark("Copyright 2022 mvac7")>
 
 <Assembly: ComVisible(False)>
 
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' mediante el asterisco ('*'), como se muestra a continuación:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.4.5.0")>
-<Assembly: AssemblyFileVersion("1.4.5.0")>
+<Assembly: AssemblyVersion("1.4.6.0")>
+<Assembly: AssemblyFileVersion("1.4.6.0")>

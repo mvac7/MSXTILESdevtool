@@ -1787,7 +1787,9 @@ Public Class MainScreen
 
     Private Sub ShowAbout(isOnInitialization As Boolean)
         Dim newAboutWin As New AboutWin
-        newAboutWin.SetPicture = Global.MSXTILESdevtool.My.Resources.Aboud_win_msxTiles
+        newAboutWin.SetIcon = Global.MSXTILESdevtool.My.Resources.icon128_mSXTiles_devtool
+        newAboutWin.SetLogo = Global.MSXTILESdevtool.My.Resources.logo_mSXTiles_devtool
+        newAboutWin.Width = 660
         If isOnInitialization = True Then
             newAboutWin.StartPosition = FormStartPosition.CenterScreen
         End If
