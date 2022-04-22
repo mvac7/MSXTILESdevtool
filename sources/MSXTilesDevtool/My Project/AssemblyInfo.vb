@@ -11,7 +11,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyTitle("mSXTiles devtool")>
 <Assembly: AssemblyDescription("Application, which provides the source code for MSX screens in modes 2 and 4, coming from different sources, such as nMSXtiles tool or directly from a binary (SC2).")>
 <Assembly: AssemblyCompany("MSX comm·unity")>
-<Assembly: AssemblyProduct("mSXdevtool")>
+<Assembly: AssemblyProduct("mSXTiles devtool")>
 <Assembly: AssemblyCopyright("Copyright 2022 mvac7")>
 <Assembly: AssemblyTrademark("")> 
 
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' mediante el asterisco ('*'), como se muestra a continuación:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.0.9.0")>
-<Assembly: AssemblyFileVersion("1.0.9")>
+<Assembly: AssemblyVersion("1.0.10.0")>
+<Assembly: AssemblyFileVersion("1.0.10.0")>

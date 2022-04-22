@@ -123,7 +123,7 @@ Partial Class MessageDialog
         Me.BottonsPanel.Controls.Add(Me.OK_Button)
         Me.BottonsPanel.Controls.Add(Me.Cancel_Button)
         Me.BottonsPanel.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.BottonsPanel.Location = New System.Drawing.Point(0, 130)
+        Me.BottonsPanel.Location = New System.Drawing.Point(0, 150)
         Me.BottonsPanel.Name = "BottonsPanel"
         Me.BottonsPanel.Padding = New System.Windows.Forms.Padding(4)
         Me.BottonsPanel.Size = New System.Drawing.Size(424, 51)
@@ -133,7 +133,7 @@ Partial Class MessageDialog
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.Color.Gainsboro
-        Me.ClientSize = New System.Drawing.Size(424, 181)
+        Me.ClientSize = New System.Drawing.Size(424, 201)
         Me.ControlBox = False
         Me.Controls.Add(Me.BottonsPanel)
         Me.Controls.Add(Me.MessageLabel)

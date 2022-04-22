@@ -2000,12 +2000,13 @@ Public Class MainScreen
 
         If extension = ".png" Then 'extension = ".gif" Or
             result = LoadBitmap(filePath)
+
         ElseIf extension = ".sc2" Then
             result = LoadMSXBasicGraphics(filePath)
 
-        ElseIf extension = "." + RLEWB.Extension Then
+            'ElseIf extension = "." + RLEWB.Extension Then
 
-            result = LoadRLEWB(0, filePath) ' <<<<------------------------------------------------------ TEST!
+            '    result = LoadRLEWB(0, filePath) ' <<<<------------------------------------------------------ TEST!
 
         End If
 
@@ -2019,32 +2020,32 @@ Public Class MainScreen
 
 
 
-    Private Function LoadRLEWB(filepath As String, VRAMaddr As Short) As Boolean
+    'Private Function LoadRLEWB(filepath As String, VRAMaddr As Short) As Boolean
 
-        Dim packer = New RLEWB
+    '    Dim packer = New RLEWB
 
-        Dim aStream As System.IO.FileStream
-        Dim aFile = New System.IO.FileInfo(filepath)
+    '    Dim aStream As System.IO.FileStream
+    '    Dim aFile = New System.IO.FileInfo(filepath)
 
-        Dim aFileData() As Byte
-        Dim newData() As Byte
+    '    Dim aFileData() As Byte
+    '    Dim newData() As Byte
 
-        Dim tamanyo As Integer = CInt(aFile.Length)
+    '    Dim tamanyo As Integer = CInt(aFile.Length)
 
-        ReDim aFileData(tamanyo - 1)
+    '    ReDim aFileData(tamanyo - 1)
 
-        aStream = New System.IO.FileStream(filepath, FileMode.Open)
-        aStream.Read(aFileData, 0, tamanyo)
-        aStream.Close()
+    '    aStream = New System.IO.FileStream(filepath, FileMode.Open)
+    '    aStream.Read(aFileData, 0, tamanyo)
+    '    aStream.Close()
 
-        newData = packer.Decompress(aFileData)
+    '    newData = packer.Decompress(aFileData)
 
-        Me.TMS9918Aviewer.SetBlock(VRAMaddr, newData)
-        Me.TMS9918Aviewer.RefreshScreen()
+    '    Me.TMS9918Aviewer.SetBlock(VRAMaddr, newData)
+    '    Me.TMS9918Aviewer.RefreshScreen()
 
-        Return True
+    '    Return True
 
-    End Function
+    'End Function
 
 
 
@@ -3200,9 +3201,10 @@ Public Class MainScreen
         Dim VRAMaddr As Integer
         Dim bloqsize As Integer
 
+        Dim new_path As String = Path.GetDirectoryName(filepath)
         Dim new_filepath As String = Path.GetFileNameWithoutExtension(filepath)
-        Dim new_suffix As String = ""
         Dim new_filepath_extension As String = Path.GetExtension(filepath)
+        Dim new_suffix As String = ""
         Dim new_screenmode As iVDP.SCREEN_MODE = 0
         Dim new_spritesize As iVDP.SPRITE_SIZE = 0
 
@@ -3277,7 +3279,7 @@ Public Class MainScreen
         End Select
 
         data = Me.TMS9918Aviewer.GetBlock(VRAMaddr, bloqsize)
-        saveMSXBbin.BSAVE(new_filepath + new_suffix + new_filepath_extension, VRAMaddr, data, new_screenmode, new_spritesize)
+        saveMSXBbin.BSAVE(new_path + Path.DirectorySeparatorChar + new_filepath + new_suffix + new_filepath_extension, VRAMaddr, data, new_screenmode, new_spritesize)
 
     End Sub
 
@@ -3331,18 +3333,17 @@ Public Class MainScreen
     Private Sub SaveProjectDialog()
         Me.SaveFileDialog1.DefaultExt = ScreenDocumentExtension
         Me.SaveFileDialog1.Filter = "Open Document SCreen Project file|*." + ScreenDocumentExtension
+        Me.SaveFileDialog1.FileName = Me.Info.Name_without_Spaces
 
         If Me.Path_Project = "" Then
-            Me.SaveFileDialog1.FileName = Me.Info.Name_without_Spaces
             Me.SaveFileDialog1.InitialDirectory = Application.StartupPath
         Else
-            Me.SaveFileDialog1.FileName = Path.GetFileNameWithoutExtension(Me.Path_Project)
-            Me.SaveFileDialog1.InitialDirectory = Path.GetDirectoryName(Me.Path_Project)
+            Me.SaveFileDialog1.InitialDirectory = Me.Path_Project
         End If
 
         If SaveFileDialog1.ShowDialog() = Windows.Forms.DialogResult.OK Then
-            Me.Path_Project = SaveFileDialog1.FileName
-            SaveData(Me.Path_Project)
+            SaveData(SaveFileDialog1.FileName)
+            Me.Path_Project = Path.GetDirectoryName(SaveFileDialog1.FileName)
         End If
 
     End Sub
@@ -3351,15 +3352,12 @@ Public Class MainScreen
     Private Sub SaveMSXBASICbinaryDialog()
         Me.SaveFileDialog1.DefaultExt = "sc2"
         Me.SaveFileDialog1.Filter = "Screen2 bin file|*.sc2|VRAM bin file|*.bin|All files|*.*"
-
         Me.SaveFileDialog1.FileName = Me.Info.Name_without_Spaces
 
         If Me.Path_Project = "" Then
-            Me.SaveFileDialog1.FileName = Me.Info.Name_without_Spaces
             Me.SaveFileDialog1.InitialDirectory = Application.StartupPath
         Else
-            Me.SaveFileDialog1.FileName = Path.GetFileNameWithoutExtension(Me.Path_Project)
-            Me.SaveFileDialog1.InitialDirectory = Path.GetDirectoryName(Me.Path_Project)
+            Me.SaveFileDialog1.InitialDirectory = Me.Path_Project
         End If
 
         If SaveFileDialog1.ShowDialog() = Windows.Forms.DialogResult.OK Then
@@ -3399,15 +3397,12 @@ Public Class MainScreen
 
         If Me.Path_binary = "" Then
             If Me.Path_Project = "" Then
-                'Me.SaveFileDialog1.FileName = Me.Info.Name_without_Spaces
                 Me.SaveFileDialog1.InitialDirectory = Application.StartupPath
             Else
-                'Me.SaveFileDialog1.FileName = Path.GetFileNameWithoutExtension(Me.Path_Project)
-                Me.SaveFileDialog1.InitialDirectory = Path.GetDirectoryName(Me.Path_Project)
+                Me.SaveFileDialog1.InitialDirectory = Me.Path_Project
             End If
         Else
-            'Me.SaveFileDialog1.FileName = Path.GetFileNameWithoutExtension(Me.Path_binary)
-            Me.SaveFileDialog1.InitialDirectory = Path.GetDirectoryName(Me.Path_binary)
+            Me.SaveFileDialog1.InitialDirectory = Me.Path_binary
         End If
 
         If SaveFileDialog1.ShowDialog() = Windows.Forms.DialogResult.OK Then
@@ -3415,11 +3410,11 @@ Public Class MainScreen
             Try
                 Dim patternData() As Byte = CType(Me.outputCompressData.ToArray(GetType(Byte)), Byte())
 
-                Me.Path_binary = SaveFileDialog1.FileName
-
-                aStream = New System.IO.FileStream(Me.Path_binary, IO.FileMode.Create)
+                aStream = New System.IO.FileStream(SaveFileDialog1.FileName, IO.FileMode.Create)
                 aStream.Write(patternData, 0, patternData.Length)
                 aStream.Close()
+
+                Me.Path_binary = Path.GetDirectoryName(SaveFileDialog1.FileName)
 
             Catch ex As Exception
                 MsgBox(ex.Message, MsgBoxStyle.Critical, "I/O Error")
@@ -3434,13 +3429,12 @@ Public Class MainScreen
     Private Sub SaveNMSXprj_Dialog()
         Me.SaveFileDialog1.DefaultExt = "prj"
         Me.SaveFileDialog1.Filter = "nMSXtiles Project file|*.prj"
+        Me.SaveFileDialog1.FileName = Me.Info.Name_without_Spaces
 
         If Me.Path_Project = "" Then
-            Me.SaveFileDialog1.FileName = Me.Info.Name_without_Spaces
             Me.SaveFileDialog1.InitialDirectory = Application.StartupPath
         Else
-            Me.SaveFileDialog1.FileName = Path.GetFileNameWithoutExtension(Me.Path_Project)
-            Me.SaveFileDialog1.InitialDirectory = Path.GetDirectoryName(Me.Path_Project)
+            Me.SaveFileDialog1.InitialDirectory = Me.Path_Project
         End If
 
         If SaveFileDialog1.ShowDialog() = Windows.Forms.DialogResult.OK Then
@@ -3455,21 +3449,16 @@ Public Class MainScreen
 
         Me.SaveFileDialog1.DefaultExt = "png"
         Me.SaveFileDialog1.Filter = "PNG file|*.png"
-
         Me.SaveFileDialog1.FileName = Me.Info.Name_without_Spaces + DataType_Suffix(HoriTAB1.SelectTab)
 
         If Me.Path_Project = "" Then
-            'Me.SaveFileDialog1.FileName = Me.Info.Name_without_Spaces
             Me.SaveFileDialog1.InitialDirectory = Application.StartupPath
         Else
-            'Me.SaveFileDialog1.FileName = Path.GetFileNameWithoutExtension(Me.Path_Project)
-            Me.SaveFileDialog1.InitialDirectory = Path.GetDirectoryName(Me.Path_Project)
+            Me.SaveFileDialog1.InitialDirectory = Me.Path_Project
         End If
 
         If SaveFileDialog1.ShowDialog() = Windows.Forms.DialogResult.OK Then
-
             SavePNG(SaveFileDialog1.FileName)
-
         End If
 
     End Sub

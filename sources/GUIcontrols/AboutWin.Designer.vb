@@ -25,6 +25,7 @@ Partial Class AboutWin
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AboutWin))
         Me.LicenseTextBox = New System.Windows.Forms.TextBox()
         Me.copyleftLabel = New System.Windows.Forms.Label()
         Me.versionLabel = New System.Windows.Forms.Label()
@@ -52,7 +53,7 @@ Partial Class AboutWin
         Me.LicenseTextBox.Name = "LicenseTextBox"
         Me.LicenseTextBox.ReadOnly = True
         Me.LicenseTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.LicenseTextBox.Size = New System.Drawing.Size(429, 140)
+        Me.LicenseTextBox.Size = New System.Drawing.Size(449, 140)
         Me.LicenseTextBox.TabIndex = 0
         Me.LicenseTextBox.TabStop = False
         Me.LicenseTextBox.Text = "License...."
@@ -116,10 +117,10 @@ Partial Class AboutWin
         Me.OKButton.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.OKButton.FlatAppearance.BorderSize = 0
         Me.OKButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.OKButton.Image = Global.mSXdevtools.GUI.Controls.My.Resources.Resources.button_Ok
-        Me.OKButton.Location = New System.Drawing.Point(441, 371)
+        Me.OKButton.Image = CType(resources.GetObject("OKButton.Image"), System.Drawing.Image)
+        Me.OKButton.Location = New System.Drawing.Point(460, 370)
         Me.OKButton.Name = "OKButton"
-        Me.OKButton.Size = New System.Drawing.Size(131, 41)
+        Me.OKButton.Size = New System.Drawing.Size(133, 42)
         Me.OKButton.TabIndex = 1
         Me.OKButton.TabStop = False
         Me.OKButton.UseVisualStyleBackColor = False
@@ -132,10 +133,10 @@ Partial Class AboutWin
         Me.LicenseButton.Cursor = System.Windows.Forms.Cursors.Hand
         Me.LicenseButton.FlatAppearance.BorderSize = 0
         Me.LicenseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.LicenseButton.Image = Global.mSXdevtools.GUI.Controls.My.Resources.Resources.gplv3_127x51
-        Me.LicenseButton.Location = New System.Drawing.Point(12, 358)
+        Me.LicenseButton.Image = CType(resources.GetObject("LicenseButton.Image"), System.Drawing.Image)
+        Me.LicenseButton.Location = New System.Drawing.Point(0, 357)
         Me.LicenseButton.Name = "LicenseButton"
-        Me.LicenseButton.Size = New System.Drawing.Size(133, 54)
+        Me.LicenseButton.Size = New System.Drawing.Size(144, 62)
         Me.LicenseButton.TabIndex = 5
         Me.LicenseButton.UseVisualStyleBackColor = False
         '
@@ -146,7 +147,7 @@ Partial Class AboutWin
         Me.LogoPictureBox.BackColor = System.Drawing.Color.Transparent
         Me.LogoPictureBox.Location = New System.Drawing.Point(159, 12)
         Me.LogoPictureBox.Name = "LogoPictureBox"
-        Me.LogoPictureBox.Size = New System.Drawing.Size(420, 83)
+        Me.LogoPictureBox.Size = New System.Drawing.Size(440, 70)
         Me.LogoPictureBox.TabIndex = 12
         Me.LogoPictureBox.TabStop = False
         '
@@ -167,7 +168,7 @@ Partial Class AboutWin
         Me.BackColor = System.Drawing.Color.Gainsboro
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.CancelButton = Me.OKButton
-        Me.ClientSize = New System.Drawing.Size(584, 421)
+        Me.ClientSize = New System.Drawing.Size(604, 421)
         Me.ControlBox = False
         Me.Controls.Add(Me.iconPictureBox)
         Me.Controls.Add(Me.LogoPictureBox)

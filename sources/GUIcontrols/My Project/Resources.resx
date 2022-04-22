@@ -151,9 +151,6 @@
   <data name="help_x24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\help_x24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="gplv3-127x51" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\gplv3-127x51.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="more_9x24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\more_9x24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -180,8 +177,5 @@
   </data>
   <data name="Load_file_x24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Load_file_x24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="button_Ok" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\button_Ok.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

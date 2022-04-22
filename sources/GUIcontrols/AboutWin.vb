@@ -68,16 +68,10 @@ Public NotInheritable Class AboutWin
 
     End Sub
 
-    'Private Sub OKButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OKButton.Click
-    '    Me.Close()
-    'End Sub
-
 
     Private Sub GPLButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LicenseButton.Click
         System.Diagnostics.Process.Start(URL_GPL)
     End Sub
 
-    Private Sub OKButton_Click(sender As Object, e As EventArgs)
 
-    End Sub
 End Class
