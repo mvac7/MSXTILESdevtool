@@ -27,16 +27,16 @@
 
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TMScolorButton.Click
-        Dim result As DialogResult
-        Dim aColorSelector As New ColorSelector
-        result = aColorSelector.ShowWinDialog(Me._msxPalette, System.Windows.Forms.Control.MousePosition) 'Me.MousePosition)
 
-        If result = DialogResult.OK Then
+        Dim aColorSelector As New ColorSelector
+
+        If aColorSelector.ShowWinDialog(Me._msxPalette, System.Windows.Forms.Control.MousePosition) = DialogResult.OK Then
             If Not aColorSelector.ColorSelected = Me._Color Then
                 SetColor(aColorSelector.ColorSelected)
                 RaiseEvent ColorChanged(Me._Color)
             End If
         End If
+
     End Sub
 
 

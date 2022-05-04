@@ -233,14 +233,14 @@
         If Me._enableDataSizeLine = True Then
             ' pensado para mapas que tienen un ancho especifico
             Me.SizeLineComboBox.Items.Add("line")
-            Me.SizeLineComboBox.SelectedIndex = Me.SizeLineComboBox.Items.Count - 1
-        Else
-            Me.SizeLineComboBox.SelectedIndex = Me.AppConfig.defCodeLineSize
+            'Me.SizeLineComboBox.SelectedIndex = Me.SizeLineComboBox.Items.Count - 1
+            'Else
+            '    Me.SizeLineComboBox.SelectedIndex = Me.AppConfig.defCodeLineSize
 
         End If
         'End If
 
-        AddHandlers()
+        'AddHandlers()
 
         RefreshControl()
 
@@ -271,7 +271,7 @@
 
         showIndex()
 
-        Me.AppConfig.lastCodeSizeLine = Me.SizeLineComboBox.SelectedIndex
+        'Me.AppConfig.lastCodeSizeLine = Me.SizeLineComboBox.SelectedIndex
 
         ShowLanguageStatus()
 

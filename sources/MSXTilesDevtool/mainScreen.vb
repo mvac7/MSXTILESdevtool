@@ -100,7 +100,7 @@ Public Class MainScreen
     Private tileset_pattern_BANK_Suffix = New String() {"", "_B0", "_B1", "_B2"}
     Private tileset_color_BANK_Suffix = New String() {"", "_B0", "_B1", "_B2"}
 
-    Private DataType_Suffix = New String() {"_SCR", "_MAP", "_TSET", "_SPR", "_OAM"}
+    Private DataType_Suffix = New String() {"_SCR", "_TSET", "_MAP", "_SPR", "_OAM"}
     Private Compress_Suffix = New String() {"_RAW", "_RLE", "_RLEWB", "_PLT5"}
 
     Private bite_MASKs = New Byte() {1, 2, 4, 8, 16, 32, 64, 128}
@@ -227,11 +227,14 @@ Public Class MainScreen
         'Dim dragNdropPicture() As Byte
 
         'dragNdropPicture = DataDecompress(newData.ByteSpliterHex("ED573D6E833014063178AB2F50E18B20B852C70C089C29D742EA452C75E8584719EA4A08F73D636870690B081252F22D0EC636EFFBDE9FE37977DCD105A194E2A801E7F3CDF3DAE68594720CBFDF402DE63A6F69488B6BDBF15FB075FF6F9DFFD6B175FF2FC93F77FAD81C23726F9E2BA73FAE097D7EF2096538B676F3424C3D7F2EBF2DE57F977F92A54AC1F3C1B7EF954AD3288AA69E7F6BFC916F9630F31DFFA07594A21EA2F861BB5129CADAF8E6EE82B5D72D973FB17ED7553DF2FE6D7E00399264A5D2AFCF7B9C2884542508675EFA81A649AE4B29C41BE4506EF5C4449A6AE7A5FC8F086CFE23276779CB1B428277ED63490EA182358F5112148551A424412DA89567B20E17E0DFE1668CAD8D87EA273FBEF3C6E5A013368F973D9EA34A2898367C78A99E3ADF994B87B901761F4FEF5AF7F914D104EFF9BB00A4606118EAB3FE901BB9306644CF295F001D8C1002FE1C2AB54B87DAB994FF7555AA31F794BC6E0FAA098EDAEB793CF6BB6914C761C8D8D0F5409D187B67FECF3EF69EE6E4857A1CBAD1C15AFA0296673B8EBAE3A1D7A1C4E36FDE5327FF0483048AE36870FCAF0DFA74347163A23F610F30C5391FB617FA2349779847422C68E2A29075F91AE73F3FA0FDDDF3F610DB7A0F151F7BBEA9634E8E10182ACF6730282FD1701DE2B09A5FCDE49BC227"))
+
         Me.TMS9918Aviewer.Clear()
+        Me.TMS9918Aviewer.SetPalette(Me.Palettes.GetPalette(0))
         Me.TMS9918Aviewer.ScreenMode = iVDP.SCREEN_MODE.G2
         Me.TMS9918Aviewer.SetOrderMap()
-        Me.TMS9918Aviewer.BackgroundColor = 4
-        Me.TMS9918Aviewer.FillVRAM(iVDP.TableBase.GRPCOL, iVDP.TableBaseSize.GRPCOL, &HF4)
+        'Me.TMS9918Aviewer.BorderColor = 4
+        SetBorderColor(4)
+        Me.TMS9918Aviewer.FillVRAM(iVDP.TableBase.GRPCOL, iVDP.TableBaseSize.GRPCOL, 0)  '&HF4
         'Me.TMS9918Aviewer.SetBlock(iVDP.TableBase.GRPCGP, dragNdropPicture)
         Me.TMS9918Aviewer.RefreshScreen()
 
@@ -278,7 +281,6 @@ Public Class MainScreen
         zipStream.Close()
         Return stream.ToArray()
     End Function
-
 
 
 
@@ -486,12 +488,7 @@ Public Class MainScreen
                 End If
                 '
 
-
-                'closeProgressWin()
-                'screen2.RefreshScreen()
-
                 Application.DoEvents()
-
 
             End If
 
@@ -2213,6 +2210,7 @@ Public Class MainScreen
             BitmapConverter.InitDialog(PictureName, Me.myBitmapImage)
 
             If BitmapConverter.ShowDialog = DialogResult.OK Then
+                Me.TMS9918Aviewer.SetPalette(Me.Palettes.GetPalette(0))
                 Me.TMS9918Aviewer.ScreenMode = iVDP.SCREEN_MODE.G2
                 'Me.TMS9918Aviewer.PaletteType = TMS9918A.MSXVDP.TMS9918
                 'Me.TMS9918Aviewer.BackgroundColor = Me.PictureBGColorButton.SelectedColor
@@ -2368,9 +2366,14 @@ Public Class MainScreen
         End Select
 
 
-        AreaPanel_Visible = False
+        If index = HoriTAB.TAB_NAME.OAM Then
+            ZoomPanel.Visible = False
+        Else
+            ZoomPanel.Visible = True
+        End If
 
-        TilezoomPanel.Visible = Not spriteModes
+
+        AreaPanel_Visible = False
 
         AreaPanel.Visible = AreaPanel_Visible
         'TileRangePanel.Visible = TileRangePanel_Visible
@@ -2402,8 +2405,10 @@ Public Class MainScreen
             ColorBGLabel.Text = ""
             ColorInkLabel.BackColor = Color.Transparent
             ColorBGLabel.BackColor = Color.Transparent
+            ZoomLabel.Text = "Sprite"
         Else
             Colors_Label.Text = "Colors"
+            ZoomLabel.Text = "Tile"
         End If
 
     End Sub
@@ -2539,6 +2544,8 @@ Public Class MainScreen
                     nTile = (line * 32) + column
                     BloqValue_Label.Text = CStr(nTile)
 
+                    ShowZoomSprite(nTile)
+
                 Else
                     BloqValue_Label.Text = ""
                 End If
@@ -2549,11 +2556,15 @@ Public Class MainScreen
 
                     nTile = (Fix(line / 2) * 16) + Fix(column / 2)
                     BloqValue_Label.Text = CStr(nTile)
+
+                    ShowZoomSprite(nTile)
                 Else
                     BloqValue_Label.Text = ""
                 End If
 
             End If
+
+            Tilenumber_TextBox.Text = CStr(nTile)
 
 
 
@@ -3621,12 +3632,13 @@ Public Class MainScreen
 
         Dim aColor As System.Drawing.Color
 
-        'tileGraphics.Clear(Color.Black)
+        tileGraphics.Clear(Color.Black)
+        tileColorsGraphics.Clear(Color.Black)
 
+
+        posY = 1
 
         For line As Integer = 0 To 7
-
-            posY = (line * 17) + 1
 
             linePattern = TMS9918Aviewer.VPEEK(VRAMaddr)
             lineColor = TMS9918Aviewer.VPEEK(iVDP.TableBase.GRPCOL + VRAMaddr)
@@ -3653,10 +3665,157 @@ Public Class MainScreen
 
             Next
 
+            posY += 17
+
         Next
 
         TileViewerPictureBox.Refresh()
         TileColorsPictureBox.Refresh()
+
+    End Sub
+
+
+
+
+    Private Sub ShowZoomSprite(ByVal SpritePatternNumber As Integer)
+
+        Dim VRAMaddr As Short = iVDP.TableBase.GRPPAT
+
+        tileGraphics.Clear(Color.Black)
+        tileColorsGraphics.Clear(Me.BackColor)
+
+        If Me.TMS9918Aviewer.SpriteSize = SpriteMSX.SPRITE_SIZE.SIZE8 Then
+            VRAMaddr += SpritePatternNumber * 8
+            ShowZoomSprite8px(VRAMaddr)
+        Else
+            VRAMaddr += SpritePatternNumber * 32
+            ShowZoomSprite16px(VRAMaddr)
+        End If
+
+
+        TileViewerPictureBox.Refresh()
+        TileColorsPictureBox.Refresh()
+
+    End Sub
+
+
+
+    Private Sub ShowZoomSprite8px(ByVal VRAMaddr As Short)
+
+        Dim posX As Integer
+        Dim posY As Integer
+
+        Dim linePattern As Byte
+        'Dim lineColor As Byte
+
+        Dim column As Integer
+
+        Dim aInkColor As System.Drawing.Color = Color.White
+        Dim aBGColor As System.Drawing.Color = Color.Black
+
+        Dim aColor As System.Drawing.Color
+
+
+        posY = 1
+
+        For line As Integer = 0 To 7
+
+            linePattern = TMS9918Aviewer.VPEEK(VRAMaddr)
+            'lineColor = TMS9918Aviewer.VPEEK(iVDP.TableBase.GRPCOL + VRAMaddr)
+
+            VRAMaddr += 1
+
+            'aInkColor = TMS9918Aviewer.Palette.GetRGBColor(lineColor >> 4)
+            'aBGColor = TMS9918Aviewer.Palette.GetRGBColor(lineColor And 15)
+
+            'tileColorsGraphics.FillRectangle(New SolidBrush(Color.White), 1, posY, 16, 16)
+            'tileColorsGraphics.FillRectangle(New SolidBrush(Color.Black), 17, posY, 16, 16)
+
+            posX = (7 * 17) + 1
+
+            For column = 0 To 7
+
+                'posX = ((7 - column) * 17) + 1
+
+                If ((linePattern >> column) And 1) = 1 Then 'TempValue = Me.bite_MASKs(x) Then
+                    aColor = aInkColor
+                Else
+                    aColor = aBGColor
+                End If
+
+                tileGraphics.FillRectangle(New SolidBrush(aColor), posX, posY, 16, 16)
+
+                posX -= 17
+
+            Next
+
+            posY += 17
+
+        Next
+
+    End Sub
+
+
+
+    Private Sub ShowZoomSprite16px(ByVal VRAMaddr As Short)
+
+        Dim posX As Integer
+        Dim posY As Integer
+
+        Dim linePatternLeft As Byte
+        Dim linePatternRight As Byte
+        'Dim lineColor As Byte
+
+        Dim column As Integer
+
+        Dim aInkColor As System.Drawing.Color = Color.White
+        Dim aBGColor As System.Drawing.Color = Color.FromArgb(44, 44, 44)
+
+        Dim aColor As System.Drawing.Color
+
+        posY = 1
+
+        For line As Integer = 0 To 15
+
+            linePatternLeft = TMS9918Aviewer.VPEEK(VRAMaddr)
+            linePatternRight = TMS9918Aviewer.VPEEK(VRAMaddr + 16)
+
+            VRAMaddr += 1
+
+            posX = (15 * 8) + 1
+
+            For column = 0 To 7
+
+                If ((linePatternRight >> column) And 1) = 1 Then 'TempValue = Me.bite_MASKs(x) Then
+                    aColor = aInkColor
+                Else
+                    aColor = aBGColor
+                End If
+
+                tileGraphics.FillRectangle(New SolidBrush(aColor), posX, posY, 7, 7)
+
+                posX -= 8
+
+            Next
+
+
+            For column = 0 To 7
+
+                If ((linePatternLeft >> column) And 1) = 1 Then 'TempValue = Me.bite_MASKs(x) Then
+                    aColor = aInkColor
+                Else
+                    aColor = aBGColor
+                End If
+
+                tileGraphics.FillRectangle(New SolidBrush(aColor), posX, posY, 7, 7)
+
+                posX -= 8
+
+            Next
+
+            posY += 8
+
+        Next
 
     End Sub
 
@@ -3746,6 +3905,26 @@ Public Class MainScreen
 
         End If
 
+    End Sub
+
+
+
+    Private Sub BorderColorButton_Click(sender As Object, e As EventArgs) Handles BorderColorButton.Click
+        Dim aColorSelector As New ColorSelector
+
+        If aColorSelector.ShowWinDialog(Me.TMS9918Aviewer.Palette, System.Windows.Forms.Control.MousePosition) = DialogResult.OK Then
+            If Not aColorSelector.ColorSelected = Me.TMS9918Aviewer.BorderColor Then
+                SetBorderColor(aColorSelector.ColorSelected)
+                Me.TMS9918Aviewer.RefreshScreen()
+            End If
+        End If
+    End Sub
+
+
+
+    Private Sub SetBorderColor(ByVal newColor As Integer)
+        BorderColorButton.BackColor = Me.TMS9918Aviewer.Palette.GetRGBColor(newColor)
+        TMS9918Aviewer.BorderColor = newColor
     End Sub
 
 

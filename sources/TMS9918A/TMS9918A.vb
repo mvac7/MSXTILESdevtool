@@ -14,7 +14,7 @@ Public Class TMS9918A
 
     Private _inkColor As Byte = 15
     Private _backgroundColor As Byte = 4
-    Private _borderColor As Byte = 4
+    Private _borderColor As Byte = 1
 
     Private _IsShowSprites As Boolean = True
 
@@ -335,96 +335,6 @@ Public Class TMS9918A
             Me._viewSize = value
         End Set
     End Property
-
-
-
-    'Public Property Palette() As iPaletteMSX
-    '    Get
-    '        Return Me._palette
-    '    End Get
-    '    Set(ByVal value As iPaletteMSX)
-    '        If Not value Is Nothing Then
-    '            Me._palette = value
-    '            'Me.PaletteType = Me._palette.PaletteType
-    '        End If
-    '    End Set
-    'End Property
-
-
-
-    'Public Property PaletteType() As MSXVDP
-    '    Get
-    '        Return Me._PaletteType
-    '    End Get
-    '    Set(ByVal value As MSXVDP)
-    '        Me._PaletteType = value
-    '    End Set
-    'End Property
-
-
-
-    ' conversion SC2
-    'Public Class ColorItem
-    '    Public Sub New(ByVal aColor As Byte, ByVal aCount As Byte)
-    '        Me.Color = aColor
-    '        Me.Count = aCount
-    '    End Sub
-    '    Public Color As Byte
-    '    Public Count As Byte
-    'End Class
-
-
-
-
-
-
-
-    'Public Class ColorByte
-    '    Private ForeGroundColor As Byte
-    '    Private BackGroundColor As Byte
-
-
-    '    Public Property ForeGround()
-    '        Get
-    '            Return Me.ForeGroundColor
-    '        End Get
-    '        Set(ByVal value)
-    '            Me.ForeGroundColor = value And 15
-    '        End Set
-    '    End Property
-
-
-    '    Public Property BackGround()
-    '        Get
-    '            Return Me.BackGroundColor
-    '        End Get
-    '        Set(ByVal value)
-    '            Me.BackGroundColor = value And 15
-    '        End Set
-    '    End Property
-
-
-    '    Public Function GetFGBG() As Byte
-    '        Dim aByteColor As Byte
-    '        aByteColor = (Me.ForeGroundColor * 16) + Me.BackGroundColor
-    '        Return aByteColor
-    '    End Function
-
-    'End Class
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -963,8 +873,10 @@ Public Class TMS9918A
 
         For i As Integer = 0 To 7
             If (_pattern And bite_MASKs(i)) = bite_MASKs(i) Then
-                SetPoint(Me.tilesetBitmap, Xpos - i, Ypos, Me.Palette.GetRGBColor(aInkColor))
-            Else
+                If aInkColor > 0 Then
+                    SetPoint(Me.tilesetBitmap, Xpos - i, Ypos, Me.Palette.GetRGBColor(aInkColor))
+                End If
+            ElseIf aBGColor > 0 Then
                 SetPoint(Me.tilesetBitmap, Xpos - i, Ypos, Me.Palette.GetRGBColor(aBGColor))
             End If
         Next
@@ -1456,7 +1368,7 @@ Public Class TMS9918A
         Dim VAdress As Integer
 
         Dim aGraphics As Graphics = Graphics.FromImage(Me.tilesetBitmap)
-        aGraphics.Clear(Me.Palette.GetRGBColor(Me._backgroundColor))
+        aGraphics.Clear(Me.Palette.GetRGBColor(Me._borderColor))
 
         If _screenMode = iVDP.SCREEN_MODE.T1 Then
             ' screen1
