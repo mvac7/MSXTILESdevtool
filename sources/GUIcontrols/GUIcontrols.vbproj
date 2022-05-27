@@ -305,12 +305,6 @@
     <Service Include="{94E38DFF-614B-4CBD-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\progress_64.GIF" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\progresswin_BG.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\wizard_arrow.png" />
   </ItemGroup>
   <ItemGroup>

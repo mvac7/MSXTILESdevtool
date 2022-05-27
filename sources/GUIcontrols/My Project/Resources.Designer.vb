@@ -203,26 +203,6 @@ Namespace My.Resources
         '''<summary>
         '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property progress_64() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("progress_64", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        '''</summary>
-        Friend ReadOnly Property progresswin_BG() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("progresswin_BG", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        '''</summary>
         Friend ReadOnly Property project_properties_24() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("project_properties_24", resourceCulture)
