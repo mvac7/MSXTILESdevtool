@@ -34,7 +34,7 @@
 
     Public ReadOnly Property NumeralSystem As Integer
         Get
-            Return Me.NumSysCombo.SelectedIndex
+            Return Me.NumberSystemCombo.SelectedIndex
         End Get
     End Property
 
@@ -184,6 +184,20 @@
 
 
 
+    Public Property FieldName As String
+        Get
+            If CodeLanguage = Language_CODE.ASSEMBLER Then
+                Return AsmFieldNameTextBox.Text
+            Else
+                Return CesFieldNameTextBox.Text
+            End If
+        End Get
+        Set(value As String)
+            AsmFieldNameTextBox.Text = value
+            CesFieldNameTextBox.Text = value
+        End Set
+    End Property
+
 
 
     Public Sub New()
@@ -200,8 +214,11 @@
     Private Sub DataTypeInputControl_Load(sender As Object, e As System.EventArgs) Handles Me.Load
 
         ' posiciona la caja con campos especificos para la salida en assembler
-        Me.AsmGroupBox.Location = Me.BasicGroupBox.Location
-        Me.CGroupBox.Location = Me.BasicGroupBox.Location
+        Me.AssemblerPanel.Location = Me.BasicPanel.Location
+        Me.CesPanel.Location = Me.BasicPanel.Location
+
+        Me.AssemblerPanel.BackgroundImage = Me.BasicPanel.BackgroundImage
+        Me.CesPanel.BackgroundImage = Me.BasicPanel.BackgroundImage
 
         Me.LanguageComboBox.SelectedIndex = 0
 
@@ -230,17 +247,14 @@
         '    Me.SizeLineComboBox.Items.Add("line")
         '    Me.SizeLineComboBox.SelectedIndex = 0
         'Else
-        If Me._enableDataSizeLine = True Then
-            ' pensado para mapas que tienen un ancho especifico
-            Me.SizeLineComboBox.Items.Add("line")
-            'Me.SizeLineComboBox.SelectedIndex = Me.SizeLineComboBox.Items.Count - 1
-            'Else
-            '    Me.SizeLineComboBox.SelectedIndex = Me.AppConfig.defCodeLineSize
 
-        End If
         'End If
 
         'AddHandlers()
+
+        If Me._enableDataSizeLine = True Then
+            Me.SizeLineComboBox.Items.Add("line")
+        End If
 
         RefreshControl()
 
@@ -253,6 +267,8 @@
         RemoveHandlers()
 
         Me.LanguageComboBox.SelectedIndex = Me.AppConfig.lastCodeOutput
+
+        Me.NumberSystemCombo.SelectedIndex = Me.AppConfig.lastCodeNumberFormat ' lastCodeNumberSystem
 
         If _enableCompress = True Then
             Me.CompressComboBox.SelectedIndex = Me.AppConfig.lastCodeCompressType
@@ -283,7 +299,7 @@
 
     Private Sub AddHandlers()
         AddHandler Me.LanguageComboBox.SelectedIndexChanged, AddressOf LanguageComboBox_SelectedIndexChanged
-        AddHandler Me.NumSysCombo.SelectedIndexChanged, AddressOf NumSysCombo_SelectedIndexChanged
+        AddHandler Me.NumberSystemCombo.SelectedIndexChanged, AddressOf NumberSystem_SelectedIndexChanged
         AddHandler Me.SizeLineComboBox.SelectedIndexChanged, AddressOf SizeLineComboBox_SelectedIndexChanged
         AddHandler Me.CompressComboBox.SelectedIndexChanged, AddressOf CompressComboBox_SelectedIndexChanged
 
@@ -306,7 +322,7 @@
 
     Private Sub RemoveHandlers()
         RemoveHandler Me.LanguageComboBox.SelectedIndexChanged, AddressOf LanguageComboBox_SelectedIndexChanged
-        RemoveHandler Me.NumSysCombo.SelectedIndexChanged, AddressOf NumSysCombo_SelectedIndexChanged
+        RemoveHandler Me.NumberSystemCombo.SelectedIndexChanged, AddressOf NumberSystem_SelectedIndexChanged
         RemoveHandler Me.SizeLineComboBox.SelectedIndexChanged, AddressOf SizeLineComboBox_SelectedIndexChanged
         RemoveHandler Me.CompressComboBox.SelectedIndexChanged, AddressOf CompressComboBox_SelectedIndexChanged
 
@@ -346,7 +362,7 @@
 
 
     Private Sub DataTypeInputControl_Paint(sender As Object, e As System.Windows.Forms.PaintEventArgs) Handles Me.Paint
-        Me.Size = New System.Drawing.Size(Me.Size.Width, 110)
+        Me.Size = New System.Drawing.Size(Me.Size.Width, 4 + 111 + 2)
     End Sub
 
 
@@ -366,51 +382,51 @@
 
         Select Case Me.LanguageComboBox.SelectedIndex
             Case DataFormat.ProgrammingLanguage.BASIC  'basic
-                Me.BasicGroupBox.Visible = True
-                Me.AsmGroupBox.Visible = False
-                Me.CGroupBox.Visible = False
+                Me.BasicPanel.Visible = True
+                Me.AssemblerPanel.Visible = False
+                Me.CesPanel.Visible = False
 
                 'Me.RemoveZerosCheck.Enabled = True
-                Select Case Me.NumSysCombo.SelectedIndex
+                Select Case Me.NumberSystemCombo.SelectedIndex
                     Case DataFormat.DataType.DECIMAL_n To DataFormat.DataType.DECIMAL_nnnd
-                        Me.NumSysCombo.SelectedIndex = DataFormat.DataType.DECIMAL_n
+                        Me.NumberSystemCombo.SelectedIndex = DataFormat.DataType.DECIMAL_n
                     Case DataFormat.DataType.BINARY_n To DataFormat.DataType.BINARY_BASIC
-                        Me.NumSysCombo.SelectedIndex = DataFormat.DataType.BINARY_BASIC
+                        Me.NumberSystemCombo.SelectedIndex = DataFormat.DataType.BINARY_BASIC
                     Case Else
-                        Me.NumSysCombo.SelectedIndex = DataFormat.DataType.HEXADECIMAL_BASIC
+                        Me.NumberSystemCombo.SelectedIndex = DataFormat.DataType.HEXADECIMAL_BASIC
                 End Select
 
             Case DataFormat.ProgrammingLanguage.C
-                Me.BasicGroupBox.Visible = False
-                Me.AsmGroupBox.Visible = False
-                Me.CGroupBox.Visible = True
+                Me.BasicPanel.Visible = False
+                Me.AssemblerPanel.Visible = False
+                Me.CesPanel.Visible = True
 
-                Select Case Me.NumSysCombo.SelectedIndex
+                Select Case Me.NumberSystemCombo.SelectedIndex
                     Case DataFormat.DataType.DECIMAL_n To DataFormat.DataType.DECIMAL_nnnd
-                        Me.NumSysCombo.SelectedIndex = DataFormat.DataType.DECIMAL_n
+                        Me.NumberSystemCombo.SelectedIndex = DataFormat.DataType.DECIMAL_n
                     Case DataFormat.DataType.BINARY_n To DataFormat.DataType.BINARY_BASIC
-                        Me.NumSysCombo.SelectedIndex = DataFormat.DataType.BINARY_C
+                        Me.NumberSystemCombo.SelectedIndex = DataFormat.DataType.BINARY_C
                     Case Else
-                        Me.NumSysCombo.SelectedIndex = DataFormat.DataType.HEXADECIMAL_C
+                        Me.NumberSystemCombo.SelectedIndex = DataFormat.DataType.HEXADECIMAL_C
                 End Select
 
             Case DataFormat.ProgrammingLanguage.ASSEMBLER
-                Me.BasicGroupBox.Visible = False
-                Me.AsmGroupBox.Visible = True
-                Me.CGroupBox.Visible = False
+                Me.BasicPanel.Visible = False
+                Me.AssemblerPanel.Visible = True
+                Me.CesPanel.Visible = False
 
-                Select Case Me.NumSysCombo.SelectedIndex
+                Select Case Me.NumberSystemCombo.SelectedIndex
                     Case DataFormat.DataType.DECIMAL_n To DataFormat.DataType.DECIMAL_nnnd
-                        Me.NumSysCombo.SelectedIndex = DataFormat.DataType.DECIMAL_nnnd      '?? default
+                        Me.NumberSystemCombo.SelectedIndex = DataFormat.DataType.DECIMAL_nnnd      '?? default
                     Case DataFormat.DataType.BINARY_n To DataFormat.DataType.BINARY_BASIC
-                        Me.NumSysCombo.SelectedIndex = DataFormat.DataType.BINARY_nb         '?? default
+                        Me.NumberSystemCombo.SelectedIndex = DataFormat.DataType.BINARY_nb         '?? default
                     Case Else
-                        Me.NumSysCombo.SelectedIndex = DataFormat.DataType.HEXADECIMAL_Snn   '?? default
+                        Me.NumberSystemCombo.SelectedIndex = DataFormat.DataType.HEXADECIMAL_Snn   '?? default
                 End Select
 
         End Select
 
-        If Me.NumSysCombo.SelectedIndex >= DataFormat.DataType.BINARY_n Then
+        If Me.NumberSystemCombo.SelectedIndex >= DataFormat.DataType.BINARY_n Then
             Me.SizeLineComboBox.SelectedIndex = 0
         Else
             Me.SizeLineComboBox.SelectedIndex = Me.AppConfig.lastCodeSizeLine
@@ -420,8 +436,8 @@
 
 
 
-    Private Sub NumSysCombo_SelectedIndexChanged(sender As System.Object, e As System.EventArgs)
-        Me.AppConfig.lastCodeNumberFormat = NumSysCombo.SelectedIndex
+    Private Sub NumberSystem_SelectedIndexChanged(sender As System.Object, e As System.EventArgs)
+        Me.AppConfig.lastCodeNumberFormat = NumberSystemCombo.SelectedIndex 'lastCodeNumberSystem 
         RaiseEvent DataChanged()
     End Sub
 
@@ -556,6 +572,23 @@
         Return name
     End Function
 
+
+
+    Private Sub AsmFieldNameTextBox_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles AsmFieldNameTextBox.Validating
+        If Me.AsmFieldNameTextBox.Text.Trim() = "" Then
+            Me.AsmFieldNameTextBox.Text = "DATA"
+        End If
+        RaiseEvent DataChanged()
+    End Sub
+
+
+
+    Private Sub CesFieldNameTextBox_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles CesFieldNameTextBox.Validating
+        If Me.CesFieldNameTextBox.Text.Trim() = "" Then
+            Me.CesFieldNameTextBox.Text = "DATA"
+        End If
+        RaiseEvent DataChanged()
+    End Sub
 
 
 End Class

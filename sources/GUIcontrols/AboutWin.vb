@@ -59,6 +59,10 @@ Public NotInheritable Class AboutWin
 
         Me.LicenseTextBox.Text = LicenseText
 
+        If Not LogoPictureBox.Image Is Nothing Then
+            LogoPictureBox.Width = LogoPictureBox.Image.Width + 14
+        End If
+
         ' draw gradient in window-form background
         Dim gradientBG As New Bitmap(Me.Width, Me.Height)
         Dim newBrush As New Drawing.Drawing2D.LinearGradientBrush(New PointF(0, 0), New PointF(0, gradientBG.Height), Color.Gainsboro, Color.DarkGray)

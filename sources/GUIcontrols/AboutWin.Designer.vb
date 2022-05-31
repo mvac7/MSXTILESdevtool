@@ -36,8 +36,10 @@ Partial Class AboutWin
         Me.LicenseButton = New System.Windows.Forms.Button()
         Me.LogoPictureBox = New System.Windows.Forms.PictureBox()
         Me.iconPictureBox = New System.Windows.Forms.PictureBox()
+        Me.LogoPanel = New System.Windows.Forms.Panel()
         CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.iconPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.LogoPanel.SuspendLayout()
         Me.SuspendLayout()
         '
         'LicenseTextBox
@@ -142,12 +144,11 @@ Partial Class AboutWin
         '
         'LogoPictureBox
         '
-        Me.LogoPictureBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.LogoPictureBox.BackColor = System.Drawing.Color.Transparent
-        Me.LogoPictureBox.Location = New System.Drawing.Point(159, 12)
+        Me.LogoPictureBox.Dock = System.Windows.Forms.DockStyle.Right
+        Me.LogoPictureBox.Location = New System.Drawing.Point(240, 0)
         Me.LogoPictureBox.Name = "LogoPictureBox"
-        Me.LogoPictureBox.Size = New System.Drawing.Size(440, 70)
+        Me.LogoPictureBox.Size = New System.Drawing.Size(200, 70)
         Me.LogoPictureBox.TabIndex = 12
         Me.LogoPictureBox.TabStop = False
         '
@@ -160,6 +161,17 @@ Partial Class AboutWin
         Me.iconPictureBox.TabIndex = 13
         Me.iconPictureBox.TabStop = False
         '
+        'LogoPanel
+        '
+        Me.LogoPanel.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LogoPanel.BackColor = System.Drawing.Color.Transparent
+        Me.LogoPanel.Controls.Add(Me.LogoPictureBox)
+        Me.LogoPanel.Location = New System.Drawing.Point(158, 12)
+        Me.LogoPanel.Name = "LogoPanel"
+        Me.LogoPanel.Size = New System.Drawing.Size(440, 70)
+        Me.LogoPanel.TabIndex = 14
+        '
         'AboutWin
         '
         Me.AcceptButton = Me.OKButton
@@ -170,8 +182,8 @@ Partial Class AboutWin
         Me.CancelButton = Me.OKButton
         Me.ClientSize = New System.Drawing.Size(604, 421)
         Me.ControlBox = False
+        Me.Controls.Add(Me.LogoPanel)
         Me.Controls.Add(Me.iconPictureBox)
-        Me.Controls.Add(Me.LogoPictureBox)
         Me.Controls.Add(Me.LicenseButton)
         Me.Controls.Add(Me.OKButton)
         Me.Controls.Add(Me.DescriptionLabel)
@@ -191,6 +203,7 @@ Partial Class AboutWin
         Me.TransparencyKey = System.Drawing.Color.LightCoral
         CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.iconPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.LogoPanel.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -203,4 +216,5 @@ Partial Class AboutWin
     Friend WithEvents DescriptionLabel As Label
     Friend WithEvents LogoPictureBox As PictureBox
     Friend WithEvents iconPictureBox As PictureBox
+    Friend WithEvents LogoPanel As Panel
 End Class

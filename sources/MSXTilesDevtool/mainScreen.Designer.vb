@@ -231,7 +231,7 @@ Partial Class MainScreen
         Me.GivemeTheCodeButton.FlatAppearance.BorderSize = 0
         Me.GivemeTheCodeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.GivemeTheCodeButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.button_generate_pixelS
-        Me.GivemeTheCodeButton.Location = New System.Drawing.Point(580, 573)
+        Me.GivemeTheCodeButton.Location = New System.Drawing.Point(581, 579)
         Me.GivemeTheCodeButton.Name = "GivemeTheCodeButton"
         Me.GivemeTheCodeButton.Size = New System.Drawing.Size(262, 41)
         Me.GivemeTheCodeButton.TabIndex = 281
@@ -713,11 +713,11 @@ Partial Class MainScreen
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.OutputText.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.OutputText.Font = New System.Drawing.Font("Courier New", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.OutputText.Location = New System.Drawing.Point(10, 620)
+        Me.OutputText.Location = New System.Drawing.Point(10, 626)
         Me.OutputText.Multiline = True
         Me.OutputText.Name = "OutputText"
         Me.OutputText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.OutputText.Size = New System.Drawing.Size(832, 60)
+        Me.OutputText.Size = New System.Drawing.Size(832, 54)
         Me.OutputText.TabIndex = 118
         '
         'DataTypeInput
@@ -725,11 +725,12 @@ Partial Class MainScreen
         Me.DataTypeInput.BackColor = System.Drawing.Color.Transparent
         Me.DataTypeInput.EnableCompress = True
         Me.DataTypeInput.EnableDataSizeLine = True
+        Me.DataTypeInput.FieldName = "DATA"
         Me.DataTypeInput.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DataTypeInput.Location = New System.Drawing.Point(10, 506)
+        Me.DataTypeInput.Location = New System.Drawing.Point(5, 504)
         Me.DataTypeInput.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.DataTypeInput.Name = "DataTypeInput"
-        Me.DataTypeInput.Size = New System.Drawing.Size(528, 110)
+        Me.DataTypeInput.Size = New System.Drawing.Size(528, 117)
         Me.DataTypeInput.TabIndex = 254
         '
         'AreaPanel

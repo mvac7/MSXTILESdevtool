@@ -2788,7 +2788,7 @@ Public Class MainScreen
         data = Me.TMS9918Aviewer.GetVRAM
 
         newData = GetCompressData(data)
-        _outputText = GetFormatData(Me.Info.Name_without_Spaces + "_SCR", newData, "All VRAM data", data.Length)
+        _outputText = GetFormatData(Me.DataTypeInput.FieldName + "_SCR", newData, "All VRAM data", data.Length)
 
         Me.outputCompressData.Clear()
         Me.outputCompressData.AddRange(newData)
@@ -2823,7 +2823,7 @@ Public Class MainScreen
             data = Me.TMS9918Aviewer.GetBlock(iVDP.TableBase.GRPNAM, iVDP.TableBaseSize.GRPNAM)
 
             newData = GetCompressData(data)
-            _outputText = GetFormatData(Me.Info.Name_without_Spaces + "_MAP", newData, "Map data", data.Length)
+            _outputText = GetFormatData(Me.DataTypeInput.FieldName + "_MAP", newData, "Map data", data.Length)
 
             Me.outputCompressData.AddRange(newData)
             Me.outputCompressData_Type = DATA_TYPE.MAP
@@ -2875,7 +2875,7 @@ Public Class MainScreen
             data = Me.TMS9918Aviewer.GetBlock(iVDP.TableBase.GRPNAM + VRAMaddr, line_length)
 
             newData = GetCompressData(data)
-            _outputText += GetFormatData(Me.Info.Name_without_Spaces + label_suffix + lineNumber, newData, "Line " + lineNumber, data.Length)
+            _outputText += GetFormatData(Me.DataTypeInput.FieldName + label_suffix + lineNumber, newData, "Line " + lineNumber, data.Length)
 
             line += 1
         Next
@@ -2973,7 +2973,7 @@ Public Class MainScreen
             data = Me.TMS9918Aviewer.GetBlock(VRAMtable + VRAMaddr, bloqsize)
 
             newData = GetCompressData(data)
-            _outputText += GetFormatData(Me.Info.Name_without_Spaces + label_suffix + lineNumber, newData, "Line " + lineNumber, data.Length)
+            _outputText += GetFormatData(Me.DataTypeInput.FieldName + label_suffix + lineNumber, newData, "Line " + lineNumber, data.Length)
 
             line += 1
         Next
@@ -3041,7 +3041,7 @@ Public Class MainScreen
         Me.outputCompressData_CompressType = Me.DataTypeInput.Compress
         Me.outputCompressData_suffix = DataType_Suffix(Me.outputCompressData_Type) + label_suffix + Compress_Suffix(Me.DataTypeInput.Compress)
 
-        _outputText = GetFormatData(Me.Info.Name_without_Spaces + label_suffix, newData, comment1, data.Length)
+        _outputText = GetFormatData(Me.DataTypeInput.FieldName + label_suffix, newData, comment1, data.Length)
 
         Return _outputText
 
@@ -3078,7 +3078,7 @@ Public Class MainScreen
         data = Me.TMS9918Aviewer.GetBlock(VRAMaddr, bloqsize)
 
         newData = GetCompressData(data)
-        _outputText = GetFormatData(Me.Info.Name_without_Spaces + "_SPR", newData, comment1, data.Length)
+        _outputText = GetFormatData(Me.DataTypeInput.FieldName + "_SPR", newData, comment1, data.Length)
 
         Me.outputCompressData.Clear()
         Me.outputCompressData.AddRange(newData)
@@ -3102,7 +3102,7 @@ Public Class MainScreen
         data = Me.TMS9918Aviewer.GetBlock(iVDP.TableBase.GRPATR, iVDP.TableBaseSize.GRPATR)
 
         newData = GetCompressData(data)
-        _outputText = GetFormatData(Me.Info.Name_without_Spaces + "_OAM", newData, "OAM data", data.Length)
+        _outputText = GetFormatData(Me.DataTypeInput.FieldName + "_OAM", newData, "OAM data", data.Length)
 
         Me.outputCompressData.Clear()
         Me.outputCompressData.AddRange(newData)
