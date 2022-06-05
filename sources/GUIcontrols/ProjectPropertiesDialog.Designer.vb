@@ -22,36 +22,60 @@ Partial Class ProjectPropertiesDialog
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.ExitButton = New System.Windows.Forms.Button()
-        Me.OkButton = New System.Windows.Forms.Button()
+        Me.BottonsPanel = New System.Windows.Forms.Panel()
+        Me.OK_Button = New System.Windows.Forms.Button()
+        Me.Cancel_Button = New System.Windows.Forms.Button()
         Me.ProjectInfoUserControl1 = New mSXdevtools.GUI.Controls.ProjectInfoUserControl()
+        Me.BottonsPanel.SuspendLayout()
         Me.SuspendLayout()
         '
-        'ExitButton
+        'BottonsPanel
         '
-        Me.ExitButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ExitButton.BackColor = System.Drawing.Color.Salmon
-        Me.ExitButton.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.ExitButton.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ExitButton.Location = New System.Drawing.Point(438, 303)
-        Me.ExitButton.Name = "ExitButton"
-        Me.ExitButton.Size = New System.Drawing.Size(60, 30)
-        Me.ExitButton.TabIndex = 9
-        Me.ExitButton.Text = "Exit"
-        Me.ExitButton.UseVisualStyleBackColor = False
+        Me.BottonsPanel.Controls.Add(Me.OK_Button)
+        Me.BottonsPanel.Controls.Add(Me.Cancel_Button)
+        Me.BottonsPanel.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.BottonsPanel.Location = New System.Drawing.Point(0, 290)
+        Me.BottonsPanel.Name = "BottonsPanel"
+        Me.BottonsPanel.Padding = New System.Windows.Forms.Padding(4)
+        Me.BottonsPanel.Size = New System.Drawing.Size(504, 51)
+        Me.BottonsPanel.TabIndex = 26
         '
-        'OkButton
+        'OK_Button
         '
-        Me.OkButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.OkButton.BackColor = System.Drawing.Color.LightGreen
-        Me.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK
-        Me.OkButton.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.OkButton.Location = New System.Drawing.Point(302, 298)
-        Me.OkButton.Name = "OkButton"
-        Me.OkButton.Size = New System.Drawing.Size(130, 36)
-        Me.OkButton.TabIndex = 8
-        Me.OkButton.Text = "Ok"
-        Me.OkButton.UseVisualStyleBackColor = False
+        Me.OK_Button.BackColor = System.Drawing.Color.Transparent
+        Me.OK_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.OK_Button.DialogResult = System.Windows.Forms.DialogResult.OK
+        Me.OK_Button.Dock = System.Windows.Forms.DockStyle.Right
+        Me.OK_Button.FlatAppearance.BorderSize = 0
+        Me.OK_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.OK_Button.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.OK_Button.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.OK_Button.Image = Global.mSXdevtools.GUI.Controls.My.Resources.Resources.button_Ok
+        Me.OK_Button.Location = New System.Drawing.Point(258, 4)
+        Me.OK_Button.Margin = New System.Windows.Forms.Padding(4)
+        Me.OK_Button.Name = "OK_Button"
+        Me.OK_Button.Size = New System.Drawing.Size(132, 43)
+        Me.OK_Button.TabIndex = 3
+        Me.OK_Button.UseVisualStyleBackColor = False
+        '
+        'Cancel_Button
+        '
+        Me.Cancel_Button.BackColor = System.Drawing.Color.Transparent
+        Me.Cancel_Button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.Cancel_Button.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.Cancel_Button.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Cancel_Button.FlatAppearance.BorderSize = 0
+        Me.Cancel_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Cancel_Button.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Cancel_Button.ForeColor = System.Drawing.Color.Black
+        Me.Cancel_Button.Image = Global.mSXdevtools.GUI.Controls.My.Resources.Resources.button_Cancel
+        Me.Cancel_Button.ImageAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.Cancel_Button.Location = New System.Drawing.Point(390, 4)
+        Me.Cancel_Button.Margin = New System.Windows.Forms.Padding(4)
+        Me.Cancel_Button.Name = "Cancel_Button"
+        Me.Cancel_Button.Size = New System.Drawing.Size(110, 43)
+        Me.Cancel_Button.TabIndex = 4
+        Me.Cancel_Button.UseVisualStyleBackColor = False
         '
         'ProjectInfoUserControl1
         '
@@ -66,21 +90,19 @@ Partial Class ProjectPropertiesDialog
         Me.ProjectInfoUserControl1.ProjectGroup = ""
         Me.ProjectInfoUserControl1.ProjectName = ""
         Me.ProjectInfoUserControl1.ProjectVersion = ""
-        Me.ProjectInfoUserControl1.Size = New System.Drawing.Size(502, 280)
+        Me.ProjectInfoUserControl1.Size = New System.Drawing.Size(504, 280)
         Me.ProjectInfoUserControl1.TabIndex = 25
         '
         'ProjectPropertiesDialog
         '
-        Me.AcceptButton = Me.OkButton
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Gainsboro
-        Me.CancelButton = Me.ExitButton
-        Me.ClientSize = New System.Drawing.Size(502, 337)
+        Me.CancelButton = Me.Cancel_Button
+        Me.ClientSize = New System.Drawing.Size(504, 341)
         Me.ControlBox = False
+        Me.Controls.Add(Me.BottonsPanel)
         Me.Controls.Add(Me.ProjectInfoUserControl1)
-        Me.Controls.Add(Me.OkButton)
-        Me.Controls.Add(Me.ExitButton)
         Me.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ForeColor = System.Drawing.Color.Black
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
@@ -91,10 +113,12 @@ Partial Class ProjectPropertiesDialog
         Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Project info"
+        Me.BottonsPanel.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents ExitButton As System.Windows.Forms.Button
-    Friend WithEvents OkButton As System.Windows.Forms.Button
     Friend WithEvents ProjectInfoUserControl1 As ProjectInfoUserControl
+    Friend WithEvents BottonsPanel As Panel
+    Friend WithEvents OK_Button As Button
+    Friend WithEvents Cancel_Button As Button
 End Class

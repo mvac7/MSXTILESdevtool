@@ -1,8 +1,9 @@
 ﻿Imports System.IO
 
 
-
-
+''' <summary>
+''' 
+''' </summary>
 Public Class ConfigWin
 
     Private AppConfig As Config
@@ -18,9 +19,9 @@ Public Class ConfigWin
         TILESETSX
         PALETTESX
         SQUAREDSX
+        BYTENIZ3R
         OAMSX
         PAINTSX
-        OTHER
     End Enum
 
 
@@ -34,23 +35,19 @@ Public Class ConfigWin
         Me.AppConfig = _config
         Me._type = aType
 
-        Select Case Me._type
-            Case CONFIG_TYPE.TMSGFX
-                Me.tMSgfXProjectPathControl.Visible = True
-                Me.SpritesPathControl.Visible = True
-                Me.MapsPathControl.Visible = True
-                Me.TilesetsPathControl.Visible = True
-                Me.SquaredsetsPathControl.Visible = True
-                Me.PalettesPathControl.Visible = True
-                Me.OAMPathControl.Visible = True
+    End Sub
 
-                Me.nMSXtilesPathControl.Visible = True
+
+
+    Private Sub ConfigWin_Load(sender As Object, e As EventArgs) Handles Me.Load
+
+        Select Case Me._type
+            Case CONFIG_TYPE.BYTENIZ3R
+                Me.BytegenPathControl.Visible = True
                 Me.MSXBASICPathControl.Visible = True
-                Me.BitmapsPathControl.Visible = True
                 Me.BinaryPathControl.Visible = True
 
             Case CONFIG_TYPE.PAINTSX
-                '
                 Me.MSXBASICPathControl.Visible = True
                 Me.BitmapsPathControl.Visible = True
                 Me.PalettesPathControl.Visible = True
@@ -91,9 +88,20 @@ Public Class ConfigWin
                 Me.PalettesPathControl.Visible = True
 
             Case Else
-                'Me.BytegenPathControl.Visible = True
-                'Me.MSXBASICPathControl.Visible = True
-                'Me.BinaryPathControl.Visible = True
+                Me.tMSgfXProjectPathControl.Visible = True
+                Me.SpritesPathControl.Visible = True
+                Me.MapsPathControl.Visible = True
+                Me.TilesetsPathControl.Visible = True
+                Me.SquaredsetsPathControl.Visible = True
+                Me.PalettesPathControl.Visible = True
+                Me.OAMPathControl.Visible = True
+
+                Me.nMSXtilesPathControl.Visible = True
+                Me.MSXBASICPathControl.Visible = True
+                Me.BitmapsPathControl.Visible = True
+                Me.BinaryPathControl.Visible = True
+
+                Me.InitProjectGroupBox.Enabled = True
 
         End Select
 
@@ -151,6 +159,113 @@ Public Class ConfigWin
 
             Case Else
                 Me.RadioButton1.Checked = True
+        End Select
+
+    End Sub
+
+
+
+    Public Function GetBASIC_CommentInstruction_Index(value As String) As Integer
+        If value.ToUpper = "REM" Then
+            Return 0
+        Else
+            Return 1
+        End If
+    End Function
+
+
+
+    Private Sub BASICinitLineText_Validating(sender As System.Object, e As System.ComponentModel.CancelEventArgs) Handles BASICinitLineTextBox.Validating
+        Dim value As Integer
+
+        If Not IsNumeric(Me.BASICinitLineTextBox.Text) Then
+            value = 1000
+        Else
+            value = CInt(Me.BASICinitLineTextBox.Text)
+
+            If value > 30000 Then
+                value = 1000
+            ElseIf value < 1 Then
+                value = 1
+            End If
+        End If
+
+        Me.BASICinitLineTextBox.Text = CStr(value)
+    End Sub
+
+
+
+    Private Sub BASICincLineslTextBox_Validating(sender As System.Object, e As System.ComponentModel.CancelEventArgs) Handles BASICincLineslTextBox.Validating
+        Dim value As Integer
+
+        If Not IsNumeric(Me.BASICincLineslTextBox.Text) Then
+            value = 10
+        Else
+            value = CInt(Me.BASICincLineslTextBox.Text)
+
+            If value > 255 Then
+                value = 255
+            ElseIf value < 1 Then
+                value = 1
+            End If
+        End If
+
+        Me.BASICincLineslTextBox.Text = CStr(value)
+    End Sub
+
+
+
+    Private Sub Color0Button_Click(sender As Object, e As EventArgs) Handles Color0Button.Click, GridColorButton.Click, OutputINKcolorButton.Click, OutputBGcolorButton.Click
+        Dim aButtom As Button = CType(sender, Button)
+        Me.ColorDialog1.Color = aButtom.BackColor
+        Me.ColorDialog1.ShowDialog()
+        SetColor(aButtom, Me.ColorDialog1.Color)
+    End Sub
+
+
+
+    Private Sub SetColor(ByRef aButton As Button, ByVal newColor As Color)
+        aButton.BackColor = newColor
+        aButton.Text = newColor.Name
+        If newColor.GetBrightness > 0.7 Then
+            aButton.ForeColor = Color.Black
+        Else
+            aButton.ForeColor = Color.White
+        End If
+    End Sub
+
+
+
+    Private Sub AsmByteValuesComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles AsmByteValuesComboBox.SelectedIndexChanged
+        AsmByteDataTextBox.Text = AsmByteValuesComboBox.SelectedItem
+    End Sub
+
+
+
+    Private Sub AsmWordComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles AsmWordValuesComboBox.SelectedIndexChanged
+        AsmWordDataTextBox.Text = AsmWordValuesComboBox.SelectedItem
+    End Sub
+
+
+
+    Private Sub ColorConfigsComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ColorConfigsComboBox.SelectedIndexChanged
+
+        Select Case ColorConfigsComboBox.SelectedIndex
+            Case 1
+                ' blue MSX BASIC
+                SetColor(Me.OutputINKcolorButton, Color.FromArgb(255, 255, 255, 255))   'White
+                SetColor(Me.OutputBGcolorButton, Color.FromArgb(255, 84, 85, 237))      'TMS9918A Dark Blue
+
+            Case 2
+                ' green GB
+                SetColor(Me.OutputINKcolorButton, Color.FromArgb(255, 15, 56, 15))    ' light green
+                SetColor(Me.OutputBGcolorButton, Color.FromArgb(255, 202, 220, 159))  ' dark green
+
+            Case Else
+                ' default
+                SetColor(Me.OutputINKcolorButton, Me.AppConfig.def_Color_OUTPUT_INK)
+                SetColor(Me.OutputBGcolorButton, Me.AppConfig.def_Color_OUTPUT_BG)
+
         End Select
 
     End Sub
@@ -219,160 +334,6 @@ Public Class ConfigWin
         Me.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.Close()
     End Sub
-
-
-
-    Public Function GetBASIC_CommentInstruction_Index(value As String) As Integer
-        If value.ToUpper = "REM" Then
-            Return 0
-        Else
-            Return 1
-        End If
-    End Function
-
-
-
-    Private Sub BASICinitLineText_Validating(sender As System.Object, e As System.ComponentModel.CancelEventArgs) Handles BASICinitLineTextBox.Validating
-        Dim value As Integer
-
-        If Not IsNumeric(Me.BASICinitLineTextBox.Text) Then
-            value = 1000
-        Else
-            value = CInt(Me.BASICinitLineTextBox.Text)
-
-            If value > 30000 Then
-                value = 1000
-            ElseIf value < 1 Then
-                value = 1
-            End If
-        End If
-
-        Me.BASICinitLineTextBox.Text = CStr(value)
-    End Sub
-
-
-
-    Private Sub BASICincLineslTextBox_Validating(sender As System.Object, e As System.ComponentModel.CancelEventArgs) Handles BASICincLineslTextBox.Validating
-        Dim value As Integer
-
-        If Not IsNumeric(Me.BASICincLineslTextBox.Text) Then
-            value = 10
-        Else
-            value = CInt(Me.BASICincLineslTextBox.Text)
-
-            If value > 255 Then
-                value = 255
-            ElseIf value < 1 Then
-                value = 1
-            End If
-        End If
-
-        Me.BASICincLineslTextBox.Text = CStr(value)
-    End Sub
-
-
-
-    Private Sub Color0Button_Click(sender As Object, e As EventArgs) Handles Color0Button.Click, GridColorButton.Click, OutputINKcolorButton.Click, OutputBGcolorButton.Click
-        Dim aButtom As Button = CType(sender, Button)
-        Me.ColorDialog1.Color = aButtom.BackColor
-        Me.ColorDialog1.ShowDialog()
-        SetColor(aButtom, Me.ColorDialog1.Color)
-    End Sub
-
-
-
-    'Private Sub GridColorButton_Click(sender As Object, e As EventArgs) Handles GridColorButton.Click
-    '    Me.ColorDialog1.Color = Me.GridColorButton.BackColor
-    '    Me.ColorDialog1.ShowDialog()
-    '    SetColor(Me.GridColorButton, Me.ColorDialog1.Color)
-    'End Sub
-
-
-    'Private Sub OutputINKcolorButton_Click(sender As Object, e As EventArgs) Handles OutputINKcolorButton.Click
-
-    'End Sub
-
-    'Private Sub OutputBGcolorButton_Click(sender As Object, e As EventArgs) Handles OutputBGcolorButton.Click
-
-    'End Sub
-
-
-
-    Private Sub SetColor(ByRef aButton As Button, ByVal newColor As Color)
-        aButton.BackColor = newColor
-        aButton.Text = newColor.Name
-        If newColor.GetBrightness > 0.7 Then
-            aButton.ForeColor = Color.Black
-        Else
-            aButton.ForeColor = Color.White
-        End If
-    End Sub
-
-
-
-    'Private Sub SetZeroColor(ByVal newColor As Color)
-    '    Me.Color0Button.BackColor = newColor
-    '    Me.Color0Button.Text = newColor.Name
-    '    If newColor.GetBrightness > 0.7 Then
-    '        Me.Color0Button.ForeColor = Color.Black
-    '    Else
-    '        Me.Color0Button.ForeColor = Color.White
-    '    End If
-    'End Sub
-
-
-
-    'Private Sub SetGridColor(ByVal newColor As Color)
-    '    Me.GridColorButton.BackColor = newColor
-    '    Me.GridColorButton.Text = newColor.Name
-    '    If newColor.GetBrightness > 0.7 Then
-    '        Me.GridColorButton.ForeColor = Color.Black
-    '    Else
-    '        Me.GridColorButton.ForeColor = Color.White
-    '    End If
-    'End Sub
-
-
-
-    Private Sub AsmByteValuesComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles AsmByteValuesComboBox.SelectedIndexChanged
-        AsmByteDataTextBox.Text = AsmByteValuesComboBox.SelectedItem
-    End Sub
-
-
-
-    Private Sub AsmWordComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles AsmWordValuesComboBox.SelectedIndexChanged
-        AsmWordDataTextBox.Text = AsmWordValuesComboBox.SelectedItem
-    End Sub
-
-
-
-    Private Sub ColorConfigsComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ColorConfigsComboBox.SelectedIndexChanged
-
-        Select Case ColorConfigsComboBox.SelectedIndex
-            Case 1
-                ' blue MSX BASIC
-                SetColor(Me.OutputINKcolorButton, Color.FromArgb(255, 255, 255, 255))   'White
-                SetColor(Me.OutputBGcolorButton, Color.FromArgb(255, 84, 85, 237))      'TMS9918A Dark Blue
-
-            Case 2
-                ' green GB
-                SetColor(Me.OutputINKcolorButton, Color.FromArgb(255, 15, 56, 15))      ' dark green
-                SetColor(Me.OutputBGcolorButton, Color.FromArgb(255, 202, 220, 159))    ' light green
-
-            Case 3
-                ' green TMS9918A
-                SetColor(Me.OutputINKcolorButton, Color.FromArgb(255, 116, 208, 125))   ' light green
-                SetColor(Me.OutputBGcolorButton, Color.FromArgb(255, 45, 92, 48))      ' dark green (58, 162, 65)
-
-            Case Else
-                ' default
-                SetColor(Me.OutputINKcolorButton, Me.AppConfig.def_Color_OUTPUT_INK)
-                SetColor(Me.OutputBGcolorButton, Me.AppConfig.def_Color_OUTPUT_BG)
-
-        End Select
-
-    End Sub
-
 
 
 End Class

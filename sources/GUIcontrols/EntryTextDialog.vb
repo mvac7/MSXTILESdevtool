@@ -47,5 +47,5 @@ Public Class EntryTextDialog
         Me.Close()
     End Sub
 
-   
+
 End Class

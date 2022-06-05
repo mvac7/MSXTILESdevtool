@@ -51,5 +51,4 @@ Public Class ProjectPropertiesDialog
     End Function
 
 
-
 End Class
