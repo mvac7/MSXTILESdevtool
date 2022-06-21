@@ -47,7 +47,11 @@ Public Class OutputDataWin
             For i As Integer = 1 To Me.Project.Count
                 Me.PaletteComboBox.Items.Add(CStr(i) + " - " + Me.Project.GetPalette(i).Name)
             Next
-            Me.PaletteComboBox.SelectedIndex = Me.Project.GetIndexFromID(Me._selectedID)
+            If Me._selectedID = 0 Then
+                Me.PaletteComboBox.SelectedIndex = 1
+            Else
+                Me.PaletteComboBox.SelectedIndex = Me.Project.GetIndexFromID(Me._selectedID)
+            End If
         End If
 
         OutputText.ForeColor = Me.AppConfig.Color_OUTPUT_INK
@@ -55,6 +59,7 @@ Public Class OutputDataWin
 
         'Me.DataTypeInput.EnableDataSizeLine = True
         Me.DataTypeInput.InitControl(Me.AppConfig)
+        Me.DataTypeInput.SizeLineIndex = -1
 
         Me.RGBformatComboBox.SelectedIndex = 0
 
@@ -62,25 +67,13 @@ Public Class OutputDataWin
         AddHandler DataTypeInput.DataChanged, AddressOf Me.DataTypeInput_DataChanged
         AddHandler PaletteComboBox.SelectedIndexChanged, AddressOf Me.PaletteComboBox_SelectedIndexChanged
 
+        genData()
+
     End Sub
 
 
 
-    'Public Sub reset()
-    '    'me.LineNumberText.Text = "10000"
-    '    'Me.IntervalText.Text = "10"
-    'End Sub
-
-
-
-    Private Sub ExitButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExitButton.Click
-        Me.DialogResult = System.Windows.Forms.DialogResult.OK
-        Me.Close()
-    End Sub
-
-
-
-    Private Sub GetDataButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GetDataButton.Click
+    Private Sub GetDataButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         genData()
     End Sub
 
@@ -123,14 +116,14 @@ Public Class OutputDataWin
 
         Dim comments As New ArrayList
 
+        Dim dataCommand As String
+
         Dim tmpData As Byte()
 
         Dim paletteFirst As Integer = 0
         Dim paletteLast As Integer = 0
 
         Dim paletteNumber As Integer
-
-        'Dim aRLE As New RLE
 
         Dim sizeline As Integer
 
@@ -140,34 +133,6 @@ Public Class OutputDataWin
         Me.outputData.Clear()
 
 
-
-        ' first comment
-        'Select Case Me.DataTypeInput.CodeLanguage
-        '    Case MSXDataFormat.OutputFormat.C
-        '        _outputText = "// Project: " + Me.Info.Name + vbNewLine
-        '        _outputText += "// " + CommentDataFormat + vbNewLine
-
-        '        'Case MSXDataFormat.OutputFormat.ASM
-        '        '    _outputText = "; " + Me._paletteProject.Name + vbNewLine
-
-        '        'Case MSXDataFormat.OutputFormat.ASM_SDCC
-
-
-        '    Case MSXDataFormat.OutputFormat.BASIC
-        '        _outputText = CStr(LineNumber) + " REM " + Me.Info.Name + vbNewLine
-        '        LineNumber += Me.DataTypeInput.BASICInterval
-        '        _outputText += CStr(LineNumber) + " REM " + CommentDataFormat + vbNewLine
-        '        LineNumber += Me.DataTypeInput.BASICInterval
-        '        Me.aMSXDataFormat.lastLineNumber = LineNumber
-
-        '    Case Else
-        '        _outputText = "; Project: " + Me.Info.Name + vbNewLine
-        '        _outputText += "; " + CommentDataFormat + vbNewLine
-
-        'End Select
-
-
-
         If Me.RGBformatComboBox.SelectedIndex = 0 Then
             CommentDataFormat = "RB,G"
         Else
@@ -175,7 +140,7 @@ Public Class OutputDataWin
         End If
 
 
-
+        comments.Add(My.Application.Info.ProductName + " v" + My.Application.Info.Version.ToString)
         comments.Add("Project: " + Me.Info.Name)
         comments.Add(CommentDataFormat)
 
@@ -197,11 +162,17 @@ Public Class OutputDataWin
         End If
 
 
-
         ' Assembler Index Labels
         If PaletteComboBox.SelectedIndex = 0 And Me.DataTypeInput.CodeLanguage = DataFormat.ProgrammingLanguage.ASSEMBLER And Me.DataTypeInput.ASMaddIndex Then
             _outputText += "PALETTE_INDEX:" + vbNewLine
-            _outputText += Me.AppConfig.lastAsmWordDataCommand + " "
+            '_outputText += Me.AppConfig.lastAsmWordDataCommand + " "
+            dataCommand = Me.AppConfig.lastAsmWordDataCommand
+            If dataCommand.ToLower.StartsWith("<tab>") Then
+                _outputText += vbTab + dataCommand.Substring(5) + " "
+            Else
+                _outputText += dataCommand + " "
+            End If
+
             For paletteNumber = paletteFirst To paletteLast - 1
                 _outputText += Me.aMSXDataFormat.GetAsmFieldFormat(Me.Project.GetPalette(paletteNumber).Name) + ","
             Next
@@ -210,21 +181,13 @@ Public Class OutputDataWin
         End If
 
 
-
-        If Me.DataTypeInput.SizeLineIndex = 0 Then
+        sizeline = DataTypeInput.SizeLine
+        If sizeline = -1 Then
             ' item
             If RGBformatComboBox.SelectedIndex = 0 Then
                 sizeline = 2
             Else
                 sizeline = 3
-            End If
-
-        Else
-            ' one line
-            If RGBformatComboBox.SelectedIndex = 0 Then
-                sizeline = 32
-            Else
-                sizeline = 48
             End If
         End If
 
@@ -394,6 +357,14 @@ Public Class OutputDataWin
 
     End Sub
 
+
+
+    Private Sub OutputDataWin_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
+        If e.KeyCode = Keys.Escape Then
+            Me.DialogResult = System.Windows.Forms.DialogResult.OK
+            Me.Close()
+        End If
+    End Sub
 
 
 End Class

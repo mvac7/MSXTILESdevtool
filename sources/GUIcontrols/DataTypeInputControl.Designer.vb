@@ -80,7 +80,7 @@ Partial Class DataTypeInputControl
         Me.AddIndexCheck.BackColor = System.Drawing.Color.Transparent
         Me.AddIndexCheck.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.AddIndexCheck.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.AddIndexCheck.Location = New System.Drawing.Point(33, 87)
+        Me.AddIndexCheck.Location = New System.Drawing.Point(31, 88)
         Me.AddIndexCheck.Name = "AddIndexCheck"
         Me.AddIndexCheck.Size = New System.Drawing.Size(90, 18)
         Me.AddIndexCheck.TabIndex = 269

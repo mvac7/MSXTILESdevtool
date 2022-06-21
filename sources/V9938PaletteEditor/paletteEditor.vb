@@ -838,16 +838,16 @@ Public Class paletteEditor
 
     Private Sub NewPalette(newPalette As PaletteV9938)
 
-        Dim _configPalette As New ConfigPaletteDialog
+        Dim _configPalette As EntryTextDialog
         Dim newName As String
         Dim aCommonFunctions As New CommonFunctions
 
         newName = aCommonFunctions.GetNameWithNumberByRepetition(newPalette.Name, Me.Palettes.GetNameList())
 
-        _configPalette.Name = newName
+        _configPalette = New EntryTextDialog(newName)
 
         If _configPalette.ShowDialog = DialogResult.OK Then
-            newPalette.Name = _configPalette.Name
+            newPalette.Name = _configPalette.TextValue
             If Not Me.Palettes.Add(newPalette) < -1 Then
                 RefreshPaletteSelector()
                 SelectPaletteByID(newPalette.ID)
@@ -883,13 +883,12 @@ Public Class paletteEditor
 
 
     Private Sub ConfigPalette()
-        Dim _configPalette As New ConfigPaletteDialog(Me.edit_Palette.Name)
+        Dim _configPalette As New EntryTextDialog(Me.edit_Palette.Name)
 
         If Me.edit_Palette.Type = iPaletteMSX.VDP.V9938 Then
 
             If _configPalette.ShowDialog = DialogResult.OK Then
-                Me.Palettes.ChangeName(Me.edit_Palette.ID, _configPalette.Name)
-                'Me.edit_Palette.Name = _configPalette.Name
+                Me.Palettes.ChangeName(Me.edit_Palette.ID, _configPalette.TextValue)
                 RefreshPaletteSelector()
                 SelectPaletteByID(Me.edit_Palette.ID)
             End If

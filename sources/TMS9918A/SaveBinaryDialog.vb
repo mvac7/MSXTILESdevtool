@@ -61,7 +61,7 @@ Public Class SaveBinaryDialog
         '    FileNameTextBox.Text = Path.GetFileName(Me.FilePath)
         'End If
 
-        SaveButton.Select() 'foco
+        Save_Button.Select() 'foco
 
     End Sub
 
@@ -162,14 +162,7 @@ Public Class SaveBinaryDialog
 
 
 
-    Private Sub Cancel_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Cancel_Button.Click
-        Me.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.Close()
-    End Sub
-
-
-
-    Private Sub SaveButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SaveButton.Click
+    Private Sub Save_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Save_Button.Click
 
         'If Me.FilePath = "" Then
         Me.SaveFileDialog1.FileName = Me.ProjectName
@@ -229,7 +222,5 @@ Public Class SaveBinaryDialog
 
         Return tmpExtension
     End Function
-
-
 
 End Class

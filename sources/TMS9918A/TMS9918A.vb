@@ -698,37 +698,70 @@ Public Class TMS9918A
 
 
 
+
     ''' <summary>
     ''' Restore the color palette from the VRAM Color Table. For G2 and G3 graphics modes on the VDP V9938.
     ''' Same as MSX BASIC v2 "COLOR = RESTORE"
     ''' </summary>
-    ''' <remarks></remarks>
-    Public Sub RestoreColorPalette() 'SetVRAMPalette
+    ''' <returns></returns>
+    Public Function RestoreColorPalette() As Boolean
         Dim data As Byte()
 
         data = GetPaletteDataFromVRAM()
 
-        Me.Palette.SetData(data)
+        If Not data Is Nothing Then
+            Me.Palette.SetData(data)
 
-        RaiseEvent PaletteChanged(data)
+            RaiseEvent PaletteChanged(data)
 
-    End Sub
+            Return True
+
+        Else
+            ' The VRAM no contains a color palette data
+            Return False
+        End If
+
+    End Function
 
 
 
     ''' <summary>
     ''' Provides the color palette in an Array from data stored in the VRAM color table.
+    ''' color = 2 Bytes = RB,0G
     ''' </summary>
     ''' <returns></returns>
     ''' <remarks></remarks>
     Public Function GetPaletteDataFromVRAM() As Byte()
         Dim data(31) As Byte
 
-        For i As Integer = 0 To 31
-            data(i) = Me.VRAM(VRAMaddr_PALETTE + i)
+        Dim value As Byte
+        Dim dataPos As Integer = 0
+
+        Dim total As Integer = 0
+
+        For i As Integer = 0 To 15
+            ' RB
+            value = Me.VRAM(VRAMaddr_PALETTE + dataPos)
+            data(dataPos) = value
+            total += value
+            dataPos += 1
+
+            ' 0G
+            value = Me.VRAM(VRAMaddr_PALETTE + dataPos)
+            value = value And 7
+            data(dataPos) = value
+            total += value
+            dataPos += 1
         Next
 
-        Return data
+        If total < 50 Or total > 4049 Then
+            ' The found data is not considered a palette
+            ' (FF+0F) * 15 = 
+            Return Nothing
+        Else
+            Return data
+        End If
+
     End Function
 
 

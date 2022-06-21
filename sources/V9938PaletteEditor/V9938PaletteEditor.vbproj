@@ -65,12 +65,6 @@
     <Compile Include="ColorWinSelector.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ConfigPaletteDialog.Designer.vb">
-      <DependentUpon>ConfigPaletteDialog.vb</DependentUpon>
-    </Compile>
-    <Compile Include="ConfigPaletteDialog.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -108,9 +102,6 @@
   <ItemGroup>
     <EmbeddedResource Include="ColorWinSelector.resx">
       <DependentUpon>ColorWinSelector.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ConfigPaletteDialog.resx">
-      <DependentUpon>ConfigPaletteDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -225,6 +216,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\button_Ok.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\button_savebinary.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\button_savesource.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\button_CopyAll.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

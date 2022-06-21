@@ -13,6 +13,7 @@ Public Class EntryTextDialog
     End Property
 
 
+
     Public Sub New(ByVal value As String)
 
         ' Llamada necesaria para el Diseñador de Windows Forms.
@@ -22,6 +23,7 @@ Public Class EntryTextDialog
         Me.NameText.Text = value
 
     End Sub
+
 
 
     Public Sub New(ByVal label As String, ByVal value As String)
@@ -34,6 +36,7 @@ Public Class EntryTextDialog
         Me.NameText.Text = value
 
     End Sub
+
 
 
     Private Sub OK_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK_Button.Click

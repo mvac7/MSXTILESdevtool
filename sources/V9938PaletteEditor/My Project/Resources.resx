@@ -130,20 +130,20 @@
   <data name="dataOutput_24green" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\dataOutput_24green.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="exchange_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\exchange_24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="tick_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tick_24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="flecha8x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\flecha8x16.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="save" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\save.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="undo_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\undo_24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CopyPaste2_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CopyPaste2_24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="tick_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\tick_24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="save" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\save.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="help_x24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\help_x24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -160,11 +160,20 @@
   <data name="button_Cancel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\button_Cancel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="button_savesource" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\button_savesource.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="button_Ok" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\button_Ok.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="trashcan01R_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\trashcan01R_24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Aboud_win_paletteSX" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Aboud_win_paletteSX.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="undo_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\undo_24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="exchange_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\exchange_24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="about_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\about_24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -178,16 +187,16 @@
   <data name="load_24x24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\load_24x24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="button_savebinary" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\button_savebinary.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="target_arrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\target_arrow.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="trashcan01R_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\trashcan01R_24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="save_as3_x24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\save_as3_x24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="button_Ok" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\button_Ok.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="button_CopyAll" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\button_CopyAll.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

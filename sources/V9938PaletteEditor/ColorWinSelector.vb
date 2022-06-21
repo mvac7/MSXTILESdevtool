@@ -317,21 +317,6 @@ Public Class ColorWinSelector
 
 
 
-
-    Private Sub OkButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OkButton.Click
-        Me.DialogResult = System.Windows.Forms.DialogResult.OK
-        Me.palette.SetPalette(Me.workPalette)
-        Me.Close()
-    End Sub
-
-
-    Private Sub CancelButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExitButton.Click
-        Me.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.Close()
-    End Sub
-
-
-
     Private Sub ColorBox_MouseDown(sender As System.Object, e As System.Windows.Forms.MouseEventArgs)
         Dim aButton As Button = sender
         aButton.DoDragDrop(CStr(aButton.TabIndex), DragDropEffects.Copy) ', DragDropEffects.Move)
@@ -365,9 +350,11 @@ Public Class ColorWinSelector
     End Sub
 
 
+    Private Sub OK_Button_Click(sender As Object, e As EventArgs) Handles OK_Button.Click
+        Me.DialogResult = System.Windows.Forms.DialogResult.OK
+        Me.palette.SetPalette(Me.workPalette)
+        Me.Close()
+    End Sub
 
-    
-    
 
-    
 End Class

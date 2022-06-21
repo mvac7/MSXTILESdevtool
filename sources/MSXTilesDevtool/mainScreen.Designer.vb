@@ -404,7 +404,7 @@ Partial Class MainScreen
         Me.PaintToolStrip.Location = New System.Drawing.Point(0, 0)
         Me.PaintToolStrip.Name = "PaintToolStrip"
         Me.PaintToolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.PaintToolStrip.Size = New System.Drawing.Size(32, 400)
+        Me.PaintToolStrip.Size = New System.Drawing.Size(30, 400)
         Me.PaintToolStrip.TabIndex = 274
         Me.PaintToolStrip.Text = "ToolStrip1"
         '
@@ -414,7 +414,7 @@ Partial Class MainScreen
         Me.OptimizeButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.reload_24x24_02
         Me.OptimizeButton.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.OptimizeButton.Name = "OptimizeButton"
-        Me.OptimizeButton.Size = New System.Drawing.Size(30, 28)
+        Me.OptimizeButton.Size = New System.Drawing.Size(28, 28)
         Me.OptimizeButton.Text = "ToolStripButton3"
         Me.OptimizeButton.ToolTipText = "Optimize pattern and color data"
         '
@@ -424,7 +424,7 @@ Partial Class MainScreen
         Me.TilesOrderButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.gradient_up_24
         Me.TilesOrderButton.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.TilesOrderButton.Name = "TilesOrderButton"
-        Me.TilesOrderButton.Size = New System.Drawing.Size(30, 28)
+        Me.TilesOrderButton.Size = New System.Drawing.Size(28, 28)
         Me.TilesOrderButton.ToolTipText = "Generates an ordered map"
         '
         'FillMapButton
@@ -433,7 +433,7 @@ Partial Class MainScreen
         Me.FillMapButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.fill_x24_02
         Me.FillMapButton.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.FillMapButton.Name = "FillMapButton"
-        Me.FillMapButton.Size = New System.Drawing.Size(30, 28)
+        Me.FillMapButton.Size = New System.Drawing.Size(28, 28)
         Me.FillMapButton.Text = "ToolStripButton1"
         Me.FillMapButton.ToolTipText = "Fill an area with the same tile"
         '
@@ -443,7 +443,7 @@ Partial Class MainScreen
         Me.SwitchButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.change_x24_02
         Me.SwitchButton.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.SwitchButton.Name = "SwitchButton"
-        Me.SwitchButton.Size = New System.Drawing.Size(30, 28)
+        Me.SwitchButton.Size = New System.Drawing.Size(28, 28)
         Me.SwitchButton.Text = "ToolStripButton1"
         Me.SwitchButton.ToolTipText = "Write text"
         '
@@ -453,7 +453,7 @@ Partial Class MainScreen
         Me.SwapButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.exchange2_x24
         Me.SwapButton.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.SwapButton.Name = "SwapButton"
-        Me.SwapButton.Size = New System.Drawing.Size(30, 28)
+        Me.SwapButton.Size = New System.Drawing.Size(28, 28)
         '
         'SelectAreaButton
         '
@@ -461,7 +461,7 @@ Partial Class MainScreen
         Me.SelectAreaButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.select_24
         Me.SelectAreaButton.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.SelectAreaButton.Name = "SelectAreaButton"
-        Me.SelectAreaButton.Size = New System.Drawing.Size(30, 28)
+        Me.SelectAreaButton.Size = New System.Drawing.Size(28, 28)
         Me.SelectAreaButton.Text = "ToolStripButton3"
         Me.SelectAreaButton.ToolTipText = "Select area"
         '
@@ -471,7 +471,7 @@ Partial Class MainScreen
         Me.EditPaleteButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.palette3_x24
         Me.EditPaleteButton.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.EditPaleteButton.Name = "EditPaleteButton"
-        Me.EditPaleteButton.Size = New System.Drawing.Size(30, 28)
+        Me.EditPaleteButton.Size = New System.Drawing.Size(28, 28)
         Me.EditPaleteButton.ToolTipText = "Draw the clipboard area"
         '
         'ClearButton
@@ -480,7 +480,7 @@ Partial Class MainScreen
         Me.ClearButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.trashcan01_24p
         Me.ClearButton.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ClearButton.Name = "ClearButton"
-        Me.ClearButton.Size = New System.Drawing.Size(30, 28)
+        Me.ClearButton.Size = New System.Drawing.Size(28, 28)
         Me.ClearButton.Text = "ToolStripButton4"
         Me.ClearButton.ToolTipText = "Clear Map"
         '
@@ -490,7 +490,7 @@ Partial Class MainScreen
         Me.UndoButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.undo_clear
         Me.UndoButton.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.UndoButton.Name = "UndoButton"
-        Me.UndoButton.Size = New System.Drawing.Size(30, 28)
+        Me.UndoButton.Size = New System.Drawing.Size(28, 28)
         Me.UndoButton.Text = "ToolStripButton3"
         Me.UndoButton.ToolTipText = "Undo/Redo"
         '
@@ -500,7 +500,7 @@ Partial Class MainScreen
         Me.BorderColorButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.screen02_24px
         Me.BorderColorButton.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.BorderColorButton.Name = "BorderColorButton"
-        Me.BorderColorButton.Size = New System.Drawing.Size(30, 28)
+        Me.BorderColorButton.Size = New System.Drawing.Size(28, 28)
         Me.BorderColorButton.Text = "ToolStripButton1"
         Me.BorderColorButton.ToolTipText = "Select screen border color." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "It is used to display the color 0."
         '

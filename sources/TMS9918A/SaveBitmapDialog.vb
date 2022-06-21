@@ -146,4 +146,5 @@ Public Class SaveBitmapDialog
         Me.TMS9918Aviewer.SetView(Me.ViewModeComboBox.SelectedIndex)
     End Sub
 
+
 End Class

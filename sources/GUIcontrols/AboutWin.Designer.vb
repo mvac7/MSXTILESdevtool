@@ -30,7 +30,6 @@ Partial Class AboutWin
         Me.copyleftLabel = New System.Windows.Forms.Label()
         Me.versionLabel = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.DescriptionLabel = New System.Windows.Forms.Label()
         Me.OKButton = New System.Windows.Forms.Button()
         Me.LicenseButton = New System.Windows.Forms.Button()
@@ -64,7 +63,7 @@ Partial Class AboutWin
         '
         Me.copyleftLabel.BackColor = System.Drawing.Color.Transparent
         Me.copyleftLabel.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.copyleftLabel.Location = New System.Drawing.Point(156, 120)
+        Me.copyleftLabel.Location = New System.Drawing.Point(156, 122)
         Me.copyleftLabel.Name = "copyleftLabel"
         Me.copyleftLabel.Size = New System.Drawing.Size(408, 18)
         Me.copyleftLabel.TabIndex = 3
@@ -90,23 +89,15 @@ Partial Class AboutWin
         Me.Label1.TabIndex = 8
         Me.Label1.Text = "Version:"
         '
-        'Label2
-        '
-        Me.Label2.BackColor = System.Drawing.Color.Transparent
-        Me.Label2.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(156, 147)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(87, 18)
-        Me.Label2.TabIndex = 10
-        Me.Label2.Text = "Description:"
-        '
         'DescriptionLabel
         '
+        Me.DescriptionLabel.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DescriptionLabel.BackColor = System.Drawing.Color.Transparent
         Me.DescriptionLabel.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DescriptionLabel.Location = New System.Drawing.Point(156, 165)
+        Me.DescriptionLabel.Location = New System.Drawing.Point(156, 156)
         Me.DescriptionLabel.Name = "DescriptionLabel"
-        Me.DescriptionLabel.Size = New System.Drawing.Size(408, 43)
+        Me.DescriptionLabel.Size = New System.Drawing.Size(436, 50)
         Me.DescriptionLabel.TabIndex = 11
         Me.DescriptionLabel.Text = "description..."
         '
@@ -187,7 +178,6 @@ Partial Class AboutWin
         Me.Controls.Add(Me.LicenseButton)
         Me.Controls.Add(Me.OKButton)
         Me.Controls.Add(Me.DescriptionLabel)
-        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.versionLabel)
         Me.Controls.Add(Me.copyleftLabel)
@@ -212,7 +202,6 @@ Partial Class AboutWin
     Friend WithEvents versionLabel As System.Windows.Forms.Label
     Friend WithEvents LicenseButton As System.Windows.Forms.Button
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents Label2 As Label
     Friend WithEvents DescriptionLabel As Label
     Friend WithEvents LogoPictureBox As PictureBox
     Friend WithEvents iconPictureBox As PictureBox

@@ -127,11 +127,11 @@
   <data name="new" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\new.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="button_convert" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\button_convert.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="load_24x24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\load_24x24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="tick_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\tick_24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="panel_Advanced" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\panel_Advanced.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="flecha8x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\flecha8x16.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -144,6 +144,9 @@
   </data>
   <data name="cursor_dropper" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cursor_dropper.cur;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="exchange_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\exchange_24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="source_arrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\source_arrow.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -160,14 +163,14 @@
   <data name="cursor_draw02" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cursor_draw02.cur;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="exchange_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\exchange_24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="button_convert" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\button_convert.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="copy_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\copy_24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="load_24x24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\load_24x24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="tick_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tick_24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="target_arrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\target_arrow.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -178,7 +181,7 @@
   <data name="cursor_draw01" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cursor_draw01.cur;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="panel_Advanced" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\panel_Advanced.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="button_save" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\button_save.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

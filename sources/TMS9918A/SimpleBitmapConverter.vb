@@ -98,7 +98,7 @@
     ''' </summary>
     ''' <param name="sourceBitmap"></param>
     ''' <remarks></remarks>
-    Public Function GetScreenFromBitmap(ByVal sourceBitmap As Bitmap) As Byte() ', ByVal backgroundColor As Byte)
+    Public Function GetScreenFromBitmap(ByVal sourceBitmap As Bitmap, ByVal backgroundColor As Byte) As Byte() ', ByVal backgroundColor As Byte)
         Dim aColor As Color
         Dim myBitmap4b = New Bitmap(TMSWIDTH, TMSHEIGHT)
         Dim pixelscreen(TMSWIDTH, TMSHEIGHT) As Byte
@@ -135,7 +135,7 @@
 
                     'contar colores y ordenar de mayor a menor
                     'coger los dos colores que más se repiten
-                    aMSXColor = getFGBGColors(aPixelColor, aMSXColor.BackGround) 'backgroundColor)
+                    aMSXColor = getFGBGColors(aPixelColor, aMSXColor.BackGround, backgroundColor)
 
                     'generar el patron
                     'recorre los 8 puntos de una linea
@@ -148,7 +148,7 @@
                         ElseIf aPixelColor(i) = aMSXColor.ForeGround Then
                             aPixelPattern(i) = True
                         Else
-                            ' convierte a FG o BG
+                            ' convierte a Ink o BG
                             If isRed(aMSXColor.ForeGround) And isRed(aPixelColor(i)) Then
                                 aPixelPattern(i) = True
                             ElseIf isGreen(aMSXColor.ForeGround) And isGreen(aPixelColor(i)) Then
@@ -195,7 +195,47 @@
 
 
 
-    Private Function getFGBGColors(ByVal a8Pixel() As Byte, ByVal backgroundColor As Byte) As ColorByte
+    ''' <summary>
+    ''' Get the most used color in a picture
+    ''' </summary>
+    ''' <returns></returns>
+    Public Function GetMostUsedColor(ByVal sourceBitmap As Bitmap) As Byte
+
+        Dim resultColor As Byte
+        Dim total As Integer
+
+        Dim posx As Integer
+        Dim posy As Integer
+
+        Dim aColor As Color
+
+        Dim colorCounters(16) As Integer
+
+        For i As Integer = 0 To 15
+            colorCounters(i) = 0
+        Next
+
+        For posy = 0 To 191
+            For posx = 0 To 255
+                aColor = sourceBitmap.GetPixel(posx, posy)
+                colorCounters(getMSXColor(aColor)) += 1
+            Next
+        Next
+
+        For i As Integer = 0 To 15
+            If colorCounters(i) > total Then
+                resultColor = i
+                total = colorCounters(i)
+            End If
+        Next
+
+        Return resultColor
+
+    End Function
+
+
+
+    Private Function getFGBGColors(ByVal a8Pixel() As Byte, ByVal lastColor As Byte, ByVal backgroundColor As Byte) As ColorByte
         Dim aColorByte As New ColorByte
         Dim aColorList As New SortedList()
         Dim aSortedColorList() As ColorItem
@@ -216,7 +256,7 @@
 
         If aColorList.Count = 1 Then
             ' si solo hay un color
-            aColorByte.BackGround = backgroundColor '1
+            aColorByte.BackGround = lastColor
             aColorByte.ForeGround = aSortedColorList(0).Color
             'If Not aSortedColorList(0).Color = backgroundColor Then
             '    aColorByte.ForeGround = aSortedColorList(0).Color
@@ -230,15 +270,20 @@
 
         Else
             ' mas de un color, se ordenan de mayor a menor
-            If aSortedColorList(1).Color = backgroundColor Then ' 1
+            If aSortedColorList(1).Color = lastColor Then ' 1
                 'tiene prioridad el 1 (negro) como fondo
-                aColorByte.BackGround = backgroundColor ' 1
+                aColorByte.BackGround = lastColor ' 1
                 aColorByte.ForeGround = aSortedColorList(0).Color
             Else
                 aColorByte.BackGround = aSortedColorList(0).Color
                 aColorByte.ForeGround = aSortedColorList(1).Color
             End If
 
+        End If
+
+        If aColorByte.ForeGround = backgroundColor Then
+            aColorByte.ForeGround = aColorByte.BackGround
+            aColorByte.BackGround = backgroundColor
         End If
 
         Return aColorByte

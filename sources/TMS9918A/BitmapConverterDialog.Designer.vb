@@ -31,54 +31,64 @@ Partial Class BitmapConverterDialog
         Me.ToleranceTextBox = New System.Windows.Forms.TextBox()
         Me.DetailTextBox = New System.Windows.Forms.TextBox()
         Me.PictureNameTextBox = New System.Windows.Forms.TextBox()
-        Me.ConversionTypeComboBox = New System.Windows.Forms.ComboBox()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.OkPanel = New System.Windows.Forms.Panel()
-        Me.ConvertButton = New System.Windows.Forms.Button()
-        Me.AdvancedPanel = New System.Windows.Forms.Panel()
-        Me.OK_Button = New System.Windows.Forms.Button()
-        Me.Cancel_Button = New System.Windows.Forms.Button()
         Me.info2PictureBox = New System.Windows.Forms.PictureBox()
         Me.info1PictureBox = New System.Windows.Forms.PictureBox()
+        Me.BGColorButton = New mSXdevtools.GUI.Controls.ColorButton()
+        Me.AboutLabel = New System.Windows.Forms.Label()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.OkPanel = New System.Windows.Forms.Panel()
+        Me.OK_Button = New System.Windows.Forms.Button()
+        Me.Cancel_Button = New System.Windows.Forms.Button()
+        Me.ConvertButton = New System.Windows.Forms.Button()
+        Me.AdvancedPanel = New System.Windows.Forms.Panel()
         Me.ViewPictureBox = New System.Windows.Forms.PictureBox()
+        Me.SimpleTabButton = New System.Windows.Forms.Button()
+        Me.TabImageList = New System.Windows.Forms.ImageList(Me.components)
+        Me.AdvancedTabButton = New System.Windows.Forms.Button()
+        Me.SimplePanel = New System.Windows.Forms.Panel()
+        Me.BGcolorLabel = New System.Windows.Forms.Label()
         Me.TMS9918Aviewer = New mSXdevtools.GUI.TMS9918A.TMS9918A()
         CType(Me.ToleranceTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DetailTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.OkPanel.SuspendLayout()
-        Me.AdvancedPanel.SuspendLayout()
         CType(Me.info2PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.info1PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.OkPanel.SuspendLayout()
+        Me.AdvancedPanel.SuspendLayout()
         CType(Me.ViewPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SimplePanel.SuspendLayout()
         Me.SuspendLayout()
         '
         'ToleranceTrackBar
         '
+        Me.ToleranceTrackBar.AutoSize = False
         Me.ToleranceTrackBar.LargeChange = 10
-        Me.ToleranceTrackBar.Location = New System.Drawing.Point(110, 24)
+        Me.ToleranceTrackBar.Location = New System.Drawing.Point(110, 13)
         Me.ToleranceTrackBar.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.ToleranceTrackBar.Maximum = 100
         Me.ToleranceTrackBar.Name = "ToleranceTrackBar"
-        Me.ToleranceTrackBar.Size = New System.Drawing.Size(320, 45)
+        Me.ToleranceTrackBar.Size = New System.Drawing.Size(320, 33)
         Me.ToleranceTrackBar.TabIndex = 1
         Me.ToleranceTrackBar.TickFrequency = 10
         '
         'DetailTrackBar
         '
+        Me.DetailTrackBar.AutoSize = False
         Me.DetailTrackBar.LargeChange = 10
-        Me.DetailTrackBar.Location = New System.Drawing.Point(110, 75)
+        Me.DetailTrackBar.Location = New System.Drawing.Point(110, 52)
         Me.DetailTrackBar.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.DetailTrackBar.Maximum = 255
         Me.DetailTrackBar.Minimum = 1
         Me.DetailTrackBar.Name = "DetailTrackBar"
-        Me.DetailTrackBar.Size = New System.Drawing.Size(320, 45)
+        Me.DetailTrackBar.Size = New System.Drawing.Size(320, 33)
         Me.DetailTrackBar.TabIndex = 2
         Me.DetailTrackBar.TickFrequency = 25
         Me.DetailTrackBar.Value = 1
         '
         'ToleranceLabel
         '
-        Me.ToleranceLabel.Location = New System.Drawing.Point(9, 24)
+        Me.ToleranceLabel.Location = New System.Drawing.Point(9, 13)
         Me.ToleranceLabel.Name = "ToleranceLabel"
         Me.ToleranceLabel.Size = New System.Drawing.Size(94, 24)
         Me.ToleranceLabel.TabIndex = 3
@@ -87,7 +97,7 @@ Partial Class BitmapConverterDialog
         '
         'DetailLabel
         '
-        Me.DetailLabel.Location = New System.Drawing.Point(9, 75)
+        Me.DetailLabel.Location = New System.Drawing.Point(9, 52)
         Me.DetailLabel.Name = "DetailLabel"
         Me.DetailLabel.Size = New System.Drawing.Size(94, 24)
         Me.DetailLabel.TabIndex = 4
@@ -98,7 +108,7 @@ Partial Class BitmapConverterDialog
         '
         Me.ToleranceTextBox.BackColor = System.Drawing.Color.WhiteSmoke
         Me.ToleranceTextBox.ForeColor = System.Drawing.Color.Black
-        Me.ToleranceTextBox.Location = New System.Drawing.Point(434, 24)
+        Me.ToleranceTextBox.Location = New System.Drawing.Point(434, 13)
         Me.ToleranceTextBox.Name = "ToleranceTextBox"
         Me.ToleranceTextBox.Size = New System.Drawing.Size(50, 22)
         Me.ToleranceTextBox.TabIndex = 5
@@ -109,7 +119,7 @@ Partial Class BitmapConverterDialog
         '
         Me.DetailTextBox.BackColor = System.Drawing.Color.WhiteSmoke
         Me.DetailTextBox.ForeColor = System.Drawing.Color.Black
-        Me.DetailTextBox.Location = New System.Drawing.Point(434, 73)
+        Me.DetailTextBox.Location = New System.Drawing.Point(434, 50)
         Me.DetailTextBox.Name = "DetailTextBox"
         Me.DetailTextBox.Size = New System.Drawing.Size(50, 22)
         Me.DetailTextBox.TabIndex = 6
@@ -119,35 +129,70 @@ Partial Class BitmapConverterDialog
         'PictureNameTextBox
         '
         Me.PictureNameTextBox.BackColor = System.Drawing.Color.Gainsboro
+        Me.PictureNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureNameTextBox.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.PictureNameTextBox.ForeColor = System.Drawing.Color.Black
         Me.PictureNameTextBox.Location = New System.Drawing.Point(15, 8)
         Me.PictureNameTextBox.Name = "PictureNameTextBox"
         Me.PictureNameTextBox.ReadOnly = True
-        Me.PictureNameTextBox.Size = New System.Drawing.Size(530, 22)
+        Me.PictureNameTextBox.Size = New System.Drawing.Size(530, 23)
         Me.PictureNameTextBox.TabIndex = 13
-        '
-        'ConversionTypeComboBox
-        '
-        Me.ConversionTypeComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.ConversionTypeComboBox.FormattingEnabled = True
-        Me.ConversionTypeComboBox.Items.AddRange(New Object() {"Simple (Fast)", "Advanced (Slow)"})
-        Me.ConversionTypeComboBox.Location = New System.Drawing.Point(289, 248)
-        Me.ConversionTypeComboBox.Name = "ConversionTypeComboBox"
-        Me.ConversionTypeComboBox.Size = New System.Drawing.Size(256, 22)
-        Me.ConversionTypeComboBox.TabIndex = 15
-        '
-        'Label1
-        '
-        Me.Label1.Location = New System.Drawing.Point(139, 246)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(132, 24)
-        Me.Label1.TabIndex = 16
-        Me.Label1.Text = "Conversion type"
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'ToolTip1
         '
         Me.ToolTip1.IsBalloon = True
+        '
+        'info2PictureBox
+        '
+        Me.info2PictureBox.Image = Global.mSXdevtools.GUI.TMS9918A.My.Resources.Resources.info_blue_16
+        Me.info2PictureBox.Location = New System.Drawing.Point(490, 52)
+        Me.info2PictureBox.Name = "info2PictureBox"
+        Me.info2PictureBox.Size = New System.Drawing.Size(16, 16)
+        Me.info2PictureBox.TabIndex = 13
+        Me.info2PictureBox.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.info2PictureBox, "Detail level (1 to 255)")
+        '
+        'info1PictureBox
+        '
+        Me.info1PictureBox.Image = Global.mSXdevtools.GUI.TMS9918A.My.Resources.Resources.info_blue_16
+        Me.info1PictureBox.Location = New System.Drawing.Point(490, 16)
+        Me.info1PictureBox.Name = "info1PictureBox"
+        Me.info1PictureBox.Size = New System.Drawing.Size(16, 16)
+        Me.info1PictureBox.TabIndex = 12
+        Me.info1PictureBox.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.info1PictureBox, resources.GetString("info1PictureBox.ToolTip"))
+        '
+        'BGColorButton
+        '
+        Me.BGColorButton.Location = New System.Drawing.Point(159, 28)
+        Me.BGColorButton.Margin = New System.Windows.Forms.Padding(9, 3, 9, 3)
+        Me.BGColorButton.Name = "BGColorButton"
+        Me.BGColorButton.Size = New System.Drawing.Size(57, 28)
+        Me.BGColorButton.TabIndex = 258
+        Me.ToolTip1.SetToolTip(Me.BGColorButton, "Color priority to use as a background in the conversion.")
+        '
+        'AboutLabel
+        '
+        Me.AboutLabel.BackColor = System.Drawing.Color.Transparent
+        Me.AboutLabel.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.AboutLabel.ForeColor = System.Drawing.Color.DimGray
+        Me.AboutLabel.Location = New System.Drawing.Point(0, 90)
+        Me.AboutLabel.Name = "AboutLabel"
+        Me.AboutLabel.Size = New System.Drawing.Size(530, 30)
+        Me.AboutLabel.TabIndex = 14
+        Me.AboutLabel.Text = "MSX-GCR 1.0"
+        Me.AboutLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.ToolTip1.SetToolTip(Me.AboutLabel, "MSX-GCR 1.0 (MSX Graphic Conversion Routine) by Leandro Correia")
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = Global.mSXdevtools.GUI.TMS9918A.My.Resources.Resources.info_blue_16
+        Me.PictureBox1.Location = New System.Drawing.Point(224, 34)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(16, 16)
+        Me.PictureBox1.TabIndex = 260
+        Me.PictureBox1.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.PictureBox1, "Color that will always be assigned as the background color.")
         '
         'OkPanel
         '
@@ -155,45 +200,11 @@ Partial Class BitmapConverterDialog
         Me.OkPanel.Controls.Add(Me.OK_Button)
         Me.OkPanel.Controls.Add(Me.Cancel_Button)
         Me.OkPanel.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.OkPanel.Location = New System.Drawing.Point(0, 500)
+        Me.OkPanel.Location = New System.Drawing.Point(0, 576)
         Me.OkPanel.Name = "OkPanel"
         Me.OkPanel.Padding = New System.Windows.Forms.Padding(4)
         Me.OkPanel.Size = New System.Drawing.Size(564, 51)
         Me.OkPanel.TabIndex = 28
-        '
-        'ConvertButton
-        '
-        Me.ConvertButton.BackColor = System.Drawing.Color.Transparent
-        Me.ConvertButton.FlatAppearance.BorderSize = 0
-        Me.ConvertButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.ConvertButton.ForeColor = System.Drawing.Color.LightGray
-        Me.ConvertButton.Image = Global.mSXdevtools.GUI.TMS9918A.My.Resources.Resources.button_convert
-        Me.ConvertButton.Location = New System.Drawing.Point(387, 126)
-        Me.ConvertButton.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.ConvertButton.Name = "ConvertButton"
-        Me.ConvertButton.Size = New System.Drawing.Size(132, 43)
-        Me.ConvertButton.TabIndex = 11
-        Me.ConvertButton.UseVisualStyleBackColor = False
-        '
-        'AdvancedPanel
-        '
-        Me.AdvancedPanel.BackColor = System.Drawing.Color.LightGray
-        Me.AdvancedPanel.BackgroundImage = Global.mSXdevtools.GUI.TMS9918A.My.Resources.Resources.panel_Advanced
-        Me.AdvancedPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.AdvancedPanel.Controls.Add(Me.info2PictureBox)
-        Me.AdvancedPanel.Controls.Add(Me.ToleranceLabel)
-        Me.AdvancedPanel.Controls.Add(Me.info1PictureBox)
-        Me.AdvancedPanel.Controls.Add(Me.DetailLabel)
-        Me.AdvancedPanel.Controls.Add(Me.ConvertButton)
-        Me.AdvancedPanel.Controls.Add(Me.ToleranceTrackBar)
-        Me.AdvancedPanel.Controls.Add(Me.ToleranceTextBox)
-        Me.AdvancedPanel.Controls.Add(Me.DetailTextBox)
-        Me.AdvancedPanel.Controls.Add(Me.DetailTrackBar)
-        Me.AdvancedPanel.ForeColor = System.Drawing.Color.Black
-        Me.AdvancedPanel.Location = New System.Drawing.Point(15, 300)
-        Me.AdvancedPanel.Name = "AdvancedPanel"
-        Me.AdvancedPanel.Size = New System.Drawing.Size(530, 182)
-        Me.AdvancedPanel.TabIndex = 29
         '
         'OK_Button
         '
@@ -228,25 +239,39 @@ Partial Class BitmapConverterDialog
         Me.Cancel_Button.TabIndex = 280
         Me.Cancel_Button.UseVisualStyleBackColor = False
         '
-        'info2PictureBox
+        'ConvertButton
         '
-        Me.info2PictureBox.Image = Global.mSXdevtools.GUI.TMS9918A.My.Resources.Resources.info_blue_16
-        Me.info2PictureBox.Location = New System.Drawing.Point(490, 75)
-        Me.info2PictureBox.Name = "info2PictureBox"
-        Me.info2PictureBox.Size = New System.Drawing.Size(16, 16)
-        Me.info2PictureBox.TabIndex = 13
-        Me.info2PictureBox.TabStop = False
-        Me.ToolTip1.SetToolTip(Me.info2PictureBox, "Detail level (1 to 255)")
+        Me.ConvertButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ConvertButton.BackColor = System.Drawing.Color.Transparent
+        Me.ConvertButton.FlatAppearance.BorderSize = 0
+        Me.ConvertButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ConvertButton.ForeColor = System.Drawing.Color.LightGray
+        Me.ConvertButton.Image = Global.mSXdevtools.GUI.TMS9918A.My.Resources.Resources.button_convert
+        Me.ConvertButton.Location = New System.Drawing.Point(413, 515)
+        Me.ConvertButton.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.ConvertButton.Name = "ConvertButton"
+        Me.ConvertButton.Size = New System.Drawing.Size(132, 43)
+        Me.ConvertButton.TabIndex = 11
+        Me.ConvertButton.UseVisualStyleBackColor = False
         '
-        'info1PictureBox
+        'AdvancedPanel
         '
-        Me.info1PictureBox.Image = Global.mSXdevtools.GUI.TMS9918A.My.Resources.Resources.info_blue_16
-        Me.info1PictureBox.Location = New System.Drawing.Point(490, 27)
-        Me.info1PictureBox.Name = "info1PictureBox"
-        Me.info1PictureBox.Size = New System.Drawing.Size(16, 16)
-        Me.info1PictureBox.TabIndex = 12
-        Me.info1PictureBox.TabStop = False
-        Me.ToolTip1.SetToolTip(Me.info1PictureBox, resources.GetString("info1PictureBox.ToolTip"))
+        Me.AdvancedPanel.BackColor = System.Drawing.Color.Silver
+        Me.AdvancedPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.AdvancedPanel.Controls.Add(Me.AboutLabel)
+        Me.AdvancedPanel.Controls.Add(Me.info2PictureBox)
+        Me.AdvancedPanel.Controls.Add(Me.ToleranceLabel)
+        Me.AdvancedPanel.Controls.Add(Me.info1PictureBox)
+        Me.AdvancedPanel.Controls.Add(Me.DetailLabel)
+        Me.AdvancedPanel.Controls.Add(Me.ToleranceTrackBar)
+        Me.AdvancedPanel.Controls.Add(Me.ToleranceTextBox)
+        Me.AdvancedPanel.Controls.Add(Me.DetailTextBox)
+        Me.AdvancedPanel.Controls.Add(Me.DetailTrackBar)
+        Me.AdvancedPanel.ForeColor = System.Drawing.Color.Black
+        Me.AdvancedPanel.Location = New System.Drawing.Point(15, 386)
+        Me.AdvancedPanel.Name = "AdvancedPanel"
+        Me.AdvancedPanel.Size = New System.Drawing.Size(530, 120)
+        Me.AdvancedPanel.TabIndex = 29
         '
         'ViewPictureBox
         '
@@ -257,6 +282,64 @@ Partial Class BitmapConverterDialog
         Me.ViewPictureBox.Size = New System.Drawing.Size(256, 192)
         Me.ViewPictureBox.TabIndex = 0
         Me.ViewPictureBox.TabStop = False
+        '
+        'SimpleTabButton
+        '
+        Me.SimpleTabButton.BackColor = System.Drawing.Color.Transparent
+        Me.SimpleTabButton.FlatAppearance.BorderSize = 0
+        Me.SimpleTabButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.SimpleTabButton.ImageIndex = 0
+        Me.SimpleTabButton.ImageList = Me.TabImageList
+        Me.SimpleTabButton.Location = New System.Drawing.Point(14, 247)
+        Me.SimpleTabButton.Name = "SimpleTabButton"
+        Me.SimpleTabButton.Size = New System.Drawing.Size(125, 33)
+        Me.SimpleTabButton.TabIndex = 30
+        Me.SimpleTabButton.UseVisualStyleBackColor = False
+        '
+        'TabImageList
+        '
+        Me.TabImageList.ImageStream = CType(resources.GetObject("TabImageList.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.TabImageList.TransparentColor = System.Drawing.Color.Transparent
+        Me.TabImageList.Images.SetKeyName(0, "tab0_select.png")
+        Me.TabImageList.Images.SetKeyName(1, "tab0_unselect.png")
+        Me.TabImageList.Images.SetKeyName(2, "tab1_select.png")
+        Me.TabImageList.Images.SetKeyName(3, "tab1_unselect.png")
+        '
+        'AdvancedTabButton
+        '
+        Me.AdvancedTabButton.BackColor = System.Drawing.Color.Transparent
+        Me.AdvancedTabButton.FlatAppearance.BorderSize = 0
+        Me.AdvancedTabButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.AdvancedTabButton.ImageIndex = 3
+        Me.AdvancedTabButton.ImageList = Me.TabImageList
+        Me.AdvancedTabButton.Location = New System.Drawing.Point(141, 247)
+        Me.AdvancedTabButton.Name = "AdvancedTabButton"
+        Me.AdvancedTabButton.Size = New System.Drawing.Size(125, 33)
+        Me.AdvancedTabButton.TabIndex = 31
+        Me.AdvancedTabButton.UseVisualStyleBackColor = False
+        '
+        'SimplePanel
+        '
+        Me.SimplePanel.BackColor = System.Drawing.Color.Silver
+        Me.SimplePanel.Controls.Add(Me.PictureBox1)
+        Me.SimplePanel.Controls.Add(Me.BGColorButton)
+        Me.SimplePanel.Controls.Add(Me.BGcolorLabel)
+        Me.SimplePanel.Location = New System.Drawing.Point(15, 280)
+        Me.SimplePanel.Name = "SimplePanel"
+        Me.SimplePanel.Size = New System.Drawing.Size(530, 100)
+        Me.SimplePanel.TabIndex = 32
+        '
+        'BGcolorLabel
+        '
+        Me.BGcolorLabel.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BGcolorLabel.ForeColor = System.Drawing.Color.Black
+        Me.BGcolorLabel.Location = New System.Drawing.Point(9, 31)
+        Me.BGcolorLabel.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
+        Me.BGcolorLabel.Name = "BGcolorLabel"
+        Me.BGcolorLabel.Size = New System.Drawing.Size(146, 22)
+        Me.BGcolorLabel.TabIndex = 259
+        Me.BGcolorLabel.Text = "Background Color:"
+        Me.BGcolorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'TMS9918Aviewer
         '
@@ -283,12 +366,14 @@ Partial Class BitmapConverterDialog
         Me.AcceptButton = Me.ConvertButton
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 14.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.LightGray
-        Me.ClientSize = New System.Drawing.Size(564, 551)
+        Me.BackColor = System.Drawing.Color.Gainsboro
+        Me.ClientSize = New System.Drawing.Size(564, 627)
+        Me.Controls.Add(Me.SimplePanel)
+        Me.Controls.Add(Me.AdvancedTabButton)
         Me.Controls.Add(Me.AdvancedPanel)
+        Me.Controls.Add(Me.SimpleTabButton)
         Me.Controls.Add(Me.OkPanel)
-        Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.ConversionTypeComboBox)
+        Me.Controls.Add(Me.ConvertButton)
         Me.Controls.Add(Me.PictureNameTextBox)
         Me.Controls.Add(Me.TMS9918Aviewer)
         Me.Controls.Add(Me.ViewPictureBox)
@@ -303,12 +388,14 @@ Partial Class BitmapConverterDialog
         Me.Text = "Bitmap Converter"
         CType(Me.ToleranceTrackBar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DetailTrackBar, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.info2PictureBox, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.info1PictureBox, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.OkPanel.ResumeLayout(False)
         Me.AdvancedPanel.ResumeLayout(False)
         Me.AdvancedPanel.PerformLayout()
-        CType(Me.info2PictureBox, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.info1PictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ViewPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.SimplePanel.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -324,8 +411,6 @@ Partial Class BitmapConverterDialog
     Private WithEvents ConvertButton As Button
     Friend WithEvents TMS9918Aviewer As TMS9918A
     Friend WithEvents PictureNameTextBox As TextBox
-    Friend WithEvents ConversionTypeComboBox As ComboBox
-    Friend WithEvents Label1 As Label
     Friend WithEvents ToolTip1 As ToolTip
     Friend WithEvents info1PictureBox As PictureBox
     Friend WithEvents info2PictureBox As PictureBox
@@ -333,4 +418,12 @@ Partial Class BitmapConverterDialog
     Friend WithEvents OK_Button As Button
     Private WithEvents Cancel_Button As Button
     Friend WithEvents AdvancedPanel As Panel
+    Friend WithEvents SimpleTabButton As Button
+    Friend WithEvents AdvancedTabButton As Button
+    Friend WithEvents SimplePanel As Panel
+    Friend WithEvents BGColorButton As ColorButton
+    Friend WithEvents BGcolorLabel As Label
+    Friend WithEvents AboutLabel As Label
+    Friend WithEvents TabImageList As ImageList
+    Friend WithEvents PictureBox1 As PictureBox
 End Class

@@ -86,6 +86,7 @@ Partial Class Palette512Dialog
         'Cancel_Button
         '
         Me.Cancel_Button.BackColor = System.Drawing.Color.Transparent
+        Me.Cancel_Button.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.Cancel_Button.Dock = System.Windows.Forms.DockStyle.Right
         Me.Cancel_Button.FlatAppearance.BorderSize = 0
         Me.Cancel_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat
@@ -104,6 +105,7 @@ Partial Class Palette512Dialog
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.LightGray
+        Me.CancelButton = Me.Cancel_Button
         Me.ClientSize = New System.Drawing.Size(474, 381)
         Me.ControlBox = False
         Me.Controls.Add(Me.OkPanel)

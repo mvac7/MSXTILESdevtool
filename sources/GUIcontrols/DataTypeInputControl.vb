@@ -58,10 +58,16 @@
 
 
 
-    Public ReadOnly Property SizeLineIndex As Integer
+    Public Property SizeLineIndex As Integer
         Get
             Return Me.SizeLineComboBox.SelectedIndex
         End Get
+        Set(value As Integer)
+            If value < 0 Then
+                value = Me.SizeLineComboBox.Items.Count - 1
+            End If
+            Me.SizeLineComboBox.SelectedIndex = value
+        End Set
     End Property
 
 
@@ -116,7 +122,10 @@
     ''' </summary>
     ''' <value></value>
     ''' <remarks></remarks>
-    Public WriteOnly Property EnableAssemblerIndex As Boolean
+    Public Property EnableAssemblerIndex As Boolean
+        Get
+            Return Me._enableAsmIndex
+        End Get
         Set(value As Boolean)
             Me._enableAsmIndex = value
             showIndex()
@@ -229,6 +238,11 @@
 
     End Sub
 
+
+
+    Private Sub DataTypeInputControl_Paint(sender As Object, e As System.Windows.Forms.PaintEventArgs) Handles Me.Paint
+        Me.Size = New System.Drawing.Size(Me.Size.Width, 4 + 111 + 2)
+    End Sub
 
 
 
@@ -361,12 +375,6 @@
 
 
 
-    Private Sub DataTypeInputControl_Paint(sender As Object, e As System.Windows.Forms.PaintEventArgs) Handles Me.Paint
-        Me.Size = New System.Drawing.Size(Me.Size.Width, 4 + 111 + 2)
-    End Sub
-
-
-
     Private Sub LanguageComboBox_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) 'Handles LanguageComboBox.SelectedIndexChanged
         RemoveHandlers()
         Me.AppConfig.lastCodeOutput = Me.LanguageComboBox.SelectedIndex
@@ -491,6 +499,7 @@
 
     Private Sub AddIndexCheck_CheckedChanged(sender As System.Object, e As System.EventArgs) 'Handles AddIndexCheck.CheckedChanged
         ShowWordAsmCommand()
+        RaiseEvent DataChanged()
     End Sub
 
 
@@ -589,6 +598,7 @@
         End If
         RaiseEvent DataChanged()
     End Sub
+
 
 
 End Class
