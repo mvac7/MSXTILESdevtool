@@ -40,6 +40,9 @@
         Me.TMS9918Aviewer.ViewMode = TMS9918A.VIEW_MODE.TILESET
 
         Me.BGColorButton.Palette = Me.TMS9918Aviewer.Palette
+        Me.BorderColorButton.Palette = Me.TMS9918Aviewer.Palette
+
+        Me.BorderColorButton.SetColor(4)
 
     End Sub
 
@@ -64,6 +67,7 @@
 
         'Me.BGColorButton.SetColor(4)
 
+        Me.TMS9918Aviewer.BorderColor = Me.BorderColorButton.SelectedColor
         Me.TMS9918Aviewer.Initialize()
 
     End Sub
@@ -79,8 +83,8 @@
     Private Sub SetConverter(ByVal type As CONVERSION_TYPE)
 
         Me.TMS9918Aviewer.Clear()
-        Me.TMS9918Aviewer.BackgroundColor = 4
-        Me.TMS9918Aviewer.FillVRAM(iVDP.TableBase.GRPCOL, &H1800, &HF4)
+        Me.TMS9918Aviewer.BorderColor = Me.BorderColorButton.SelectedColor
+        'Me.TMS9918Aviewer.FillVRAM(iVDP.TableBase.GRPCOL, &H1800, &HF4)
         Me.TMS9918Aviewer.RefreshScreen()
 
         If type = CONVERSION_TYPE.ADVANCED Then
@@ -257,6 +261,13 @@
 
     Private Sub AdvancedTabButton_Click(sender As Object, e As EventArgs) 'Handles AdvancedTabButton.Click
         SetConverter(CONVERSION_TYPE.ADVANCED)
+    End Sub
+
+
+
+    Private Sub BorderColorButton_ColorChanged(color As Byte) Handles BorderColorButton.ColorChanged
+        Me.TMS9918Aviewer.BorderColor = color
+        Me.TMS9918Aviewer.RefreshScreen()
     End Sub
 
 
