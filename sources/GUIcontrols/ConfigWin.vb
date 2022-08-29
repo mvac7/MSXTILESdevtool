@@ -22,6 +22,7 @@ Public Class ConfigWin
         BYTENIZ3R
         OAMSX
         PAINTSX
+        OTHER
     End Enum
 
 
@@ -42,6 +43,22 @@ Public Class ConfigWin
     Private Sub ConfigWin_Load(sender As Object, e As EventArgs) Handles Me.Load
 
         Select Case Me._type
+            Case CONFIG_TYPE.TMSGFX
+                Me.tMSgfXProjectPathControl.Visible = True
+                Me.SpritesPathControl.Visible = True
+                Me.MapsPathControl.Visible = True
+                Me.TilesetsPathControl.Visible = True
+                Me.SquaredsetsPathControl.Visible = True
+                Me.PalettesPathControl.Visible = True
+                Me.OAMPathControl.Visible = True
+
+                Me.nMSXtilesPathControl.Visible = True
+                Me.MSXBASICPathControl.Visible = True
+                Me.BitmapsPathControl.Visible = True
+                Me.BinaryPathControl.Visible = True
+
+                Me.InitProjectGroupBox.Enabled = True
+
             Case CONFIG_TYPE.BYTENIZ3R
                 Me.BytegenPathControl.Visible = True
                 Me.MSXBASICPathControl.Visible = True
@@ -88,20 +105,7 @@ Public Class ConfigWin
                 Me.PalettesPathControl.Visible = True
 
             Case Else
-                Me.tMSgfXProjectPathControl.Visible = True
-                Me.SpritesPathControl.Visible = True
-                Me.MapsPathControl.Visible = True
-                Me.TilesetsPathControl.Visible = True
-                Me.SquaredsetsPathControl.Visible = True
-                Me.PalettesPathControl.Visible = True
-                Me.OAMPathControl.Visible = True
 
-                Me.nMSXtilesPathControl.Visible = True
-                Me.MSXBASICPathControl.Visible = True
-                Me.BitmapsPathControl.Visible = True
-                Me.BinaryPathControl.Visible = True
-
-                Me.InitProjectGroupBox.Enabled = True
 
         End Select
 
@@ -139,27 +143,29 @@ Public Class ConfigWin
 
         Me.InfoNameTextBox.Text = Me.AppConfig.defAuthor
 
-        If Not Me.AppConfig.PathLastProject = "" Then
-            Me.PathLastPRJTextBox.Text = Path.GetFileName(Me.AppConfig.PathLastProject)
-            Me.ToolTip1.SetToolTip(Me.PathLastPRJTextBox, Me.AppConfig.PathLastProject)
-        End If
-
         SetColor(Me.Color0Button, Me.AppConfig.Color_Zero)
         SetColor(Me.GridColorButton, Me.AppConfig.Color_Grid)
 
         SetColor(Me.OutputINKcolorButton, Me.AppConfig.Color_OUTPUT_INK)
         SetColor(Me.OutputBGcolorButton, Me.AppConfig.Color_OUTPUT_BG)
 
-        Select Case Me.AppConfig.firstProjectType
-            Case Config.FIRST_PROJECT.NEWPROJECT
-                Me.RadioButton2.Checked = True
 
-            Case Config.FIRST_PROJECT.LASTPROJECT
-                Me.RadioButton3.Checked = True
+        'If Not Me.AppConfig.PathLastProject = "" Then
+        '    Me.PathLastPRJTextBox.Text = Path.GetFileName(Me.AppConfig.PathLastProject)
+        '    Me.ToolTip1.SetToolTip(Me.PathLastPRJTextBox, Me.AppConfig.PathLastProject)
+        'End If
 
-            Case Else
-                Me.RadioButton1.Checked = True
-        End Select
+
+        'Select Case Me.AppConfig.firstProjectType
+        '    Case Config.FIRST_PROJECT.NEWPROJECT
+        '        Me.RadioButton2.Checked = True
+
+        '    Case Config.FIRST_PROJECT.LASTPROJECT
+        '        Me.RadioButton3.Checked = True
+
+        '    Case Else
+        '        Me.RadioButton1.Checked = True
+        'End Select
 
     End Sub
 
@@ -313,13 +319,13 @@ Public Class ConfigWin
 
         Me.AppConfig.defAuthor = Me.InfoNameTextBox.Text
 
-        If Me.RadioButton2.Checked = True Then
-            Me.AppConfig.firstProjectType = Config.FIRST_PROJECT.NEWPROJECT
-        ElseIf Me.RadioButton3.Checked = True Then
-            Me.AppConfig.firstProjectType = Config.FIRST_PROJECT.LASTPROJECT
-        Else
-            Me.AppConfig.firstProjectType = Config.FIRST_PROJECT.PRESENTATION
-        End If
+        'If Me.RadioButton2.Checked = True Then
+        '    Me.AppConfig.firstProjectType = Config.FIRST_PROJECT.NEWPROJECT
+        'ElseIf Me.RadioButton3.Checked = True Then
+        '    Me.AppConfig.firstProjectType = Config.FIRST_PROJECT.LASTPROJECT
+        'Else
+        '    Me.AppConfig.firstProjectType = Config.FIRST_PROJECT.PRESENTATION
+        'End If
 
 
         Me.AppConfig.Color_Zero = Me.Color0Button.BackColor

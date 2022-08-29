@@ -217,14 +217,10 @@
     <None Include="Resources\screen02_24px.png" />
     <None Include="Resources\logo_mSXTiles-devtool.png" />
     <None Include="Resources\icon128_mSXTiles-devtool.png" />
-    <None Include="Resources\BG_panel_Area.png" />
-    <None Include="Resources\BG_panel_Range.png" />
-    <None Include="Resources\BG_panel_Data.png" />
     <None Include="Resources\button_CopyAll.png" />
     <None Include="Resources\button_savesource.png" />
     <None Include="Resources\piXel_pane_XL.png" />
     <None Include="Resources\button_savebinary.png" />
-    <None Include="Resources\BG_panel_TileZoom.png" />
     <None Include="Resources\button_generate_pixelS.png" />
     <None Include="Resources\config_x24.png" />
     <None Include="Resources\saveNM_x24.png" />
@@ -234,7 +230,6 @@
     <None Include="Resources\select_24.png" />
     <None Include="Resources\trashcan01_24p.png" />
     <None Include="Resources\undo_clear.png" />
-    <None Include="Resources\Aboud_win_msxTiles.png" />
     <None Include="Resources\V_ruler_16p.png" />
     <None Include="Resources\H_ruler_16p.png" />
     <None Include="Resources\saveSC_x24.png" />
@@ -255,7 +250,6 @@
     <None Include="Resources\invert_x24_02.png" />
     <None Include="Resources\reload_24x24_02.png" />
     <None Include="Resources\about_24.png" />
-    <None Include="Resources\gplv3-88x31.png" />
     <None Include="app.config" />
     <None Include="Resources\auto_16x16.png" />
     <None Include="Resources\help_24.png" />

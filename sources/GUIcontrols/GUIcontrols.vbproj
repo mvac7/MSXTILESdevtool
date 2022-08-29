@@ -123,6 +123,12 @@
     <Compile Include="EditorWin.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="piXelGroupBox.Designer.vb">
+      <DependentUpon>piXelGroupBox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="piXelGroupBox.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="RoundedPanel.vb">
       <SubType>Component</SubType>
     </Compile>
@@ -243,6 +249,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MessageDialog.resx">
       <DependentUpon>MessageDialog.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="piXelGroupBox.resx">
+      <DependentUpon>piXelGroupBox.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SpritePlaneControl.resx">
       <DependentUpon>SpritePlaneControl.vb</DependentUpon>

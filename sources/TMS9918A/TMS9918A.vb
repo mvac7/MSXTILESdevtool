@@ -840,6 +840,31 @@ Public Class TMS9918A
 
 
 
+    Public Sub VPRINT(ByVal column As Byte, ByVal line As Byte, ByVal text As String)
+
+        Dim character As Char
+        Dim vaddr As Integer
+
+        'I do Not check that the position Is within the limits of the TMS9918A screens.
+        'If you Then exceed it, you may see noise on the screen.
+
+        If _screenMode = iVDP.SCREEN_MODE.T1 Then
+            vaddr = iVDP.TableBase.TXTNAM + (line * 40) + column
+        Else
+            ' G1, G2 and G3 is the same
+            vaddr = iVDP.TableBase.T32NAM + (line * 32) + column
+        End If
+
+        For i As Integer = 0 To text.Length - 1
+            character = text.Chars(i)
+            VPOKE(vaddr, AscW(character))
+            vaddr += 1
+        Next
+
+    End Sub
+
+
+
     ''' <summary>
     ''' Fill a large area of the VRAM of the same byte.
     ''' </summary>
@@ -1328,7 +1353,7 @@ Public Class TMS9918A
         Dim ColumnIndex As Integer = (nTile - (RowIndex * 32)) '* 8
 
 
-        tempBitmap = getTile((ColumnIndex * 8), (RowIndex * 8), 6)
+        tempBitmap = GetTileBitmap((ColumnIndex * 8), (RowIndex * 8), 6)
 
         Dim aGraphics As Graphics = Graphics.FromImage(Me.outputBitmap)
         aGraphics.DrawImage(tempBitmap, posX, posY, 6 * Me._viewSize, 8 * Me._viewSize)
@@ -1349,7 +1374,7 @@ Public Class TMS9918A
         Dim ColumnIndex As Integer = (nTile - (RowIndex * 32)) '* 8
 
         'screen1
-        tempBitmap = getTile((ColumnIndex * 8), (RowIndex * 8), 8)
+        tempBitmap = GetTileBitmap((ColumnIndex * 8), (RowIndex * 8), 8)
 
         Dim aGraphics As Graphics = Graphics.FromImage(Me.outputBitmap)
         aGraphics.DrawImage(tempBitmap, posX, posY, 8 * Me._viewSize, 8 * Me._viewSize)
@@ -1376,13 +1401,13 @@ Public Class TMS9918A
         Select Case tilepos
             Case 0 To 255
                 'tempBitmap = Tile_Bank0(nTile)
-                tempBitmap = getTile(ColumnIndex * 8, RowIndex * 8, 8)
+                tempBitmap = GetTileBitmap(ColumnIndex * 8, RowIndex * 8, 8)
             Case 256 To 511
                 'tempBitmap = Tile_Bank1(nTile)
-                tempBitmap = getTile(ColumnIndex * 8, (RowIndex + 8) * 8, 8)
+                tempBitmap = GetTileBitmap(ColumnIndex * 8, (RowIndex + 8) * 8, 8)
             Case 512 To 767
                 'tempBitmap = Tile_Bank2(nTile)
-                tempBitmap = getTile(ColumnIndex * 8, (RowIndex + 16) * 8, 8)
+                tempBitmap = GetTileBitmap(ColumnIndex * 8, (RowIndex + 16) * 8, 8)
             Case Else
                 Exit Sub
         End Select
@@ -1431,7 +1456,7 @@ Public Class TMS9918A
 
 
 
-    Private Function getTile(ByVal cropX As Single, ByVal cropY As Single, ByVal hsize As Integer) As Bitmap
+    Private Function GetTileBitmap(ByVal cropX As Single, ByVal cropY As Single, ByVal hsize As Integer) As Bitmap
         ' ByRef bmp As Bitmap
         ' This function creates a cropped instance of the input bitmap, at coordiates and of the size specified.
         Dim rect As New Rectangle(cropX * Me._viewSize, cropY * Me._viewSize, hsize * Me._viewSize, 8 * Me._viewSize)

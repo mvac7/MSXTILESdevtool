@@ -191,7 +191,6 @@
 
 
     Public Sub SetData(ByVal data() As Byte) Implements iPaletteMSX.SetData
-        'Dim counter As Integer = 2
         Dim red As Byte
         Dim green As Byte
         Dim blue As Byte
@@ -199,9 +198,7 @@
         For i As Integer = 1 To 15
             red = (data(i * 2) And 112) / 16
             blue = data(i * 2) And 7
-            'counter += 1
             green = data((i * 2) + 1) And 7
-            'counter += 1
             Me.Colors.Item(i) = New ColorMSX(i, red, green, blue)
         Next
     End Sub

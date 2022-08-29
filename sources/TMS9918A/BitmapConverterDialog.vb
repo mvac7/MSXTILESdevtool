@@ -29,7 +29,7 @@
 
 
 
-    Public Sub New()
+    Public Sub New(ByVal pictureName As String, ByRef newImage As Image)
 
         ' Esta llamada es exigida por el diseñador.
         InitializeComponent()
@@ -44,7 +44,42 @@
 
         Me.BorderColorButton.SetColor(4)
 
+        Me.PictureNameTextBox.Text = pictureName
+
+        Me.aBitmap = New Bitmap(newImage.Clone, 256, 192)
+        Me.ViewPictureBox.Image = Me.aBitmap
+
+        InitBitmap()
+
     End Sub
+
+
+
+
+    Public Sub New(ByVal pictureName As String, ByRef newBitmap As Bitmap)
+
+        ' Esta llamada es exigida por el diseñador.
+        InitializeComponent()
+
+        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
+
+        Me.TMS9918Aviewer.Palette = New PaletteTMS9918
+        Me.TMS9918Aviewer.ViewMode = TMS9918A.VIEW_MODE.TILESET
+
+        Me.BGColorButton.Palette = Me.TMS9918Aviewer.Palette
+        Me.BorderColorButton.Palette = Me.TMS9918Aviewer.Palette
+
+        Me.BorderColorButton.SetColor(4)
+
+        Me.PictureNameTextBox.Text = pictureName
+
+        Me.aBitmap = newBitmap.Clone
+        Me.ViewPictureBox.Image = Me.aBitmap
+
+        InitBitmap()
+
+    End Sub
+
 
 
 
@@ -117,29 +152,29 @@
 
 
 
-    Public Sub InitDialog(ByVal pictureName As String, ByVal newImage As Image)
+    'Public Sub InitDialog(ByVal pictureName As String, ByVal newImage As Image)
 
-        Me.PictureNameTextBox.Text = pictureName
+    '    Me.PictureNameTextBox.Text = pictureName
 
-        Me.aBitmap = New Bitmap(newImage, 256, 192)
-        Me.ViewPictureBox.Image = Me.aBitmap
+    '    Me.aBitmap = New Bitmap(newImage.Clone, 256, 192)
+    '    Me.ViewPictureBox.Image = Me.aBitmap
 
-        InitBitmap()
+    '    InitBitmap()
 
-    End Sub
+    'End Sub
 
 
 
-    Public Sub InitDialog(ByVal pictureName As String, ByVal newBitmap As Bitmap)
+    'Public Sub InitDialog(ByVal pictureName As String, ByVal newBitmap As Bitmap)
 
-        Me.PictureNameTextBox.Text = pictureName
+    '    Me.PictureNameTextBox.Text = pictureName
 
-        Me.aBitmap = newBitmap
-        Me.ViewPictureBox.Image = newBitmap
+    '    Me.aBitmap = newBitmap
+    '    Me.ViewPictureBox.Image = newBitmap
 
-        InitBitmap()
+    '    InitBitmap()
 
-    End Sub
+    'End Sub
 
 
 

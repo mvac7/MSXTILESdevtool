@@ -136,9 +136,6 @@
   <data name="dragdrop_48_06Y" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\dragdrop_48_06Y.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="BG_panel_TileZoom" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BG_panel_TileZoom.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\copy.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -162,9 +159,6 @@
   </data>
   <data name="tile" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\tile.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BG_panel_Area" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BG_panel_Area.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Load_file2_x24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Load_file2_x24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -202,9 +196,6 @@
   <data name="copy_color_x24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\copy_color_x24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="gplv3-88x31" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\gplv3-88x31.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="about_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\about_24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -217,17 +208,8 @@
   <data name="help_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\help_24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="BG_panel_Range" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BG_panel_Range.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="save_as3_x24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\save_as3_x24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BG_panel_Data" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BG_panel_Data.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Aboud_win_msxTiles" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Aboud_win_msxTiles.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="V_ruler_16p" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\V_ruler_16p.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

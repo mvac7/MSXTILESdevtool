@@ -573,12 +573,12 @@ Public Class MainScreen
     Private Function setTileSetFromElement(ByVal anElement As XmlElement) As Boolean
 
         Dim aNodeList As XmlNodeList
-        Dim subNode As XmlNode
+        'Dim subNode As XmlNode
         Dim anAttribute As XmlAttribute
         Dim tmpString As String
         Dim tilebank As Integer
         Dim tile As Integer
-        Dim vaddr As Integer
+        'Dim vaddr As Integer
         Dim aData(8) As Byte
 
         Try
@@ -632,9 +632,9 @@ Public Class MainScreen
         Dim aNodeList As XmlNodeList
         Dim anAttribute As XmlAttribute
 
-        Dim tmpString As String
+        'Dim tmpString As String
         Dim line As Integer
-        Dim vaddr As Integer
+        'Dim vaddr As Integer
         Dim aData(32) As Byte
 
         '<map id="0">
@@ -675,7 +675,7 @@ Public Class MainScreen
 
         Dim aXmlDoc As New XmlDocument
         Dim rootElement As XmlElement
-        Dim txtElement As XmlText
+        'Dim txtElement As XmlText
         Dim anElement As XmlElement
         Dim anItemElement As XmlElement
         Dim anAttribute As XmlAttribute
@@ -965,8 +965,8 @@ Public Class MainScreen
         Dim anAttribute As XmlAttribute
         Dim txtElement As XmlText
 
-        Dim i As Integer
-        Dim vaddr As Integer
+        'Dim i As Integer
+        'Dim vaddr As Integer
         Dim data(8) As Byte
 
         anElement = aXmlDoc.CreateElement("item")
@@ -1011,8 +1011,8 @@ Public Class MainScreen
         Dim anAttribute As XmlAttribute
         Dim txtElement As XmlText
 
-        Dim i As Integer
-        Dim vaddr As Integer
+        'Dim i As Integer
+        'Dim vaddr As Integer
         Dim data(32) As Byte
 
         anElement = aXmlDoc.CreateElement("line")
@@ -1182,7 +1182,7 @@ Public Class MainScreen
 
             ' anyade la info en el buffer de pantalla
             Dim contador As Integer = 0
-            Dim address As Short '= screen2.BASE(TMS9918.NumberOfBase.Name_Table_Base_Address)
+            'Dim address As Short '= screen2.BASE(TMS9918.NumberOfBase.Name_Table_Base_Address)
 
             'For i = 1 To 768
             '    screenTilesData(contador) = CByte(dataText.Item(i))
@@ -1984,10 +1984,22 @@ Public Class MainScreen
 
 
 
+
+    Private Sub mainWindow_DragEnter(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DragEventArgs) Handles MyBase.DragEnter
+        If (e.Data.GetDataPresent(DataFormats.FileDrop)) Then
+            e.Effect = DragDropEffects.Copy
+        Else
+            e.Effect = DragDropEffects.None
+        End If
+    End Sub
+
+
+
     Private Sub mainWindow_DragDrop(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DragEventArgs) Handles MyBase.DragDrop
+
         Dim tmpstr() As String = e.Data.GetData("FileDrop", False)
         Dim filePath As String = tmpstr(0)
-        Dim extension As String = Path.GetExtension(filePath).ToLower
+        'Dim extension As String = Path.GetExtension(filePath).ToLower
 
         Dim result As Boolean = False
 
@@ -1995,23 +2007,10 @@ Public Class MainScreen
 
         Application.DoEvents()
 
-        If extension = ".png" Then 'extension = ".gif" Or
-            result = LoadBitmap(filePath)
+        LoadFile(filePath)
 
-        ElseIf extension = ".sc2" Then
-            result = LoadMSXBasicGraphics(filePath)
-
-            'ElseIf extension = "." + RLEWB.Extension Then
-
-            '    result = LoadRLEWB(0, filePath) ' <<<<------------------------------------------------------ TEST!
-
-        End If
-
-        If result = True Then
-
-            InitInfoData(filePath)
-
-        End If
+        'Dim hilo As New Threading.Thread(AddressOf LoadFile)
+        'hilo.Start(filePath)
 
     End Sub
 
@@ -2043,16 +2042,6 @@ Public Class MainScreen
     '    Return True
 
     'End Function
-
-
-
-    Private Sub mainWindow_DragEnter(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DragEventArgs) Handles MyBase.DragEnter
-        If (e.Data.GetDataPresent(DataFormats.FileDrop)) Then
-            e.Effect = DragDropEffects.Copy
-        Else
-            e.Effect = DragDropEffects.None
-        End If
-    End Sub
 
 
 
@@ -2191,7 +2180,7 @@ Public Class MainScreen
 
     Private Function LoadBitmap(ByVal filePath As String) As Boolean
 
-        Dim BitmapConverter As New BitmapConverterDialog
+        Dim BitmapConverter As BitmapConverterDialog
 
         Dim result As Boolean = True
 
@@ -2199,15 +2188,18 @@ Public Class MainScreen
 
         Try
 
-            Dim newImage As Image = Image.FromFile(filePath)
-            Me.myBitmapImage = New Bitmap(newImage, 256, 192)
-            newImage.Dispose()
+            'Dim newImage As Image = Image.FromFile(filePath)
+            Me.myBitmapImage = New Bitmap(Image.FromFile(filePath)) 'New Bitmap(newImage.Clone, 256, 192)
+            'newImage.Dispose()
+
+
 
             Application.DoEvents()
 
             PictureName = Path.GetFileName(filePath)
 
-            BitmapConverter.InitDialog(PictureName, Me.myBitmapImage)
+            BitmapConverter = New BitmapConverterDialog(PictureName, Me.myBitmapImage)
+            'BitmapConverter.InitDialog(PictureName, Me.myBitmapImage)
 
             If BitmapConverter.ShowDialog = DialogResult.OK Then
                 Me.TMS9918Aviewer.SetPalette(Me.Palettes.GetPalette(0))

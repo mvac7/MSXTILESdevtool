@@ -21,6 +21,14 @@ Public NotInheritable Class AboutWin
 
 
 
+    Public WriteOnly Property SetDescription() As String
+        Set(value As String)
+            Me.DescriptionLabel.Text = value
+        End Set
+    End Property
+
+
+
     Public Sub New()
 
         ' Llamada necesaria para el Diseñador de Windows Forms.
@@ -33,9 +41,12 @@ Public NotInheritable Class AboutWin
 
 
     Private Sub AboutWin_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        ' Establezca el título del formulario.
+
+        Dim widthCalc As Integer
+
         Dim LicenseText As String
         Dim ApplicationTitle As String
+
         If Not My.Application.Info.Title = "" Then
             ApplicationTitle = My.Application.Info.Title
         Else
@@ -46,11 +57,13 @@ Public NotInheritable Class AboutWin
         ' TODO: personalice la información del ensamblado de la aplicación en el panel "Aplicación" del 
         '    cuadro de diálogo propiedades del proyecto (bajo el menú "Proyecto").
         'Me.LabelProductName.Text = My.Application.Info.Title
-        Me.versionLabel.Text = My.Application.Info.Version.ToString + "b" 'String.Format("Versión {0}", My.Application.Info.Version.ToString)
+        Me.versionLabel.Text = My.Application.Info.Version.ToString + "-beta" 'String.Format("Versión {0}", My.Application.Info.Version.ToString)
         Me.copyleftLabel.Text = My.Application.Info.Copyright
         'Me.LabelCompanyName.Text = My.Application.Info.CompanyName
 
-        Me.DescriptionLabel.Text = My.Application.Info.Description
+        If Me.DescriptionLabel.Text = "description..." Then
+            Me.DescriptionLabel.Text = My.Application.Info.Description
+        End If
 
         LicenseText = "License:"
         LicenseText += vbNewLine + "This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version."
@@ -60,7 +73,14 @@ Public NotInheritable Class AboutWin
         Me.LicenseTextBox.Text = LicenseText
 
         If Not LogoPictureBox.Image Is Nothing Then
+
             LogoPictureBox.Width = LogoPictureBox.Image.Width + 14
+
+            widthCalc = LogoPictureBox.Width + 180
+            If widthCalc > Me.Width Then
+                Me.Width = widthCalc
+            End If
+
         End If
 
         ' draw gradient in window-form background

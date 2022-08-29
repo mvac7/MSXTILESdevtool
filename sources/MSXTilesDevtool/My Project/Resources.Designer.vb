@@ -63,16 +63,6 @@ Namespace My.Resources
         '''<summary>
         '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property Aboud_win_msxTiles() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("Aboud_win_msxTiles", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        '''</summary>
         Friend ReadOnly Property about_24() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("about_24", resourceCulture)
@@ -86,46 +76,6 @@ Namespace My.Resources
         Friend ReadOnly Property auto_16x16() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("auto_16x16", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        '''</summary>
-        Friend ReadOnly Property BG_panel_Area() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("BG_panel_Area", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        '''</summary>
-        Friend ReadOnly Property BG_panel_Data() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("BG_panel_Data", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        '''</summary>
-        Friend ReadOnly Property BG_panel_Range() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("BG_panel_Range", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        '''</summary>
-        Friend ReadOnly Property BG_panel_TileZoom() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("BG_panel_TileZoom", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -266,16 +216,6 @@ Namespace My.Resources
         Friend ReadOnly Property fill_x24_02() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("fill_x24_02", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        '''</summary>
-        Friend ReadOnly Property gplv3_88x31() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("gplv3-88x31", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

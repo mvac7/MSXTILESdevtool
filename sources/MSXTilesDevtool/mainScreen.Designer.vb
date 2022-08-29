@@ -50,7 +50,7 @@ Partial Class MainScreen
         Me.SaveBitmapButton1 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.ConfigButton = New System.Windows.Forms.ToolStripButton()
-        Me.HelpButton = New System.Windows.Forms.ToolStripButton()
+        Me.Help_Button = New System.Windows.Forms.ToolStripButton()
         Me.AboutButton = New System.Windows.Forms.ToolStripButton()
         Me.ScreenContainer_Panel = New System.Windows.Forms.Panel()
         Me.PaintToolStrip = New System.Windows.Forms.ToolStrip()
@@ -83,40 +83,40 @@ Partial Class MainScreen
         Me.TMS9918Aviewer = New mSXdevtools.GUI.TMS9918A.TMS9918A()
         Me.OutputText = New System.Windows.Forms.TextBox()
         Me.DataTypeInput = New mSXdevtools.GUI.Controls.DataTypeInputControl()
-        Me.AreaPanel = New System.Windows.Forms.Panel()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.AreaEndX_TextBox = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.AreaStartY_TextBox = New System.Windows.Forms.TextBox()
         Me.AreaStartX_TextBox = New System.Windows.Forms.TextBox()
         Me.AreaEndY_TextBox = New System.Windows.Forms.TextBox()
-        Me.RangePanel = New System.Windows.Forms.Panel()
         Me.RangeLabel = New System.Windows.Forms.Label()
         Me.RangeToLabel = New System.Windows.Forms.Label()
-        Me.DataPanel = New System.Windows.Forms.Panel()
         Me.SelectDataLabel = New System.Windows.Forms.Label()
         Me.SelectDataComboBox = New System.Windows.Forms.ComboBox()
         Me.TilesetDataLabel = New System.Windows.Forms.Label()
-        Me.ZoomPanel = New System.Windows.Forms.Panel()
         Me.TileColorsPictureBox = New System.Windows.Forms.PictureBox()
         Me.ZoomLabel = New System.Windows.Forms.Label()
         Me.TileViewerPictureBox = New System.Windows.Forms.PictureBox()
         Me.Tilenumber_TextBox = New System.Windows.Forms.TextBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.ZoomPanel = New mSXdevtools.GUI.Controls.piXelGroupBox()
+        Me.AreaPanel = New mSXdevtools.GUI.Controls.piXelGroupBox()
         Me.HoriTAB1 = New MSXTILESdevtool.HoriTAB()
+        Me.RangePanel = New mSXdevtools.GUI.Controls.piXelGroupBox()
+        Me.DataPanel = New mSXdevtools.GUI.Controls.piXelGroupBox()
         Me.ToolStrip1.SuspendLayout()
         Me.ScreenContainer_Panel.SuspendLayout()
         Me.PaintToolStrip.SuspendLayout()
         CType(Me.V_Rules_PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ScreenStatusStrip.SuspendLayout()
         CType(Me.H_Rules_PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.AreaPanel.SuspendLayout()
-        Me.RangePanel.SuspendLayout()
-        Me.DataPanel.SuspendLayout()
-        Me.ZoomPanel.SuspendLayout()
         CType(Me.TileColorsPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TileViewerPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
+        Me.ZoomPanel.SuspendLayout()
+        Me.AreaPanel.SuspendLayout()
+        Me.RangePanel.SuspendLayout()
+        Me.DataPanel.SuspendLayout()
         Me.SuspendLayout()
         '
         'ToolTip1
@@ -127,7 +127,7 @@ Partial Class MainScreen
         '
         Me.Map_areaResetButton.BackColor = System.Drawing.Color.Gainsboro
         Me.Map_areaResetButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.auto_16x16
-        Me.Map_areaResetButton.Location = New System.Drawing.Point(196, 44)
+        Me.Map_areaResetButton.Location = New System.Drawing.Point(203, 47)
         Me.Map_areaResetButton.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.Map_areaResetButton.Name = "Map_areaResetButton"
         Me.Map_areaResetButton.Size = New System.Drawing.Size(24, 24)
@@ -139,7 +139,7 @@ Partial Class MainScreen
         '
         Me.RangeResetButton.BackColor = System.Drawing.Color.Gainsboro
         Me.RangeResetButton.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RangeResetButton.Location = New System.Drawing.Point(204, 19)
+        Me.RangeResetButton.Location = New System.Drawing.Point(202, 20)
         Me.RangeResetButton.Name = "RangeResetButton"
         Me.RangeResetButton.Size = New System.Drawing.Size(36, 24)
         Me.RangeResetButton.TabIndex = 254
@@ -150,7 +150,7 @@ Partial Class MainScreen
         'RangeStartTextBox
         '
         Me.RangeStartTextBox.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RangeStartTextBox.Location = New System.Drawing.Point(91, 20)
+        Me.RangeStartTextBox.Location = New System.Drawing.Point(89, 21)
         Me.RangeStartTextBox.MaxLength = 3
         Me.RangeStartTextBox.Name = "RangeStartTextBox"
         Me.RangeStartTextBox.Size = New System.Drawing.Size(33, 22)
@@ -162,7 +162,7 @@ Partial Class MainScreen
         'RangeEndTextBox
         '
         Me.RangeEndTextBox.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RangeEndTextBox.Location = New System.Drawing.Point(169, 20)
+        Me.RangeEndTextBox.Location = New System.Drawing.Point(167, 21)
         Me.RangeEndTextBox.MaxLength = 3
         Me.RangeEndTextBox.Name = "RangeEndTextBox"
         Me.RangeEndTextBox.Size = New System.Drawing.Size(33, 22)
@@ -178,7 +178,7 @@ Partial Class MainScreen
         Me.TilesetDataComboBox.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TilesetDataComboBox.FormattingEnabled = True
         Me.TilesetDataComboBox.Items.AddRange(New Object() {"Pattern", "Color"})
-        Me.TilesetDataComboBox.Location = New System.Drawing.Point(93, 46)
+        Me.TilesetDataComboBox.Location = New System.Drawing.Point(89, 49)
         Me.TilesetDataComboBox.Name = "TilesetDataComboBox"
         Me.TilesetDataComboBox.Size = New System.Drawing.Size(153, 22)
         Me.TilesetDataComboBox.TabIndex = 259
@@ -244,7 +244,7 @@ Partial Class MainScreen
         Me.ToolStrip1.AutoSize = False
         Me.ToolStrip1.BackColor = System.Drawing.Color.Gainsboro
         Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(24, 24)
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewProjectButton, Me.LoadProjectButton, Me.ToolStripSeparator1, Me.ProjectNameTextBox, Me.ProjectInfoButton, Me.ToolStripSeparator2, Me.SaveProjectButton, Me.SaveasButton, Me.Save_nMSXProjectButton, Me.SaveMSXBASICGButton1, Me.SaveBitmapButton1, Me.ToolStripSeparator3, Me.ConfigButton, Me.HelpButton, Me.AboutButton})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewProjectButton, Me.LoadProjectButton, Me.ToolStripSeparator1, Me.ProjectNameTextBox, Me.ProjectInfoButton, Me.ToolStripSeparator2, Me.SaveProjectButton, Me.SaveasButton, Me.Save_nMSXProjectButton, Me.SaveMSXBASICGButton1, Me.SaveBitmapButton1, Me.ToolStripSeparator3, Me.ConfigButton, Me.Help_Button, Me.AboutButton})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
@@ -361,15 +361,15 @@ Partial Class MainScreen
         Me.ConfigButton.Size = New System.Drawing.Size(28, 29)
         Me.ConfigButton.ToolTipText = "Config devtools"
         '
-        'HelpButton
+        'Help_Button
         '
-        Me.HelpButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.HelpButton.Enabled = False
-        Me.HelpButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.help_24
-        Me.HelpButton.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.HelpButton.Name = "HelpButton"
-        Me.HelpButton.Size = New System.Drawing.Size(28, 29)
-        Me.HelpButton.ToolTipText = "Help!"
+        Me.Help_Button.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.Help_Button.Enabled = False
+        Me.Help_Button.Image = Global.MSXTILESdevtool.My.Resources.Resources.help_24
+        Me.Help_Button.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.Help_Button.Name = "Help_Button"
+        Me.Help_Button.Size = New System.Drawing.Size(28, 29)
+        Me.Help_Button.ToolTipText = "Help!"
         '
         'AboutButton
         '
@@ -723,6 +723,7 @@ Partial Class MainScreen
         'DataTypeInput
         '
         Me.DataTypeInput.BackColor = System.Drawing.Color.Transparent
+        Me.DataTypeInput.EnableAssemblerIndex = False
         Me.DataTypeInput.EnableCompress = True
         Me.DataTypeInput.EnableDataSizeLine = True
         Me.DataTypeInput.FieldName = "DATA"
@@ -731,29 +732,14 @@ Partial Class MainScreen
         Me.DataTypeInput.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.DataTypeInput.Name = "DataTypeInput"
         Me.DataTypeInput.Size = New System.Drawing.Size(528, 117)
+        Me.DataTypeInput.SizeLineIndex = 6
         Me.DataTypeInput.TabIndex = 254
-        '
-        'AreaPanel
-        '
-        Me.AreaPanel.BackColor = System.Drawing.Color.Transparent
-        Me.AreaPanel.BackgroundImage = Global.MSXTILESdevtool.My.Resources.Resources.BG_panel_Area
-        Me.AreaPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.AreaPanel.Controls.Add(Me.Label9)
-        Me.AreaPanel.Controls.Add(Me.Map_areaResetButton)
-        Me.AreaPanel.Controls.Add(Me.AreaEndX_TextBox)
-        Me.AreaPanel.Controls.Add(Me.Label5)
-        Me.AreaPanel.Controls.Add(Me.AreaStartY_TextBox)
-        Me.AreaPanel.Controls.Add(Me.AreaStartX_TextBox)
-        Me.AreaPanel.Controls.Add(Me.AreaEndY_TextBox)
-        Me.AreaPanel.Location = New System.Drawing.Point(580, 238)
-        Me.AreaPanel.Name = "AreaPanel"
-        Me.AreaPanel.Size = New System.Drawing.Size(262, 82)
-        Me.AreaPanel.TabIndex = 294
         '
         'Label9
         '
+        Me.Label9.BackColor = System.Drawing.Color.Transparent
         Me.Label9.ForeColor = System.Drawing.Color.Black
-        Me.Label9.Location = New System.Drawing.Point(33, 21)
+        Me.Label9.Location = New System.Drawing.Point(40, 24)
         Me.Label9.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(90, 14)
@@ -763,7 +749,7 @@ Partial Class MainScreen
         '
         'AreaEndX_TextBox
         '
-        Me.AreaEndX_TextBox.Location = New System.Drawing.Point(128, 45)
+        Me.AreaEndX_TextBox.Location = New System.Drawing.Point(135, 48)
         Me.AreaEndX_TextBox.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.AreaEndX_TextBox.MaxLength = 3
         Me.AreaEndX_TextBox.Name = "AreaEndX_TextBox"
@@ -774,8 +760,9 @@ Partial Class MainScreen
         '
         'Label5
         '
+        Me.Label5.BackColor = System.Drawing.Color.Transparent
         Me.Label5.ForeColor = System.Drawing.Color.Black
-        Me.Label5.Location = New System.Drawing.Point(33, 49)
+        Me.Label5.Location = New System.Drawing.Point(40, 52)
         Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(90, 14)
@@ -785,7 +772,7 @@ Partial Class MainScreen
         '
         'AreaStartY_TextBox
         '
-        Me.AreaStartY_TextBox.Location = New System.Drawing.Point(162, 18)
+        Me.AreaStartY_TextBox.Location = New System.Drawing.Point(169, 21)
         Me.AreaStartY_TextBox.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.AreaStartY_TextBox.MaxLength = 3
         Me.AreaStartY_TextBox.Name = "AreaStartY_TextBox"
@@ -796,7 +783,7 @@ Partial Class MainScreen
         '
         'AreaStartX_TextBox
         '
-        Me.AreaStartX_TextBox.Location = New System.Drawing.Point(128, 18)
+        Me.AreaStartX_TextBox.Location = New System.Drawing.Point(135, 21)
         Me.AreaStartX_TextBox.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.AreaStartX_TextBox.MaxLength = 3
         Me.AreaStartX_TextBox.Name = "AreaStartX_TextBox"
@@ -807,7 +794,7 @@ Partial Class MainScreen
         '
         'AreaEndY_TextBox
         '
-        Me.AreaEndY_TextBox.Location = New System.Drawing.Point(162, 45)
+        Me.AreaEndY_TextBox.Location = New System.Drawing.Point(169, 48)
         Me.AreaEndY_TextBox.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.AreaEndY_TextBox.MaxLength = 3
         Me.AreaEndY_TextBox.Name = "AreaEndY_TextBox"
@@ -816,25 +803,11 @@ Partial Class MainScreen
         Me.AreaEndY_TextBox.Text = "23"
         Me.AreaEndY_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
-        'RangePanel
-        '
-        Me.RangePanel.BackColor = System.Drawing.Color.Transparent
-        Me.RangePanel.BackgroundImage = Global.MSXTILESdevtool.My.Resources.Resources.BG_panel_Range
-        Me.RangePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.RangePanel.Controls.Add(Me.RangeResetButton)
-        Me.RangePanel.Controls.Add(Me.RangeLabel)
-        Me.RangePanel.Controls.Add(Me.RangeStartTextBox)
-        Me.RangePanel.Controls.Add(Me.RangeEndTextBox)
-        Me.RangePanel.Controls.Add(Me.RangeToLabel)
-        Me.RangePanel.Location = New System.Drawing.Point(580, 171)
-        Me.RangePanel.Name = "RangePanel"
-        Me.RangePanel.Size = New System.Drawing.Size(262, 54)
-        Me.RangePanel.TabIndex = 293
-        '
         'RangeLabel
         '
+        Me.RangeLabel.BackColor = System.Drawing.Color.Transparent
         Me.RangeLabel.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RangeLabel.Location = New System.Drawing.Point(20, 20)
+        Me.RangeLabel.Location = New System.Drawing.Point(18, 21)
         Me.RangeLabel.Name = "RangeLabel"
         Me.RangeLabel.Size = New System.Drawing.Size(67, 20)
         Me.RangeLabel.TabIndex = 257
@@ -843,32 +816,20 @@ Partial Class MainScreen
         '
         'RangeToLabel
         '
+        Me.RangeToLabel.BackColor = System.Drawing.Color.Transparent
         Me.RangeToLabel.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RangeToLabel.Location = New System.Drawing.Point(130, 20)
+        Me.RangeToLabel.Location = New System.Drawing.Point(128, 21)
         Me.RangeToLabel.Name = "RangeToLabel"
         Me.RangeToLabel.Size = New System.Drawing.Size(33, 20)
         Me.RangeToLabel.TabIndex = 253
         Me.RangeToLabel.Text = "to"
         Me.RangeToLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'DataPanel
-        '
-        Me.DataPanel.BackColor = System.Drawing.Color.Transparent
-        Me.DataPanel.BackgroundImage = Global.MSXTILESdevtool.My.Resources.Resources.BG_panel_Data
-        Me.DataPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.DataPanel.Controls.Add(Me.TilesetDataComboBox)
-        Me.DataPanel.Controls.Add(Me.SelectDataLabel)
-        Me.DataPanel.Controls.Add(Me.SelectDataComboBox)
-        Me.DataPanel.Controls.Add(Me.TilesetDataLabel)
-        Me.DataPanel.Location = New System.Drawing.Point(580, 78)
-        Me.DataPanel.Name = "DataPanel"
-        Me.DataPanel.Size = New System.Drawing.Size(262, 82)
-        Me.DataPanel.TabIndex = 292
-        '
         'SelectDataLabel
         '
+        Me.SelectDataLabel.BackColor = System.Drawing.Color.Transparent
         Me.SelectDataLabel.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.SelectDataLabel.Location = New System.Drawing.Point(16, 18)
+        Me.SelectDataLabel.Location = New System.Drawing.Point(12, 21)
         Me.SelectDataLabel.Name = "SelectDataLabel"
         Me.SelectDataLabel.Size = New System.Drawing.Size(70, 21)
         Me.SelectDataLabel.TabIndex = 256
@@ -882,39 +843,26 @@ Partial Class MainScreen
         Me.SelectDataComboBox.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.SelectDataComboBox.FormattingEnabled = True
         Me.SelectDataComboBox.Items.AddRange(New Object() {"All Banks", "Bank A", "Bank B", "Bank C", "Selected Area"})
-        Me.SelectDataComboBox.Location = New System.Drawing.Point(92, 18)
+        Me.SelectDataComboBox.Location = New System.Drawing.Point(88, 21)
         Me.SelectDataComboBox.Name = "SelectDataComboBox"
         Me.SelectDataComboBox.Size = New System.Drawing.Size(154, 22)
         Me.SelectDataComboBox.TabIndex = 255
         '
         'TilesetDataLabel
         '
+        Me.TilesetDataLabel.BackColor = System.Drawing.Color.Transparent
         Me.TilesetDataLabel.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TilesetDataLabel.Location = New System.Drawing.Point(16, 46)
+        Me.TilesetDataLabel.Location = New System.Drawing.Point(12, 49)
         Me.TilesetDataLabel.Name = "TilesetDataLabel"
         Me.TilesetDataLabel.Size = New System.Drawing.Size(70, 21)
         Me.TilesetDataLabel.TabIndex = 258
         Me.TilesetDataLabel.Text = "Type:"
         Me.TilesetDataLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'ZoomPanel
-        '
-        Me.ZoomPanel.BackColor = System.Drawing.Color.Transparent
-        Me.ZoomPanel.BackgroundImage = Global.MSXTILESdevtool.My.Resources.Resources.BG_panel_TileZoom
-        Me.ZoomPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.ZoomPanel.Controls.Add(Me.TileColorsPictureBox)
-        Me.ZoomPanel.Controls.Add(Me.ZoomLabel)
-        Me.ZoomPanel.Controls.Add(Me.TileViewerPictureBox)
-        Me.ZoomPanel.Controls.Add(Me.Tilenumber_TextBox)
-        Me.ZoomPanel.Location = New System.Drawing.Point(581, 333)
-        Me.ZoomPanel.Name = "ZoomPanel"
-        Me.ZoomPanel.Size = New System.Drawing.Size(262, 175)
-        Me.ZoomPanel.TabIndex = 291
-        '
         'TileColorsPictureBox
         '
         Me.TileColorsPictureBox.BackColor = System.Drawing.Color.Black
-        Me.TileColorsPictureBox.Location = New System.Drawing.Point(206, 21)
+        Me.TileColorsPictureBox.Location = New System.Drawing.Point(208, 22)
         Me.TileColorsPictureBox.Name = "TileColorsPictureBox"
         Me.TileColorsPictureBox.Size = New System.Drawing.Size(35, 137)
         Me.TileColorsPictureBox.TabIndex = 292
@@ -922,8 +870,9 @@ Partial Class MainScreen
         '
         'ZoomLabel
         '
+        Me.ZoomLabel.BackColor = System.Drawing.Color.Transparent
         Me.ZoomLabel.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ZoomLabel.Location = New System.Drawing.Point(12, 23)
+        Me.ZoomLabel.Location = New System.Drawing.Point(14, 24)
         Me.ZoomLabel.Name = "ZoomLabel"
         Me.ZoomLabel.Size = New System.Drawing.Size(50, 20)
         Me.ZoomLabel.TabIndex = 291
@@ -933,7 +882,7 @@ Partial Class MainScreen
         'TileViewerPictureBox
         '
         Me.TileViewerPictureBox.BackColor = System.Drawing.Color.Black
-        Me.TileViewerPictureBox.Location = New System.Drawing.Point(66, 21)
+        Me.TileViewerPictureBox.Location = New System.Drawing.Point(68, 22)
         Me.TileViewerPictureBox.Name = "TileViewerPictureBox"
         Me.TileViewerPictureBox.Size = New System.Drawing.Size(137, 137)
         Me.TileViewerPictureBox.TabIndex = 289
@@ -945,7 +894,7 @@ Partial Class MainScreen
         Me.Tilenumber_TextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.Tilenumber_TextBox.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Tilenumber_TextBox.ForeColor = System.Drawing.Color.Black
-        Me.Tilenumber_TextBox.Location = New System.Drawing.Point(16, 47)
+        Me.Tilenumber_TextBox.Location = New System.Drawing.Point(18, 48)
         Me.Tilenumber_TextBox.MaxLength = 3
         Me.Tilenumber_TextBox.Name = "Tilenumber_TextBox"
         Me.Tilenumber_TextBox.ReadOnly = True
@@ -968,6 +917,37 @@ Partial Class MainScreen
         Me.Panel2.Size = New System.Drawing.Size(832, 52)
         Me.Panel2.TabIndex = 286
         '
+        'ZoomPanel
+        '
+        Me.ZoomPanel.Controls.Add(Me.TileColorsPictureBox)
+        Me.ZoomPanel.Controls.Add(Me.TileViewerPictureBox)
+        Me.ZoomPanel.Controls.Add(Me.ZoomLabel)
+        Me.ZoomPanel.Controls.Add(Me.Tilenumber_TextBox)
+        Me.ZoomPanel.Location = New System.Drawing.Point(580, 328)
+        Me.ZoomPanel.Name = "ZoomPanel"
+        Me.ZoomPanel.Padding = New System.Windows.Forms.Padding(10)
+        Me.ZoomPanel.Size = New System.Drawing.Size(259, 172)
+        Me.ZoomPanel.TabIndex = 295
+        Me.ZoomPanel.TabStop = False
+        Me.ZoomPanel.Text = "Zoom"
+        '
+        'AreaPanel
+        '
+        Me.AreaPanel.Controls.Add(Me.Label9)
+        Me.AreaPanel.Controls.Add(Me.Map_areaResetButton)
+        Me.AreaPanel.Controls.Add(Me.AreaEndY_TextBox)
+        Me.AreaPanel.Controls.Add(Me.AreaEndX_TextBox)
+        Me.AreaPanel.Controls.Add(Me.AreaStartX_TextBox)
+        Me.AreaPanel.Controls.Add(Me.Label5)
+        Me.AreaPanel.Controls.Add(Me.AreaStartY_TextBox)
+        Me.AreaPanel.Location = New System.Drawing.Point(580, 237)
+        Me.AreaPanel.Name = "AreaPanel"
+        Me.AreaPanel.Padding = New System.Windows.Forms.Padding(10)
+        Me.AreaPanel.Size = New System.Drawing.Size(259, 82)
+        Me.AreaPanel.TabIndex = 296
+        Me.AreaPanel.TabStop = False
+        Me.AreaPanel.Text = "Area"
+        '
         'HoriTAB1
         '
         Me.HoriTAB1.BackColor = System.Drawing.Color.RoyalBlue
@@ -978,6 +958,35 @@ Partial Class MainScreen
         Me.HoriTAB1.Size = New System.Drawing.Size(854, 34)
         Me.HoriTAB1.TabIndex = 272
         '
+        'RangePanel
+        '
+        Me.RangePanel.Controls.Add(Me.RangeResetButton)
+        Me.RangePanel.Controls.Add(Me.RangeLabel)
+        Me.RangePanel.Controls.Add(Me.RangeToLabel)
+        Me.RangePanel.Controls.Add(Me.RangeStartTextBox)
+        Me.RangePanel.Controls.Add(Me.RangeEndTextBox)
+        Me.RangePanel.Location = New System.Drawing.Point(580, 174)
+        Me.RangePanel.Name = "RangePanel"
+        Me.RangePanel.Padding = New System.Windows.Forms.Padding(10)
+        Me.RangePanel.Size = New System.Drawing.Size(259, 54)
+        Me.RangePanel.TabIndex = 297
+        Me.RangePanel.TabStop = False
+        Me.RangePanel.Text = "Range"
+        '
+        'DataPanel
+        '
+        Me.DataPanel.Controls.Add(Me.TilesetDataComboBox)
+        Me.DataPanel.Controls.Add(Me.SelectDataLabel)
+        Me.DataPanel.Controls.Add(Me.TilesetDataLabel)
+        Me.DataPanel.Controls.Add(Me.SelectDataComboBox)
+        Me.DataPanel.Location = New System.Drawing.Point(580, 78)
+        Me.DataPanel.Name = "DataPanel"
+        Me.DataPanel.Padding = New System.Windows.Forms.Padding(10)
+        Me.DataPanel.Size = New System.Drawing.Size(259, 82)
+        Me.DataPanel.TabIndex = 298
+        Me.DataPanel.TabStop = False
+        Me.DataPanel.Text = "Data"
+        '
         'MainScreen
         '
         Me.AllowDrop = True
@@ -985,9 +994,9 @@ Partial Class MainScreen
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Silver
         Me.ClientSize = New System.Drawing.Size(854, 741)
-        Me.Controls.Add(Me.AreaPanel)
-        Me.Controls.Add(Me.RangePanel)
         Me.Controls.Add(Me.DataPanel)
+        Me.Controls.Add(Me.RangePanel)
+        Me.Controls.Add(Me.AreaPanel)
         Me.Controls.Add(Me.ZoomPanel)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.GivemeTheCodeButton)
@@ -1013,16 +1022,16 @@ Partial Class MainScreen
         Me.ScreenStatusStrip.ResumeLayout(False)
         Me.ScreenStatusStrip.PerformLayout()
         CType(Me.H_Rules_PictureBox, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TileColorsPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TileViewerPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel2.ResumeLayout(False)
+        Me.ZoomPanel.ResumeLayout(False)
+        Me.ZoomPanel.PerformLayout()
         Me.AreaPanel.ResumeLayout(False)
         Me.AreaPanel.PerformLayout()
         Me.RangePanel.ResumeLayout(False)
         Me.RangePanel.PerformLayout()
         Me.DataPanel.ResumeLayout(False)
-        Me.ZoomPanel.ResumeLayout(False)
-        Me.ZoomPanel.PerformLayout()
-        CType(Me.TileColorsPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TileViewerPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel2.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1096,15 +1105,15 @@ Partial Class MainScreen
     Friend WithEvents ZoomLabel As Label
     Friend WithEvents Tilenumber_TextBox As TextBox
     Friend WithEvents ConfigButton As ToolStripButton
-    Friend WithEvents HelpButton As ToolStripButton
+    Friend WithEvents Help_Button As ToolStripButton
     Friend WithEvents Save_nMSXProjectButton As ToolStripButton
     Friend WithEvents SaveMSXBASICGButton1 As ToolStripButton
     Friend WithEvents SaveBitmapButton1 As ToolStripButton
     Friend WithEvents ToolStripSeparator3 As ToolStripSeparator
-    Friend WithEvents ZoomPanel As Panel
     Friend WithEvents TileColorsPictureBox As PictureBox
-    Friend WithEvents DataPanel As Panel
-    Friend WithEvents RangePanel As Panel
-    Friend WithEvents AreaPanel As Panel
     Friend WithEvents BorderColorButton As ToolStripButton
+    Friend WithEvents ZoomPanel As piXelGroupBox
+    Friend WithEvents AreaPanel As piXelGroupBox
+    Friend WithEvents RangePanel As piXelGroupBox
+    Friend WithEvents DataPanel As piXelGroupBox
 End Class

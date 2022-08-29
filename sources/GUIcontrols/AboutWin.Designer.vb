@@ -48,13 +48,13 @@ Partial Class AboutWin
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.LicenseTextBox.BackColor = System.Drawing.Color.WhiteSmoke
         Me.LicenseTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.LicenseTextBox.Location = New System.Drawing.Point(150, 211)
+        Me.LicenseTextBox.Location = New System.Drawing.Point(150, 240)
         Me.LicenseTextBox.Margin = New System.Windows.Forms.Padding(7, 3, 3, 3)
         Me.LicenseTextBox.Multiline = True
         Me.LicenseTextBox.Name = "LicenseTextBox"
         Me.LicenseTextBox.ReadOnly = True
         Me.LicenseTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.LicenseTextBox.Size = New System.Drawing.Size(449, 140)
+        Me.LicenseTextBox.Size = New System.Drawing.Size(450, 130)
         Me.LicenseTextBox.TabIndex = 0
         Me.LicenseTextBox.TabStop = False
         Me.LicenseTextBox.Text = "License...."
@@ -95,9 +95,9 @@ Partial Class AboutWin
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DescriptionLabel.BackColor = System.Drawing.Color.Transparent
         Me.DescriptionLabel.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DescriptionLabel.Location = New System.Drawing.Point(156, 156)
+        Me.DescriptionLabel.Location = New System.Drawing.Point(156, 150)
         Me.DescriptionLabel.Name = "DescriptionLabel"
-        Me.DescriptionLabel.Size = New System.Drawing.Size(436, 50)
+        Me.DescriptionLabel.Size = New System.Drawing.Size(440, 80)
         Me.DescriptionLabel.TabIndex = 11
         Me.DescriptionLabel.Text = "description..."
         '
@@ -111,7 +111,7 @@ Partial Class AboutWin
         Me.OKButton.FlatAppearance.BorderSize = 0
         Me.OKButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.OKButton.Image = CType(resources.GetObject("OKButton.Image"), System.Drawing.Image)
-        Me.OKButton.Location = New System.Drawing.Point(460, 370)
+        Me.OKButton.Location = New System.Drawing.Point(460, 390)
         Me.OKButton.Name = "OKButton"
         Me.OKButton.Size = New System.Drawing.Size(133, 42)
         Me.OKButton.TabIndex = 1
@@ -127,7 +127,7 @@ Partial Class AboutWin
         Me.LicenseButton.FlatAppearance.BorderSize = 0
         Me.LicenseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.LicenseButton.Image = CType(resources.GetObject("LicenseButton.Image"), System.Drawing.Image)
-        Me.LicenseButton.Location = New System.Drawing.Point(0, 357)
+        Me.LicenseButton.Location = New System.Drawing.Point(0, 377)
         Me.LicenseButton.Name = "LicenseButton"
         Me.LicenseButton.Size = New System.Drawing.Size(144, 62)
         Me.LicenseButton.TabIndex = 5
@@ -169,9 +169,9 @@ Partial Class AboutWin
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Gainsboro
-        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.CancelButton = Me.OKButton
-        Me.ClientSize = New System.Drawing.Size(604, 421)
+        Me.ClientSize = New System.Drawing.Size(604, 441)
         Me.ControlBox = False
         Me.Controls.Add(Me.LogoPanel)
         Me.Controls.Add(Me.iconPictureBox)
