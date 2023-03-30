@@ -560,25 +560,42 @@
 
 
 
-    Public Function GetInfoName(name As String) As String
+    'Public Function GetInfoName(name As String) As String
 
+    '    Select Case Me.CompressComboBox.SelectedIndex
+
+    '        Case 1
+    '            name += "_RLE"
+
+    '        Case 2
+    '            name += "_RLEWB"
+
+    '            'Case 3
+
+
+    '        Case Else
+
+
+    '    End Select
+
+    '    Return name
+    'End Function
+
+
+
+    Public Function GetInfoSuffix() As String
+        Dim outputInfo As String
         Select Case Me.CompressComboBox.SelectedIndex
-
             Case 1
-                name += "_RLE"
-
+                outputInfo = "_RLE"
             Case 2
-                name += "_RLEWB"
-
-                'Case 3
-
-
+                outputInfo = "_RLEWB"
+            Case 3
+                outputInfo = "_PLT"
             Case Else
-
-
+                outputInfo = ""
         End Select
-
-        Return name
+        Return outputInfo
     End Function
 
 

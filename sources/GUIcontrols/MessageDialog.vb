@@ -88,6 +88,15 @@ Public Class MessageDialog
             Me.Cancel_Button.Visible = True
         End If
 
+
+        ' draw gradient in window-form background
+        Dim gradientBG As New Bitmap(Me.Width, Me.Height)
+        Dim newBrush As New Drawing.Drawing2D.LinearGradientBrush(New PointF(0, 0), New PointF(0, gradientBG.Height), Color.Gainsboro, Color.SlateGray)
+        Dim oneGraphic As Graphics = Graphics.FromImage(gradientBG)
+        oneGraphic.FillRectangle(newBrush, New RectangleF(0, 0, gradientBG.Width, gradientBG.Height))
+        Me.BackgroundImage = gradientBG
+
+
         Me.ActiveControl = Nothing
 
     End Sub

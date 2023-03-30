@@ -46,15 +46,15 @@ Partial Class AboutWin
         Me.LicenseTextBox.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.LicenseTextBox.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.LicenseTextBox.BackColor = System.Drawing.Color.LightGray
         Me.LicenseTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.LicenseTextBox.Location = New System.Drawing.Point(150, 240)
+        Me.LicenseTextBox.Location = New System.Drawing.Point(150, 200)
         Me.LicenseTextBox.Margin = New System.Windows.Forms.Padding(7, 3, 3, 3)
         Me.LicenseTextBox.Multiline = True
         Me.LicenseTextBox.Name = "LicenseTextBox"
         Me.LicenseTextBox.ReadOnly = True
         Me.LicenseTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.LicenseTextBox.Size = New System.Drawing.Size(450, 130)
+        Me.LicenseTextBox.Size = New System.Drawing.Size(450, 170)
         Me.LicenseTextBox.TabIndex = 0
         Me.LicenseTextBox.TabStop = False
         Me.LicenseTextBox.Text = "License...."
@@ -97,7 +97,7 @@ Partial Class AboutWin
         Me.DescriptionLabel.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DescriptionLabel.Location = New System.Drawing.Point(156, 150)
         Me.DescriptionLabel.Name = "DescriptionLabel"
-        Me.DescriptionLabel.Size = New System.Drawing.Size(440, 80)
+        Me.DescriptionLabel.Size = New System.Drawing.Size(440, 40)
         Me.DescriptionLabel.TabIndex = 11
         Me.DescriptionLabel.Text = "description..."
         '

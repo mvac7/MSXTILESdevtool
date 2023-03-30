@@ -24,61 +24,17 @@ Partial Class MessageDialog
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MessageDialog))
+        Me.OK_Button = New System.Windows.Forms.Button()
         Me.AcceptImageList = New System.Windows.Forms.ImageList(Me.components)
+        Me.Cancel_Button = New System.Windows.Forms.Button()
         Me.CancelImageList = New System.Windows.Forms.ImageList(Me.components)
+        Me.ico64PictureBox = New System.Windows.Forms.PictureBox()
         Me.MessageLabel = New System.Windows.Forms.Label()
         Me.ico64ImageList = New System.Windows.Forms.ImageList(Me.components)
         Me.BottonsPanel = New System.Windows.Forms.Panel()
-        Me.OK_Button = New System.Windows.Forms.Button()
-        Me.Cancel_Button = New System.Windows.Forms.Button()
-        Me.ico64PictureBox = New System.Windows.Forms.PictureBox()
-        Me.BottonsPanel.SuspendLayout()
         CType(Me.ico64PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.BottonsPanel.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'AcceptImageList
-        '
-        Me.AcceptImageList.ImageStream = CType(resources.GetObject("AcceptImageList.ImageStream"), System.Windows.Forms.ImageListStreamer)
-        Me.AcceptImageList.TransparentColor = System.Drawing.Color.Transparent
-        Me.AcceptImageList.Images.SetKeyName(0, "mSXdevtools_button_Ok.png")
-        Me.AcceptImageList.Images.SetKeyName(1, "mSXdevtools_button_Yes.png")
-        '
-        'CancelImageList
-        '
-        Me.CancelImageList.ImageStream = CType(resources.GetObject("CancelImageList.ImageStream"), System.Windows.Forms.ImageListStreamer)
-        Me.CancelImageList.TransparentColor = System.Drawing.Color.Transparent
-        Me.CancelImageList.Images.SetKeyName(0, "mSXdevtools_button_Cancel.png")
-        Me.CancelImageList.Images.SetKeyName(1, "mSXdevtools_button_No.png")
-        '
-        'MessageLabel
-        '
-        Me.MessageLabel.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.MessageLabel.ForeColor = System.Drawing.Color.Black
-        Me.MessageLabel.Location = New System.Drawing.Point(92, 16)
-        Me.MessageLabel.Name = "MessageLabel"
-        Me.MessageLabel.Size = New System.Drawing.Size(320, 110)
-        Me.MessageLabel.TabIndex = 6
-        Me.MessageLabel.Text = "Message"
-        Me.MessageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'ico64ImageList
-        '
-        Me.ico64ImageList.ImageStream = CType(resources.GetObject("ico64ImageList.ImageStream"), System.Windows.Forms.ImageListStreamer)
-        Me.ico64ImageList.TransparentColor = System.Drawing.Color.Transparent
-        Me.ico64ImageList.Images.SetKeyName(0, "ico64_Alert_pixel2.png")
-        Me.ico64ImageList.Images.SetKeyName(1, "ico64_About_pixel2.png")
-        Me.ico64ImageList.Images.SetKeyName(2, "ico64_Help_pixel2.png")
-        '
-        'BottonsPanel
-        '
-        Me.BottonsPanel.Controls.Add(Me.OK_Button)
-        Me.BottonsPanel.Controls.Add(Me.Cancel_Button)
-        Me.BottonsPanel.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.BottonsPanel.Location = New System.Drawing.Point(0, 150)
-        Me.BottonsPanel.Name = "BottonsPanel"
-        Me.BottonsPanel.Padding = New System.Windows.Forms.Padding(4)
-        Me.BottonsPanel.Size = New System.Drawing.Size(424, 51)
-        Me.BottonsPanel.TabIndex = 7
         '
         'OK_Button
         '
@@ -92,12 +48,19 @@ Partial Class MessageDialog
         Me.OK_Button.ForeColor = System.Drawing.SystemColors.ControlText
         Me.OK_Button.ImageIndex = 0
         Me.OK_Button.ImageList = Me.AcceptImageList
-        Me.OK_Button.Location = New System.Drawing.Point(178, 4)
+        Me.OK_Button.Location = New System.Drawing.Point(180, 4)
         Me.OK_Button.Margin = New System.Windows.Forms.Padding(4)
         Me.OK_Button.Name = "OK_Button"
-        Me.OK_Button.Size = New System.Drawing.Size(132, 43)
+        Me.OK_Button.Size = New System.Drawing.Size(130, 36)
         Me.OK_Button.TabIndex = 3
         Me.OK_Button.UseVisualStyleBackColor = False
+        '
+        'AcceptImageList
+        '
+        Me.AcceptImageList.ImageStream = CType(resources.GetObject("AcceptImageList.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.AcceptImageList.TransparentColor = System.Drawing.Color.Transparent
+        Me.AcceptImageList.Images.SetKeyName(0, "button_Ok.png")
+        Me.AcceptImageList.Images.SetKeyName(1, "button_Yes.png")
         '
         'Cancel_Button
         '
@@ -115,19 +78,58 @@ Partial Class MessageDialog
         Me.Cancel_Button.Location = New System.Drawing.Point(310, 4)
         Me.Cancel_Button.Margin = New System.Windows.Forms.Padding(4)
         Me.Cancel_Button.Name = "Cancel_Button"
-        Me.Cancel_Button.Size = New System.Drawing.Size(110, 43)
+        Me.Cancel_Button.Size = New System.Drawing.Size(110, 36)
         Me.Cancel_Button.TabIndex = 4
         Me.Cancel_Button.UseVisualStyleBackColor = False
         Me.Cancel_Button.Visible = False
         '
+        'CancelImageList
+        '
+        Me.CancelImageList.ImageStream = CType(resources.GetObject("CancelImageList.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.CancelImageList.TransparentColor = System.Drawing.Color.Transparent
+        Me.CancelImageList.Images.SetKeyName(0, "button_Cancel.png")
+        Me.CancelImageList.Images.SetKeyName(1, "button_No.png")
+        '
         'ico64PictureBox
         '
         Me.ico64PictureBox.BackColor = System.Drawing.Color.Transparent
-        Me.ico64PictureBox.Location = New System.Drawing.Point(12, 22)
+        Me.ico64PictureBox.Location = New System.Drawing.Point(12, 32)
         Me.ico64PictureBox.Name = "ico64PictureBox"
         Me.ico64PictureBox.Size = New System.Drawing.Size(64, 64)
         Me.ico64PictureBox.TabIndex = 5
         Me.ico64PictureBox.TabStop = False
+        '
+        'MessageLabel
+        '
+        Me.MessageLabel.BackColor = System.Drawing.Color.Transparent
+        Me.MessageLabel.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.MessageLabel.ForeColor = System.Drawing.Color.Black
+        Me.MessageLabel.Location = New System.Drawing.Point(92, 20)
+        Me.MessageLabel.Name = "MessageLabel"
+        Me.MessageLabel.Size = New System.Drawing.Size(320, 110)
+        Me.MessageLabel.TabIndex = 6
+        Me.MessageLabel.Text = "Message"
+        Me.MessageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'ico64ImageList
+        '
+        Me.ico64ImageList.ImageStream = CType(resources.GetObject("ico64ImageList.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.ico64ImageList.TransparentColor = System.Drawing.Color.Transparent
+        Me.ico64ImageList.Images.SetKeyName(0, "ico64_About_pixel2.png")
+        Me.ico64ImageList.Images.SetKeyName(1, "ico64_Alert_pixel2.png")
+        Me.ico64ImageList.Images.SetKeyName(2, "ico64_Help_pixel2.png")
+        '
+        'BottonsPanel
+        '
+        Me.BottonsPanel.BackColor = System.Drawing.Color.Transparent
+        Me.BottonsPanel.Controls.Add(Me.OK_Button)
+        Me.BottonsPanel.Controls.Add(Me.Cancel_Button)
+        Me.BottonsPanel.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.BottonsPanel.Location = New System.Drawing.Point(0, 157)
+        Me.BottonsPanel.Name = "BottonsPanel"
+        Me.BottonsPanel.Padding = New System.Windows.Forms.Padding(4)
+        Me.BottonsPanel.Size = New System.Drawing.Size(424, 44)
+        Me.BottonsPanel.TabIndex = 7
         '
         'MessageDialog
         '
@@ -147,9 +149,9 @@ Partial Class MessageDialog
         Me.Name = "MessageDialog"
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "Dialog1"
-        Me.BottonsPanel.ResumeLayout(False)
+        Me.Text = "Message Dialog"
         CType(Me.ico64PictureBox, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.BottonsPanel.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub

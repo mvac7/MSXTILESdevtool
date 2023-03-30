@@ -120,15 +120,12 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="OKButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAH4AAAAkCAYAAABPNo4ZAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAGISURBVHhe7dtRasRADAPQPWnP0cP2Lql3CSHSyHj2
-        bzRx4ZUiRyHG330dxwHi5/2rbWa48xBQoe1huPP1Bz3Y9tSHf6jbvfUDP3+/bQPqticZypc0P+q2JwxU
-        ufnjOwcMVKn54zsHDFSp+eM7BwxUqfnjOwcMVKn54zsHDFSp+eM7BwxUyQHvwarneb4b3jdgoEoOeA9W
-        Pc/z3fC+AQNVWln1/dk8y2fnbnifgIEqraz6/mye5bNzN7xPwECVVlZ9fzbP8tm5G94nYKBKK6u+P5tn
-        +ezcDe8TMFCllVXfn805z9zf5UzshoEqraz6/mzOeeb+LmdiNwxUaWXV92fzLJ+du+F9AgaqtLLq+7N5
-        ls/O3fA+AQNVcsB7sOr5b+dueJ+AgSo54D1Y9fy3cze8T8BAlZo/vnPAQJWaP75zwECVmj++c8BAlZo/
-        vnPAQJWaP75zwECVmj++cxiCD1VuftRtTzKUL2l+1G0/+p8mn+W6dx/+WYbDXwE92PYw3HkIqND2gHc+
-        Xv+jdo+bB0a3tgAAAABJRU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAAHYAAAAcCAYAAAC0yEstAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
+        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAqUlE
+        QVRoQ+3aMQqAMBBE0ZzUc3hY77KKYgjBmLWc8RevcSTNB0FIiYjTsq0BfXdPwpqpYZ9G6COsKcKaIqwp
+        wpoirCnZsOX4U3sze7/f3RDWlFzYWaDRPnqe3dUQNrmrIWxyV0PY5K7mt2FH2rOUEbbTnqWMT3FyV0PY
+        5K5GLuytD9Gbvf91V0PY5K5GNizeEdYUYU0R1hRhTRHWFBfGzdQL44T1cvWMsgPDMoRgH5NOsAAAAABJ
+        RU5ErkJggg==
 </value>
   </data>
   <data name="LicenseButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

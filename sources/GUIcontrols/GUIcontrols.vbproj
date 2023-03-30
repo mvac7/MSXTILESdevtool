@@ -214,13 +214,6 @@
     <Compile Include="ProjectInfoUserControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="WizardDialog.Designer.vb">
-      <DependentUpon>WizardDialog.vb</DependentUpon>
-    </Compile>
-    <Compile Include="WizardDialog.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WizardStep.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AboutWin.resx">
@@ -291,9 +284,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectInfoUserControl.resx">
       <DependentUpon>ProjectInfoUserControl.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WizardDialog.resx">
-      <DependentUpon>WizardDialog.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
