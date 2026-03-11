@@ -1,5 +1,5 @@
-# MSXTiles·devtool
-### TMS9918A·G2 Graphics Editor
+# MSXTilesÂ·devtool
+### TMS9918AÂ·G2 Graphics Editor
 
 ![MSXTiles devtool logo](GFX\mSXdevtool_logo_x2.png)
 
