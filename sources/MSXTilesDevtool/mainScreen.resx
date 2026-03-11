@@ -126,6 +126,31 @@
   <metadata name="ToolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>296, 17</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="SaveBinaryButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABYAAAAUCAYAAACJfM0wAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
+        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAW0lE
+        QVQ4T2MAgv/UwEAAIuAYBDAUkYNxGhwS+hYF4xKHYXR5GH/oGIwuDsQDZDAhjEcfQQV4MR592BWQi+lv
+        MJIESXjgDYbxCWFc+oF41OAhbzANMFZBCjHDfwCVMAU2zkUg8QAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="SaveSourceButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABYAAAAUCAYAAACJfM0wAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
+        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAW0lE
+        QVQ4T2MAgv/UwEAAIuAYBDAUkYNxGhwS+hYF4xKHYXR5GH/oGIwuDsQDZDAhjEcfQQV4MR592BWQi+lv
+        MJIESXjgDYbxCWFc+oF41OAhbzANMFZBCjHDfwCVMAU2zkUg8QAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="CopyAllButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABIAAAAUCAYAAACAl21KAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6
+        JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAACXBIWXMAAAsTAAALEwEAmpwYAAAATUlE
+        QVQ4T2MAgv+kYCAAERgYBDAU48PoBsAwCIAVKJ5wwo83WIMxTP3gMQiXgSAwsAbBMEz/ABiEA48aRBiP
+        GkQY084gKmCsgiRihv8AqIuLO38WMOwAAAAASUVORK5CYII=
+</value>
+  </data>
   <metadata name="ToolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>519, 17</value>
   </metadata>
@@ -135,7 +160,6 @@
   <metadata name="ScreenStatusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>626, 17</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="TMS9918Aviewer.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAGACAYAAADbINq/AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8

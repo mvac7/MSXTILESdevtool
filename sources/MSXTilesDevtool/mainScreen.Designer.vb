@@ -27,15 +27,15 @@ Partial Class MainScreen
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.Map_areaResetButton = New System.Windows.Forms.Button()
         Me.RangeResetButton = New System.Windows.Forms.Button()
         Me.RangeStartTextBox = New System.Windows.Forms.TextBox()
         Me.RangeEndTextBox = New System.Windows.Forms.TextBox()
         Me.TilesetDataComboBox = New System.Windows.Forms.ComboBox()
-        Me.SaveBinaryButton = New System.Windows.Forms.Button()
-        Me.SaveSourceButton = New System.Windows.Forms.Button()
-        Me.CopyAllButton = New System.Windows.Forms.Button()
-        Me.GivemeTheCodeButton = New System.Windows.Forms.Button()
+        Me.GivemeTheCodeButton = New mSXdevtools.GUI.Controls.piXelST_Button()
+        Me.SaveBinaryButton = New mSXdevtools.GUI.Controls.piXelST_Button()
+        Me.SaveSourceButton = New mSXdevtools.GUI.Controls.piXelST_Button()
+        Me.CopyAllButton = New mSXdevtools.GUI.Controls.piXelST_Button()
+        Me.Map_areaResetButton = New System.Windows.Forms.Button()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.NewProjectButton = New System.Windows.Forms.ToolStripButton()
         Me.LoadProjectButton = New System.Windows.Forms.ToolStripButton()
@@ -94,46 +94,34 @@ Partial Class MainScreen
         Me.SelectDataLabel = New System.Windows.Forms.Label()
         Me.SelectDataComboBox = New System.Windows.Forms.ComboBox()
         Me.TilesetDataLabel = New System.Windows.Forms.Label()
-        Me.TileColorsPictureBox = New System.Windows.Forms.PictureBox()
         Me.ZoomLabel = New System.Windows.Forms.Label()
-        Me.TileViewerPictureBox = New System.Windows.Forms.PictureBox()
         Me.Tilenumber_TextBox = New System.Windows.Forms.TextBox()
-        Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.ZoomPanel = New mSXdevtools.GUI.Controls.piXelGroupBox()
-        Me.AreaPanel = New mSXdevtools.GUI.Controls.piXelGroupBox()
-        Me.HoriTAB1 = New MSXTILESdevtool.HoriTAB()
-        Me.RangePanel = New mSXdevtools.GUI.Controls.piXelGroupBox()
-        Me.DataPanel = New mSXdevtools.GUI.Controls.piXelGroupBox()
+        Me.ZoomPanel = New mSXdevtools.GUI.Controls.piXelST_GroupBox()
+        Me.TileColorsPictureBox = New System.Windows.Forms.PictureBox()
+        Me.TileViewerPictureBox = New System.Windows.Forms.PictureBox()
+        Me.AreaPanel = New mSXdevtools.GUI.Controls.piXelST_GroupBox()
+        Me.RangePanel = New mSXdevtools.GUI.Controls.piXelST_GroupBox()
+        Me.DataPanel = New mSXdevtools.GUI.Controls.piXelST_GroupBox()
+        Me.HorizontalTab = New mSXdevtools.GUI.Controls.piXelST_HorizontalTab()
+        Me.BottonsPanel = New System.Windows.Forms.Panel()
         Me.ToolStrip1.SuspendLayout()
         Me.ScreenContainer_Panel.SuspendLayout()
         Me.PaintToolStrip.SuspendLayout()
         CType(Me.V_Rules_PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ScreenStatusStrip.SuspendLayout()
         CType(Me.H_Rules_PictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ZoomPanel.SuspendLayout()
         CType(Me.TileColorsPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TileViewerPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel2.SuspendLayout()
-        Me.ZoomPanel.SuspendLayout()
         Me.AreaPanel.SuspendLayout()
         Me.RangePanel.SuspendLayout()
         Me.DataPanel.SuspendLayout()
+        Me.BottonsPanel.SuspendLayout()
         Me.SuspendLayout()
         '
         'ToolTip1
         '
         Me.ToolTip1.IsBalloon = True
-        '
-        'Map_areaResetButton
-        '
-        Me.Map_areaResetButton.BackColor = System.Drawing.Color.Gainsboro
-        Me.Map_areaResetButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.auto_16x16
-        Me.Map_areaResetButton.Location = New System.Drawing.Point(203, 47)
-        Me.Map_areaResetButton.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.Map_areaResetButton.Name = "Map_areaResetButton"
-        Me.Map_areaResetButton.Size = New System.Drawing.Size(24, 24)
-        Me.Map_areaResetButton.TabIndex = 114
-        Me.ToolTip1.SetToolTip(Me.Map_areaResetButton, "Initialize values.")
-        Me.Map_areaResetButton.UseVisualStyleBackColor = False
         '
         'RangeResetButton
         '
@@ -177,155 +165,191 @@ Partial Class MainScreen
         Me.TilesetDataComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.TilesetDataComboBox.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TilesetDataComboBox.FormattingEnabled = True
-        Me.TilesetDataComboBox.Items.AddRange(New Object() {"Pattern", "Color"})
+        Me.TilesetDataComboBox.Items.AddRange(New Object() {"Pattern", "Color", "Pattern + Color"})
         Me.TilesetDataComboBox.Location = New System.Drawing.Point(89, 49)
         Me.TilesetDataComboBox.Name = "TilesetDataComboBox"
         Me.TilesetDataComboBox.Size = New System.Drawing.Size(153, 22)
         Me.TilesetDataComboBox.TabIndex = 259
         Me.ToolTip1.SetToolTip(Me.TilesetDataComboBox, "Type of data to generate.")
         '
+        'GivemeTheCodeButton
+        '
+        Me.GivemeTheCodeButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GivemeTheCodeButton.BackColor = System.Drawing.Color.Silver
+        Me.GivemeTheCodeButton.ButtonColor = System.Drawing.Color.Gray
+        Me.GivemeTheCodeButton.ButtonType = mSXdevtools.GUI.Controls.piXelST_Button.Button_TYPES.Action
+        Me.GivemeTheCodeButton.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.GivemeTheCodeButton.FlatAppearance.BorderSize = 0
+        Me.GivemeTheCodeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.GivemeTheCodeButton.ForeColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(83, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.GivemeTheCodeButton.Location = New System.Drawing.Point(582, 589)
+        Me.GivemeTheCodeButton.Name = "GivemeTheCodeButton"
+        Me.GivemeTheCodeButton.Size = New System.Drawing.Size(262, 29)
+        Me.GivemeTheCodeButton.TabIndex = 281
+        Me.GivemeTheCodeButton.Text = "Generate Source"
+        Me.ToolTip1.SetToolTip(Me.GivemeTheCodeButton, "Press this button, if you want all the little blue elves " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "to get to work and wri" &
+        "te the data in the output box.")
+        Me.GivemeTheCodeButton.UseVisualStyleBackColor = False
+        '
         'SaveBinaryButton
         '
-        Me.SaveBinaryButton.BackColor = System.Drawing.Color.Transparent
-        Me.SaveBinaryButton.FlatAppearance.BorderSize = 0
-        Me.SaveBinaryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.SaveBinaryButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.button_savebinary
-        Me.SaveBinaryButton.Location = New System.Drawing.Point(378, 7)
+        Me.SaveBinaryButton.ButtonColor = System.Drawing.Color.Gray
+        Me.SaveBinaryButton.ButtonType = mSXdevtools.GUI.Controls.piXelST_Button.Button_TYPES.Save
+        Me.SaveBinaryButton.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.SaveBinaryButton.Dock = System.Windows.Forms.DockStyle.Left
+        Me.SaveBinaryButton.ForeColor = System.Drawing.Color.Black
+        Me.SaveBinaryButton.Image = CType(resources.GetObject("SaveBinaryButton.Image"), System.Drawing.Image)
+        Me.SaveBinaryButton.Location = New System.Drawing.Point(368, 4)
         Me.SaveBinaryButton.Name = "SaveBinaryButton"
-        Me.SaveBinaryButton.Size = New System.Drawing.Size(205, 37)
-        Me.SaveBinaryButton.TabIndex = 271
-        Me.SaveBinaryButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.SaveBinaryButton.Padding = New System.Windows.Forms.Padding(4)
+        Me.SaveBinaryButton.Size = New System.Drawing.Size(208, 36)
+        Me.SaveBinaryButton.TabIndex = 129
+        Me.SaveBinaryButton.TabStop = False
+        Me.SaveBinaryButton.Text = "Save Binary"
         Me.ToolTip1.SetToolTip(Me.SaveBinaryButton, "Save output to Binary file")
         Me.SaveBinaryButton.UseVisualStyleBackColor = False
         '
         'SaveSourceButton
         '
-        Me.SaveSourceButton.BackColor = System.Drawing.Color.Transparent
-        Me.SaveSourceButton.FlatAppearance.BorderSize = 0
-        Me.SaveSourceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.SaveSourceButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.button_savesource
-        Me.SaveSourceButton.Location = New System.Drawing.Point(168, 7)
+        Me.SaveSourceButton.ButtonColor = System.Drawing.Color.Gray
+        Me.SaveSourceButton.ButtonType = mSXdevtools.GUI.Controls.piXelST_Button.Button_TYPES.Save
+        Me.SaveSourceButton.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.SaveSourceButton.Dock = System.Windows.Forms.DockStyle.Left
+        Me.SaveSourceButton.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SaveSourceButton.ForeColor = System.Drawing.Color.Black
+        Me.SaveSourceButton.Image = CType(resources.GetObject("SaveSourceButton.Image"), System.Drawing.Image)
+        Me.SaveSourceButton.Location = New System.Drawing.Point(161, 4)
         Me.SaveSourceButton.Name = "SaveSourceButton"
-        Me.SaveSourceButton.Size = New System.Drawing.Size(205, 37)
-        Me.SaveSourceButton.TabIndex = 270
+        Me.SaveSourceButton.Padding = New System.Windows.Forms.Padding(4)
+        Me.SaveSourceButton.Size = New System.Drawing.Size(207, 36)
+        Me.SaveSourceButton.TabIndex = 128
+        Me.SaveSourceButton.TabStop = False
+        Me.SaveSourceButton.Text = "Save Source"
         Me.ToolTip1.SetToolTip(Me.SaveSourceButton, "Save output to TXT file")
         Me.SaveSourceButton.UseVisualStyleBackColor = False
         '
         'CopyAllButton
         '
-        Me.CopyAllButton.BackColor = System.Drawing.Color.Transparent
-        Me.CopyAllButton.FlatAppearance.BorderSize = 0
-        Me.CopyAllButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CopyAllButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.button_CopyAll
-        Me.CopyAllButton.Location = New System.Drawing.Point(12, 7)
+        Me.CopyAllButton.ButtonColor = System.Drawing.Color.Gray
+        Me.CopyAllButton.ButtonType = mSXdevtools.GUI.Controls.piXelST_Button.Button_TYPES.Confirmation
+        Me.CopyAllButton.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.CopyAllButton.Dock = System.Windows.Forms.DockStyle.Left
+        Me.CopyAllButton.ForeColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(83, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.CopyAllButton.Image = CType(resources.GetObject("CopyAllButton.Image"), System.Drawing.Image)
+        Me.CopyAllButton.Location = New System.Drawing.Point(4, 4)
         Me.CopyAllButton.Name = "CopyAllButton"
-        Me.CopyAllButton.Size = New System.Drawing.Size(151, 37)
-        Me.CopyAllButton.TabIndex = 269
-        Me.ToolTip1.SetToolTip(Me.CopyAllButton, "Copy output to clipboard")
+        Me.CopyAllButton.Padding = New System.Windows.Forms.Padding(4)
+        Me.CopyAllButton.Size = New System.Drawing.Size(157, 36)
+        Me.CopyAllButton.TabIndex = 127
+        Me.CopyAllButton.TabStop = False
+        Me.CopyAllButton.Text = "Copy All"
+        Me.ToolTip1.SetToolTip(Me.CopyAllButton, "Copy output source code to clipboard")
         Me.CopyAllButton.UseVisualStyleBackColor = False
         '
-        'GivemeTheCodeButton
+        'Map_areaResetButton
         '
-        Me.GivemeTheCodeButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.GivemeTheCodeButton.BackColor = System.Drawing.Color.Transparent
-        Me.GivemeTheCodeButton.FlatAppearance.BorderSize = 0
-        Me.GivemeTheCodeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.GivemeTheCodeButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.button_generate_pixelS
-        Me.GivemeTheCodeButton.Location = New System.Drawing.Point(581, 579)
-        Me.GivemeTheCodeButton.Name = "GivemeTheCodeButton"
-        Me.GivemeTheCodeButton.Size = New System.Drawing.Size(262, 41)
-        Me.GivemeTheCodeButton.TabIndex = 281
-        Me.ToolTip1.SetToolTip(Me.GivemeTheCodeButton, "Press this button, if you want all the little blue elves " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "to get to work and wri" &
-        "te the data in the output box.")
-        Me.GivemeTheCodeButton.UseVisualStyleBackColor = False
+        Me.Map_areaResetButton.BackColor = System.Drawing.Color.Gainsboro
+        Me.Map_areaResetButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.auto_16x16
+        Me.Map_areaResetButton.Location = New System.Drawing.Point(203, 47)
+        Me.Map_areaResetButton.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.Map_areaResetButton.Name = "Map_areaResetButton"
+        Me.Map_areaResetButton.Size = New System.Drawing.Size(24, 24)
+        Me.Map_areaResetButton.TabIndex = 114
+        Me.ToolTip1.SetToolTip(Me.Map_areaResetButton, "Initialize values.")
+        Me.Map_areaResetButton.UseVisualStyleBackColor = False
         '
         'ToolStrip1
         '
         Me.ToolStrip1.AutoSize = False
         Me.ToolStrip1.BackColor = System.Drawing.Color.Gainsboro
-        Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(24, 24)
+        Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(32, 32)
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewProjectButton, Me.LoadProjectButton, Me.ToolStripSeparator1, Me.ProjectNameTextBox, Me.ProjectInfoButton, Me.ToolStripSeparator2, Me.SaveProjectButton, Me.SaveasButton, Me.Save_nMSXProjectButton, Me.SaveMSXBASICGButton1, Me.SaveBitmapButton1, Me.ToolStripSeparator3, Me.ConfigButton, Me.Help_Button, Me.AboutButton})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
-        Me.ToolStrip1.Size = New System.Drawing.Size(854, 32)
+        Me.ToolStrip1.Size = New System.Drawing.Size(854, 39)
         Me.ToolStrip1.TabIndex = 38
         Me.ToolStrip1.Text = "ToolStrip1"
         '
         'NewProjectButton
         '
-        Me.NewProjectButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.new_24
+        Me.NewProjectButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.NewProjectButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.ico_new_32px
         Me.NewProjectButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.NewProjectButton.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.NewProjectButton.Name = "NewProjectButton"
-        Me.NewProjectButton.Size = New System.Drawing.Size(28, 29)
+        Me.NewProjectButton.Size = New System.Drawing.Size(36, 36)
         Me.NewProjectButton.ToolTipText = "New Project"
         '
         'LoadProjectButton
         '
         Me.LoadProjectButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.LoadProjectButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.Load_file2_x24
+        Me.LoadProjectButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.ico_load_32px
         Me.LoadProjectButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.LoadProjectButton.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.LoadProjectButton.Name = "LoadProjectButton"
-        Me.LoadProjectButton.Size = New System.Drawing.Size(28, 29)
+        Me.LoadProjectButton.Size = New System.Drawing.Size(36, 36)
         Me.LoadProjectButton.Text = "LoadProject"
         Me.LoadProjectButton.ToolTipText = "Load Project"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 32)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 39)
         '
         'ProjectNameTextBox
         '
         Me.ProjectNameTextBox.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.ProjectNameTextBox.Name = "ProjectNameTextBox"
         Me.ProjectNameTextBox.ReadOnly = True
-        Me.ProjectNameTextBox.Size = New System.Drawing.Size(220, 32)
+        Me.ProjectNameTextBox.Size = New System.Drawing.Size(220, 39)
         Me.ProjectNameTextBox.ToolTipText = "Project Name"
         '
         'ProjectInfoButton
         '
         Me.ProjectInfoButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ProjectInfoButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.project_properties_24p
+        Me.ProjectInfoButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.ico_config_prj_32px
+        Me.ProjectInfoButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ProjectInfoButton.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ProjectInfoButton.Name = "ProjectInfoButton"
-        Me.ProjectInfoButton.Size = New System.Drawing.Size(28, 29)
+        Me.ProjectInfoButton.Size = New System.Drawing.Size(36, 36)
         Me.ProjectInfoButton.ToolTipText = "Edit Project Info"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 32)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 39)
         '
         'SaveProjectButton
         '
         Me.SaveProjectButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.SaveProjectButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.save3_x24
+        Me.SaveProjectButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.ico_save_32px
+        Me.SaveProjectButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.SaveProjectButton.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.SaveProjectButton.Name = "SaveProjectButton"
-        Me.SaveProjectButton.Size = New System.Drawing.Size(28, 29)
+        Me.SaveProjectButton.Size = New System.Drawing.Size(36, 36)
         Me.SaveProjectButton.Text = "ToolStripButton1"
         Me.SaveProjectButton.ToolTipText = "Save Project"
         '
         'SaveasButton
         '
         Me.SaveasButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.SaveasButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.save_as3_x24
+        Me.SaveasButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.ico_save_as_32px
+        Me.SaveasButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.SaveasButton.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.SaveasButton.Name = "SaveasButton"
-        Me.SaveasButton.Size = New System.Drawing.Size(28, 29)
+        Me.SaveasButton.Size = New System.Drawing.Size(36, 36)
         Me.SaveasButton.Text = "SaveasButton"
         Me.SaveasButton.ToolTipText = "Save As"
         '
         'Save_nMSXProjectButton
         '
         Me.Save_nMSXProjectButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.Save_nMSXProjectButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.saveNM_x24
+        Me.Save_nMSXProjectButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.ico_save_NMsx_32px
+        Me.Save_nMSXProjectButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.Save_nMSXProjectButton.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.Save_nMSXProjectButton.Name = "Save_nMSXProjectButton"
-        Me.Save_nMSXProjectButton.Size = New System.Drawing.Size(28, 29)
+        Me.Save_nMSXProjectButton.Size = New System.Drawing.Size(36, 36)
         Me.Save_nMSXProjectButton.Text = "ToolStripButton1"
         Me.Save_nMSXProjectButton.ToolTipText = "Save nMSXtiles Project"
         '
@@ -335,49 +359,53 @@ Partial Class MainScreen
         Me.SaveMSXBASICGButton1.Image = Global.MSXTILESdevtool.My.Resources.Resources.saveSC_x24
         Me.SaveMSXBASICGButton1.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.SaveMSXBASICGButton1.Name = "SaveMSXBASICGButton1"
-        Me.SaveMSXBASICGButton1.Size = New System.Drawing.Size(28, 29)
+        Me.SaveMSXBASICGButton1.Size = New System.Drawing.Size(36, 36)
         Me.SaveMSXBASICGButton1.ToolTipText = "Save MSX BASIC Binary Graphics (SC2)"
         '
         'SaveBitmapButton1
         '
         Me.SaveBitmapButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.SaveBitmapButton1.Image = Global.MSXTILESdevtool.My.Resources.Resources.save_bitmap3_x24
+        Me.SaveBitmapButton1.Image = Global.MSXTILESdevtool.My.Resources.Resources.ico_save_bitmap_32px
+        Me.SaveBitmapButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.SaveBitmapButton1.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.SaveBitmapButton1.Name = "SaveBitmapButton1"
-        Me.SaveBitmapButton1.Size = New System.Drawing.Size(28, 29)
+        Me.SaveBitmapButton1.Size = New System.Drawing.Size(36, 36)
         Me.SaveBitmapButton1.ToolTipText = "Save bitmap picture"
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 32)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 39)
         '
         'ConfigButton
         '
         Me.ConfigButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ConfigButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.config_x24
+        Me.ConfigButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.ico_config_app_32px
+        Me.ConfigButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ConfigButton.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ConfigButton.Name = "ConfigButton"
-        Me.ConfigButton.Size = New System.Drawing.Size(28, 29)
+        Me.ConfigButton.Size = New System.Drawing.Size(36, 36)
         Me.ConfigButton.ToolTipText = "Config devtools"
         '
         'Help_Button
         '
         Me.Help_Button.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
         Me.Help_Button.Enabled = False
-        Me.Help_Button.Image = Global.MSXTILESdevtool.My.Resources.Resources.help_24
+        Me.Help_Button.Image = Global.MSXTILESdevtool.My.Resources.Resources.ico_help_32px
+        Me.Help_Button.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.Help_Button.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.Help_Button.Name = "Help_Button"
-        Me.Help_Button.Size = New System.Drawing.Size(28, 29)
+        Me.Help_Button.Size = New System.Drawing.Size(36, 36)
         Me.Help_Button.ToolTipText = "Help!"
         '
         'AboutButton
         '
         Me.AboutButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.AboutButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.about_24
+        Me.AboutButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.ico_about_32px
+        Me.AboutButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.AboutButton.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.AboutButton.Name = "AboutButton"
-        Me.AboutButton.Size = New System.Drawing.Size(28, 29)
+        Me.AboutButton.Size = New System.Drawing.Size(36, 36)
         Me.AboutButton.Text = "ToolStripButton1"
         Me.AboutButton.ToolTipText = "About this devtool"
         '
@@ -389,9 +417,10 @@ Partial Class MainScreen
         Me.ScreenContainer_Panel.Controls.Add(Me.ScreenStatusStrip)
         Me.ScreenContainer_Panel.Controls.Add(Me.H_Rules_PictureBox)
         Me.ScreenContainer_Panel.Controls.Add(Me.TMS9918Aviewer)
-        Me.ScreenContainer_Panel.Location = New System.Drawing.Point(1, 78)
+        Me.ScreenContainer_Panel.Location = New System.Drawing.Point(0, 73)
+        Me.ScreenContainer_Panel.Margin = New System.Windows.Forms.Padding(0)
         Me.ScreenContainer_Panel.Name = "ScreenContainer_Panel"
-        Me.ScreenContainer_Panel.Size = New System.Drawing.Size(562, 422)
+        Me.ScreenContainer_Panel.Size = New System.Drawing.Size(567, 422)
         Me.ScreenContainer_Panel.TabIndex = 117
         '
         'PaintToolStrip
@@ -404,93 +433,111 @@ Partial Class MainScreen
         Me.PaintToolStrip.Location = New System.Drawing.Point(0, 0)
         Me.PaintToolStrip.Name = "PaintToolStrip"
         Me.PaintToolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.PaintToolStrip.Size = New System.Drawing.Size(30, 400)
+        Me.PaintToolStrip.Size = New System.Drawing.Size(38, 400)
         Me.PaintToolStrip.TabIndex = 274
         Me.PaintToolStrip.Text = "ToolStrip1"
         '
         'OptimizeButton
         '
         Me.OptimizeButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.OptimizeButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.reload_24x24_02
+        Me.OptimizeButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.ico_reload_32px
+        Me.OptimizeButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.OptimizeButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.OptimizeButton.Margin = New System.Windows.Forms.Padding(0, 1, 0, 0)
         Me.OptimizeButton.Name = "OptimizeButton"
-        Me.OptimizeButton.Size = New System.Drawing.Size(28, 28)
+        Me.OptimizeButton.Size = New System.Drawing.Size(36, 36)
         Me.OptimizeButton.Text = "ToolStripButton3"
         Me.OptimizeButton.ToolTipText = "Optimize pattern and color data"
         '
         'TilesOrderButton
         '
         Me.TilesOrderButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.TilesOrderButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.gradient_up_24
+        Me.TilesOrderButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.ico_sort_32px
+        Me.TilesOrderButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.TilesOrderButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.TilesOrderButton.Margin = New System.Windows.Forms.Padding(0, 1, 0, 0)
         Me.TilesOrderButton.Name = "TilesOrderButton"
-        Me.TilesOrderButton.Size = New System.Drawing.Size(28, 28)
+        Me.TilesOrderButton.Size = New System.Drawing.Size(36, 36)
         Me.TilesOrderButton.ToolTipText = "Generates an ordered map"
         '
         'FillMapButton
         '
         Me.FillMapButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.FillMapButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.fill_x24_02
+        Me.FillMapButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.ico_paint_32px
+        Me.FillMapButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.FillMapButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.FillMapButton.Margin = New System.Windows.Forms.Padding(0, 1, 0, 0)
         Me.FillMapButton.Name = "FillMapButton"
-        Me.FillMapButton.Size = New System.Drawing.Size(28, 28)
+        Me.FillMapButton.Size = New System.Drawing.Size(36, 36)
         Me.FillMapButton.Text = "ToolStripButton1"
         Me.FillMapButton.ToolTipText = "Fill an area with the same tile"
         '
         'SwitchButton
         '
         Me.SwitchButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.SwitchButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.change_x24_02
+        Me.SwitchButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.ico_copy_32px
+        Me.SwitchButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.SwitchButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.SwitchButton.Margin = New System.Windows.Forms.Padding(0, 1, 0, 0)
         Me.SwitchButton.Name = "SwitchButton"
-        Me.SwitchButton.Size = New System.Drawing.Size(28, 28)
+        Me.SwitchButton.Size = New System.Drawing.Size(36, 36)
         Me.SwitchButton.Text = "ToolStripButton1"
         Me.SwitchButton.ToolTipText = "Write text"
         '
         'SwapButton
         '
         Me.SwapButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.SwapButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.exchange2_x24
+        Me.SwapButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.ico_exchange_32px
+        Me.SwapButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.SwapButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.SwapButton.Margin = New System.Windows.Forms.Padding(0, 1, 0, 0)
         Me.SwapButton.Name = "SwapButton"
-        Me.SwapButton.Size = New System.Drawing.Size(28, 28)
+        Me.SwapButton.Size = New System.Drawing.Size(36, 36)
         '
         'SelectAreaButton
         '
         Me.SelectAreaButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.SelectAreaButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.select_24
+        Me.SelectAreaButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.ico_select_32px
+        Me.SelectAreaButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.SelectAreaButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.SelectAreaButton.Margin = New System.Windows.Forms.Padding(0, 1, 0, 0)
         Me.SelectAreaButton.Name = "SelectAreaButton"
-        Me.SelectAreaButton.Size = New System.Drawing.Size(28, 28)
+        Me.SelectAreaButton.Size = New System.Drawing.Size(36, 36)
         Me.SelectAreaButton.Text = "ToolStripButton3"
         Me.SelectAreaButton.ToolTipText = "Select area"
         '
         'EditPaleteButton
         '
         Me.EditPaleteButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.EditPaleteButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.palette3_x24
+        Me.EditPaleteButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.ico_palette_32px
+        Me.EditPaleteButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.EditPaleteButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.EditPaleteButton.Margin = New System.Windows.Forms.Padding(0, 1, 0, 0)
         Me.EditPaleteButton.Name = "EditPaleteButton"
-        Me.EditPaleteButton.Size = New System.Drawing.Size(28, 28)
+        Me.EditPaleteButton.Size = New System.Drawing.Size(36, 36)
         Me.EditPaleteButton.ToolTipText = "Draw the clipboard area"
         '
         'ClearButton
         '
         Me.ClearButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ClearButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.trashcan01_24p
+        Me.ClearButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.ico_clear_32px
+        Me.ClearButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ClearButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ClearButton.Margin = New System.Windows.Forms.Padding(0, 1, 0, 0)
         Me.ClearButton.Name = "ClearButton"
-        Me.ClearButton.Size = New System.Drawing.Size(28, 28)
+        Me.ClearButton.Size = New System.Drawing.Size(36, 36)
         Me.ClearButton.Text = "ToolStripButton4"
         Me.ClearButton.ToolTipText = "Clear Map"
         '
         'UndoButton
         '
         Me.UndoButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.UndoButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.undo_clear
+        Me.UndoButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.ico_undo_32px
+        Me.UndoButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.UndoButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.UndoButton.Margin = New System.Windows.Forms.Padding(0, 1, 0, 0)
         Me.UndoButton.Name = "UndoButton"
-        Me.UndoButton.Size = New System.Drawing.Size(28, 28)
+        Me.UndoButton.Size = New System.Drawing.Size(36, 36)
         Me.UndoButton.Text = "ToolStripButton3"
         Me.UndoButton.ToolTipText = "Undo/Redo"
         '
@@ -499,8 +546,9 @@ Partial Class MainScreen
         Me.BorderColorButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
         Me.BorderColorButton.Image = Global.MSXTILESdevtool.My.Resources.Resources.screen02_24px
         Me.BorderColorButton.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.BorderColorButton.Margin = New System.Windows.Forms.Padding(0, 1, 0, 0)
         Me.BorderColorButton.Name = "BorderColorButton"
-        Me.BorderColorButton.Size = New System.Drawing.Size(28, 28)
+        Me.BorderColorButton.Size = New System.Drawing.Size(36, 28)
         Me.BorderColorButton.Text = "ToolStripButton1"
         Me.BorderColorButton.ToolTipText = "Select screen border color." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "It is used to display the color 0."
         '
@@ -508,7 +556,7 @@ Partial Class MainScreen
         '
         Me.V_Rules_PictureBox.BackColor = System.Drawing.Color.Gainsboro
         Me.V_Rules_PictureBox.BackgroundImage = Global.MSXTILESdevtool.My.Resources.Resources.V_ruler_16p
-        Me.V_Rules_PictureBox.Location = New System.Drawing.Point(33, 15)
+        Me.V_Rules_PictureBox.Location = New System.Drawing.Point(39, 15)
         Me.V_Rules_PictureBox.Name = "V_Rules_PictureBox"
         Me.V_Rules_PictureBox.Size = New System.Drawing.Size(16, 384)
         Me.V_Rules_PictureBox.TabIndex = 273
@@ -519,7 +567,7 @@ Partial Class MainScreen
         Me.ScreenStatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CursorXLabel, Me.PosX_Label, Me.CursorYLabel, Me.PosY_Label, Me.Col_Label, Me.ColumnLabel, Me.ToolStripStatusLabel1, Me.LineLabel, Me.Colors_Label, Me.ColorInkLabel, Me.ColorBGLabel, Me.Bloq_Label, Me.BloqValue_Label})
         Me.ScreenStatusStrip.Location = New System.Drawing.Point(0, 400)
         Me.ScreenStatusStrip.Name = "ScreenStatusStrip"
-        Me.ScreenStatusStrip.Size = New System.Drawing.Size(562, 22)
+        Me.ScreenStatusStrip.Size = New System.Drawing.Size(567, 22)
         Me.ScreenStatusStrip.TabIndex = 0
         Me.ScreenStatusStrip.Text = "StatusStrip1"
         '
@@ -680,7 +728,7 @@ Partial Class MainScreen
         '
         Me.H_Rules_PictureBox.BackColor = System.Drawing.Color.Gainsboro
         Me.H_Rules_PictureBox.BackgroundImage = Global.MSXTILESdevtool.My.Resources.Resources.H_ruler_16p
-        Me.H_Rules_PictureBox.Location = New System.Drawing.Point(50, 0)
+        Me.H_Rules_PictureBox.Location = New System.Drawing.Point(55, 0)
         Me.H_Rules_PictureBox.Name = "H_Rules_PictureBox"
         Me.H_Rules_PictureBox.Size = New System.Drawing.Size(512, 16)
         Me.H_Rules_PictureBox.TabIndex = 272
@@ -695,12 +743,12 @@ Partial Class MainScreen
         Me.TMS9918Aviewer.Cursor = System.Windows.Forms.Cursors.Default
         Me.TMS9918Aviewer.InkColor = CType(15, Byte)
         Me.TMS9918Aviewer.IsShowSprites = True
-        Me.TMS9918Aviewer.Location = New System.Drawing.Point(49, 16)
-        Me.TMS9918Aviewer.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.TMS9918Aviewer.Location = New System.Drawing.Point(55, 16)
+        Me.TMS9918Aviewer.Margin = New System.Windows.Forms.Padding(1160091, 3, 1160091, 3)
         Me.TMS9918Aviewer.Name = "TMS9918Aviewer"
         Me.TMS9918Aviewer.ScreenMode = mSXdevtools.DataStructures.iVDP.SCREEN_MODE.G2
         Me.TMS9918Aviewer.Size = New System.Drawing.Size(512, 384)
-        Me.TMS9918Aviewer.SpriteSize = mSXdevtools.DataStructures.SpriteMSX.SPRITE_SIZE.SIZE16
+        Me.TMS9918Aviewer.SpriteSize = mSXdevtools.DataStructures.iVDP.SPRITE_SIZE.SIZE16
         Me.TMS9918Aviewer.SpriteZoom = mSXdevtools.DataStructures.iVDP.SPRITE_ZOOM.X1
         Me.TMS9918Aviewer.TabIndex = 116
         Me.TMS9918Aviewer.ViewMode = mSXdevtools.GUI.TMS9918A.TMS9918A.VIEW_MODE.ALL
@@ -713,26 +761,32 @@ Partial Class MainScreen
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.OutputText.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.OutputText.Font = New System.Drawing.Font("Courier New", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.OutputText.Location = New System.Drawing.Point(10, 626)
+        Me.OutputText.Location = New System.Drawing.Point(10, 623)
         Me.OutputText.Multiline = True
         Me.OutputText.Name = "OutputText"
         Me.OutputText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.OutputText.Size = New System.Drawing.Size(832, 54)
+        Me.OutputText.Size = New System.Drawing.Size(834, 72)
         Me.OutputText.TabIndex = 118
         '
         'DataTypeInput
         '
+        Me.DataTypeInput.AsmDataByteCommand = ""
+        Me.DataTypeInput.AsmDataWordCommand = ""
         Me.DataTypeInput.BackColor = System.Drawing.Color.Transparent
+        Me.DataTypeInput.BASIClineInterval = 10
+        Me.DataTypeInput.BASIClineNumber = 10000
+        Me.DataTypeInput.BASICremoveZeros = False
+        Me.DataTypeInput.CompressType = mSXdevtools.GUI.Controls.DataTypeInputControl.COMPRESS_TYPE.RAW
         Me.DataTypeInput.EnableAssemblerIndex = False
         Me.DataTypeInput.EnableCompress = True
-        Me.DataTypeInput.EnableDataSizeLine = True
+        Me.DataTypeInput.EnableDataLineSize = False
         Me.DataTypeInput.FieldName = "DATA"
-        Me.DataTypeInput.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DataTypeInput.LanguageCode = mSXdevtools.DataStructures.SourceCodeInfo.LANGUAGE_CODE.BASIC
+        Me.DataTypeInput.LineSizeIndex = 6
         Me.DataTypeInput.Location = New System.Drawing.Point(5, 504)
-        Me.DataTypeInput.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.DataTypeInput.Name = "DataTypeInput"
-        Me.DataTypeInput.Size = New System.Drawing.Size(528, 117)
-        Me.DataTypeInput.SizeLineIndex = 6
+        Me.DataTypeInput.NumeralSystem = -1
+        Me.DataTypeInput.Size = New System.Drawing.Size(562, 117)
         Me.DataTypeInput.TabIndex = 254
         '
         'Label9
@@ -859,15 +913,6 @@ Partial Class MainScreen
         Me.TilesetDataLabel.Text = "Type:"
         Me.TilesetDataLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'TileColorsPictureBox
-        '
-        Me.TileColorsPictureBox.BackColor = System.Drawing.Color.Black
-        Me.TileColorsPictureBox.Location = New System.Drawing.Point(208, 22)
-        Me.TileColorsPictureBox.Name = "TileColorsPictureBox"
-        Me.TileColorsPictureBox.Size = New System.Drawing.Size(35, 137)
-        Me.TileColorsPictureBox.TabIndex = 292
-        Me.TileColorsPictureBox.TabStop = False
-        '
         'ZoomLabel
         '
         Me.ZoomLabel.BackColor = System.Drawing.Color.Transparent
@@ -878,15 +923,6 @@ Partial Class MainScreen
         Me.ZoomLabel.TabIndex = 291
         Me.ZoomLabel.Text = "Tile"
         Me.ZoomLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'TileViewerPictureBox
-        '
-        Me.TileViewerPictureBox.BackColor = System.Drawing.Color.Black
-        Me.TileViewerPictureBox.Location = New System.Drawing.Point(68, 22)
-        Me.TileViewerPictureBox.Name = "TileViewerPictureBox"
-        Me.TileViewerPictureBox.Size = New System.Drawing.Size(137, 137)
-        Me.TileViewerPictureBox.TabIndex = 289
-        Me.TileViewerPictureBox.TabStop = False
         '
         'Tilenumber_TextBox
         '
@@ -903,36 +939,46 @@ Partial Class MainScreen
         Me.Tilenumber_TextBox.Text = "0"
         Me.Tilenumber_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
-        'Panel2
-        '
-        Me.Panel2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.Panel2.BackColor = System.Drawing.Color.Transparent
-        Me.Panel2.BackgroundImage = Global.MSXTILESdevtool.My.Resources.Resources.piXel_pane_XL
-        Me.Panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.Panel2.Controls.Add(Me.SaveBinaryButton)
-        Me.Panel2.Controls.Add(Me.SaveSourceButton)
-        Me.Panel2.Controls.Add(Me.CopyAllButton)
-        Me.Panel2.Location = New System.Drawing.Point(10, 686)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(832, 52)
-        Me.Panel2.TabIndex = 286
-        '
         'ZoomPanel
         '
+        Me.ZoomPanel.BackColor = System.Drawing.Color.Transparent
+        Me.ZoomPanel.BGColor = System.Drawing.Color.LightGray
         Me.ZoomPanel.Controls.Add(Me.TileColorsPictureBox)
         Me.ZoomPanel.Controls.Add(Me.TileViewerPictureBox)
         Me.ZoomPanel.Controls.Add(Me.ZoomLabel)
         Me.ZoomPanel.Controls.Add(Me.Tilenumber_TextBox)
-        Me.ZoomPanel.Location = New System.Drawing.Point(580, 328)
+        Me.ZoomPanel.ForeColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(83, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.ZoomPanel.LineColor = System.Drawing.Color.DimGray
+        Me.ZoomPanel.Location = New System.Drawing.Point(580, 326)
         Me.ZoomPanel.Name = "ZoomPanel"
-        Me.ZoomPanel.Padding = New System.Windows.Forms.Padding(10)
+        Me.ZoomPanel.Padding = New System.Windows.Forms.Padding(0)
         Me.ZoomPanel.Size = New System.Drawing.Size(259, 172)
         Me.ZoomPanel.TabIndex = 295
         Me.ZoomPanel.TabStop = False
         Me.ZoomPanel.Text = "Zoom"
         '
+        'TileColorsPictureBox
+        '
+        Me.TileColorsPictureBox.BackColor = System.Drawing.Color.Black
+        Me.TileColorsPictureBox.Location = New System.Drawing.Point(208, 22)
+        Me.TileColorsPictureBox.Name = "TileColorsPictureBox"
+        Me.TileColorsPictureBox.Size = New System.Drawing.Size(35, 137)
+        Me.TileColorsPictureBox.TabIndex = 292
+        Me.TileColorsPictureBox.TabStop = False
+        '
+        'TileViewerPictureBox
+        '
+        Me.TileViewerPictureBox.BackColor = System.Drawing.Color.Black
+        Me.TileViewerPictureBox.Location = New System.Drawing.Point(68, 22)
+        Me.TileViewerPictureBox.Name = "TileViewerPictureBox"
+        Me.TileViewerPictureBox.Size = New System.Drawing.Size(137, 137)
+        Me.TileViewerPictureBox.TabIndex = 289
+        Me.TileViewerPictureBox.TabStop = False
+        '
         'AreaPanel
         '
+        Me.AreaPanel.BackColor = System.Drawing.Color.Transparent
+        Me.AreaPanel.BGColor = System.Drawing.Color.LightGray
         Me.AreaPanel.Controls.Add(Me.Label9)
         Me.AreaPanel.Controls.Add(Me.Map_areaResetButton)
         Me.AreaPanel.Controls.Add(Me.AreaEndY_TextBox)
@@ -940,34 +986,30 @@ Partial Class MainScreen
         Me.AreaPanel.Controls.Add(Me.AreaStartX_TextBox)
         Me.AreaPanel.Controls.Add(Me.Label5)
         Me.AreaPanel.Controls.Add(Me.AreaStartY_TextBox)
-        Me.AreaPanel.Location = New System.Drawing.Point(580, 237)
+        Me.AreaPanel.ForeColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(83, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.AreaPanel.LineColor = System.Drawing.Color.DimGray
+        Me.AreaPanel.Location = New System.Drawing.Point(580, 235)
         Me.AreaPanel.Name = "AreaPanel"
-        Me.AreaPanel.Padding = New System.Windows.Forms.Padding(10)
+        Me.AreaPanel.Padding = New System.Windows.Forms.Padding(0)
         Me.AreaPanel.Size = New System.Drawing.Size(259, 82)
         Me.AreaPanel.TabIndex = 296
         Me.AreaPanel.TabStop = False
         Me.AreaPanel.Text = "Area"
         '
-        'HoriTAB1
-        '
-        Me.HoriTAB1.BackColor = System.Drawing.Color.RoyalBlue
-        Me.HoriTAB1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.HoriTAB1.Location = New System.Drawing.Point(0, 32)
-        Me.HoriTAB1.Margin = New System.Windows.Forms.Padding(0)
-        Me.HoriTAB1.Name = "HoriTAB1"
-        Me.HoriTAB1.Size = New System.Drawing.Size(854, 34)
-        Me.HoriTAB1.TabIndex = 272
-        '
         'RangePanel
         '
+        Me.RangePanel.BackColor = System.Drawing.Color.Transparent
+        Me.RangePanel.BGColor = System.Drawing.Color.LightGray
         Me.RangePanel.Controls.Add(Me.RangeResetButton)
         Me.RangePanel.Controls.Add(Me.RangeLabel)
         Me.RangePanel.Controls.Add(Me.RangeToLabel)
         Me.RangePanel.Controls.Add(Me.RangeStartTextBox)
         Me.RangePanel.Controls.Add(Me.RangeEndTextBox)
-        Me.RangePanel.Location = New System.Drawing.Point(580, 174)
+        Me.RangePanel.ForeColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(83, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.RangePanel.LineColor = System.Drawing.Color.DimGray
+        Me.RangePanel.Location = New System.Drawing.Point(580, 172)
         Me.RangePanel.Name = "RangePanel"
-        Me.RangePanel.Padding = New System.Windows.Forms.Padding(10)
+        Me.RangePanel.Padding = New System.Windows.Forms.Padding(0)
         Me.RangePanel.Size = New System.Drawing.Size(259, 54)
         Me.RangePanel.TabIndex = 297
         Me.RangePanel.TabStop = False
@@ -975,32 +1017,62 @@ Partial Class MainScreen
         '
         'DataPanel
         '
+        Me.DataPanel.BackColor = System.Drawing.Color.Transparent
+        Me.DataPanel.BGColor = System.Drawing.Color.LightGray
         Me.DataPanel.Controls.Add(Me.TilesetDataComboBox)
         Me.DataPanel.Controls.Add(Me.SelectDataLabel)
         Me.DataPanel.Controls.Add(Me.TilesetDataLabel)
         Me.DataPanel.Controls.Add(Me.SelectDataComboBox)
+        Me.DataPanel.ForeColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(83, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.DataPanel.LineColor = System.Drawing.Color.DimGray
         Me.DataPanel.Location = New System.Drawing.Point(580, 78)
         Me.DataPanel.Name = "DataPanel"
-        Me.DataPanel.Padding = New System.Windows.Forms.Padding(10)
+        Me.DataPanel.Padding = New System.Windows.Forms.Padding(0)
         Me.DataPanel.Size = New System.Drawing.Size(259, 82)
         Me.DataPanel.TabIndex = 298
         Me.DataPanel.TabStop = False
         Me.DataPanel.Text = "Data"
         '
+        'HorizontalTab
+        '
+        Me.HorizontalTab.BackColor = System.Drawing.Color.RoyalBlue
+        Me.HorizontalTab.Dock = System.Windows.Forms.DockStyle.Top
+        Me.HorizontalTab.ForeColor = System.Drawing.Color.Gainsboro
+        Me.HorizontalTab.Items = New String() {"Screen", "Tiles", "Map", "Sprites", "OAM"}
+        Me.HorizontalTab.Location = New System.Drawing.Point(0, 39)
+        Me.HorizontalTab.Margin = New System.Windows.Forms.Padding(0)
+        Me.HorizontalTab.MinimumSize = New System.Drawing.Size(256, 32)
+        Me.HorizontalTab.Name = "HorizontalTab"
+        Me.HorizontalTab.Padding = New System.Windows.Forms.Padding(4, 4, 0, 0)
+        Me.HorizontalTab.Size = New System.Drawing.Size(854, 34)
+        Me.HorizontalTab.TabIndex = 299
+        '
+        'BottonsPanel
+        '
+        Me.BottonsPanel.BackColor = System.Drawing.Color.Silver
+        Me.BottonsPanel.Controls.Add(Me.SaveBinaryButton)
+        Me.BottonsPanel.Controls.Add(Me.SaveSourceButton)
+        Me.BottonsPanel.Controls.Add(Me.CopyAllButton)
+        Me.BottonsPanel.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.BottonsPanel.Location = New System.Drawing.Point(0, 697)
+        Me.BottonsPanel.Name = "BottonsPanel"
+        Me.BottonsPanel.Padding = New System.Windows.Forms.Padding(4)
+        Me.BottonsPanel.Size = New System.Drawing.Size(854, 44)
+        Me.BottonsPanel.TabIndex = 300
+        '
         'MainScreen
         '
         Me.AllowDrop = True
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 14.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.Color.Silver
         Me.ClientSize = New System.Drawing.Size(854, 741)
+        Me.Controls.Add(Me.BottonsPanel)
+        Me.Controls.Add(Me.HorizontalTab)
         Me.Controls.Add(Me.DataPanel)
         Me.Controls.Add(Me.RangePanel)
         Me.Controls.Add(Me.AreaPanel)
         Me.Controls.Add(Me.ZoomPanel)
-        Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.GivemeTheCodeButton)
-        Me.Controls.Add(Me.HoriTAB1)
         Me.Controls.Add(Me.DataTypeInput)
         Me.Controls.Add(Me.OutputText)
         Me.Controls.Add(Me.ScreenContainer_Panel)
@@ -1022,16 +1094,16 @@ Partial Class MainScreen
         Me.ScreenStatusStrip.ResumeLayout(False)
         Me.ScreenStatusStrip.PerformLayout()
         CType(Me.H_Rules_PictureBox, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TileColorsPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TileViewerPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel2.ResumeLayout(False)
         Me.ZoomPanel.ResumeLayout(False)
         Me.ZoomPanel.PerformLayout()
+        CType(Me.TileColorsPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TileViewerPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.AreaPanel.ResumeLayout(False)
         Me.AreaPanel.PerformLayout()
         Me.RangePanel.ResumeLayout(False)
         Me.RangePanel.PerformLayout()
         Me.DataPanel.ResumeLayout(False)
+        Me.BottonsPanel.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1065,12 +1137,8 @@ Partial Class MainScreen
     Friend WithEvents PosY_Label As ToolStripStatusLabel
     Friend WithEvents OutputText As TextBox
     Friend WithEvents DataTypeInput As DataTypeInputControl
-    Friend WithEvents SaveBinaryButton As Button
-    Friend WithEvents SaveSourceButton As Button
-    Friend WithEvents CopyAllButton As Button
     Friend WithEvents H_Rules_PictureBox As PictureBox
     Friend WithEvents V_Rules_PictureBox As PictureBox
-    Friend WithEvents HoriTAB1 As HoriTAB
     Friend WithEvents Col_Label As ToolStripStatusLabel
     Friend WithEvents ColumnLabel As ToolStripStatusLabel
     Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
@@ -1090,7 +1158,7 @@ Partial Class MainScreen
     Friend WithEvents ClearButton As ToolStripButton
     Friend WithEvents UndoButton As ToolStripButton
     Friend WithEvents SwapButton As ToolStripButton
-    Friend WithEvents GivemeTheCodeButton As Button
+    Friend WithEvents GivemeTheCodeButton As piXelST_Button
     Friend WithEvents TilesetDataComboBox As ComboBox
     Friend WithEvents TilesetDataLabel As Label
     Friend WithEvents RangeResetButton As Button
@@ -1100,7 +1168,6 @@ Partial Class MainScreen
     Friend WithEvents SelectDataLabel As Label
     Friend WithEvents RangeStartTextBox As TextBox
     Friend WithEvents SelectDataComboBox As ComboBox
-    Friend WithEvents Panel2 As Panel
     Friend WithEvents TileViewerPictureBox As PictureBox
     Friend WithEvents ZoomLabel As Label
     Friend WithEvents Tilenumber_TextBox As TextBox
@@ -1112,8 +1179,13 @@ Partial Class MainScreen
     Friend WithEvents ToolStripSeparator3 As ToolStripSeparator
     Friend WithEvents TileColorsPictureBox As PictureBox
     Friend WithEvents BorderColorButton As ToolStripButton
-    Friend WithEvents ZoomPanel As piXelGroupBox
-    Friend WithEvents AreaPanel As piXelGroupBox
-    Friend WithEvents RangePanel As piXelGroupBox
-    Friend WithEvents DataPanel As piXelGroupBox
+    Friend WithEvents ZoomPanel As piXelST_GroupBox
+    Friend WithEvents AreaPanel As piXelST_GroupBox
+    Friend WithEvents RangePanel As piXelST_GroupBox
+    Friend WithEvents DataPanel As piXelST_GroupBox
+    Friend WithEvents HorizontalTab As piXelST_HorizontalTab
+    Friend WithEvents BottonsPanel As Panel
+    Public WithEvents SaveBinaryButton As piXelST_Button
+    Public WithEvents SaveSourceButton As piXelST_Button
+    Friend WithEvents CopyAllButton As piXelST_Button
 End Class

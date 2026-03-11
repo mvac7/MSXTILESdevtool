@@ -64,10 +64,38 @@
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DataCompressEncoders, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\DataCompressEncoders.dll</HintPath>
+    </Reference>
+    <Reference Include="DataStructures, Version=0.9.14.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\DataStructures.dll</HintPath>
+    </Reference>
+    <Reference Include="FileDataTypes, Version=0.9.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\FileDataTypes.dll</HintPath>
+    </Reference>
+    <Reference Include="GUIcontrols, Version=1.4.15.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\GUIcontrols.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="TMS9918A, Version=1.0.16.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\TMS9918A.dll</HintPath>
+    </Reference>
+    <Reference Include="Tools4devtools, Version=0.9.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\Tools4devtools.dll</HintPath>
+    </Reference>
+    <Reference Include="V9938PaletteEditor, Version=0.9.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\V9938PaletteEditor.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
@@ -76,6 +104,7 @@
     <Import Include="mSXdevtools.FileDataTypes" />
     <Import Include="mSXdevtools.GUI.Controls" />
     <Import Include="mSXdevtools.GUI.TMS9918A" />
+    <Import Include="mSXdevtools.Tools4devtools" />
     <Import Include="mSXdevtools.V9938PaletteEditor" />
     <Import Include="System" />
     <Import Include="System.Collections" />
@@ -85,12 +114,6 @@
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChangeColorForm.Designer.vb">
-      <DependentUpon>ChangeColorForm.vb</DependentUpon>
-    </Compile>
-    <Compile Include="ChangeColorForm.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="ChangeTilesForm.Designer.vb">
       <DependentUpon>ChangeTilesForm.vb</DependentUpon>
     </Compile>
@@ -104,12 +127,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DataItem.vb" />
-    <Compile Include="HoriTAB.Designer.vb">
-      <DependentUpon>HoriTAB.vb</DependentUpon>
-    </Compile>
-    <Compile Include="HoriTAB.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="InvertDialog.Designer.vb">
       <DependentUpon>InvertDialog.vb</DependentUpon>
     </Compile>
@@ -141,17 +158,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ChangeColorForm.resx">
-      <DependentUpon>ChangeColorForm.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ChangeTilesForm.resx">
       <DependentUpon>ChangeTilesForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FillMapForm.resx">
       <DependentUpon>FillMapForm.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="HoriTAB.resx">
-      <DependentUpon>HoriTAB.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InvertDialog.resx">
       <DependentUpon>InvertDialog.vb</DependentUpon>
@@ -214,14 +225,33 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MSXTILESdevtool.ico" />
+    <None Include="Resources\ico_undo_32px.png" />
+    <None Include="Resources\ico_clear_32px.png" />
+    <None Include="Resources\ico_palette_32px.png" />
+    <None Include="Resources\ico_select_32px.png" />
+    <None Include="Resources\ico_exchange_32px.png" />
+    <None Include="Resources\ico_copy_32px.png" />
+    <None Include="Resources\ico_paint_32px.png" />
+    <None Include="Resources\ico_sort_32px.png" />
+    <None Include="Resources\ico_reload_32px.png" />
+    <None Include="Resources\ico_help_32px.png" />
+    <None Include="Resources\ico_config-app_32px.png" />
+    <None Include="Resources\ico_save-bitmap_32px.png" />
+    <None Include="Resources\ico_save-NMsx_32px.png" />
+    <None Include="Resources\ico_save-as_32px.png" />
+    <None Include="Resources\ico_save_32px.png" />
+    <None Include="Resources\ico_config-prj_32px.png" />
+    <None Include="Resources\ico_load_32px.png" />
+    <None Include="Resources\ico_new_32px.png" />
+    <None Include="Resources\ico_about_32px.png" />
+    <None Include="Resources\mSXdevtool_logo_x2.png" />
+    <None Include="Resources\button_Generate_260px.png" />
     <None Include="Resources\screen02_24px.png" />
-    <None Include="Resources\logo_mSXTiles-devtool.png" />
     <None Include="Resources\icon128_mSXTiles-devtool.png" />
     <None Include="Resources\button_CopyAll.png" />
     <None Include="Resources\button_savesource.png" />
     <None Include="Resources\piXel_pane_XL.png" />
     <None Include="Resources\button_savebinary.png" />
-    <None Include="Resources\button_generate_pixelS.png" />
     <None Include="Resources\config_x24.png" />
     <None Include="Resources\saveNM_x24.png" />
     <None Include="Resources\exchange2_x24.png" />
@@ -255,32 +285,6 @@
     <None Include="Resources\help_24.png" />
     <None Include="Resources\tile.png" />
     <None Include="Resources\copy.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DataCompressEncoders\DataCompressEncoders.vbproj">
-      <Project>{928052bd-0028-41b3-a271-1f93452cb2e3}</Project>
-      <Name>DataCompressEncoders</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DataStructures\DataStructures.vbproj">
-      <Project>{7aeb116c-db10-4498-aa55-5c5d08c4a3c2}</Project>
-      <Name>DataStructures</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FileDataTypes\FileDataTypes.vbproj">
-      <Project>{11e865f5-0de8-49dc-ae99-43bd00d04f2a}</Project>
-      <Name>FileDataTypes</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\GUIcontrols\GUIcontrols.vbproj">
-      <Project>{474aa9b2-6128-4d72-9d16-19c3075f353d}</Project>
-      <Name>GUIcontrols</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TMS9918A\TMS9918A.vbproj">
-      <Project>{867ee51b-ccf3-47f7-b157-f81838673a50}</Project>
-      <Name>TMS9918A</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\V9938PaletteEditor\V9938PaletteEditor.vbproj">
-      <Project>{ab3b9955-824e-4e0c-a2c8-d8612e7e1950}</Project>
-      <Name>V9938PaletteEditor</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -49,13 +49,16 @@ Public Class MainScreen
     Private MapName As String
     Private TilesetsName As String
 
+    'Private binaryFiles As Hashtable
+
     Private outputCompressData As ArrayList
     Private outputCompressData_Type As DATA_TYPE
     Private outputCompressData_CompressType As iCompressEncoder.COMPRESS_TYPE
     Private outputCompressData_suffix As String
 
     Private aMSXDataFormat As DataFormat
-    'Private genData As New DataFormat
+
+    Private CodeFormat As SourceCodeInfo
 
     Private MessageWin As MessageDialog
 
@@ -70,8 +73,6 @@ Public Class MainScreen
 
     'Private tileBitmap As Bitmap
     'Private tileColors As Bitmap
-
-
 
     Private Range_maximumValue As Byte = 255
 
@@ -92,6 +93,17 @@ Public Class MainScreen
     Private Enum TILESET_TYPE As Integer
         PATTERN
         COLOR
+        PATTERN_COLOR
+    End Enum
+
+
+
+    Private Enum TILESET_BANK As Integer
+        ALL_BANKS
+        BANK_A
+        BANK_B
+        BANK_C
+        SELECTED_AREA
     End Enum
 
 
@@ -124,15 +136,11 @@ Public Class MainScreen
 
         Me.MessageWin = New MessageDialog()
 
+        'Me.binaryFiles = New Hashtable
+
 
         TileViewerPictureBox.BackgroundImage = New Bitmap(TileViewerPictureBox.Size.Width, TileViewerPictureBox.Size.Height)
         tileGraphics = Graphics.FromImage(TileViewerPictureBox.BackgroundImage)
-
-        'tileBitmap = New Bitmap(TileViewerPictureBox.Size.Width, TileViewerPictureBox.Size.Height)
-        'tileColors = New Bitmap(TileColorsPictureBox.Size.Width, TileColorsPictureBox.Size.Height)
-
-        'TileViewerPictureBox.BackgroundImage = tileBitmap
-        'tileGraphics = Graphics.FromImage(tileBitmap)
 
         TileColorsPictureBox.BackgroundImage = New Bitmap(TileColorsPictureBox.Size.Width, TileColorsPictureBox.Size.Height)
         tileColorsGraphics = Graphics.FromImage(TileColorsPictureBox.BackgroundImage)
@@ -188,7 +196,8 @@ Public Class MainScreen
         Me.TMS9918Aviewer.RefreshScreen()
 
 
-        DataTypeInput.InitControl(Me.AppConfig)
+        'DataTypeInput.InitControl( 'InitControl(Me.AppConfig)
+        Me.DataTypeInput.InitControl(Me.AppConfig, Me.AppConfig.CodeFormat)
 
         OutputText.ForeColor = Me.AppConfig.Color_OUTPUT_INK
         OutputText.BackColor = Me.AppConfig.Color_OUTPUT_BG
@@ -196,7 +205,7 @@ Public Class MainScreen
         'Me.Project.Palettes.SetZeroColor(Me.AppConfig.Color_Zero)
         TMS9918Aviewer.GridColor = Me.AppConfig.Color_Grid
 
-        SelectDataComboBox.SelectedIndex = 0
+        SelectDataComboBox.SelectedIndex = TILESET_BANK.ALL_BANKS
         TilesetDataComboBox.SelectedIndex = 0
 
         TMS9918Aviewer_MouseScreenData(1, 1)
@@ -247,7 +256,7 @@ Public Class MainScreen
 
         SetTitle(Me.Info.Name)
 
-        ShowGUImode(HoriTAB.TAB_NAME.SCREEN)
+        ShowGUImode(DATA_TYPE.SCREEN)
 
         _tmpText = "Welcome to " + My.Application.Info.Title + " v" + My.Application.Info.Version.ToString + "b " + vbNewLine
         _tmpText += Strings.StrDup(80, "-") + vbNewLine
@@ -1781,12 +1790,10 @@ Public Class MainScreen
 
 
 
-
     Private Sub ShowAbout(isOnInitialization As Boolean)
         Dim newAboutWin As New AboutWin
         newAboutWin.SetIcon = Global.MSXTILESdevtool.My.Resources.icon128_mSXTiles_devtool
-        newAboutWin.SetLogo = Global.MSXTILESdevtool.My.Resources.logo_mSXTiles_devtool
-        newAboutWin.Width = 660
+        newAboutWin.SetLogo = Global.MSXTILESdevtool.My.Resources.mSXdevtool_logo_x2
         If isOnInitialization = True Then
             newAboutWin.StartPosition = FormStartPosition.CenterScreen
         End If
@@ -1810,12 +1817,6 @@ Public Class MainScreen
 
 
 
-
-
-
-
-
-
     Private Sub InvertButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Dim aInvertDialog As New InvertDialog
         Dim result As DialogResult
@@ -1824,8 +1825,6 @@ Public Class MainScreen
             InvertTool(aInvertDialog.PatternCheckBox.Checked, aInvertDialog.ColorCheckBox.Checked)
         End If
     End Sub
-
-
 
 
 
@@ -1975,7 +1974,7 @@ Public Class MainScreen
     End Sub
 
     Private Sub ConfigButton_Click(sender As Object, e As EventArgs) Handles ConfigButton.Click
-        SetConfig()
+        EditConfig()
     End Sub
 
     Private Sub AboutButton_Click(sender As Object, e As EventArgs) Handles AboutButton.Click
@@ -2248,15 +2247,8 @@ Public Class MainScreen
 
 
 
-    Private Sub HoriTAB1_TabChanged(index As HoriTAB.TAB_NAME) Handles HoriTAB1.TabChanged
 
-        ShowGUImode(index)
-
-    End Sub
-
-
-
-    Private Sub ShowGUImode(index As HoriTAB.TAB_NAME)
+    Private Sub ShowGUImode(index As DATA_TYPE)
 
         Dim OptimizeButton_enabled As Boolean = False
         Dim TilesOrderButton_enabled As Boolean = False
@@ -2286,14 +2278,14 @@ Public Class MainScreen
         TMS9918Aviewer.ControlType = TMS9918A.CONTROL_TYPE.VIEWER
 
         Select Case index
-            Case HoriTAB.TAB_NAME.SCREEN
+            Case DATA_TYPE.SCREEN
                 Me.TMS9918Aviewer.SetView(TMS9918A.VIEW_MODE.ALL)
                 SelectAreaButton_enabled = False
                 'OptimizeButton_enabled = True
                 TilesOrderButton_enabled = True
                 FillMapButton_enabled = True
 
-            Case HoriTAB.TAB_NAME.MAP
+            Case DATA_TYPE.MAP
                 Me.TMS9918Aviewer.SetView(TMS9918A.VIEW_MODE.MAP)
 
                 Me.SelectDataComboBox.Items.Clear()
@@ -2309,7 +2301,7 @@ Public Class MainScreen
                 SwitchButton.ToolTipText = "Switch Tiles"
                 SwapButton.ToolTipText = "Swap Tiles"
 
-            Case HoriTAB.TAB_NAME.TILESET
+            Case DATA_TYPE.TILESET
                 Me.TMS9918Aviewer.SetView(TMS9918A.VIEW_MODE.TILESET)
 
                 Me.SelectDataComboBox.Items.Clear()
@@ -2328,7 +2320,7 @@ Public Class MainScreen
 
                 Range_maximumValue = 255 'tiles
 
-            Case HoriTAB.TAB_NAME.SPRITESET
+            Case DATA_TYPE.SPRITESET
                 Me.TMS9918Aviewer.SetView(TMS9918A.VIEW_MODE.SPRITE_PATTERNS)
                 SelectAreaButton_enabled = False
                 SwapButton_enabled = False
@@ -2343,7 +2335,7 @@ Public Class MainScreen
 
                 Range_maximumValue = 63 'sprite patterns
 
-            Case HoriTAB.TAB_NAME.OAM
+            Case DATA_TYPE.OAM
                 Me.TMS9918Aviewer.SetView(TMS9918A.VIEW_MODE.SPRITE_LAYERS)
                 SelectAreaButton_enabled = False
                 SwapButton_enabled = False
@@ -2358,7 +2350,7 @@ Public Class MainScreen
         End Select
 
 
-        If index = HoriTAB.TAB_NAME.OAM Then
+        If index = DATA_TYPE.OAM Then
             ZoomPanel.Visible = False
         Else
             ZoomPanel.Visible = True
@@ -2371,14 +2363,14 @@ Public Class MainScreen
         'TileRangePanel.Visible = TileRangePanel_Visible
         DataPanel.Visible = OutputDataGroupBox_Visible
 
-        SelectDataComboBox.SelectedIndex = 0
-        'TilesetComboBox.Visible = (index = HoriTAB.TAB_NAME.TILESET)
+        SelectDataComboBox.SelectedIndex = TILESET_BANK.ALL_BANKS
+        'TilesetComboBox.Visible = (index = DATA_TYPE.TILESET)
         'TilesetLabel.Visible = TilesetComboBox.Visible
 
         RangeEndTextBox.Text = CStr(Range_maximumValue)
         RangePanel.Visible = range_visible
 
-        TilesetDataLabel.Visible = (index = HoriTAB.TAB_NAME.TILESET)
+        TilesetDataLabel.Visible = (index = DATA_TYPE.TILESET)
         TilesetDataComboBox.Visible = TilesetDataLabel.Visible
 
         TilesetDataLabel.Visible = DataInput_enabled
@@ -2406,25 +2398,26 @@ Public Class MainScreen
     End Sub
 
 
+
     Private Sub Clear()
 
         If AreYouSure() = DialogResult.Yes Then
 
-            Select Case HoriTAB1.SelectTab
-                Case HoriTAB.TAB_NAME.MAP
+            Select Case HorizontalTab.SelectedTab
+                Case DATA_TYPE.MAP
                     ClearMAP()
 
-                Case HoriTAB.TAB_NAME.TILESET
+                Case DATA_TYPE.TILESET
                     ClearTILESET()
 
-                Case HoriTAB.TAB_NAME.SPRITESET
+                Case DATA_TYPE.SPRITESET
                     ClearSPRITESET()
 
-                Case HoriTAB.TAB_NAME.OAM
+                Case DATA_TYPE.OAM
                     ClearOAM()
 
                 Case Else
-                    'HoriTAB.TAB_NAME.SCREEN
+                    'DATA_TYPE.SCREEN
                     'TMS9918Aviewer.Clear()
                     ClearMAP()
                     ClearTILESET()
@@ -2664,11 +2657,11 @@ Public Class MainScreen
         Try
             Dim result As DialogResult
 
-            Dim toolChangeColor As New ChangeColorForm(Me.TMS9918Aviewer.Palette)
+            Dim toolChangeColor As New ChangeColorsDialog(Me.TMS9918Aviewer.Palette, ChangeColorsDialog.DIALOG_TYPE.SWAP)
             result = toolChangeColor.ShowDialog()
 
             If result = Windows.Forms.DialogResult.OK Then
-                ChangeColor(toolChangeColor.OldColor, toolChangeColor.NewColor)
+                ChangeColor(toolChangeColor.FirstColor, toolChangeColor.SecondColor)
             End If
 
         Catch ex As Exception
@@ -2686,9 +2679,9 @@ Public Class MainScreen
 
     Private Sub SelectAreaButton_Click(sender As Object, e As EventArgs) Handles SelectAreaButton.Click
         If TMS9918Aviewer.ViewMode = TMS9918A.VIEW_MODE.MAP Then
-            SelectDataComboBox.SelectedIndex = 1
+            SelectDataComboBox.SelectedIndex = TILESET_BANK.BANK_A
         ElseIf TMS9918Aviewer.ViewMode = TMS9918A.VIEW_MODE.TILESET Then
-            SelectDataComboBox.SelectedIndex = 4
+            SelectDataComboBox.SelectedIndex = TILESET_BANK.SELECTED_AREA
         End If
 
     End Sub
@@ -2729,41 +2722,43 @@ Public Class MainScreen
 
     Private Sub GenerateData()
 
-        Dim _outputText As String = ""
+        Dim outputSource As String = ""
 
         Dim comments As New ArrayList
 
         Me.aMSXDataFormat.BASIC_Line = DataTypeInput.BASIClineNumber
-        Me.aMSXDataFormat.BASIC_increment = DataTypeInput.BASICInterval
+        Me.aMSXDataFormat.BASIC_increment = DataTypeInput.BASIClineInterval
 
-        comments.Add(My.Application.Info.ProductName + " v" + My.Application.Info.Version.ToString)
-        comments.Add("File: " + Me.Filename_Project)
-        _outputText = Me.aMSXDataFormat.GetComments(comments, Me.DataTypeInput.CodeLanguage)
+        'comments.Add(My.Application.Info.ProductName + " v" + My.Application.Info.Version.ToString)
+        outputSource += aMSXDataFormat.GetProjectInfoComments(Me.Info, Me.DataTypeInput.LanguageCode)
+        outputSource += aMSXDataFormat.GetComment("File: " + Me.Filename_Project, Me.DataTypeInput.LanguageCode)
+        'outputSource = Me.aMSXDataFormat.GetComments(comments, Me.DataTypeInput.ProgrammingLanguage) 'SourceCodeInfo.PROGRAMMING_LANGUAGE
 
-        Select Case HoriTAB1.SelectTab
-            Case HoriTAB.TAB_NAME.SCREEN
-                _outputText += GetScreenData()
-                _outputText += vbNewLine
+        Select Case HorizontalTab.SelectedTab
+            Case DATA_TYPE.TILESET
+                outputSource += GetTilesetData()
+                outputSource += vbNewLine
 
-            Case HoriTAB.TAB_NAME.MAP
-                _outputText += GetMapData()
-                _outputText += vbNewLine
+            Case DATA_TYPE.MAP
+                outputSource += GetMapData()
+                outputSource += vbNewLine
 
-            Case HoriTAB.TAB_NAME.TILESET
-                _outputText += GetTilesetData()
-                _outputText += vbNewLine
+            Case DATA_TYPE.SPRITESET
+                outputSource += GetSpritesetData()
+                outputSource += vbNewLine
 
-            Case HoriTAB.TAB_NAME.SPRITESET
-                _outputText += GetSpritesetData()
-                _outputText += vbNewLine
+            Case DATA_TYPE.OAM
+                outputSource += GetOAMData()
+                outputSource += vbNewLine
 
-            Case HoriTAB.TAB_NAME.OAM
-                _outputText += GetOAMData()
-                _outputText += vbNewLine
+            Case Else
+                'Case DATA_TYPE.SCREEN
+                outputSource += GetScreenData()
+                outputSource += vbNewLine
 
         End Select
 
-        OutputText.Text = _outputText
+        OutputText.Text = outputSource
 
     End Sub
 
@@ -2772,33 +2767,33 @@ Public Class MainScreen
 
     Private Function GetScreenData() As String
 
-        Dim _outputText As String
+        Dim outputSource As String
 
         Dim data As Byte()
-        Dim newData As Byte()
+        'Dim newData As Byte()
 
         data = Me.TMS9918Aviewer.GetVRAM
 
-        newData = GetCompressData(data)
-        _outputText = GetFormatData(Me.DataTypeInput.FieldName + "_SCR", newData, "All VRAM data", data.Length)
+        'newData = GetCompressData(data)
+        outputSource = GetFormatData(Me.DataTypeInput.FieldName, data, "_SCR", "All VRAM data")
 
-        Me.outputCompressData.Clear()
-        Me.outputCompressData.AddRange(newData)
-        Me.outputCompressData_Type = DATA_TYPE.SCREEN
-        Me.outputCompressData_CompressType = Me.DataTypeInput.Compress
-        Me.outputCompressData_suffix = DataType_Suffix(Me.outputCompressData_Type) + Compress_Suffix(Me.DataTypeInput.Compress)
+        'Me.outputCompressData.Clear()
+        'Me.outputCompressData.AddRange(newData)
+        'Me.outputCompressData_Type = DATA_TYPE.SCREEN
+        'Me.outputCompressData_CompressType = Me.DataTypeInput.CompressType
+        'Me.outputCompressData_suffix = DataType_Suffix(Me.outputCompressData_Type) + Compress_Suffix(Me.DataTypeInput.CompressType)
 
-        Return _outputText
+        Return outputSource
 
     End Function
 
 
     Private Function GetMapData() As String
 
-        Dim _outputText As String = ""
+        Dim outputSource As String = ""
 
         Dim data As Byte()
-        Dim newData As Byte()
+        'Dim newData As Byte()
 
         Dim area_startX As Integer = CInt(AreaStartX_TextBox.Text)
         Dim area_startY As Integer = CInt(AreaStartY_TextBox.Text)
@@ -2810,25 +2805,25 @@ Public Class MainScreen
 
         Me.outputCompressData.Clear()
 
-        If SelectDataComboBox.SelectedIndex = 0 Or fullScreen = (32 * 24) Then
+        If SelectDataComboBox.SelectedIndex = TILESET_BANK.ALL_BANKS Or fullScreen = (32 * 24) Then
 
             data = Me.TMS9918Aviewer.GetBlock(iVDP.TableBase.GRPNAM, iVDP.TableBaseSize.GRPNAM)
 
-            newData = GetCompressData(data)
-            _outputText = GetFormatData(Me.DataTypeInput.FieldName + "_MAP", newData, "Map data", data.Length)
+            'newData = GetCompressData(data)
+            outputSource = GetFormatData(Me.DataTypeInput.FieldName, data, "_MAP", "Map data")
 
-            Me.outputCompressData.AddRange(newData)
-            Me.outputCompressData_Type = DATA_TYPE.MAP
-            Me.outputCompressData_CompressType = Me.DataTypeInput.Compress
-            Me.outputCompressData_suffix = DataType_Suffix(Me.outputCompressData_Type) + Compress_Suffix(Me.DataTypeInput.Compress)
+            'Me.outputCompressData.AddRange(newData)
+            'Me.outputCompressData_Type = DATA_TYPE.MAP
+            'Me.outputCompressData_CompressType = Me.DataTypeInput.CompressType
+            'Me.outputCompressData_suffix = DataType_Suffix(Me.outputCompressData_Type) + Compress_Suffix(Me.DataTypeInput.CompressType)
 
         Else
 
-            _outputText = GetMapAreaData(area_startX, area_startY, area_endX, area_endY)
+            outputSource = GetMapAreaData(area_startX, area_startY, area_endX, area_endY)
 
         End If
 
-        Return _outputText
+        Return outputSource
 
     End Function
 
@@ -2836,7 +2831,7 @@ Public Class MainScreen
 
     Private Function GetMapAreaData(area_startX As Integer, area_startY As Integer, area_endX As Integer, area_endY As Integer) As String
 
-        Dim _outputText As String = ""
+        Dim outputSource As String = ""
 
         Dim comments As New ArrayList
 
@@ -2846,7 +2841,7 @@ Public Class MainScreen
         Dim lineNumber As String
 
         Dim data As Byte()
-        Dim newData As Byte()
+        'Dim newData As Byte()
 
         Dim VRAMaddr As Integer
 
@@ -2856,7 +2851,7 @@ Public Class MainScreen
 
         Me.aMSXDataFormat.BASIC_Line = DataTypeInput.BASIClineNumber
         comments.Add(" Map Area data - Width:" + CStr(line_length) + " Height:" + CStr((area_endY - area_startY) + 1))
-        _outputText = Me.aMSXDataFormat.GetComments(comments, Me.DataTypeInput.CodeLanguage)
+        outputSource = Me.aMSXDataFormat.GetComments(comments, Me.DataTypeInput.LanguageCode)
 
         For i As Integer = area_startY To area_endY
 
@@ -2866,15 +2861,15 @@ Public Class MainScreen
 
             data = Me.TMS9918Aviewer.GetBlock(iVDP.TableBase.GRPNAM + VRAMaddr, line_length)
 
-            newData = GetCompressData(data)
-            _outputText += GetFormatData(Me.DataTypeInput.FieldName + label_suffix + lineNumber, newData, "Line " + lineNumber, data.Length)
+            'newData = GetCompressData(data)
+            outputSource += GetFormatData(Me.DataTypeInput.FieldName, data, label_suffix + lineNumber, "Line " + lineNumber)
 
             line += 1
         Next
 
         'Me.outputCompressData.Clear()
 
-        Return _outputText
+        Return outputSource
 
     End Function
 
@@ -2883,7 +2878,7 @@ Public Class MainScreen
 
     Private Function GetTilesetData() As String
 
-        Dim _outputText As String = ""
+        Dim outputSource As String = ""
 
         Dim area_startX As Integer = CInt(AreaStartX_TextBox.Text)
         Dim area_startY As Integer = CInt(AreaStartY_TextBox.Text)
@@ -2893,27 +2888,40 @@ Public Class MainScreen
 
         'Dim fullScreen As Integer = ((area_endY + 1) - area_startY) * ((area_endX + 1) - area_startX)
 
-        If SelectDataComboBox.SelectedIndex = 4 Then
+        If SelectDataComboBox.SelectedIndex = TILESET_BANK.SELECTED_AREA Then
             ' area
 
-            If TilesetDataComboBox.SelectedIndex = 0 Then
-                _outputText = GetGFXareaData(TILESET_TYPE.PATTERN, area_startX, area_startY, area_endX, area_endY)
-            Else
-                _outputText = GetGFXareaData(TILESET_TYPE.COLOR, area_startX, area_startY, area_endX, area_endY)
+            If TilesetDataComboBox.SelectedIndex = TILESET_TYPE.PATTERN Or TilesetDataComboBox.SelectedIndex = TILESET_TYPE.PATTERN_COLOR Then
+                outputSource = GetGFXareaData(TILESET_TYPE.PATTERN, area_startX, area_startY, area_endX, area_endY)
+            End If
+
+            If TilesetDataComboBox.SelectedIndex = TILESET_TYPE.PATTERN_COLOR And Not Me.DataTypeInput.ProgrammingLanguage = SourceCodeInfo.PROGRAMMING_LANGUAGE.BASIC Then
+                outputSource += vbCrLf
+                outputSource += aMSXDataFormat.GetCommentHorizontalLine(Me.DataTypeInput.ProgrammingLanguage)
+            End If
+
+            If TilesetDataComboBox.SelectedIndex = TILESET_TYPE.COLOR Or TilesetDataComboBox.SelectedIndex = TILESET_TYPE.PATTERN_COLOR Then
+                outputSource += GetGFXareaData(TILESET_TYPE.COLOR, area_startX, area_startY, area_endX, area_endY)
             End If
 
         Else
             'full screen
 
-            If TilesetDataComboBox.SelectedIndex = 0 Then
-                _outputText = GetTilesetData(TILESET_TYPE.PATTERN, SelectDataComboBox.SelectedIndex)
-            Else
-                _outputText = GetTilesetData(TILESET_TYPE.COLOR, SelectDataComboBox.SelectedIndex)
+            If TilesetDataComboBox.SelectedIndex = TILESET_TYPE.PATTERN Or TilesetDataComboBox.SelectedIndex = TILESET_TYPE.PATTERN_COLOR Then
+                outputSource = GetTilesetData(TILESET_TYPE.PATTERN, SelectDataComboBox.SelectedIndex)
+            End If
+
+            If TilesetDataComboBox.SelectedIndex = TILESET_TYPE.PATTERN_COLOR And Not Me.DataTypeInput.ProgrammingLanguage = SourceCodeInfo.PROGRAMMING_LANGUAGE.BASIC Then
+                outputSource += vbCrLf
+            End If
+
+            If TilesetDataComboBox.SelectedIndex = TILESET_TYPE.COLOR Or TilesetDataComboBox.SelectedIndex = TILESET_TYPE.PATTERN_COLOR Then
+                outputSource += GetTilesetData(TILESET_TYPE.COLOR, SelectDataComboBox.SelectedIndex)
             End If
 
         End If
 
-        Return _outputText
+        Return outputSource
 
     End Function
 
@@ -2921,7 +2929,7 @@ Public Class MainScreen
 
     Private Function GetGFXareaData(datatype As TILESET_TYPE, area_startX As Integer, area_startY As Integer, area_endX As Integer, area_endY As Integer) As String
 
-        Dim _outputText As String = ""
+        Dim outputSource As String = ""
 
         Dim comments As New ArrayList
 
@@ -2932,14 +2940,15 @@ Public Class MainScreen
         Dim lineNumber As String
 
         Dim data As Byte()
-        Dim newData As Byte()
+        'Dim newData As Byte()
 
         Dim VRAMaddr As Integer
         Dim VRAMtable As Integer
 
-        Dim line_length As Integer = (area_endX - area_startX) + 1
+        Dim line_length As Integer
 
-        Dim bloqsize As Integer = line_length * 8
+        Dim bloqsize As Integer
+
 
         If datatype = TILESET_TYPE.PATTERN Then
             VRAMtable = iVDP.TableBase.GRPCGP
@@ -2951,28 +2960,50 @@ Public Class MainScreen
             label_suffix = "_COL"
         End If
 
+        line_length = (area_endX - area_startX) + 1
+
         Me.aMSXDataFormat.BASIC_Line = DataTypeInput.BASIClineNumber
-        comment1 += " - Width:" + CStr(line_length) + " Height:" + CStr((area_endY - area_startY) + 1)
+        comment1 += " - Width:" + CStr(line_length) + " Height:" + CStr((area_endY - area_startY) + 1) + " (tiles)"
         comments.Add(comment1)
-        _outputText = Me.aMSXDataFormat.GetComments(comments, Me.DataTypeInput.CodeLanguage)
 
-        For i As Integer = area_startY To area_endY
 
-            lineNumber = CStr(line).PadLeft(2, "0"c)
-
-            VRAMaddr = i * 256 + (area_startX * 8)
-
+        If line_length = 32 Then
+            ' ------------------------------------------------------------------------------------- << compress a bloq
+            bloqsize = (area_endY - area_startY) * 256
+            VRAMaddr = (area_startY * 256) + (area_startX * 8)
             data = Me.TMS9918Aviewer.GetBlock(VRAMtable + VRAMaddr, bloqsize)
+            comments.Add("VRAM pattern address=" + Me.aMSXDataFormat.GetFormatedValue(VRAMtable + VRAMaddr, DataTypeInput.GetCodeFormat.NumeralSystem))
 
-            newData = GetCompressData(data)
-            _outputText += GetFormatData(Me.DataTypeInput.FieldName + label_suffix + lineNumber, newData, "Line " + lineNumber, data.Length)
+            outputSource = Me.aMSXDataFormat.GetComments(comments, Me.DataTypeInput.LanguageCode)
+            outputSource += GetFormatData(Me.DataTypeInput.FieldName, data, label_suffix, "")
+        Else
+            ' ------------------------------------------------------------------------------------- << compress lines
 
-            line += 1
-        Next
+            bloqsize = line_length * 8
+
+            outputSource = Me.aMSXDataFormat.GetComments(comments, Me.DataTypeInput.LanguageCode)
+
+            For i As Integer = area_startY To area_endY
+
+                lineNumber = CStr(line).PadLeft(2, "0"c)
+
+                VRAMaddr = i * 256 + (area_startX * 8)
+
+                data = Me.TMS9918Aviewer.GetBlock(VRAMtable + VRAMaddr, bloqsize)
+
+                'newData = GetCompressData(data)
+                outputSource += GetFormatData(Me.DataTypeInput.FieldName, data, lineNumber + label_suffix, "Line " + lineNumber)
+
+                line += 1
+            Next
+
+        End If
+
+
 
         Me.outputCompressData.Clear()
 
-        Return _outputText
+        Return outputSource
 
     End Function
 
@@ -2982,14 +3013,14 @@ Public Class MainScreen
 
     Private Function GetTilesetData(datatype As TILESET_TYPE, tilesetBANK As Integer) As String
 
-        Dim _outputText As String = ""
+        Dim outputSource As String = ""
 
         Dim comment1 As String
 
         Dim label_suffix As String
 
         Dim data As Byte()
-        Dim newData As Byte()
+        'Dim newData As Byte()
 
         Dim VRAMaddr As Integer
         Dim bloqsize As Integer
@@ -3025,17 +3056,11 @@ Public Class MainScreen
 
         data = Me.TMS9918Aviewer.GetBlock(VRAMaddr, bloqsize)
 
-        newData = GetCompressData(data)
+        'newData = GetCompressData(data)
 
-        Me.outputCompressData.Clear()
-        Me.outputCompressData.AddRange(newData)
-        Me.outputCompressData_Type = DATA_TYPE.TILESET
-        Me.outputCompressData_CompressType = Me.DataTypeInput.Compress
-        Me.outputCompressData_suffix = DataType_Suffix(Me.outputCompressData_Type) + label_suffix + Compress_Suffix(Me.DataTypeInput.Compress)
+        outputSource = GetFormatData(Me.DataTypeInput.FieldName, data, label_suffix, comment1)
 
-        _outputText = GetFormatData(Me.DataTypeInput.FieldName + label_suffix, newData, comment1, data.Length)
-
-        Return _outputText
+        Return outputSource
 
     End Function
 
@@ -3043,12 +3068,12 @@ Public Class MainScreen
 
     Private Function GetSpritesetData() As String
 
-        Dim _outputText As String = ""
+        Dim outputSource As String = ""
 
         Dim comment1 As String = "Sprite Patterns data"
 
         Dim data As Byte()
-        Dim newData As Byte()
+        'Dim newData As Byte()
 
         Dim VRAMaddr As Integer = iVDP.TableBase.GRPPAT
         Dim bloqsize As Integer
@@ -3069,16 +3094,16 @@ Public Class MainScreen
 
         data = Me.TMS9918Aviewer.GetBlock(VRAMaddr, bloqsize)
 
-        newData = GetCompressData(data)
-        _outputText = GetFormatData(Me.DataTypeInput.FieldName + "_SPR", newData, comment1, data.Length)
+        'newData = GetCompressData(data)
+        outputSource = GetFormatData(Me.DataTypeInput.FieldName, data, "_SPR", comment1)
 
-        Me.outputCompressData.Clear()
-        Me.outputCompressData.AddRange(newData)
-        Me.outputCompressData_Type = DATA_TYPE.SPRITESET
-        Me.outputCompressData_CompressType = Me.DataTypeInput.Compress
-        Me.outputCompressData_suffix = DataType_Suffix(Me.outputCompressData_Type) + Compress_Suffix(Me.DataTypeInput.Compress)
+        'Me.outputCompressData.Clear()
+        'Me.outputCompressData.AddRange(newData)
+        'Me.outputCompressData_Type = DATA_TYPE.SPRITESET
+        'Me.outputCompressData_CompressType = Me.DataTypeInput.CompressType
+        'Me.outputCompressData_suffix = DataType_Suffix(Me.outputCompressData_Type) + Compress_Suffix(Me.DataTypeInput.CompressType)
 
-        Return _outputText
+        Return outputSource
 
     End Function
 
@@ -3086,71 +3111,95 @@ Public Class MainScreen
 
     Private Function GetOAMData() As String
 
-        Dim _outputText As String = ""
+        Dim outputSource As String = ""
 
         Dim data As Byte()
-        Dim newData As Byte()
+        'Dim newData As Byte()
 
         data = Me.TMS9918Aviewer.GetBlock(iVDP.TableBase.GRPATR, iVDP.TableBaseSize.GRPATR)
 
-        newData = GetCompressData(data)
-        _outputText = GetFormatData(Me.DataTypeInput.FieldName + "_OAM", newData, "OAM data", data.Length)
+        'newData = GetCompressData(data)
+        outputSource = GetFormatData(Me.DataTypeInput.FieldName, data, "_OAM", "OAM data")
 
-        Me.outputCompressData.Clear()
-        Me.outputCompressData.AddRange(newData)
-        Me.outputCompressData_Type = DATA_TYPE.OAM
-        Me.outputCompressData_CompressType = Me.DataTypeInput.Compress
-        Me.outputCompressData_suffix = DataType_Suffix(Me.outputCompressData_Type) + Compress_Suffix(Me.DataTypeInput.Compress)
+        'Me.outputCompressData.Clear()
+        'Me.outputCompressData.AddRange(newData)
+        'Me.outputCompressData_Type = DATA_TYPE.OAM
+        'Me.outputCompressData_CompressType = Me.DataTypeInput.CompressType
+        'Me.outputCompressData_suffix = DataType_Suffix(Me.outputCompressData_Type) + Compress_Suffix(Me.DataTypeInput.CompressType)
 
-        Return _outputText
+        Return outputSource
 
     End Function
 
 
 
-    Private Function GetFormatData(ByVal dataname As String, ByVal data As Byte(), ByVal aComment As String, ByVal originalLength As Integer) As String
+    Private Function GetFormatData(ByVal dataname As String, ByVal data As Byte(), ByVal label_suffix As String, ByVal aComment As String) As String
 
         Dim outputSource As String = ""
         Dim comments As New ArrayList
 
+        Dim outputData As DataFormat.DataItem
+
+        'Me.binaryFiles.Clear()
+
+
+        'outputSource = aMSXDataFormat.GetComment(aComment, Me.DataTypeInput.LanguageCode)
+
+        comments.Add(aComment)
+
+        outputData = aMSXDataFormat.GetSourceCode(dataname + label_suffix, Me.DataTypeInput.GetCodeFormat(), data, comments)
+
+        Me.outputCompressData.Clear()
+        Me.outputCompressData.AddRange(outputData.Data)
+        Me.outputCompressData_Type = DATA_TYPE.TILESET
+        Me.outputCompressData_CompressType = Me.DataTypeInput.CompressType
+        Me.outputCompressData_suffix = DataType_Suffix(Me.outputCompressData_Type) + label_suffix + Compress_Suffix(Me.DataTypeInput.CompressType)
+
+        'Me.binaryFiles.Add(dataname, outputData.Data)
+
+        'Return outputData.SourceCode
+
+        outputSource = outputData.SourceCode
+
+
         'comments.Add(My.Application.Info.ProductName + " v" + My.Application.Info.Version.ToString)
         'comments.Add("File: " + Me.Filename_Project)
 
-        If Not aComment = "" Then
-            comments.Add(aComment)
-        End If
+        'If Not aComment = "" Then
+        '    comments.Add(aComment)
+        'End If
 
 
-        Select Case Me.DataTypeInput.Compress
+        'Select Case Me.DataTypeInput.CompressType
 
-            Case iCompressEncoder.COMPRESS_TYPE.RLE
-                comments.Add("RLE compressed - Original size=" + CStr(originalLength) + " - Compress size=" + CStr(data.Length))
+        '    Case iCompressEncoder.COMPRESS_TYPE.RLE
+        '        comments.Add("RLE compressed - Original size=" + CStr(originalLength) + " - Compress size=" + CStr(data.Length))
 
-            Case iCompressEncoder.COMPRESS_TYPE.RLEWB
-                comments.Add("RLEWB compressed - Original size=" + CStr(originalLength) + " - Compress size=" + CStr(data.Length))
+        '    Case iCompressEncoder.COMPRESS_TYPE.WRLE2
+        '        comments.Add("WRLE2 compressed - Original size=" + CStr(originalLength) + " - Compress size=" + CStr(data.Length))
 
-            Case iCompressEncoder.COMPRESS_TYPE.PLETTER
-                comments.Add("Pletter5c1 compressed - Original size=" + CStr(originalLength) + " - Compress size=" + CStr(data.Length))
+        '    Case iCompressEncoder.COMPRESS_TYPE.PLETTER
+        '        comments.Add("Pletter5c1 compressed - Original size=" + CStr(originalLength) + " - Compress size=" + CStr(data.Length))
 
-            Case Else
-                comments.Add("Size=" + CStr(data.Length))
+        '    Case Else
+        '        comments.Add("Size=" + CStr(data.Length))
 
-        End Select
+        'End Select
 
-        'comments.Add("RLE WB compressed - Original size= " + CStr(originalLength) + " - Compress size= " + CStr(data.Length) + " (" + CStr(Math.Round((data.Length / (originalLength / 100)), 2, MidpointRounding.ToEven)) + "%)")
+        ''comments.Add("RLE WB compressed - Original size= " + CStr(originalLength) + " - Compress size= " + CStr(data.Length) + " (" + CStr(Math.Round((data.Length / (originalLength / 100)), 2, MidpointRounding.ToEven)) + "%)")
 
 
-        ' show data in respective code language
-        Select Case Me.DataTypeInput.CodeLanguage
-            Case DataFormat.ProgrammingLanguage.C
-                outputSource = Me.aMSXDataFormat.GetCcode(data, Me.DataTypeInput.SizeLine, Me.DataTypeInput.NumeralSystem, dataname, comments, Me.AppConfig.lastCByteCommand)
+        '' show data in respective code language
+        'Select Case Me.DataTypeInput.ProgrammingLanguage
+        '    Case SourceCodeInfo.PROGRAMMING_LANGUAGE.C
+        '        outputSource = Me.aMSXDataFormat.GetCcode(data, Me.DataTypeInput.LineSize, Me.DataTypeInput.NumeralSystem, dataname, Me.DataTypeInput.AsmDataByteCommand, comments)
 
-            Case DataFormat.ProgrammingLanguage.ASSEMBLER
-                outputSource = Me.aMSXDataFormat.GetAssemblerCode(data, Me.DataTypeInput.SizeLine, Me.DataTypeInput.NumeralSystem, dataname, comments, Me.DataTypeInput.AsmByteCommand) 'Me.AppConfig.lastAsmByteCommand)
+        '    Case SourceCodeInfo.PROGRAMMING_LANGUAGE.ASSEMBLER
+        '        outputSource = Me.aMSXDataFormat.GetAssemblerCode(data, Me.DataTypeInput.LineSize, Me.DataTypeInput.NumeralSystem, dataname, Me.DataTypeInput.AsmDataByteCommand, comments) 'Me.AppConfig.lastAsmByteCommand)
 
-            Case DataFormat.ProgrammingLanguage.BASIC
-                outputSource = Me.aMSXDataFormat.GetBASICcode(data, Me.DataTypeInput.SizeLine, Me.DataTypeInput.NumeralSystem, Me.DataTypeInput.BASICremoveZeros, aMSXDataFormat.BASIC_Line, Me.DataTypeInput.BASICInterval, comments)
-        End Select
+        '    Case SourceCodeInfo.PROGRAMMING_LANGUAGE.BASIC
+        '        outputSource = Me.aMSXDataFormat.GetBASICcode(data, Me.DataTypeInput.LineSize, Me.DataTypeInput.NumeralSystem, Me.DataTypeInput.BASICremoveZeros, aMSXDataFormat.BASIC_Line, Me.DataTypeInput.BASIClineInterval, comments)
+        'End Select
 
 
         Return outputSource
@@ -3168,16 +3217,17 @@ Public Class MainScreen
         Dim packer As iCompressEncoder
 
 
-        If Me.DataTypeInput.Compress = iCompressEncoder.COMPRESS_TYPE.RAW Then
+        If Me.DataTypeInput.CompressType = iCompressEncoder.COMPRESS_TYPE.RAW Then
 
             outputData = data
 
         Else
 
-            Select Case Me.DataTypeInput.Compress
+            Select Case Me.DataTypeInput.CompressType
 
-                Case iCompressEncoder.COMPRESS_TYPE.RLEWB
-                    packer = New RLEWB
+                Case iCompressEncoder.COMPRESS_TYPE.WRLE2
+                    packer = New WRLE2
+                    'packer = New RLEWB
 
                 Case iCompressEncoder.COMPRESS_TYPE.PLETTER
                     packer = New Pletter
@@ -3214,23 +3264,23 @@ Public Class MainScreen
 
         Dim data As Byte()
 
-        Select Case HoriTAB1.SelectTab
+        Select Case HorizontalTab.SelectedTab
 
-            Case HoriTAB.TAB_NAME.MAP
+            Case DATA_TYPE.MAP
                 VRAMaddr = iVDP.TableBase.GRPNAM
                 bloqsize = iVDP.TableBaseSize.GRPNAM
                 new_suffix = "_MAP"
                 'data = Me.TMS9918Aviewer.GetBlock(VRAMaddr, iVDP.TableBaseSize.GRPNAM)
                 'saveMSXBbin.BSAVE(filepath, iVDP.TableBase.GRPNAM, data, 0, 0)
 
-            Case HoriTAB.TAB_NAME.TILESET
+            Case DATA_TYPE.TILESET
                 ' tileset
 
                 Dim tilesetBANK As Integer = SelectDataComboBox.SelectedIndex
 
                 new_screenmode = iVDP.SCREEN_MODE.G2
 
-                If tilesetBANK = 0 Then
+                If tilesetBANK = TILESET_BANK.ALL_BANKS Then
                     ' All Banks
                     bloqsize = &H1800
                 Else
@@ -3256,7 +3306,7 @@ Public Class MainScreen
 
                 End If
 
-            Case HoriTAB.TAB_NAME.SPRITESET
+            Case DATA_TYPE.SPRITESET
                 VRAMaddr = iVDP.TableBase.GRPPAT
                 bloqsize = iVDP.TableBaseSize.GRPPAT
                 new_suffix = "_SPR"
@@ -3264,14 +3314,14 @@ Public Class MainScreen
                 'data = Me.TMS9918Aviewer.GetBlock(iVDP.TableBase.GRPPAT, iVDP.TableBaseSize.GRPPAT)
                 'saveMSXBbin.BSAVE(filepath, iVDP.TableBase.GRPPAT, data, 0, iVDP.SPRITE_SIZE.SIZE16)
 
-            Case HoriTAB.TAB_NAME.OAM
+            Case DATA_TYPE.OAM
                 VRAMaddr = iVDP.TableBase.GRPATR
                 bloqsize = iVDP.TableBaseSize.GRPATR
                 new_suffix = "_OAM"
                 'data = Me.TMS9918Aviewer.GetBlock(VRAMaddr, iVDP.TableBaseSize.GRPATR)
                 'saveMSXBbin.BSAVE(filepath, iVDP.TableBase.GRPATR, data, new_screenmode, 0)
 
-            Case Else 'HoriTAB.TAB_NAME.SCREEN
+            Case Else 'DATA_TYPE.SCREEN
                 VRAMaddr = 0
                 bloqsize = &H4000
                 new_screenmode = iVDP.SCREEN_MODE.G2
@@ -3282,7 +3332,7 @@ Public Class MainScreen
         End Select
 
         data = Me.TMS9918Aviewer.GetBlock(VRAMaddr, bloqsize)
-        saveMSXBbin.BSAVE(new_path + Path.DirectorySeparatorChar + new_filepath + new_suffix + new_filepath_extension, VRAMaddr, data, new_screenmode, new_spritesize)
+        saveMSXBbin.BSAVE(new_path + Path.DirectorySeparatorChar + new_filepath + new_suffix + new_filepath_extension, VRAMaddr, data, new_screenmode, new_spritesize, False)
 
     End Sub
 
@@ -3297,14 +3347,13 @@ Public Class MainScreen
     End Sub
 
 
-    Private Sub SaveBinaryButton_Click(sender As Object, e As EventArgs) Handles SaveBinaryButton.Click
+    Private Sub SaveBinaryButton_Click_1(sender As Object, e As EventArgs) Handles SaveBinaryButton.Click
         If Me.outputCompressData.Count > 0 Then
             SaveBinary_Dialog()
         Else
             MessageWin.ShowDialog(Me, "Alert!", "I have no data to save.", MessageDialog.DIALOG_TYPE.ALERT) '+ vbCrLf
         End If
     End Sub
-
 
 
     Private Sub SaveProjectButton_Click(sender As Object, e As EventArgs) Handles SaveProjectButton.Click
@@ -3336,7 +3385,7 @@ Public Class MainScreen
     Private Sub SaveProjectDialog()
         Me.SaveFileDialog1.DefaultExt = ScreenDocumentExtension
         Me.SaveFileDialog1.Filter = "Open Document SCreen Project file|*." + ScreenDocumentExtension
-        Me.SaveFileDialog1.FileName = Me.Info.Name_without_Spaces
+        Me.SaveFileDialog1.FileName = Me.Info.ProjectNameWithoutSpaces
 
         If Me.Path_Project = "" Then
             Me.SaveFileDialog1.InitialDirectory = Application.StartupPath
@@ -3355,7 +3404,7 @@ Public Class MainScreen
     Private Sub SaveMSXBASICbinaryDialog()
         Me.SaveFileDialog1.DefaultExt = "sc2"
         Me.SaveFileDialog1.Filter = "Screen2 bin file|*.sc2|VRAM bin file|*.bin|All files|*.*"
-        Me.SaveFileDialog1.FileName = Me.Info.Name_without_Spaces
+        Me.SaveFileDialog1.FileName = Me.Info.ProjectNameWithoutSpaces
 
         If Me.Path_Project = "" Then
             Me.SaveFileDialog1.InitialDirectory = Application.StartupPath
@@ -3381,7 +3430,7 @@ Public Class MainScreen
                 Me.SaveFileDialog1.Filter = "RLE file|*." + RLE.Extension + "|All files|*.*"
                 Me.SaveFileDialog1.DefaultExt = RLE.Extension
 
-            Case iCompressEncoder.COMPRESS_TYPE.RLEWB
+            Case iCompressEncoder.COMPRESS_TYPE.WRLE2
                 Me.SaveFileDialog1.Filter = "RLEWB file|*." + RLEWB.Extension + "|All files|*.*"
                 Me.SaveFileDialog1.DefaultExt = RLEWB.Extension
 
@@ -3396,7 +3445,7 @@ Public Class MainScreen
         End Select
 
 
-        Me.SaveFileDialog1.FileName = Me.Info.Name_without_Spaces + Me.outputCompressData_suffix  '+ "." + Extension_Binary
+        Me.SaveFileDialog1.FileName = Me.Info.ProjectNameWithoutSpaces + Me.outputCompressData_suffix  '+ "." + Extension_Binary
 
         If Me.Path_binary = "" Then
             If Me.Path_Project = "" Then
@@ -3432,7 +3481,7 @@ Public Class MainScreen
     Private Sub SaveNMSXprj_Dialog()
         Me.SaveFileDialog1.DefaultExt = "prj"
         Me.SaveFileDialog1.Filter = "nMSXtiles Project file|*.prj"
-        Me.SaveFileDialog1.FileName = Me.Info.Name_without_Spaces
+        Me.SaveFileDialog1.FileName = Me.Info.ProjectNameWithoutSpaces
 
         If Me.Path_Project = "" Then
             Me.SaveFileDialog1.InitialDirectory = Application.StartupPath
@@ -3452,7 +3501,7 @@ Public Class MainScreen
 
         Me.SaveFileDialog1.DefaultExt = "png"
         Me.SaveFileDialog1.Filter = "PNG file|*.png"
-        Me.SaveFileDialog1.FileName = Me.Info.Name_without_Spaces + DataType_Suffix(HoriTAB1.SelectTab)
+        Me.SaveFileDialog1.FileName = Me.Info.ProjectNameWithoutSpaces + DataType_Suffix(HorizontalTab.SelectedTab)
 
         If Me.Path_Project = "" Then
             Me.SaveFileDialog1.InitialDirectory = Application.StartupPath
@@ -3503,8 +3552,8 @@ Public Class MainScreen
 
     Private Sub TilesetComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles SelectDataComboBox.SelectedIndexChanged
 
-        If HoriTAB1.SelectTab = HoriTAB.TAB_NAME.TILESET Then
-            If SelectDataComboBox.SelectedIndex = 4 Then
+        If HorizontalTab.SelectedTab = DATA_TYPE.TILESET Then
+            If SelectDataComboBox.SelectedIndex = TILESET_BANK.SELECTED_AREA Then
                 TMS9918Aviewer.ControlType = TMS9918A.CONTROL_TYPE.SELECTER
                 AreaPanel.Visible = True
                 RangePanel.Visible = False
@@ -3512,7 +3561,7 @@ Public Class MainScreen
                 TMS9918Aviewer.ControlType = TMS9918A.CONTROL_TYPE.VIEWER
                 AreaPanel.Visible = False
 
-                If SelectDataComboBox.SelectedIndex = 0 Then
+                If SelectDataComboBox.SelectedIndex = TILESET_BANK.ALL_BANKS Then
                     RangePanel.Visible = False
                 Else
                     RangePanel.Visible = True
@@ -3520,9 +3569,9 @@ Public Class MainScreen
 
             End If
 
-        ElseIf HoriTAB1.SelectTab = HoriTAB.TAB_NAME.MAP Then
+        ElseIf HorizontalTab.SelectedTab = DATA_TYPE.MAP Then
 
-            If SelectDataComboBox.SelectedIndex = 1 Then
+            If SelectDataComboBox.SelectedIndex = 1 Then    ' <<<----------------------------------------------- ?? TILESET_BANK.BANK_A
                 TMS9918Aviewer.ControlType = TMS9918A.CONTROL_TYPE.SELECTER
                 AreaPanel.Visible = True
             Else
@@ -3676,7 +3725,7 @@ Public Class MainScreen
         tileGraphics.Clear(Color.Black)
         tileColorsGraphics.Clear(Me.BackColor)
 
-        If Me.TMS9918Aviewer.SpriteSize = SpriteMSX.SPRITE_SIZE.SIZE8 Then
+        If Me.TMS9918Aviewer.SpriteSize = iVDP.SPRITE_SIZE.SIZE8 Then
             VRAMaddr += SpritePatternNumber * 8
             ShowZoomSprite8px(VRAMaddr)
         Else
@@ -3812,12 +3861,12 @@ Public Class MainScreen
     End Sub
 
 
-
-    Private Sub SetConfig()
-        Dim aConfig As New ConfigWin(Me.AppConfig, ConfigWin.CONFIG_TYPE.TMSGFX)
+    Private Sub EditConfig()
+        Dim aConfig As New ConfigDialog(Me.AppConfig, ConfigDialog.CONFIG_TYPE.TMSGFX)
 
         If aConfig.ShowDialog() = DialogResult.OK Then
             Me.AppConfig.Save()
+            'Me.EditorContainer.UpdateConfig()
 
             Me.OutputText.BackColor = Me.AppConfig.Color_OUTPUT_BG
             Me.OutputText.ForeColor = Me.AppConfig.Color_OUTPUT_INK
@@ -3828,7 +3877,9 @@ Public Class MainScreen
             Me.DataTypeInput.RefreshControl()
             'GenerateData()
         End If
+
     End Sub
+
 
 
 
@@ -3857,7 +3908,7 @@ Public Class MainScreen
 
             If Me.Path_source = "" Then
                 If Me.Path_Project = "" Then
-                    Me.SaveFileDialog1.FileName = Me.Info.Name_without_Spaces
+                    Me.SaveFileDialog1.FileName = Me.Info.ProjectNameWithoutSpaces
                     Me.SaveFileDialog1.InitialDirectory = Application.StartupPath
                 Else
                     Me.SaveFileDialog1.FileName = Path.GetFileNameWithoutExtension(Me.Path_Project)
@@ -3868,14 +3919,14 @@ Public Class MainScreen
                 Me.SaveFileDialog1.InitialDirectory = Path.GetDirectoryName(Me.Path_source)
             End If
 
-            Select Case DataTypeInput.CodeLanguage
-                Case DataFormat.ProgrammingLanguage.BASIC
+            Select Case DataTypeInput.LanguageCode
+                Case SourceCodeInfo.PROGRAMMING_LANGUAGE.BASIC
                     Me.SaveFileDialog1.DefaultExt = "BAS"
                     Me.SaveFileDialog1.Filter = "BASIC file|*.BAS"
-                Case DataFormat.ProgrammingLanguage.C
+                Case SourceCodeInfo.PROGRAMMING_LANGUAGE.C
                     Me.SaveFileDialog1.DefaultExt = "c"
                     Me.SaveFileDialog1.Filter = "C file|*.c|Header file|*.h"
-                Case DataFormat.ProgrammingLanguage.ASSEMBLER
+                Case SourceCodeInfo.PROGRAMMING_LANGUAGE.ASSEMBLER
                     Me.SaveFileDialog1.DefaultExt = "asm"
                     Me.SaveFileDialog1.Filter = "ASM file|*.asm|ASM file|*.s"
             End Select
@@ -3902,14 +3953,18 @@ Public Class MainScreen
 
 
     Private Sub BorderColorButton_Click(sender As Object, e As EventArgs) Handles BorderColorButton.Click
-        Dim aColorSelector As New ColorSelector
 
-        If aColorSelector.ShowWinDialog(Me.TMS9918Aviewer.Palette, System.Windows.Forms.Control.MousePosition) = DialogResult.OK Then
-            If Not aColorSelector.ColorSelected = Me.TMS9918Aviewer.BorderColor Then
-                SetBorderColor(aColorSelector.ColorSelected)
+        Dim aColorWinSelector As ColorWinSelector
+
+        aColorWinSelector = New ColorWinSelector(Me.TMS9918Aviewer.Palette, 0)
+
+        If aColorWinSelector.ShowDialog() = DialogResult.OK Then
+            If Not aColorWinSelector.SelectedColor = Me.TMS9918Aviewer.BorderColor Then
+                SetBorderColor(aColorWinSelector.SelectedColor)
                 Me.TMS9918Aviewer.RefreshScreen()
             End If
         End If
+
     End Sub
 
 
@@ -3917,6 +3972,12 @@ Public Class MainScreen
     Private Sub SetBorderColor(ByVal newColor As Integer)
         BorderColorButton.BackColor = Me.TMS9918Aviewer.Palette.GetRGBColor(newColor)
         TMS9918Aviewer.BorderColor = newColor
+    End Sub
+
+
+
+    Private Sub PiXelST_HorizontalTab1_TabChanged(index As Integer) Handles HorizontalTab.TabChanged
+        ShowGUImode(index)
     End Sub
 
 
