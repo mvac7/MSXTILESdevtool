@@ -1,7 +1,7 @@
 # MSXTiles·devtool
 ### TMS9918A·G2 Graphics Editor
 
-![MSXTiles devtool logo](GFX\mSXdevtool_logo_x2.png)
+![MSXTiles devtool logo](GFX/mSXdevtool_logo_x2.png)
 
 ```
 Short:        Application to work with images in the graphics mode 2 of TMS9918A
