@@ -241,8 +241,8 @@ Public Class MainScreen
         Me.TMS9918Aviewer.SetPalette(Me.Palettes.GetPalette(0))
         Me.TMS9918Aviewer.ScreenMode = iVDP.SCREEN_MODE.G2
         Me.TMS9918Aviewer.SetOrderMap()
-        'Me.TMS9918Aviewer.BorderColor = 4
-        SetBorderColor(4)
+        Me.TMS9918Aviewer.BorderColor = 0
+        'SetBorderColor(4)
         Me.TMS9918Aviewer.FillVRAM(iVDP.TableBase.GRPCOL, iVDP.TableBaseSize.GRPCOL, 0)  '&HF4
         'Me.TMS9918Aviewer.SetBlock(iVDP.TableBase.GRPCGP, dragNdropPicture)
         Me.TMS9918Aviewer.RefreshScreen()
@@ -2281,7 +2281,7 @@ Public Class MainScreen
             Case DATA_TYPE.SCREEN
                 Me.TMS9918Aviewer.SetView(TMS9918A.VIEW_MODE.ALL)
                 SelectAreaButton_enabled = False
-                'OptimizeButton_enabled = True
+                OptimizeButton_enabled = True
                 TilesOrderButton_enabled = True
                 FillMapButton_enabled = True
 
@@ -2307,7 +2307,7 @@ Public Class MainScreen
                 Me.SelectDataComboBox.Items.Clear()
                 Me.SelectDataComboBox.Items.AddRange(New Object() {"All Banks", "Bank A", "Bank B", "Bank C", "Selected Area"})
 
-                OptimizeButton_enabled = True
+                'OptimizeButton_enabled = False
 
                 OutputDataGroupBox_Visible = True
 
@@ -2609,8 +2609,18 @@ Public Class MainScreen
 
 
     Private Sub OptimizeButton_Click(sender As Object, e As EventArgs) Handles OptimizeButton.Click
-        Optimize()
+
+        Me.Progress.ShowProgressWin()
+        Try
+            'Optimize()
+            OptimiceTilesAndMap()
+        Catch ex As Exception
+
+        End Try
+        Me.Progress.CloseProgressWin()
+
     End Sub
+
 
 
     Private Sub TilesOrderButton_Click(sender As Object, e As EventArgs) Handles TilesOrderButton.Click
@@ -2845,27 +2855,51 @@ Public Class MainScreen
 
         Dim VRAMaddr As Integer
 
+        Dim bloqsize As Integer
+
         Dim line_length As Integer = (area_endX - area_startX) + 1
 
         label_suffix = "_MAP"
 
         Me.aMSXDataFormat.BASIC_Line = DataTypeInput.BASIClineNumber
-        comments.Add(" Map Area data - Width:" + CStr(line_length) + " Height:" + CStr((area_endY - area_startY) + 1))
-        outputSource = Me.aMSXDataFormat.GetComments(comments, Me.DataTypeInput.LanguageCode)
+        comments.Add("Map Area data - Width:" + CStr(line_length) + " Height:" + CStr((area_endY - area_startY) + 1))
 
-        For i As Integer = area_startY To area_endY
+        If line_length = 32 Then
+            ' ------------------------------------------------------------------------------------- << compress a bloq
+            bloqsize = (area_endY - area_startY) + 1
+            bloqsize *= 32
+            VRAMaddr = area_startY * 32
+            data = Me.TMS9918Aviewer.GetBlock(iVDP.TableBase.GRPNAM + VRAMaddr, bloqsize)
+            comments.Add("VRAM address=" + Me.aMSXDataFormat.GetFormatedValue(iVDP.TableBase.GRPNAM + VRAMaddr, DataTypeInput.GetCodeFormat.NumeralSystem))
 
-            lineNumber = CStr(line).PadLeft(2, "0"c)
+            outputSource = Me.aMSXDataFormat.GetComments(comments, Me.DataTypeInput.LanguageCode)
+            outputSource += GetFormatData(Me.DataTypeInput.FieldName, data, label_suffix, "")
+        Else
+            ' ------------------------------------------------------------------------------------- << compress lines
 
-            VRAMaddr = (i * 32) + area_startX
+            outputSource = Me.aMSXDataFormat.GetComments(comments, Me.DataTypeInput.LanguageCode)
 
-            data = Me.TMS9918Aviewer.GetBlock(iVDP.TableBase.GRPNAM + VRAMaddr, line_length)
+            For i As Integer = area_startY To area_endY
 
-            'newData = GetCompressData(data)
-            outputSource += GetFormatData(Me.DataTypeInput.FieldName, data, label_suffix + lineNumber, "Line " + lineNumber)
+                lineNumber = CStr(line).PadLeft(2, "0"c)
 
-            line += 1
-        Next
+                VRAMaddr = (i * 32) + area_startX
+
+                data = Me.TMS9918Aviewer.GetBlock(iVDP.TableBase.GRPNAM + VRAMaddr, line_length)
+
+                'newData = GetCompressData(data)
+                outputSource += GetFormatData(Me.DataTypeInput.FieldName, data, label_suffix + lineNumber, "Line " + lineNumber)
+
+                line += 1
+            Next
+
+
+        End If
+
+
+
+
+
 
         'Me.outputCompressData.Clear()
 
@@ -2969,16 +3003,17 @@ Public Class MainScreen
 
         If line_length = 32 Then
             ' ------------------------------------------------------------------------------------- << compress a bloq
-            bloqsize = (area_endY - area_startY) * 256
+            bloqsize = (area_endY - area_startY) + 1
+            bloqsize *= 256
             VRAMaddr = (area_startY * 256) + (area_startX * 8)
             data = Me.TMS9918Aviewer.GetBlock(VRAMtable + VRAMaddr, bloqsize)
             comments.Add("VRAM pattern address=" + Me.aMSXDataFormat.GetFormatedValue(VRAMtable + VRAMaddr, DataTypeInput.GetCodeFormat.NumeralSystem))
 
             outputSource = Me.aMSXDataFormat.GetComments(comments, Me.DataTypeInput.LanguageCode)
             outputSource += GetFormatData(Me.DataTypeInput.FieldName, data, label_suffix, "")
+
         Else
             ' ------------------------------------------------------------------------------------- << compress lines
-
             bloqsize = line_length * 8
 
             outputSource = Me.aMSXDataFormat.GetComments(comments, Me.DataTypeInput.LanguageCode)
@@ -2998,7 +3033,6 @@ Public Class MainScreen
             Next
 
         End If
-
 
 
         Me.outputCompressData.Clear()
@@ -3952,33 +3986,183 @@ Public Class MainScreen
 
 
 
-    Private Sub BorderColorButton_Click(sender As Object, e As EventArgs) Handles BorderColorButton.Click
+    'Private Sub BorderColorButton_Click(sender As Object, e As EventArgs) Handles BorderColorButton.Click
 
-        Dim aColorWinSelector As ColorWinSelector
+    '    Dim aColorWinSelector As ColorWinSelector
 
-        aColorWinSelector = New ColorWinSelector(Me.TMS9918Aviewer.Palette, 0)
+    '    aColorWinSelector = New ColorWinSelector(Me.TMS9918Aviewer.Palette, 0)
 
-        If aColorWinSelector.ShowDialog() = DialogResult.OK Then
-            If Not aColorWinSelector.SelectedColor = Me.TMS9918Aviewer.BorderColor Then
-                SetBorderColor(aColorWinSelector.SelectedColor)
-                Me.TMS9918Aviewer.RefreshScreen()
-            End If
-        End If
+    '    If aColorWinSelector.ShowDialog() = DialogResult.OK Then
+    '        If Not aColorWinSelector.SelectedColor = Me.TMS9918Aviewer.BorderColor Then
+    '            SetBorderColor(aColorWinSelector.SelectedColor)
+    '            Me.TMS9918Aviewer.RefreshScreen()
+    '        End If
+    '    End If
 
-    End Sub
+    'End Sub
 
 
 
-    Private Sub SetBorderColor(ByVal newColor As Integer)
-        BorderColorButton.BackColor = Me.TMS9918Aviewer.Palette.GetRGBColor(newColor)
-        TMS9918Aviewer.BorderColor = newColor
-    End Sub
+    'Private Sub SetBorderColor(ByVal newColor As Integer)
+    '    BorderColorButton.BackColor = Me.TMS9918Aviewer.Palette.GetRGBColor(newColor)
+    '    TMS9918Aviewer.BorderColor = newColor
+    'End Sub
 
 
 
     Private Sub PiXelST_HorizontalTab1_TabChanged(index As Integer) Handles HorizontalTab.TabChanged
         ShowGUImode(index)
     End Sub
+
+
+
+
+    Private Sub OptimiceTilesAndMap()
+
+        Dim VRAM_pattern As Integer
+        Dim VRAM_color As Integer
+
+        Dim pattern(7) As Byte
+        Dim colors(7) As Byte
+        Dim tile(15) As Byte
+        Dim tile2(15) As Byte
+
+        Dim tilesMap(255) As Byte
+
+        Dim tilesetOld As New ArrayList()
+        Dim tilesetNEW As New ArrayList()
+
+        Dim bank As Integer
+
+        Dim tilenumber As Integer
+
+
+        'Dim array1() As Byte = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+        'Dim array2() As Byte = {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+
+
+        If HorizontalTab.SelectedTab = DATA_TYPE.SCREEN Then
+
+            Me.TMS9918Aviewer.Optimize()
+
+            For bank = 0 To 2
+
+                VRAM_pattern = iVDP.TableBase.GRPCGP + (bank * &H800)
+                VRAM_color = iVDP.TableBase.GRPCOL + (bank * &H800)
+
+                tilesetOld.Clear()
+                tilesetNEW.Clear()
+
+                ' order map
+                For i = 0 To 255
+                    tilesMap(i) = i
+                Next
+
+
+                'create tileset
+                For i = 0 To 255
+
+                    pattern = Me.TMS9918Aviewer.GetBlock(VRAM_pattern + (i * 8), 8)
+                    pattern.CopyTo(tile, 0)
+                    colors = Me.TMS9918Aviewer.GetBlock(VRAM_color + (i * 8), 8)
+                    colors.CopyTo(tile, 8)
+
+                    tilesetOld.Add(tile.Clone)
+
+                Next
+
+                'compare tiles
+                For i = 0 To 254
+
+                    If tilesMap(i) = i Then
+
+                        tile = tilesetOld(i)
+                        tilenumber = tilesetNEW.Add(tile.Clone)
+                        tilesMap(i) = tilenumber
+
+                        For o = i + 1 To 255
+                            If tilesMap(o) > i Then
+                                tile2 = tilesetOld(o)
+                                If CompareTiles(tile, tile2) Then
+                                    tilesMap(o) = tilenumber
+                                End If
+                            End If
+                        Next
+
+                    End If
+
+                Next
+
+                ' Last tile
+                If tilesMap(255) = 255 Then
+                    tile = tilesetOld(255)
+                    tilenumber = tilesetNEW.Add(tile.Clone)
+                    tilesMap(255) = tilenumber
+                End If
+
+                'VRAM_pattern = iVDP.TableBase.GRPCGP
+                'VRAM_color = iVDP.TableBase.GRPCOL
+
+                For i = 0 To 255
+
+                    If i < tilesetNEW.Count Then
+                        tile = tilesetNEW.Item(i)
+
+                        Array.Copy(tile, pattern, 8)
+                        Array.Copy(tile, 8, colors, 0, 8)
+
+                        Me.TMS9918Aviewer.SetBlock(VRAM_pattern, pattern)
+                        Me.TMS9918Aviewer.SetBlock(VRAM_color, colors)
+                    Else
+                        Me.TMS9918Aviewer.FillVRAM(VRAM_pattern, 8, 0)
+                        Me.TMS9918Aviewer.FillVRAM(VRAM_color, 8, 0)
+                    End If
+
+                    VRAM_pattern += 8
+                    VRAM_color += 8
+
+                Next
+
+                Me.TMS9918Aviewer.SetBlock(iVDP.TableBase.GRPNAM + (bank * 256), tilesMap)
+
+            Next
+
+
+            Me.TMS9918Aviewer.RefreshScreen()
+
+
+        End If
+
+    End Sub
+
+
+
+
+
+
+
+    Private Function CompareTiles(ByRef tile1 As Byte(), ByRef tile2 As Byte()) As Boolean
+
+        Dim result As Boolean = True
+        Dim i As Integer
+
+        Try
+
+            For i = 0 To 15
+                If Not tile1(i) = tile2(i) Then
+                    result = False
+                    Exit For
+                End If
+            Next
+
+        Catch ex As Exception
+            result = False
+        End Try
+
+        Return result
+
+    End Function
+
 
 
 End Class

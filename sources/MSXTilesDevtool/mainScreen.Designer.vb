@@ -447,7 +447,7 @@ Partial Class MainScreen
         Me.OptimizeButton.Name = "OptimizeButton"
         Me.OptimizeButton.Size = New System.Drawing.Size(36, 36)
         Me.OptimizeButton.Text = "ToolStripButton3"
-        Me.OptimizeButton.ToolTipText = "Optimize pattern and color data"
+        Me.OptimizeButton.ToolTipText = "Optimize Tiles and Map Tool"
         '
         'TilesOrderButton
         '
@@ -551,6 +551,7 @@ Partial Class MainScreen
         Me.BorderColorButton.Size = New System.Drawing.Size(36, 28)
         Me.BorderColorButton.Text = "ToolStripButton1"
         Me.BorderColorButton.ToolTipText = "Select screen border color." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "It is used to display the color 0."
+        Me.BorderColorButton.Visible = False
         '
         'V_Rules_PictureBox
         '
